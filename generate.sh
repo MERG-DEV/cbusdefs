@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -x
 
 # Although this may seem like a random collection of punctuation it is 
 # actually a bash script. I.e. it is executed by the bash command. 
@@ -28,7 +29,12 @@ do
 		if [ "X$name" = "X" ]; then
 			echo -e "; $value$comment" 
 		else
-			echo -e "$name\tequ $value\t; $comment" 
+			start=`echo -e $value | cut -c1-2 | tr "x" "X"`
+			if [ "x$start" = "x0X" ]; then
+				echo -e "$name\tequ $value\t; $comment" 
+			else
+				echo -e "$name\tequ .$value\t; $comment" 
+			fi
 		fi
 	fi
 done < cbusdefs.csv >>$OUTPUT

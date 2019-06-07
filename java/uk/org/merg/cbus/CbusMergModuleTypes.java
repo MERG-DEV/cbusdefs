@@ -145,7 +145,6 @@ public enum CbusMergModuleTypes {
 	MTYP_CANPiNODE(58),	//CBUS module based on Raspberry Pi
 	MTYP_CANDISP(59),	//25K80 version of CANLED64 (IHart and MB)
 	MTYP_CANCOMPUTE(60),	//Event processing engine
-	MTYPE_CANCMDDC(61),	//8-Channel DC command station
 // 
 	MTYP_CAN_SW(0xFF),	//Software nodes
 	MTYP_EMPTY(0xFE),	//Empty module, bootloader only

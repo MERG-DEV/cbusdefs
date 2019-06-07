@@ -79,74 +79,73 @@
 ; CBUS Manufacturer definitions,,
 ; Where the manufacturer already has an NMRA code, this is used
 ; 
-MANU_MERG	equ 165	; http://www.merg.co.uk
-MANU_ROCRAIL	equ 70	; http://www.rocrail.net
-MANU_SPECTRUM	equ 80	; http://animatedmodeler.com  (Spectrum Engineering)
+MANU_MERG	equ .165	; http://www.merg.co.uk
+MANU_ROCRAIL	equ .70	; http://www.rocrail.net
+MANU_SPECTRUM	equ .80	; http://animatedmodeler.com  (Spectrum Engineering)
 ; 
 ; MERG Module types
 ; 
-MTYP_SLIM	equ 0	; default for SLiM nodes
-MTYP_CANACC4	equ 1	; Solenoid point driver
-MTYP_CANACC5	equ 2	; Motorised point driver
-MTYP_CANACC8	equ 3	; 8 digital outputs
-MTYP_CANACE3	equ 4	; Control panel switch/button encoder
-MTYP_CANACE8C	equ 5	; 8 digital inputs
-MTYP_CANLED	equ 6	; 64 led driver
-MTYP_CANLED64	equ 7	; 64 led driver (multi leds per event)
-MTYP_CANACC4_2	equ 8	; 12v version of CANACC4
-MTYP_CANCAB	equ 9	; CANCAB hand throttle
-MTYP_CANCMD	equ 10	; CANCMD command station
-MTYP_CANSERVO	equ 11	; 8 servo driver (on canacc8 or similar hardware)
-MTYP_CANBC	equ 12	; BC1a command station
-MTYP_CANRPI	equ 13	; RPI and RFID interface
-MTYP_CANTTCA	equ 14	; Turntable controller (turntable end)
-MTYP_CANTTCB	equ 15	; Turntable controller (control panel end)
-MTYP_CANHS	equ 16	; Handset controller for old BC1a type handsets
-MTYP_CANTOTI	equ 17	; Track occupancy detector
-MTYP_CAN8I8O	equ 18	; 8 inputs 8 outputs
-MTYP_CANSERVO8C	equ 19	; Canservo with servo position feedback
-MTYP_CANRFID	equ 20	; RFID input
-MTYP_CANTC4	equ 21	; 
-MTYP_CANACE16C	equ 22	; 16 inputs
-MTYP_CANIO8	equ 23	; 8 way I/O
-MTYP_CANSNDX	equ 24	; ??
-MTYP_CANEther	equ 25	; Ethernet interface
-MTYP_CANSIG64	equ 26	; Multiple aspect signalling for CANLED module
-MTYP_CANSIG8	equ 27	; Multiple aspect signalling for CANACC8 module
-MTYP_CANCOND8C	equ 28	; Conditional event generation
-MTYP_CANPAN	equ 29	; Control panel 32/32
-MTYP_CANACE3C	equ 30	; Newer version of CANACE3 firmware
-MTYP_CANPanel	equ 31	; Control panel 64/64
-MTYP_CANMIO	equ 32	; Multiple I/O
-MTYP_CANACE8MIO	equ 33	; Multiple IO module emulating ACE8C
-MTYP_CANSOL	equ 34	; Solenoid driver module
-MTYP_CANBIP	equ 35	; Bipolar IO module with additional 8 I/O pins
-MTYP_CANCDU	equ 36	; Solenoid driver module with additional 6 I/O pins
-MTYP_CANACC4CDU	equ 37	; CANACC4 firmware ported to CANCDU
-MTYP_CANWiBase	equ 38	; CAN to MiWi base station
-MTYP_WiCAB	equ 39	; Wireless cab using MiWi protocol
-MTYP_CANWiFi	equ 40	; CAN to WiFi connection with Withrottle to CBUS protocol conversion
-MTYP_CANFTT	equ 41	; Turntable controller configured using FLiM
-MTYP_CANHNDST	equ 42	; Handset (alternative to CANCAB)
-MTYP_CANTCHNDST	equ 43	; Touchscreen handset
-MTYP_CANRFID8	equ 44	; multi-channel RFID reader
-MTYP_CANmchRFID	equ 45	; either a 2ch or 8ch RFID reader
-MTYP_CANPiWi	equ 46	; a Raspberry Pi based module for WiFi
-MTYP_CAN4DC	equ 47	; DC train controller
-MTYP_CANELEV	equ 48	; Nelevator controller
-MTYP_CANSCAN	equ 49	; 128 switch inputs
-MTYP_CANMIO_SVO	equ 50	; 16MHz 25k80 version of CANSERVO8c
-MTYP_CANMIO_INP	equ 51	; 16MHz 25k80 version of CANACE8MIO
-MTYP_CANMIO_OUT	equ 52	; 16MHz 25k80 version of CANACC8
-MTYP_CANBIP_OUT	equ 53	; 16MHz 25k80 version of CANACC5
-MTYP_CANASTOP	equ 54	; DCC stop generator
-MTYP_CANCSB	equ 55	; CANCMD with on board 3A booster
-MTYP_CANMAGOT	equ 56	; Magnet on Track detector
-MTYP_CANACE16CMIO	equ 57	; 16 input equivaent to CANACE8C
-MTYP_CANPiNODE	equ 58	; CBUS module based on Raspberry Pi
-MTYP_CANDISP	equ 59	; 25K80 version of CANLED64 (IHart and MB)
-MTYP_CANCOMPUTE	equ 60	; Event processing engine
-MTYPE_CANCMDDC	equ 61	; 8-Channel DC command station
+MTYP_SLIM	equ .0	; default for SLiM nodes
+MTYP_CANACC4	equ .1	; Solenoid point driver
+MTYP_CANACC5	equ .2	; Motorised point driver
+MTYP_CANACC8	equ .3	; 8 digital outputs
+MTYP_CANACE3	equ .4	; Control panel switch/button encoder
+MTYP_CANACE8C	equ .5	; 8 digital inputs
+MTYP_CANLED	equ .6	; 64 led driver
+MTYP_CANLED64	equ .7	; 64 led driver (multi leds per event)
+MTYP_CANACC4_2	equ .8	; 12v version of CANACC4
+MTYP_CANCAB	equ .9	; CANCAB hand throttle
+MTYP_CANCMD	equ .10	; CANCMD command station
+MTYP_CANSERVO	equ .11	; 8 servo driver (on canacc8 or similar hardware)
+MTYP_CANBC	equ .12	; BC1a command station
+MTYP_CANRPI	equ .13	; RPI and RFID interface
+MTYP_CANTTCA	equ .14	; Turntable controller (turntable end)
+MTYP_CANTTCB	equ .15	; Turntable controller (control panel end)
+MTYP_CANHS	equ .16	; Handset controller for old BC1a type handsets
+MTYP_CANTOTI	equ .17	; Track occupancy detector
+MTYP_CAN8I8O	equ .18	; 8 inputs 8 outputs
+MTYP_CANSERVO8C	equ .19	; Canservo with servo position feedback
+MTYP_CANRFID	equ .20	; RFID input
+MTYP_CANTC4	equ .21	; 
+MTYP_CANACE16C	equ .22	; 16 inputs
+MTYP_CANIO8	equ .23	; 8 way I/O
+MTYP_CANSNDX	equ .24	; ??
+MTYP_CANEther	equ .25	; Ethernet interface
+MTYP_CANSIG64	equ .26	; Multiple aspect signalling for CANLED module
+MTYP_CANSIG8	equ .27	; Multiple aspect signalling for CANACC8 module
+MTYP_CANCOND8C	equ .28	; Conditional event generation
+MTYP_CANPAN	equ .29	; Control panel 32/32
+MTYP_CANACE3C	equ .30	; Newer version of CANACE3 firmware
+MTYP_CANPanel	equ .31	; Control panel 64/64
+MTYP_CANMIO	equ .32	; Multiple I/O
+MTYP_CANACE8MIO	equ .33	; Multiple IO module emulating ACE8C
+MTYP_CANSOL	equ .34	; Solenoid driver module
+MTYP_CANBIP	equ .35	; Bipolar IO module with additional 8 I/O pins
+MTYP_CANCDU	equ .36	; Solenoid driver module with additional 6 I/O pins
+MTYP_CANACC4CDU	equ .37	; CANACC4 firmware ported to CANCDU
+MTYP_CANWiBase	equ .38	; CAN to MiWi base station
+MTYP_WiCAB	equ .39	; Wireless cab using MiWi protocol
+MTYP_CANWiFi	equ .40	; CAN to WiFi connection with Withrottle to CBUS protocol conversion
+MTYP_CANFTT	equ .41	; Turntable controller configured using FLiM
+MTYP_CANHNDST	equ .42	; Handset (alternative to CANCAB)
+MTYP_CANTCHNDST	equ .43	; Touchscreen handset
+MTYP_CANRFID8	equ .44	; multi-channel RFID reader
+MTYP_CANmchRFID	equ .45	; either a 2ch or 8ch RFID reader
+MTYP_CANPiWi	equ .46	; a Raspberry Pi based module for WiFi
+MTYP_CAN4DC	equ .47	; DC train controller
+MTYP_CANELEV	equ .48	; Nelevator controller
+MTYP_CANSCAN	equ .49	; 128 switch inputs
+MTYP_CANMIO_SVO	equ .50	; 16MHz 25k80 version of CANSERVO8c
+MTYP_CANMIO_INP	equ .51	; 16MHz 25k80 version of CANACE8MIO
+MTYP_CANMIO_OUT	equ .52	; 16MHz 25k80 version of CANACC8
+MTYP_CANBIP_OUT	equ .53	; 16MHz 25k80 version of CANACC5
+MTYP_CANASTOP	equ .54	; DCC stop generator
+MTYP_CANCSB	equ .55	; CANCMD with on board 3A booster
+MTYP_CANMAGOT	equ .56	; Magnet on Track detector
+MTYP_CANACE16CMIO	equ .57	; 16 input equivaent to CANACE8C
+MTYP_CANPiNODE	equ .58	; CBUS module based on Raspberry Pi
+MTYP_CANDISP	equ .59	; 25K80 version of CANLED64 (IHart and MB)
+MTYP_CANCOMPUTE	equ .60	; Event processing engine
 ; 
 MTYP_CAN_SW	equ 0xFF	; Software nodes
 MTYP_EMPTY	equ 0xFE	; Empty module, bootloader only
@@ -154,19 +153,19 @@ MTYP_CANUSB	equ 0xFD	; USB interface
 ; 
 ; Rocrail Module types
 ; 
-MTYP_CANGC1	equ 1	; RS232 PC interface
-MTYP_CANGC2	equ 2	; 16 I/O
-MTYP_CANGC3	equ 3	; Command station (derived from cancmd)
-MTYP_CANGC4	equ 4	; 8 channel RFID reader
-MTYP_CANGC5	equ 5	; Cab for fixed panels (derived from cancab)
-MTYP_CANGC6	equ 6	; 4 channel servo controller
-MTYP_CANGC7	equ 7	; Fast clock module
-MTYP_CANGC1e	equ 11	; CAN<->Ethernet interface
+MTYP_CANGC1	equ .1	; RS232 PC interface
+MTYP_CANGC2	equ .2	; 16 I/O
+MTYP_CANGC3	equ .3	; Command station (derived from cancmd)
+MTYP_CANGC4	equ .4	; 8 channel RFID reader
+MTYP_CANGC5	equ .5	; Cab for fixed panels (derived from cancab)
+MTYP_CANGC6	equ .6	; 4 channel servo controller
+MTYP_CANGC7	equ .7	; Fast clock module
+MTYP_CANGC1e	equ .11	; CAN<->Ethernet interface
 ; 
 ; Spectrum Engineering Animated Modeller module types
 ; 
-MTYP_AMCTRLR	equ 1	; Animation controller (firmware derived from cancmd)
-MTYP_DUALCAB	equ 2	; Dual cab based on cancab
+MTYP_AMCTRLR	equ .1	; Animation controller (firmware derived from cancmd)
+MTYP_DUALCAB	equ .2	; Dual cab based on cancab
 ; 
 ; 
 ; CBUS opcodes list
@@ -337,86 +336,86 @@ OPC_EXTC6	equ 0xFF	; Extended opcode with 6 data byes
 ; 
 ; Modes for STMOD
 ; 
-TMOD_SPD_MASK	equ 3	; 
-TMOD_SPD_128	equ 0	; 
-TMOD_SPD_14	equ 1	; 
-TMOD_SPD_28I	equ 2	; 
-TMOD_SPD_28	equ 3	; 
+TMOD_SPD_MASK	equ .3	; 
+TMOD_SPD_128	equ .0	; 
+TMOD_SPD_14	equ .1	; 
+TMOD_SPD_28I	equ .2	; 
+TMOD_SPD_28	equ .3	; 
 ; 
 ; Error codes for OPC_ERR
 ; 
-ERR_LOCO_STACK_FULL	equ 1	; 
-ERR_LOCO_ADDR_TAKEN	equ 2	; 
-ERR_SESSION_NOT_PRESENT	equ 3	; 
-ERR_CONSIST_EMPTY	equ 4	; 
-ERR_LOCO_NOT_FOUND	equ 5	; 
-ERR_CMD_RX_BUF_OFLOW	equ 6	; 
-ERR_INVALID_REQUEST	equ 7	; 
-ERR_SESSION_CANCELLED	equ 8	; 
+ERR_LOCO_STACK_FULL	equ .1	; 
+ERR_LOCO_ADDR_TAKEN	equ .2	; 
+ERR_SESSION_NOT_PRESENT	equ .3	; 
+ERR_CONSIST_EMPTY	equ .4	; 
+ERR_LOCO_NOT_FOUND	equ .5	; 
+ERR_CMD_RX_BUF_OFLOW	equ .6	; 
+ERR_INVALID_REQUEST	equ .7	; 
+ERR_SESSION_CANCELLED	equ .8	; 
 ; 
 ; Status codes for OPC_SSTAT
 ; 
-SSTAT_NO_ACK	equ 1	; 
-SSTAT_OVLD	equ 2	; 
-SSTAT_WR_ACK	equ 3	; 
-SSTAT_BUSY	equ 4	; 
-SSTAT_CV_ERROR	equ 5	; 
+SSTAT_NO_ACK	equ .1	; 
+SSTAT_OVLD	equ .2	; 
+SSTAT_WR_ACK	equ .3	; 
+SSTAT_BUSY	equ .4	; 
+SSTAT_CV_ERROR	equ .5	; 
 ; 
 ; Error codes for OPC_CMDERR
 ; 
-CMDERR_INV_CMD	equ 1	; 
-CMDERR_NOT_LRN	equ 2	; 
-CMDERR_NOT_SETUP	equ 3	; 
-CMDERR_TOO_MANY_EVENTS	equ 4	; 
-CMDERR_NO_EV	equ 5	; 
-CMDERR_INV_EV_IDX	equ 6	; 
-CMDERR_INVALID_EVENT	equ 7	; 
-CMDERR_INV_EN_IDX	equ 8	; now reserved
-CMDERR_INV_PARAM_IDX	equ 9	; 
-CMDERR_INV_NV_IDX	equ 10	; 
-CMDERR_INV_EV_VALUE	equ 11	; 
-CMDERR_INV_NV_VALUE	equ 12	; 
+CMDERR_INV_CMD	equ .1	; 
+CMDERR_NOT_LRN	equ .2	; 
+CMDERR_NOT_SETUP	equ .3	; 
+CMDERR_TOO_MANY_EVENTS	equ .4	; 
+CMDERR_NO_EV	equ .5	; 
+CMDERR_INV_EV_IDX	equ .6	; 
+CMDERR_INVALID_EVENT	equ .7	; 
+CMDERR_INV_EN_IDX	equ .8	; now reserved
+CMDERR_INV_PARAM_IDX	equ .9	; 
+CMDERR_INV_NV_IDX	equ .10	; 
+CMDERR_INV_EV_VALUE	equ .11	; 
+CMDERR_INV_NV_VALUE	equ .12	; 
 ; 
 ; Aspect codes for OPC_CABSIG
 ; 
 ; First aspect byte
 ; 
-SASP_DANGER	equ 0	; 
-SASP_CAUTION	equ 1	; 
-SASP_PRELIM_CAUTION	equ 2	; 
-SASP_PROCEED	equ 3	; 
-SASP_CALLON	equ 4	; Set bit 2 for call-on - main aspect will usually be at danger
-SASP_THEATRE	equ 8	; Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code
+SASP_DANGER	equ .0	; 
+SASP_CAUTION	equ .1	; 
+SASP_PRELIM_CAUTION	equ .2	; 
+SASP_PROCEED	equ .3	; 
+SASP_CALLON	equ .4	; Set bit 2 for call-on - main aspect will usually be at danger
+SASP_THEATRE	equ .8	; Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code
 ; 
 ; Aspect codes for OPC_CABSIG
 ; 
 ; 
 ; Second Aspect byte
 ; 
-SASP_LIT	equ 0	; Set bit 0 to indicate lit
-SASP_LUNAR	equ 1	; Set bit 1 for lunar indication
+SASP_LIT	equ .0	; Set bit 0 to indicate lit
+SASP_LUNAR	equ .1	; Set bit 1 for lunar indication
 ; 
-Remaining bits in second aspect byte yet to be defined - use for other signalling systems	equ     	; 
+Remaining bits in second aspect byte yet to be defined - use for other signalling systems	equ .    	; 
 ; 
 ; 
 ; Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
 ; Index numbers count from 1, subtract 1 for offset into parameter block
 ; Note that RQNPN with index 0 returns the parameter count
 ; 
-PAR_MANU	equ 1	; Manufacturer id
-PAR_MINVER	equ 2	; Minor version letter
-PAR_MTYP	equ 3	; Module type code
-PAR_EVTNUM	equ 4	; Number of events supported
-PAR_EVNUM	equ 5	; Event variables per event
-PAR_NVNUM	equ 6	; Number of Node variables
-PAR_MAJVER	equ 7	; Major version number
-PAR_FLAGS	equ 8	; Node flags
-PAR_CPUID	equ 9	; Processor type
-PAR_BUSTYPE	equ 10	; Bus type
-PAR_LOAD	equ 11	; load address, 4 bytes
-PAR_CPUMID	equ 15	; CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
-PAR_CPUMAN	equ 19	;  CPU manufacturer code
-PAR_BETA	equ 20	; Beta revision (numeric), or 0 if release
+PAR_MANU	equ .1	; Manufacturer id
+PAR_MINVER	equ .2	; Minor version letter
+PAR_MTYP	equ .3	; Module type code
+PAR_EVTNUM	equ .4	; Number of events supported
+PAR_EVNUM	equ .5	; Event variables per event
+PAR_NVNUM	equ .6	; Number of Node variables
+PAR_MAJVER	equ .7	; Major version number
+PAR_FLAGS	equ .8	; Node flags
+PAR_CPUID	equ .9	; Processor type
+PAR_BUSTYPE	equ .10	; Bus type
+PAR_LOAD	equ .11	; load address, 4 bytes
+PAR_CPUMID	equ .15	; CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
+PAR_CPUMAN	equ .19	;  CPU manufacturer code
+PAR_BETA	equ .20	; Beta revision (numeric), or 0 if release
 ; 
 ; Offsets to other values stored at the top of the parameter block.
 ; These are not returned by opcode PARAN, but are present in the hex
@@ -428,60 +427,60 @@ PAR_CKSUM	equ 0x1E	; Checksum word at end of parameters
 ; 
 ; Flags in PAR_FLAGS
 ; 
-PF_NOEVENTS	equ 0	; 
-PF_CONSUMER	equ 1	; 
-PF_PRODUCER	equ 2	; 
-PF_COMBI	equ 3	; 
-PF_FLiM	equ 4	; 
-PF_BOOT	equ 8	; 
-PF_COE	equ 16	; Module can consume its own events
+PF_NOEVENTS	equ .0	; 
+PF_CONSUMER	equ .1	; 
+PF_PRODUCER	equ .2	; 
+PF_COMBI	equ .3	; 
+PF_FLiM	equ .4	; 
+PF_BOOT	equ .8	; 
+PF_COE	equ .16	; Module can consume its own events
 ; 
 ; BUS type that module is connected to
 ; 
-PB_CAN	equ 1	; 
-PB_ETH	equ 2	; 
-PB_MIWI	equ 3	; 
+PB_CAN	equ .1	; 
+PB_ETH	equ .2	; 
+PB_MIWI	equ .3	; 
 ; 
 ; Processor manufacturer codes
 ; 
-CPUM_MICROCHIP	equ 1	; 
-CPUM_ATMEL	equ 2	; 
-CPUM_ARM	equ 3	; 
+CPUM_MICROCHIP	equ .1	; 
+CPUM_ATMEL	equ .2	; 
+CPUM_ARM	equ .3	; 
 ; 
 ; Microchip Processor type codes (identifies to FCU for bootload compatiblity)
 ; 
-P18F2480	equ 1	; 
-P18F4480	equ 2	; 
-P18F2580	equ 3	; 
-P18F4580	equ 4	; 
-P18F2585	equ 5	; 
-P18F4585	equ 6	; 
-P18F2680	equ 7	; 
-P18F4680	equ 8	; 
-P18F2682	equ 9	; 
-P18F4682	equ 10	; 
-P18F2685	equ 11	; 
-P18F4685	equ 12	; 
+P18F2480	equ .1	; 
+P18F4480	equ .2	; 
+P18F2580	equ .3	; 
+P18F4580	equ .4	; 
+P18F2585	equ .5	; 
+P18F4585	equ .6	; 
+P18F2680	equ .7	; 
+P18F4680	equ .8	; 
+P18F2682	equ .9	; 
+P18F4682	equ .10	; 
+P18F2685	equ .11	; 
+P18F4685	equ .12	; 
 ; 
-P18F25K80	equ 13	; 
-P18F45K80	equ 14	; 
-P18F26K80	equ 15	; 
-P18F46K80	equ 16	; 
-P18F65K80	equ 17	; 
-P18F66K80	equ 18	; 
+P18F25K80	equ .13	; 
+P18F45K80	equ .14	; 
+P18F26K80	equ .15	; 
+P18F46K80	equ .16	; 
+P18F65K80	equ .17	; 
+P18F66K80	equ .18	; 
 ; 
-P32MX534F064	equ 30	; 
-P32MX564F064	equ 31	; 
-P32MX564F128	equ 32	; 
-P32MX575F256	equ 33	; 
-P32MX575F512	equ 34	; 
-P32MX764F128	equ 35	; 
-P32MX775F256	equ 36	; 
-P32MX775F512	equ 37	; 
-P32MX795F512	equ 38	; 
+P32MX534F064	equ .30	; 
+P32MX564F064	equ .31	; 
+P32MX564F128	equ .32	; 
+P32MX575F256	equ .33	; 
+P32MX575F512	equ .34	; 
+P32MX764F128	equ .35	; 
+P32MX775F256	equ .36	; 
+P32MX775F512	equ .37	; 
+P32MX795F512	equ .38	; 
 ; 
 ; ARM Processor type codes (identifies to FCU for bootload compatiblity)
 ; 
-ARM1176JZF_S	equ 1	; As used in Raspberry Pi
-ARMCortex_A7	equ 2	; As Used in Raspberry Pi 2
-ARMCortex_A53	equ 3	; As used in Raspberry Pi 3
+ARM1176JZF_S	equ .1	; As used in Raspberry Pi
+ARMCortex_A7	equ .2	; As Used in Raspberry Pi 2
+ARMCortex_A53	equ .3	; As used in Raspberry Pi 3
