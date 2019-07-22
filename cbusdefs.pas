@@ -335,6 +335,7 @@ const
  OPC_ASOF3	=  0xF9;	// Accessory short off with 3 data bytes
  OPC_DDES	=  0xFA;	// Short data frame aka device data event (device id plus 5 data bytes)
  OPC_DDRS	=  0xFB;	// Short data frame response aka device data response
+ OPC_DDWS	=  0xFC;	// Device Data Write Short
  OPC_ARSON3	=  0xFD;	// Short response event on with 3 data bytes
  OPC_ARSOF3	=  0xFE;	// Short response event off with 3 data bytes
  OPC_EXTC6	=  0xFF;	// Extended opcode with 6 data byes

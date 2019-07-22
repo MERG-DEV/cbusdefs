@@ -336,6 +336,7 @@ extern "C" {
 #define OPC_ASOF3	0xF9	// Accessory short off with 3 data bytes
 #define OPC_DDES	0xFA	// Short data frame aka device data event (device id plus 5 data bytes)
 #define OPC_DDRS	0xFB	// Short data frame response aka device data response
+#define OPC_DDWS	0xFC	// Device Data Write Short
 #define OPC_ARSON3	0xFD	// Short response event on with 3 data bytes
 #define OPC_ARSOF3	0xFE	// Short response event off with 3 data bytes
 #define OPC_EXTC6	0xFF	// Extended opcode with 6 data byes
