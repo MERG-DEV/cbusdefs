@@ -70,7 +70,7 @@ comment,,,Pete Brownlow,16/2/17,Ver 8n Add module ids to bring it up to module i
 comment,,,Pete Brownlow,29/7/17,Ver 8p Add new module ids and new cab signalling opcode
 comment,,,Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events
 comment,,,Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE
-comment,,,
+comment,,,Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 comment,,,
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions,,
@@ -393,7 +393,7 @@ CbusCabSigAspect2,,,
 CbusCabSigAspect2,SASP_LIT,0,Set bit 0 to indicate lit
 CbusCabSigAspect2,SASP_LUNAR,1,Set bit 1 for lunar indication
 CbusCabSigAspect2,,,
-CbusCabSigAspect2,Remaining bits in second aspect byte yet to be defined - use for other signalling systems,    ,
+CbusCabSigAspect2,,,Remaining bits in second aspect byte yet to be defined - use for other signalling systems
 CbusParams,,,
 CbusParams,,,
 CbusParams,,,Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)

@@ -80,7 +80,7 @@ extern "C" {
 // 		Pete Brownlow,29/7/17,Ver 8p Add new module ids and new cab signalling opcode
 // 		Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events
 // 		Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE
-// 		
+// 		Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 // 		
 // 		
 // CBUS Manufacturer definitions,,
@@ -403,7 +403,7 @@ extern "C" {
 #define SASP_LIT	0	// Set bit 0 to indicate lit
 #define SASP_LUNAR	1	// Set bit 1 for lunar indication
 // 
-#define Remaining bits in second aspect byte yet to be defined - use for other signalling systems	    	// 
+// Remaining bits in second aspect byte yet to be defined - use for other signalling systems
 // 
 // 
 // Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
