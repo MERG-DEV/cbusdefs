@@ -82,26 +82,15 @@ package uk.org.merg.cbus;
 //                        Updated CANDAT opcode to match RFC0004
 // 
 
-public enum CbusCmdErrs {
+public enum CbusCabSigAspect0 {
 // 
-// Error codes for OPC_CMDERR
+// Sub opcodes for OPC_CABDAT
 // 
-	CMDERR_INV_CMD(1),	//
-	CMDERR_NOT_LRN(2),	//
-	CMDERR_NOT_SETUP(3),	//
-	CMDERR_TOO_MANY_EVENTS(4),	//
-	CMDERR_NO_EV(5),	//
-	CMDERR_INV_EV_IDX(6),	//
-	CMDERR_INVALID_EVENT(7),	//
-	CMDERR_INV_EN_IDX(8),	//now reserved
-	CMDERR_INV_PARAM_IDX(9),	//
-	CMDERR_INV_NV_IDX(10),	//
-	CMDERR_INV_EV_VALUE(11),	//
-	CMDERR_INV_NV_VALUE(12);	//
+	CDAT_CABSIG(1);	//
 
 	private final int v;
 
-	private CbusCmdErrs(int v) {
+	private CbusCabSigAspect0(int v) {
 		this.v = v;
 	}
 

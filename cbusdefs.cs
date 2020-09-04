@@ -6,11 +6,11 @@ namespace merg.cbus
 {
 
 	// 
-	// Copyright (C) Pete Brownlow 2011-2017   software@upsys.co.uk
+	// Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
 	// Originally derived from opcodes.h (c) Andrew Crosland.
 	// CSV version by Ian Hogg inspired by David W Radcliffe
 	// 
-	// 
+	// Ver 8s
 	// 
 	//   This work is licensed under the:
 	//       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -78,7 +78,9 @@ namespace merg.cbus
 	// Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events
 	// Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE
 	// Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
-	// 
+	// Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
+	//                        Updated descriptive comments for some module types
+	//                        Updated CANDAT opcode to match RFC0004
 	// 
 
 	public static class CbusDefs
@@ -103,10 +105,18 @@ namespace merg.cbus
 			public const int PB_MIWI	=  3;	// 
 		}
 
+		public static class CbusCabSigAspect0
+		{
+			// 
+			// Sub opcodes for OPC_CABDAT
+			// 
+			public const int CDAT_CABSIG	=  1;	// 
+		}
+
 		public static class CbusCabSigAspect1
 		{
 			// 
-			// Aspect codes for OPC_CABSIG
+			// Aspect codes for CDAT_CABSIG
 			// 
 			// First aspect byte
 			// 
@@ -121,15 +131,14 @@ namespace merg.cbus
 		public static class CbusCabSigAspect2
 		{
 			// 
-			// Aspect codes for OPC_CABSIG
-			// 
+			// Aspect codes for CDAT_CABSIG
 			// 
 			// Second Aspect byte
 			// 
 			public const int SASP_LIT	=  0;	// Set bit 0 to indicate lit
 			public const int SASP_LUNAR	=  1;	// Set bit 1 for lunar indication
 			// 
-			// Remaining bits in second aspect byte yet to be defined - use for other signalling systems
+			// Remaining bits in second aspect byte yet to be defined - can be used for other signalling systems
 		}
 
 		public static class CbusCmdErrs
@@ -168,7 +177,7 @@ namespace merg.cbus
 
 		public static class CbusManufacturer
 		{
-			// CBUS Manufacturer definitions,,
+			// CBUS Manufacturer definitions
 			// Where the manufacturer already has an NMRA code, this is used
 			// 
 			public const int MANU_MERG	=  165;	// http://www.merg.co.uk
@@ -178,6 +187,10 @@ namespace merg.cbus
 
 		public static class CbusMergModuleTypes
 		{
+			// 
+			// MODULE TYPES
+			// 
+			// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
 			// 
 			// MERG Module types
 			// 
@@ -213,11 +226,11 @@ namespace merg.cbus
 			public const int MTYP_CANPAN	=  29;	// Control panel 32/32
 			public const int MTYP_CANACE3C	=  30;	// Newer version of CANACE3 firmware
 			public const int MTYP_CANPanel	=  31;	// Control panel 64/64
-			public const int MTYP_CANMIO	=  32;	// Multiple I/O
-			public const int MTYP_CANACE8MIO	=  33;	// Multiple IO module emulating ACE8C
+			public const int MTYP_CANMIO	=  32;	// Multiple I/O – Universal CANMIO firmware
+			public const int MTYP_CANACE8MIO	=  33;	// Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware
 			public const int MTYP_CANSOL	=  34;	// Solenoid driver module
-			public const int MTYP_CANBIP	=  35;	// Bipolar IO module with additional 8 I/O pins
-			public const int MTYP_CANCDU	=  36;	// Solenoid driver module with additional 6 I/O pins
+			public const int MTYP_CANBIP	=  35;	// Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins (CANMIO family)
+			public const int MTYP_CANCDU	=  36;	// Solenoid driver module with additional 6 I/O pins (CANMIO family)
 			public const int MTYP_CANACC4CDU	=  37;	// CANACC4 firmware ported to CANCDU
 			public const int MTYP_CANWiBase	=  38;	// CAN to MiWi base station
 			public const int MTYP_WiCAB	=  39;	// Wireless cab using MiWi protocol
@@ -231,17 +244,25 @@ namespace merg.cbus
 			public const int MTYP_CAN4DC	=  47;	// DC train controller
 			public const int MTYP_CANELEV	=  48;	// Nelevator controller
 			public const int MTYP_CANSCAN	=  49;	// 128 switch inputs
-			public const int MTYP_CANMIO_SVO	=  50;	// 16MHz 25k80 version of CANSERVO8c
-			public const int MTYP_CANMIO_INP	=  51;	// 16MHz 25k80 version of CANACE8MIO
-			public const int MTYP_CANMIO_OUT	=  52;	// 16MHz 25k80 version of CANACC8
-			public const int MTYP_CANBIP_OUT	=  53;	// 16MHz 25k80 version of CANACC5
+			public const int MTYP_CANMIO_SVO	=  50;	// 16MHz 25k80 version of CANSERVO8c on CANMIO hardware
+			public const int MTYP_CANMIO_INP	=  51;	// 16MHz 25k80 version of CANACE8MIO on CANMIO hardware
+			public const int MTYP_CANMIO_OUT	=  52;	// 16MHz 25k80 version of CANACC8 on CANMIO hardware
+			public const int MTYP_CANBIP_OUT	=  53;	// 16MHz 25k80 version of CANACC5 on CANBIP hardware
 			public const int MTYP_CANASTOP	=  54;	// DCC stop generator
 			public const int MTYP_CANCSB	=  55;	// CANCMD with on board 3A booster
 			public const int MTYP_CANMAGOT	=  56;	// Magnet on Track detector
 			public const int MTYP_CANACE16CMIO	=  57;	// 16 input equivaent to CANACE8C
 			public const int MTYP_CANPiNODE	=  58;	// CBUS module based on Raspberry Pi
 			public const int MTYP_CANDISP	=  59;	// 25K80 version of CANLED64 (IHart and MB)
-			public const int MTYP_CANCOMPUTE	=  60;	// Event processing engine
+			public const int MTYP_CANCOMPUTE	=  60;	// Compute Event processing engine
+			public const int MTYP_CANRFC522	=  61;	// Read/Write from/to RFC522 RFID tags
+			public const int MTYP_CANINP	=  62;	// 8 inputs module (2g version of CANACE8c)
+			public const int MTYP_CANOUT	=  63;	// 8 outputs module (2g version of CANACC8)
+			public const int MTYP_CANEMIO	=  64;	// Extended CANMIO (24 I/O ports)
+			public const int MTYP_CANCABDC	=  65;	// DC cab
+			// 
+			// At the time of writing the list of defined MERG module types is maintained by Roger Healey
+			// Please liaise with Roger before adding new module types
 			// 
 			public const int MTYP_CAN_SW	=  0xFF;	// Software nodes
 			public const int MTYP_EMPTY	=  0xFE;	// Empty module, bootloader only
@@ -374,7 +395,7 @@ namespace merg.cbus
 			public const int OPC_WCVB	=  0x83;	// Write CV bit Ops mode by handle
 			public const int OPC_QCVS	=  0x84;	// Read CV
 			public const int OPC_PCVS	=  0x85;	// Report CV
-			public const int OPC_CABSIG	=  0x86;	// Cab signalling
+			public const int OPC_CABDAT	=  0x86;	// Cab data (cab signalling)
 			// 
 			public const int OPC_ACON	=  0x90;	// on event
 			public const int OPC_ACOF	=  0x91;	// off event

@@ -5,11 +5,11 @@
 package uk.org.merg.cbus;
 
 // 
-// Copyright (C) Pete Brownlow 2011-2017   software@upsys.co.uk
+// Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// 
+// Ver 8s
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -77,7 +77,9 @@ package uk.org.merg.cbus;
 // Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events
 // Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE
 // Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
-// 
+// Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
+//                        Updated descriptive comments for some module types
+//                        Updated CANDAT opcode to match RFC0004
 // 
 
 public enum CbusRocRailModuleTypes {
