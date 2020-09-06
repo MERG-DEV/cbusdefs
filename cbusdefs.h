@@ -13,7 +13,7 @@ extern "C" {
 // 		Originally derived from opcodes.h (c) Andrew Crosland.
 // 		CSV version by Ian Hogg inspired by David W Radcliffe
 // 		
-// 		Ver 8s
+// 		Ver 8t
 // 		
 // 		  This work is licensed under the:
 // 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -83,7 +83,8 @@ extern "C" {
 // 		Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 // 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
 // 		                       Updated descriptive comments for some module types
-// 		                       Updated CANDAT opcode to match RFC0004
+// 		                       Updated CABDAT opcode to match RFC0004
+// 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 // 		
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
@@ -154,16 +155,17 @@ extern "C" {
 #define MTYP_CANBIP_OUT	53	// 16MHz 25k80 version of CANACC5 on CANBIP hardware
 #define MTYP_CANASTOP	54	// DCC stop generator
 #define MTYP_CANCSB	55	// CANCMD with on board 3A booster
-#define MTYP_CANMAGOT	56	// Magnet on Track detector
+#define MTYP_CANMAG	56	// Magnet on Track detector
 #define MTYP_CANACE16CMIO	57	// 16 input equivaent to CANACE8C
 #define MTYP_CANPiNODE	58	// CBUS module based on Raspberry Pi
 #define MTYP_CANDISP	59	// 25K80 version of CANLED64 (IHart and MB)
 #define MTYP_CANCOMPUTE	60	// Compute Event processing engine
-#define MTYP_CANRFC522	61	// Read/Write from/to RFC522 RFID tags
+#define MTYP_CANRC522	61	// Read/Write from/to RC522 RFID tags
 #define MTYP_CANINP	62	// 8 inputs module (2g version of CANACE8c)
 #define MTYP_CANOUT	63	// 8 outputs module (2g version of CANACC8)
 #define MTYP_CANEMIO	64	// Extended CANMIO (24 I/O ports)
 #define MTYP_CANCABDC	65	// DC cab
+#define MTYP_CANRCOM	66	// DC Railcom detector/reader
 // 
 // At the time of writing the list of defined MERG module types is maintained by Roger Healey
 // Please liaise with Roger before adding new module types
@@ -275,7 +277,6 @@ extern "C" {
 #define OPC_WCVB	0x83	// Write CV bit Ops mode by handle
 #define OPC_QCVS	0x84	// Read CV
 #define OPC_PCVS	0x85	// Report CV
-#define OPC_CABDAT	0x86	// Cab data (cab signalling)
 // 
 #define OPC_ACON	0x90	// on event
 #define OPC_ACOF	0x91	// off event
@@ -316,6 +317,7 @@ extern "C" {
 // 
 #define OPC_RDCC5	0xC0	// 5 byte DCC packet
 #define OPC_WCVOA	0xC1	// Write CV ops mode by address
+#define OPC_CABDAT	0xC2	// Cab data (cab signalling)
 #define OPC_FCLK	0xCF	// Fast clock
 // 
 #define OPC_ACON2	0xD0	// On event with two data bytes

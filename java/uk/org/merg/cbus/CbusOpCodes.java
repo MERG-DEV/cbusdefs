@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8s
+// Ver 8t
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -79,7 +79,8 @@ package uk.org.merg.cbus;
 // Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 // Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
 //                        Updated descriptive comments for some module types
-//                        Updated CANDAT opcode to match RFC0004
+//                        Updated CABDAT opcode to match RFC0004
+// Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 // 
 
 public enum CbusOpCodes {
@@ -171,7 +172,6 @@ public enum CbusOpCodes {
 	OPC_WCVB(0x83),	//Write CV bit Ops mode by handle
 	OPC_QCVS(0x84),	//Read CV
 	OPC_PCVS(0x85),	//Report CV
-	OPC_CABDAT(0x86),	//Cab data (cab signalling)
 // 
 	OPC_ACON(0x90),	//on event
 	OPC_ACOF(0x91),	//off event
@@ -212,6 +212,7 @@ public enum CbusOpCodes {
 // 
 	OPC_RDCC5(0xC0),	//5 byte DCC packet
 	OPC_WCVOA(0xC1),	//Write CV ops mode by address
+	OPC_CABDAT(0xC2),	//Cab data (cab signalling)
 	OPC_FCLK(0xCF),	//Fast clock
 // 
 	OPC_ACON2(0xD0),	//On event with two data bytes

@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8s
+// Ver 8t
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -79,7 +79,8 @@ package uk.org.merg.cbus;
 // Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 // Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
 //                        Updated descriptive comments for some module types
-//                        Updated CANDAT opcode to match RFC0004
+//                        Updated CABDAT opcode to match RFC0004
+// Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 // 
 
 public enum CbusMergModuleTypes {
@@ -146,16 +147,17 @@ public enum CbusMergModuleTypes {
 	MTYP_CANBIP_OUT(53),	//16MHz 25k80 version of CANACC5 on CANBIP hardware
 	MTYP_CANASTOP(54),	//DCC stop generator
 	MTYP_CANCSB(55),	//CANCMD with on board 3A booster
-	MTYP_CANMAGOT(56),	//Magnet on Track detector
+	MTYP_CANMAG(56),	//Magnet on Track detector
 	MTYP_CANACE16CMIO(57),	//16 input equivaent to CANACE8C
 	MTYP_CANPiNODE(58),	//CBUS module based on Raspberry Pi
 	MTYP_CANDISP(59),	//25K80 version of CANLED64 (IHart and MB)
 	MTYP_CANCOMPUTE(60),	//Compute Event processing engine
-	MTYP_CANRFC522(61),	//Read/Write from/to RFC522 RFID tags
+	MTYP_CANRC522(61),	//Read/Write from/to RC522 RFID tags
 	MTYP_CANINP(62),	//8 inputs module (2g version of CANACE8c)
 	MTYP_CANOUT(63),	//8 outputs module (2g version of CANACC8)
 	MTYP_CANEMIO(64),	//Extended CANMIO (24 I/O ports)
 	MTYP_CANCABDC(65),	//DC cab
+	MTYP_CANRCOM(66),	//DC Railcom detector/reader
 // 
 // At the time of writing the list of defined MERG module types is maintained by Roger Healey
 // Please liaise with Roger before adding new module types

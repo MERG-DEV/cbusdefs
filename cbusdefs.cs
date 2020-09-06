@@ -10,7 +10,7 @@ namespace merg.cbus
 	// Originally derived from opcodes.h (c) Andrew Crosland.
 	// CSV version by Ian Hogg inspired by David W Radcliffe
 	// 
-	// Ver 8s
+	// Ver 8t
 	// 
 	//   This work is licensed under the:
 	//       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -80,7 +80,8 @@ namespace merg.cbus
 	// Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 	// Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
 	//                        Updated descriptive comments for some module types
-	//                        Updated CANDAT opcode to match RFC0004
+	//                        Updated CABDAT opcode to match RFC0004
+	// Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 	// 
 
 	public static class CbusDefs
@@ -250,16 +251,17 @@ namespace merg.cbus
 			public const int MTYP_CANBIP_OUT	=  53;	// 16MHz 25k80 version of CANACC5 on CANBIP hardware
 			public const int MTYP_CANASTOP	=  54;	// DCC stop generator
 			public const int MTYP_CANCSB	=  55;	// CANCMD with on board 3A booster
-			public const int MTYP_CANMAGOT	=  56;	// Magnet on Track detector
+			public const int MTYP_CANMAG	=  56;	// Magnet on Track detector
 			public const int MTYP_CANACE16CMIO	=  57;	// 16 input equivaent to CANACE8C
 			public const int MTYP_CANPiNODE	=  58;	// CBUS module based on Raspberry Pi
 			public const int MTYP_CANDISP	=  59;	// 25K80 version of CANLED64 (IHart and MB)
 			public const int MTYP_CANCOMPUTE	=  60;	// Compute Event processing engine
-			public const int MTYP_CANRFC522	=  61;	// Read/Write from/to RFC522 RFID tags
+			public const int MTYP_CANRC522	=  61;	// Read/Write from/to RC522 RFID tags
 			public const int MTYP_CANINP	=  62;	// 8 inputs module (2g version of CANACE8c)
 			public const int MTYP_CANOUT	=  63;	// 8 outputs module (2g version of CANACC8)
 			public const int MTYP_CANEMIO	=  64;	// Extended CANMIO (24 I/O ports)
 			public const int MTYP_CANCABDC	=  65;	// DC cab
+			public const int MTYP_CANRCOM	=  66;	// DC Railcom detector/reader
 			// 
 			// At the time of writing the list of defined MERG module types is maintained by Roger Healey
 			// Please liaise with Roger before adding new module types
@@ -395,7 +397,6 @@ namespace merg.cbus
 			public const int OPC_WCVB	=  0x83;	// Write CV bit Ops mode by handle
 			public const int OPC_QCVS	=  0x84;	// Read CV
 			public const int OPC_PCVS	=  0x85;	// Report CV
-			public const int OPC_CABDAT	=  0x86;	// Cab data (cab signalling)
 			// 
 			public const int OPC_ACON	=  0x90;	// on event
 			public const int OPC_ACOF	=  0x91;	// off event
@@ -436,6 +437,7 @@ namespace merg.cbus
 			// 
 			public const int OPC_RDCC5	=  0xC0;	// 5 byte DCC packet
 			public const int OPC_WCVOA	=  0xC1;	// Write CV ops mode by address
+			public const int OPC_CABDAT	=  0xC2;	// Cab data (cab signalling)
 			public const int OPC_FCLK	=  0xCF;	// Fast clock
 			// 
 			public const int OPC_ACON2	=  0xD0;	// On event with two data bytes

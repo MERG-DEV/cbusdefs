@@ -6,7 +6,7 @@
 ; 		Originally derived from opcodes.h (c) Andrew Crosland.
 ; 		CSV version by Ian Hogg inspired by David W Radcliffe
 ; 		
-; 		Ver 8s
+; 		Ver 8t
 ; 		
 ; 		  This work is licensed under the:
 ; 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -76,7 +76,8 @@
 ; 		Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
 ; 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
 ; 		                       Updated descriptive comments for some module types
-; 		                       Updated CANDAT opcode to match RFC0004
+; 		                       Updated CABDAT opcode to match RFC0004
+; 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 ; 		
 ; CBUS Manufacturer definitions
 ; Where the manufacturer already has an NMRA code, this is used
@@ -147,16 +148,17 @@ MTYP_CANMIO_OUT	equ .52	; 16MHz 25k80 version of CANACC8 on CANMIO hardware
 MTYP_CANBIP_OUT	equ .53	; 16MHz 25k80 version of CANACC5 on CANBIP hardware
 MTYP_CANASTOP	equ .54	; DCC stop generator
 MTYP_CANCSB	equ .55	; CANCMD with on board 3A booster
-MTYP_CANMAGOT	equ .56	; Magnet on Track detector
+MTYP_CANMAG	equ .56	; Magnet on Track detector
 MTYP_CANACE16CMIO	equ .57	; 16 input equivaent to CANACE8C
 MTYP_CANPiNODE	equ .58	; CBUS module based on Raspberry Pi
 MTYP_CANDISP	equ .59	; 25K80 version of CANLED64 (IHart and MB)
 MTYP_CANCOMPUTE	equ .60	; Compute Event processing engine
-MTYP_CANRFC522	equ .61	; Read/Write from/to RFC522 RFID tags
+MTYP_CANRC522	equ .61	; Read/Write from/to RC522 RFID tags
 MTYP_CANINP	equ .62	; 8 inputs module (2g version of CANACE8c)
 MTYP_CANOUT	equ .63	; 8 outputs module (2g version of CANACC8)
 MTYP_CANEMIO	equ .64	; Extended CANMIO (24 I/O ports)
 MTYP_CANCABDC	equ .65	; DC cab
+MTYP_CANRCOM	equ .66	; DC Railcom detector/reader
 ; 
 ; At the time of writing the list of defined MERG module types is maintained by Roger Healey
 ; Please liaise with Roger before adding new module types
@@ -268,7 +270,6 @@ OPC_WCVO	equ 0x82	; Write CV byte Ops mode by handle
 OPC_WCVB	equ 0x83	; Write CV bit Ops mode by handle
 OPC_QCVS	equ 0x84	; Read CV
 OPC_PCVS	equ 0x85	; Report CV
-OPC_CABDAT	equ 0x86	; Cab data (cab signalling)
 ; 
 OPC_ACON	equ 0x90	; on event
 OPC_ACOF	equ 0x91	; off event
@@ -309,6 +310,7 @@ OPC_EXTC4	equ 0xBF	; Extended opcode with 4 data bytes
 ; 
 OPC_RDCC5	equ 0xC0	; 5 byte DCC packet
 OPC_WCVOA	equ 0xC1	; Write CV ops mode by address
+OPC_CABDAT	equ 0xC2	; Cab data (cab signalling)
 OPC_FCLK	equ 0xCF	; Fast clock
 ; 
 OPC_ACON2	equ 0xD0	; On event with two data bytes
