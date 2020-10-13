@@ -10,7 +10,7 @@ namespace merg.cbus
 	// Originally derived from opcodes.h (c) Andrew Crosland.
 	// CSV version by Ian Hogg inspired by David W Radcliffe
 	// 
-	// Ver 8t
+	// Ver 8u (WIP: not yet released)
 	// 
 	//   This work is licensed under the:
 	//       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -82,6 +82,10 @@ namespace merg.cbus
 	//                        Updated descriptive comments for some module types
 	//                        Updated CABDAT opcode to match RFC0004
 	// Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+	// Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+	//                               Added SPROG manufactuer code 44 and new SPROG CBUS module types
+	//                               Additional error code for overload
+	//                               New bus type USB for modules with only USB and no CAN
 	// 
 
 	public static class CbusDefs
@@ -104,6 +108,7 @@ namespace merg.cbus
 			public const int PB_CAN	=  1;	// 
 			public const int PB_ETH	=  2;	// 
 			public const int PB_MIWI	=  3;	// 
+			public const int PB_USB	=  4;	// 
 		}
 
 		public static class CbusCabSigAspect0
@@ -111,7 +116,7 @@ namespace merg.cbus
 			// 
 			// Sub opcodes for OPC_CABDAT
 			// 
-			public const int CDAT_CABSIG	=  1;	// 
+			public const int CDAT_CABSIG	=  1;	// 
 		}
 
 		public static class CbusCabSigAspect1
@@ -174,6 +179,7 @@ namespace merg.cbus
 			public const int ERR_CMD_RX_BUF_OFLOW	=  6;	// 
 			public const int ERR_INVALID_REQUEST	=  7;	// 
 			public const int ERR_SESSION_CANCELLED	=  8;	// 
+			public const int ERR_OVERLOAD	=  9;	// 
 		}
 
 		public static class CbusManufacturer
@@ -181,7 +187,8 @@ namespace merg.cbus
 			// CBUS Manufacturer definitions
 			// Where the manufacturer already has an NMRA code, this is used
 			// 
-			public const int MANU_MERG	=  165;	// http://www.merg.co.uk
+			public const int MANU_MERG	=  165;	// https://www.merg.co.uk
+			public const int MANU_SPROG	=  44;	// https://www.sprog-dcc.co.uk/
 			public const int MANU_ROCRAIL	=  70;	// http://www.rocrail.net
 			public const int MANU_SPECTRUM	=  80;	// http://animatedmodeler.com  (Spectrum Engineering)
 		}
@@ -191,7 +198,7 @@ namespace merg.cbus
 			// 
 			// MODULE TYPES
 			// 
-			// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+			// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 			// 
 			// MERG Module types
 			// 
@@ -262,9 +269,17 @@ namespace merg.cbus
 			public const int MTYP_CANEMIO	=  64;	// Extended CANMIO (24 I/O ports)
 			public const int MTYP_CANCABDC	=  65;	// DC cab
 			public const int MTYP_CANRCOM	=  66;	// DC Railcom detector/reader
+			public const int MTYP_CANMP3	=  67;	// MP3 sound player in response to events (eg: station announcements)
+			public const int MTYP_CANXMAS	=  68;	// Addressed RGB LED driver
+			public const int MTYP_CANSVOSET	=  69;	// Servo setting box
+			public const int MTYP_CANCMDDC	=  70;	// DC Command station
+			public const int MTYP_CANTEXT	=  71;	// Text message display
+			public const int MTYP_CANASIGNAL	=  72;	// Signal controller
+			public const int MTYP_CANSLIDER	=  73;	// DCC cab with slider control
 			// 
-			// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-			// Please liaise with Roger before adding new module types
+			// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+			// Please liaise with Pete before adding new module types, 
+			// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 			// 
 			public const int MTYP_CAN_SW	=  0xFF;	// Software nodes
 			public const int MTYP_EMPTY	=  0xFE;	// Empty module, bootloader only
@@ -560,6 +575,19 @@ namespace merg.cbus
 			// 
 			public const int MTYP_AMCTRLR	=  1;	// Animation controller (firmware derived from cancmd)
 			public const int MTYP_DUALCAB	=  2;	// Dual cab based on cancab
+		}
+
+		public static class CbusSprogModuleTypes
+		{
+			// 
+			// Sprog Module types
+			// 
+			public const int MTYP_PiSPRG3	=  1;	// Pi-SPROG 3 programmer/command station
+			public const int MTYP_SPROG3P	=  2;	// SPROG 3 Plus programmer/command station
+			public const int MTYP_CANSPROG	=  3;	// CAN SPROG programmer/command station
+			public const int MTYP_SBOOST	=  4;	// System Booster
+			public const int MTYP_PiSPRGP	=  5;	// Pi-SPROG 3 Plus programmer/command station
+			public const int MTYP_ISB	=  6;	// CAN ISB Isolated CAN USB Interface
 		}
 
 		public static class CbusSStats

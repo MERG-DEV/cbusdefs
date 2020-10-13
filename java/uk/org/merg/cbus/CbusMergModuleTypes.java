@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8t
+// Ver 8u (WIP: not yet released)
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -81,13 +81,17 @@ package uk.org.merg.cbus;
 //                        Updated descriptive comments for some module types
 //                        Updated CABDAT opcode to match RFC0004
 // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+// Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+//                               Added SPROG manufactuer code 44 and new SPROG CBUS module types
+//                               Additional error code for overload
+//                               New bus type USB for modules with only USB and no CAN
 // 
 
 public enum CbusMergModuleTypes {
 // 
 // MODULE TYPES
 // 
-// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 // 
 // MERG Module types
 // 
@@ -158,9 +162,17 @@ public enum CbusMergModuleTypes {
 	MTYP_CANEMIO(64),	//Extended CANMIO (24 I/O ports)
 	MTYP_CANCABDC(65),	//DC cab
 	MTYP_CANRCOM(66),	//DC Railcom detector/reader
+	MTYP_CANMP3(67),	//MP3 sound player in response to events (eg: station announcements)
+	MTYP_CANXMAS(68),	//Addressed RGB LED driver
+	MTYP_CANSVOSET(69),	//Servo setting box
+	MTYP_CANCMDDC(70),	//DC Command station
+	MTYP_CANTEXT(71),	//Text message display
+	MTYP_CANASIGNAL(72),	//Signal controller
+	MTYP_CANSLIDER(73),	//DCC cab with slider control
 // 
-// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-// Please liaise with Roger before adding new module types
+// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+// Please liaise with Pete before adding new module types, 
+// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 // 
 	MTYP_CAN_SW(0xFF),	//Software nodes
 	MTYP_EMPTY(0xFE),	//Empty module, bootloader only

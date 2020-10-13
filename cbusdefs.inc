@@ -6,7 +6,7 @@
 ; 		Originally derived from opcodes.h (c) Andrew Crosland.
 ; 		CSV version by Ian Hogg inspired by David W Radcliffe
 ; 		
-; 		Ver 8t
+; 		Ver 8u (WIP: not yet released)
 ; 		
 ; 		  This work is licensed under the:
 ; 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -78,17 +78,22 @@
 ; 		                       Updated descriptive comments for some module types
 ; 		                       Updated CABDAT opcode to match RFC0004
 ; 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+; 		Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+; 		                              Added SPROG manufactuer code 44 and new SPROG CBUS module types
+; 		                              Additional error code for overload
+; 		                              New bus type USB for modules with only USB and no CAN
 ; 		
 ; CBUS Manufacturer definitions
 ; Where the manufacturer already has an NMRA code, this is used
 ; 
-MANU_MERG	equ .165	; http://www.merg.co.uk
+MANU_MERG	equ .165	; https://www.merg.co.uk
+MANU_SPROG	equ .44	; https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL	equ .70	; http://www.rocrail.net
 MANU_SPECTRUM	equ .80	; http://animatedmodeler.com  (Spectrum Engineering)
 ; 
 ; MODULE TYPES
 ; 
-; Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+; Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 ; 
 ; MERG Module types
 ; 
@@ -159,13 +164,30 @@ MTYP_CANOUT	equ .63	; 8 outputs module (2g version of CANACC8)
 MTYP_CANEMIO	equ .64	; Extended CANMIO (24 I/O ports)
 MTYP_CANCABDC	equ .65	; DC cab
 MTYP_CANRCOM	equ .66	; DC Railcom detector/reader
+MTYP_CANMP3	equ .67	; MP3 sound player in response to events (eg: station announcements)
+MTYP_CANXMAS	equ .68	; Addressed RGB LED driver
+MTYP_CANSVOSET	equ .69	; Servo setting box
+MTYP_CANCMDDC	equ .70	; DC Command station
+MTYP_CANTEXT	equ .71	; Text message display
+MTYP_CANASIGNAL	equ .72	; Signal controller
+MTYP_CANSLIDER	equ .73	; DCC cab with slider control
 ; 
-; At the time of writing the list of defined MERG module types is maintained by Roger Healey
-; Please liaise with Roger before adding new module types
+; At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+; Please liaise with Pete before adding new module types, 
+; and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 ; 
 MTYP_CAN_SW	equ 0xFF	; Software nodes
 MTYP_EMPTY	equ 0xFE	; Empty module, bootloader only
 MTYP_CANUSB	equ 0xFD	; USB interface
+; 
+; Sprog Module types
+; 
+MTYP_PiSPRG3	equ .1	; Pi-SPROG 3 programmer/command station
+MTYP_SPROG3P	equ .2	; SPROG 3 Plus programmer/command station
+MTYP_CANSPROG	equ .3	; CAN SPROG programmer/command station
+MTYP_SBOOST	equ .4	; System Booster
+MTYP_PiSPRGP	equ .5	; Pi-SPROG 3 Plus programmer/command station
+MTYP_ISB	equ .6	; CAN ISB Isolated CAN USB Interface
 ; 
 ; Rocrail Module types
 ; 
@@ -369,6 +391,7 @@ ERR_LOCO_NOT_FOUND	equ .5	;
 ERR_CMD_RX_BUF_OFLOW	equ .6	; 
 ERR_INVALID_REQUEST	equ .7	; 
 ERR_SESSION_CANCELLED	equ .8	; 
+ERR_OVERLOAD	equ .9	; 
 ; 
 ; Status codes for OPC_SSTAT
 ; 
@@ -395,7 +418,7 @@ CMDERR_INV_NV_VALUE	equ .12	;
 ; 
 ; Sub opcodes for OPC_CABDAT
 ; 
-CDAT_CABSIG	equ .1	; 
+CDAT_CABSIG	equ .1	; 
 ; 
 ; Aspect codes for CDAT_CABSIG
 ; 
@@ -460,6 +483,7 @@ PF_COE	equ .16	; Module can consume its own events
 PB_CAN	equ .1	; 
 PB_ETH	equ .2	; 
 PB_MIWI	equ .3	; 
+PB_USB	equ .4	; 
 ; 
 ; Processor manufacturer codes
 ; 

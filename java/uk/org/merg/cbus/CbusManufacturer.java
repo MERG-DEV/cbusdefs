@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8t
+// Ver 8u (WIP: not yet released)
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -81,13 +81,18 @@ package uk.org.merg.cbus;
 //                        Updated descriptive comments for some module types
 //                        Updated CABDAT opcode to match RFC0004
 // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+// Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+//                               Added SPROG manufactuer code 44 and new SPROG CBUS module types
+//                               Additional error code for overload
+//                               New bus type USB for modules with only USB and no CAN
 // 
 
 public enum CbusManufacturer {
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
 // 
-	MANU_MERG(165),	//http://www.merg.co.uk
+	MANU_MERG(165),	//https://www.merg.co.uk
+	MANU_SPROG(44),	//https://www.sprog-dcc.co.uk/
 	MANU_ROCRAIL(70),	//http://www.rocrail.net
 	MANU_SPECTRUM(80);	//http://animatedmodeler.com  (Spectrum Engineering)
 

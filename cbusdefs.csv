@@ -3,7 +3,7 @@ comment,,,Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
 comment,,,Originally derived from opcodes.h (c) Andrew Crosland.
 comment,,,CSV version by Ian Hogg inspired by David W Radcliffe
 comment,,,
-comment,,,Ver 8t
+comment,,,Ver 8u (WIP: not yet released)
 comment,,,
 comment,,,  This work is licensed under the:
 comment,,,      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -75,17 +75,22 @@ comment,,,Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the
 comment,,,                       Updated descriptive comments for some module types
 comment,,,                       Updated CABDAT opcode to match RFC0004
 comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+comment,,,                              Added SPROG manufactuer code 44 and new SPROG CBUS module types
+comment,,,                              Additional error code for overload
+comment,,,                              New bus type USB for modules with only USB and no CAN
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
 CbusManufacturer,,,
-CbusManufacturer,MANU_MERG,165,http://www.merg.co.uk
+CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
+CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
 CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
 CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering)
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,MODULE TYPES
 CbusMergModuleTypes,,,
-CbusMergModuleTypes,,,Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+CbusMergModuleTypes,,,Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,MERG Module types
 CbusMergModuleTypes,,,
@@ -156,13 +161,30 @@ CbusMergModuleTypes,MTYP_CANOUT,63,8 outputs module (2g version of CANACC8)
 CbusMergModuleTypes,MTYP_CANEMIO,64,Extended CANMIO (24 I/O ports)
 CbusMergModuleTypes,MTYP_CANCABDC,65,DC cab
 CbusMergModuleTypes,MTYP_CANRCOM,66,DC Railcom detector/reader
+CbusMergModuleTypes,MTYP_CANMP3,67,MP3 sound player in response to events (eg: station announcements)
+CbusMergModuleTypes,MTYP_CANXMAS,68,Addressed RGB LED driver
+CbusMergModuleTypes,MTYP_CANSVOSET,69,Servo setting box
+CbusMergModuleTypes,MTYP_CANCMDDC,70,DC Command station
+CbusMergModuleTypes,MTYP_CANTEXT,71,Text message display
+CbusMergModuleTypes,MTYP_CANASIGNAL,72,Signal controller
+CbusMergModuleTypes,MTYP_CANSLIDER,73,DCC cab with slider control
 CbusMergModuleTypes,,,
-CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Roger Healey
-CbusMergModuleTypes,,,Please liaise with Roger before adding new module types
+CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+CbusMergModuleTypes,,,Please liaise with Pete before adding new module types, 
+CbusMergModuleTypes,,,and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,MTYP_CAN_SW,0xFF,Software nodes
 CbusMergModuleTypes,MTYP_EMPTY,0xFE,Empty module, bootloader only
 CbusMergModuleTypes,MTYP_CANUSB,0xFD,USB interface
+CbusSprogModuleTypes,,,
+CbusSprogModuleTypes,,,Sprog Module types
+CbusSprogModuleTypes,,,
+CbusSprogModuleTypes,MTYP_PiSPRG3,1,Pi-SPROG 3 programmer/command station
+CbusSprogModuleTypes,MTYP_SPROG3P,2,SPROG 3 Plus programmer/command station
+CbusSprogModuleTypes,MTYP_CANSPROG,3,CAN SPROG programmer/command station
+CbusSprogModuleTypes,MTYP_SBOOST,4,System Booster
+CbusSprogModuleTypes,MTYP_PiSPRGP,5,Pi-SPROG 3 Plus programmer/command station
+CbusSprogModuleTypes,MTYP_ISB,6,CAN ISB Isolated CAN USB Interface
 CbusRocRailModuleTypes,,,
 CbusRocRailModuleTypes,,,Rocrail Module types
 CbusRocRailModuleTypes,,,
@@ -366,6 +388,7 @@ CbusErrs,ERR_LOCO_NOT_FOUND,5,
 CbusErrs,ERR_CMD_RX_BUF_OFLOW,6,
 CbusErrs,ERR_INVALID_REQUEST,7,
 CbusErrs,ERR_SESSION_CANCELLED,8,
+CbusErrs,ERR_OVERLOAD,9,
 CbusSStats,,,
 CbusSStats,,,Status codes for OPC_SSTAT
 CbusSStats,,,
@@ -457,6 +480,7 @@ CbusBusTypes,,,
 CbusBusTypes,PB_CAN,1,
 CbusBusTypes,PB_ETH,2,
 CbusBusTypes,PB_MIWI,3,
+CbusBusTypes,PB_USB,4,
 CbusProcessorManufacturers,,,
 CbusProcessorManufacturers,,,Processor manufacturer codes
 CbusProcessorManufacturers,,,

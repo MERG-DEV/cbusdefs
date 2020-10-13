@@ -87,19 +87,20 @@ package uk.org.merg.cbus;
 //                               New bus type USB for modules with only USB and no CAN
 // 
 
-public enum CbusSStats {
+public enum CbusSprogModuleTypes {
 // 
-// Status codes for OPC_SSTAT
+// Sprog Module types
 // 
-	SSTAT_NO_ACK(1),	//
-	SSTAT_OVLD(2),	//
-	SSTAT_WR_ACK(3),	//
-	SSTAT_BUSY(4),	//
-	SSTAT_CV_ERROR(5);	//
+	MTYP_PiSPRG3(1),	//Pi-SPROG 3 programmer/command station
+	MTYP_SPROG3P(2),	//SPROG 3 Plus programmer/command station
+	MTYP_CANSPROG(3),	//CAN SPROG programmer/command station
+	MTYP_SBOOST(4),	//System Booster
+	MTYP_PiSPRGP(5),	//Pi-SPROG 3 Plus programmer/command station
+	MTYP_ISB(6);	//CAN ISB Isolated CAN USB Interface
 
 	private final int v;
 
-	private CbusSStats(int v) {
+	private CbusSprogModuleTypes(int v) {
 		this.v = v;
 	}
 

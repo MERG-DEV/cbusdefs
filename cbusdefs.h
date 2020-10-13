@@ -13,7 +13,7 @@ extern "C" {
 // 		Originally derived from opcodes.h (c) Andrew Crosland.
 // 		CSV version by Ian Hogg inspired by David W Radcliffe
 // 		
-// 		Ver 8t
+// 		Ver 8u (WIP: not yet released)
 // 		
 // 		  This work is licensed under the:
 // 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -85,17 +85,22 @@ extern "C" {
 // 		                       Updated descriptive comments for some module types
 // 		                       Updated CABDAT opcode to match RFC0004
 // 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+// 		Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+// 		                              Added SPROG manufactuer code 44 and new SPROG CBUS module types
+// 		                              Additional error code for overload
+// 		                              New bus type USB for modules with only USB and no CAN
 // 		
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
 // 
-#define MANU_MERG	165	// http://www.merg.co.uk
+#define MANU_MERG	165	// https://www.merg.co.uk
+#define MANU_SPROG	44	// https://www.sprog-dcc.co.uk/
 #define MANU_ROCRAIL	70	// http://www.rocrail.net
 #define MANU_SPECTRUM	80	// http://animatedmodeler.com  (Spectrum Engineering)
 // 
 // MODULE TYPES
 // 
-// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 // 
 // MERG Module types
 // 
@@ -166,13 +171,30 @@ extern "C" {
 #define MTYP_CANEMIO	64	// Extended CANMIO (24 I/O ports)
 #define MTYP_CANCABDC	65	// DC cab
 #define MTYP_CANRCOM	66	// DC Railcom detector/reader
+#define MTYP_CANMP3	67	// MP3 sound player in response to events (eg: station announcements)
+#define MTYP_CANXMAS	68	// Addressed RGB LED driver
+#define MTYP_CANSVOSET	69	// Servo setting box
+#define MTYP_CANCMDDC	70	// DC Command station
+#define MTYP_CANTEXT	71	// Text message display
+#define MTYP_CANASIGNAL	72	// Signal controller
+#define MTYP_CANSLIDER	73	// DCC cab with slider control
 // 
-// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-// Please liaise with Roger before adding new module types
+// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+// Please liaise with Pete before adding new module types, 
+// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 // 
 #define MTYP_CAN_SW	0xFF	// Software nodes
 #define MTYP_EMPTY	0xFE	// Empty module, bootloader only
 #define MTYP_CANUSB	0xFD	// USB interface
+// 
+// Sprog Module types
+// 
+#define MTYP_PiSPRG3	1	// Pi-SPROG 3 programmer/command station
+#define MTYP_SPROG3P	2	// SPROG 3 Plus programmer/command station
+#define MTYP_CANSPROG	3	// CAN SPROG programmer/command station
+#define MTYP_SBOOST	4	// System Booster
+#define MTYP_PiSPRGP	5	// Pi-SPROG 3 Plus programmer/command station
+#define MTYP_ISB	6	// CAN ISB Isolated CAN USB Interface
 // 
 // Rocrail Module types
 // 
@@ -376,6 +398,7 @@ extern "C" {
 #define ERR_CMD_RX_BUF_OFLOW	6	// 
 #define ERR_INVALID_REQUEST	7	// 
 #define ERR_SESSION_CANCELLED	8	// 
+#define ERR_OVERLOAD	9	// 
 // 
 // Status codes for OPC_SSTAT
 // 
@@ -402,7 +425,7 @@ extern "C" {
 // 
 // Sub opcodes for OPC_CABDAT
 // 
-#define CDAT_CABSIG	1	// 
+#define CDAT_CABSIG	1	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
@@ -467,6 +490,7 @@ extern "C" {
 #define PB_CAN	1	// 
 #define PB_ETH	2	// 
 #define PB_MIWI	3	// 
+#define PB_USB	4	// 
 // 
 // Processor manufacturer codes
 // 

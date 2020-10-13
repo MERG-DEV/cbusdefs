@@ -12,7 +12,7 @@ const
 { 		Originally derived from opcodes.h (c) Andrew Crosland. }
 { 		CSV version by Ian Hogg inspired by David W Radcliffe }
 { 		 }
-{ 		Ver 8t }
+{ 		Ver 8u (WIP: not yet released) }
 { 		 }
 { 		  This work is licensed under the: }
 { 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. }
@@ -80,21 +80,26 @@ const
 { 		Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events }
 { 		Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE }
 { 		Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2. }
-{ 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33. }
-{ 		                       Updated descriptive comments for some module types }
+{ 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33. }
+{ 		                       Updated descriptive comments for some module types }
 { 		                       Updated CABDAT opcode to match RFC0004 }
 { 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG }
+{ 		Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects }
+{ 		                              Added SPROG manufactuer code 44 and new SPROG CBUS module types }
+{ 		                              Additional error code for overload }
+{ 		                              New bus type USB for modules with only USB and no CAN }
 { 		 }
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
 // 
- MANU_MERG	=  165;	// http://www.merg.co.uk
+ MANU_MERG	=  165;	// https://www.merg.co.uk
+ MANU_SPROG	=  44;	// https://www.sprog-dcc.co.uk/
  MANU_ROCRAIL	=  70;	// http://www.rocrail.net
  MANU_SPECTRUM	=  80;	// http://animatedmodeler.com  (Spectrum Engineering)
 // 
 // MODULE TYPES
 // 
-// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 // 
 // MERG Module types
 // 
@@ -165,13 +170,30 @@ const
  MTYP_CANEMIO	=  64;	// Extended CANMIO (24 I/O ports)
  MTYP_CANCABDC	=  65;	// DC cab
  MTYP_CANRCOM	=  66;	// DC Railcom detector/reader
+ MTYP_CANMP3	=  67;	// MP3 sound player in response to events (eg: station announcements)
+ MTYP_CANXMAS	=  68;	// Addressed RGB LED driver
+ MTYP_CANSVOSET	=  69;	// Servo setting box
+ MTYP_CANCMDDC	=  70;	// DC Command station
+ MTYP_CANTEXT	=  71;	// Text message display
+ MTYP_CANASIGNAL	=  72;	// Signal controller
+ MTYP_CANSLIDER	=  73;	// DCC cab with slider control
 // 
-// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-// Please liaise with Roger before adding new module types
+// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+// Please liaise with Pete before adding new module types, 
+// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 // 
  MTYP_CAN_SW	=  0xFF;	// Software nodes
  MTYP_EMPTY	=  0xFE;	// Empty module, bootloader only
  MTYP_CANUSB	=  0xFD;	// USB interface
+// 
+// Sprog Module types
+// 
+ MTYP_PiSPRG3	=  1;	// Pi-SPROG 3 programmer/command station
+ MTYP_SPROG3P	=  2;	// SPROG 3 Plus programmer/command station
+ MTYP_CANSPROG	=  3;	// CAN SPROG programmer/command station
+ MTYP_SBOOST	=  4;	// System Booster
+ MTYP_PiSPRGP	=  5;	// Pi-SPROG 3 Plus programmer/command station
+ MTYP_ISB	=  6;	// CAN ISB Isolated CAN USB Interface
 // 
 // Rocrail Module types
 // 
@@ -375,6 +397,7 @@ const
  ERR_CMD_RX_BUF_OFLOW	=  6;	// 
  ERR_INVALID_REQUEST	=  7;	// 
  ERR_SESSION_CANCELLED	=  8;	// 
+ ERR_OVERLOAD	=  9;	// 
 // 
 // Status codes for OPC_SSTAT
 // 
@@ -401,7 +424,7 @@ const
 // 
 // Sub opcodes for OPC_CABDAT
 // 
- CDAT_CABSIG	=  1;	// 
+ CDAT_CABSIG	=  1;	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
@@ -466,6 +489,7 @@ const
  PB_CAN	=  1;	// 
  PB_ETH	=  2;	// 
  PB_MIWI	=  3;	// 
+ PB_USB	=  4;	// 
 // 
 // Processor manufacturer codes
 // 
