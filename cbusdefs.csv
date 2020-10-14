@@ -75,7 +75,7 @@ comment,,,Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the
 comment,,,                       Updated descriptive comments for some module types
 comment,,,                       Updated CABDAT opcode to match RFC0004
 comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
-comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 73 including some Arduino projects
+comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
 comment,,,                              Added SPROG manufactuer code 44 and new SPROG CBUS module types
 comment,,,                              Additional error code for overload
 comment,,,                              New bus type USB for modules with only USB and no CAN
@@ -168,6 +168,7 @@ CbusMergModuleTypes,MTYP_CANCMDDC,70,DC Command station
 CbusMergModuleTypes,MTYP_CANTEXT,71,Text message display
 CbusMergModuleTypes,MTYP_CANASIGNAL,72,Signal controller
 CbusMergModuleTypes,MTYP_CANSLIDER,73,DCC cab with slider control
+CbusMergModuleTypes,MTYP_CANDCATC,74,DC ATC module
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 CbusMergModuleTypes,,,Please liaise with Pete before adding new module types, 
