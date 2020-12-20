@@ -87,13 +87,14 @@ public enum CbusParamFlags {
 // 
 // Flags in PAR_FLAGS
 // 
-	PF_NOEVENTS(0),	//
-	PF_CONSUMER(1),	//
-	PF_PRODUCER(2),	//
-	PF_COMBI(3),	//
-	PF_FLiM(4),	//
-	PF_BOOT(8),	//
-	PF_COE(16);	//Module can consume its own events
+	PF_NOEVENTS(0),	//Modules doesn't support events
+	PF_CONSUMER(1),	//Module is a consumer of events
+	PF_PRODUCER(2),	//Module is a producer of events
+	PF_COMBI(3),	//Module is both a consumer and producer of events
+	PF_FLiM(4),	//Module is in FLiM mode
+	PF_BOOT(8),	//Module supports the FCU bootloader protocol
+	PF_COE(16),	//Module can consume its own events
+	PF_LRN(32);	//Module is in learn mode
 
 	private final int v;
 

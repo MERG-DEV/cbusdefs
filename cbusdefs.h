@@ -402,7 +402,7 @@ extern "C" {
 // 
 // Sub opcodes for OPC_CABDAT
 // 
-#define CDAT_CABSIG	1	// 
+#define CDAT_CABSIG	1	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
@@ -454,13 +454,14 @@ extern "C" {
 // 
 // Flags in PAR_FLAGS
 // 
-#define PF_NOEVENTS	0	// 
-#define PF_CONSUMER	1	// 
-#define PF_PRODUCER	2	// 
-#define PF_COMBI	3	// 
-#define PF_FLiM	4	// 
-#define PF_BOOT	8	// 
+#define PF_NOEVENTS	0	// Modules doesn't support events
+#define PF_CONSUMER	1	// Module is a consumer of events
+#define PF_PRODUCER	2	// Module is a producer of events
+#define PF_COMBI	3	// Module is both a consumer and producer of events
+#define PF_FLiM	4	// Module is in FLiM mode
+#define PF_BOOT	8	// Module supports the FCU bootloader protocol
 #define PF_COE	16	// Module can consume its own events
+#define PF_LRN	32	// Module is in learn mode
 // 
 // BUS type that module is connected to
 // 

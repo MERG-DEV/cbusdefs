@@ -111,7 +111,7 @@ namespace merg.cbus
 			// 
 			// Sub opcodes for OPC_CABDAT
 			// 
-			public const int CDAT_CABSIG	=  1;	// 
+			public const int CDAT_CABSIG	=  1;	// 
 		}
 
 		public static class CbusCabSigAspect1
@@ -483,13 +483,14 @@ namespace merg.cbus
 			// 
 			// Flags in PAR_FLAGS
 			// 
-			public const int PF_NOEVENTS	=  0;	// 
-			public const int PF_CONSUMER	=  1;	// 
-			public const int PF_PRODUCER	=  2;	// 
-			public const int PF_COMBI	=  3;	// 
-			public const int PF_FLiM	=  4;	// 
-			public const int PF_BOOT	=  8;	// 
+			public const int PF_NOEVENTS	=  0;	// Modules doesn't support events
+			public const int PF_CONSUMER	=  1;	// Module is a consumer of events
+			public const int PF_PRODUCER	=  2;	// Module is a producer of events
+			public const int PF_COMBI	=  3;	// Module is both a consumer and producer of events
+			public const int PF_FLiM	=  4;	// Module is in FLiM mode
+			public const int PF_BOOT	=  8;	// Module supports the FCU bootloader protocol
 			public const int PF_COE	=  16;	// Module can consume its own events
+			public const int PF_LRN	=  32;	// Module is in learn mode
 		}
 
 		public static class CbusParamOffsetsPic

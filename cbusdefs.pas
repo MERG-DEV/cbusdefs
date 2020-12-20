@@ -80,8 +80,8 @@ const
 { 		Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events }
 { 		Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE }
 { 		Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2. }
-{ 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33. }
-{ 		                       Updated descriptive comments for some module types }
+{ 		Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33. }
+{ 		                       Updated descriptive comments for some module types }
 { 		                       Updated CABDAT opcode to match RFC0004 }
 { 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG }
 { 		 }
@@ -401,7 +401,7 @@ const
 // 
 // Sub opcodes for OPC_CABDAT
 // 
- CDAT_CABSIG	=  1;	// 
+ CDAT_CABSIG	=  1;	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
@@ -453,13 +453,14 @@ const
 // 
 // Flags in PAR_FLAGS
 // 
- PF_NOEVENTS	=  0;	// 
- PF_CONSUMER	=  1;	// 
- PF_PRODUCER	=  2;	// 
- PF_COMBI	=  3;	// 
- PF_FLiM	=  4;	// 
- PF_BOOT	=  8;	// 
+ PF_NOEVENTS	=  0;	// Modules doesn't support events
+ PF_CONSUMER	=  1;	// Module is a consumer of events
+ PF_PRODUCER	=  2;	// Module is a producer of events
+ PF_COMBI	=  3;	// Module is both a consumer and producer of events
+ PF_FLiM	=  4;	// Module is in FLiM mode
+ PF_BOOT	=  8;	// Module supports the FCU bootloader protocol
  PF_COE	=  16;	// Module can consume its own events
+ PF_LRN	=  32;	// Module is in learn mode
 // 
 // BUS type that module is connected to
 // 
