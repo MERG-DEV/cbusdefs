@@ -395,7 +395,7 @@ CMDERR_INV_NV_VALUE	equ .12	;
 ; 
 ; Sub opcodes for OPC_CABDAT
 ; 
-CDAT_CABSIG	equ .1	; 
+CDAT_CABSIG	equ .1	; 
 ; 
 ; Aspect codes for CDAT_CABSIG
 ; 
@@ -447,13 +447,14 @@ PAR_CKSUM	equ 0x1E	; Checksum word at end of parameters
 ; 
 ; Flags in PAR_FLAGS
 ; 
-PF_NOEVENTS	equ .0	; 
-PF_CONSUMER	equ .1	; 
-PF_PRODUCER	equ .2	; 
-PF_COMBI	equ .3	; 
-PF_FLiM	equ .4	; 
-PF_BOOT	equ .8	; 
+PF_NOEVENTS	equ .0	; Modules doesn't support events
+PF_CONSUMER	equ .1	; Module is a consumer of events
+PF_PRODUCER	equ .2	; Module is a producer of events
+PF_COMBI	equ .3	; Module is both a consumer and producer of events
+PF_FLiM	equ .4	; Module is in FLiM mode
+PF_BOOT	equ .8	; Module supports the FCU bootloader protocol
 PF_COE	equ .16	; Module can consume its own events
+PF_LRN	equ .32	; Module is in learn mode
 ; 
 ; BUS type that module is connected to
 ; 

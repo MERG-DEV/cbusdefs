@@ -444,13 +444,14 @@ CbusParamOffsetsPic,PAR_CKSUM,0x1E,Checksum word at end of parameters
 CbusParamFlags,,,
 CbusParamFlags,,,Flags in PAR_FLAGS
 CbusParamFlags,,,
-CbusParamFlags,PF_NOEVENTS,0,
-CbusParamFlags,PF_CONSUMER,1,
-CbusParamFlags,PF_PRODUCER,2,
-CbusParamFlags,PF_COMBI,3,
-CbusParamFlags,PF_FLiM,4,
-CbusParamFlags,PF_BOOT,8,
+CbusParamFlags,PF_NOEVENTS,0,Modules doesn't support events
+CbusParamFlags,PF_CONSUMER,1,Module is a consumer of events
+CbusParamFlags,PF_PRODUCER,2,Module is a producer of events
+CbusParamFlags,PF_COMBI,3,Module is both a consumer and producer of events
+CbusParamFlags,PF_FLiM,4,Module is in FLiM mode
+CbusParamFlags,PF_BOOT,8,Module supports the FCU bootloader protocol
 CbusParamFlags,PF_COE,16,Module can consume its own events
+CbusParamFlags,PF_LRN,32,Module is in learn mode
 CbusBusTypes,,,
 CbusBusTypes,,,BUS type that module is connected to
 CbusBusTypes,,,
