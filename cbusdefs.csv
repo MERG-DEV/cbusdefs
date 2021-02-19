@@ -76,13 +76,15 @@ comment,,,                       Updated descriptive comments for some module ty
 comment,,,                       Updated CABDAT opcode to match RFC0004
 comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
-comment,,,                              Added SPROG manufactuer code 44 and new SPROG CBUS module types
+comment,,,                              Added SPROG manufacturer code 44 and new SPROG CBUS module types
 comment,,,                              Additional error code for overload
 comment,,,                              New bus type USB for modules with only USB and no CAN
+comment,,,Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
 CbusManufacturer,,,
+CbusManufacturer,MANU_DEV,13,For new manufacturer development - who don't have a manufacturer id yet
 CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
 CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
 CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
