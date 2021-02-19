@@ -77,9 +77,10 @@ comment,,,                       Updated CABDAT opcode to match RFC0004
 comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
 comment,,,                              Added SPROG manufacturer code 44 and new SPROG CBUS module types
-comment,,,                              Additional error code for overload
+comment,,,                              Additional error code for overload - now removed as not required after all
 comment,,,                              New bus type USB for modules with only USB and no CAN
 comment,,,Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+comment,,,                              Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -391,7 +392,6 @@ CbusErrs,ERR_LOCO_NOT_FOUND,5,
 CbusErrs,ERR_CMD_RX_BUF_OFLOW,6,
 CbusErrs,ERR_INVALID_REQUEST,7,
 CbusErrs,ERR_SESSION_CANCELLED,8,
-CbusErrs,ERR_OVERLOAD,9,
 CbusSStats,,,
 CbusSStats,,,Status codes for OPC_SSTAT
 CbusSStats,,,
@@ -512,6 +512,10 @@ CbusMicrochipProcessors,P18F26K80,15,
 CbusMicrochipProcessors,P18F46K80,16,
 CbusMicrochipProcessors,P18F65K80,17,
 CbusMicrochipProcessors,P18F66K80,18,
+CbusMicrochipProcessors,P18F25K83,19,
+CbusMicrochipProcessors,P18F26K83,20,
+CbusMicrochipProcessors,,,
+CbusMicrochipProcessors,P18F14K22,25,
 CbusMicrochipProcessors,,,
 CbusMicrochipProcessors,P32MX534F064,30,
 CbusMicrochipProcessors,P32MX564F064,31,
