@@ -85,147 +85,121 @@ namespace Merg.Cbus
 	// 
 
 	/// <summary>
-	/// 
+	/// ARM Processor type codes (identifies to FCU for bootload compatiblity)
 	/// </summary>
 	public enum ArmProcessors
 	{
-		// 
+	
 		// ARM Processor type codes (identifies to FCU for bootload compatiblity)
-		// 
-		/// <summary>As used in Raspberry Pi</summary>
+	
+		/// <summary>As used in Raspberry Pi</summary>
 		Arm1176jzfS = 1,
-		/// <summary>As Used in Raspberry Pi 2</summary>
+		/// <summary>As Used in Raspberry Pi 2</summary>
 		ArmcortexA7 = 2,
-		/// <summary>As used in Raspberry Pi 3</summary>
+		/// <summary>As used in Raspberry Pi 3</summary>
 		ArmcortexA53 = 3,
 	}
 
 	/// <summary>
-	/// 
+	/// BUS type that module is connected to
 	/// </summary>
 	public enum BusTypes
 	{
-		// 
+	
 		// BUS type that module is connected to
-		// 
-		/// <summary></summary>
+	
 		PbCan = 1,
-		/// <summary></summary>
 		PbEth = 2,
-		/// <summary></summary>
 		PbMiwi = 3,
 	}
 
 	/// <summary>
-	/// 
+	/// Sub opcodes for OPC_CABDAT
 	/// </summary>
 	public enum CabSigAspect0
 	{
-		// 
+	
 		// Sub opcodes for OPC_CABDAT
-		// 
-		CdatCabsig = 1,
+	
+		CdatCabsig = 1,
 	}
 
 	/// <summary>
-	/// 
+	/// Aspect codes for CDAT_CABSIG
 	/// </summary>
 	public enum CabSigAspect1
 	{
-		// 
+	
 		// Aspect codes for CDAT_CABSIG
-		// 
+	
 		// First aspect byte
-		// 
-		/// <summary></summary>
+	
 		Danger = 0,
-		/// <summary></summary>
 		Caution = 1,
-		/// <summary></summary>
 		PrelimCaution = 2,
-		/// <summary></summary>
 		Proceed = 3,
-		/// <summary>Set bit 2 for call-on - main aspect will usually be at danger</summary>
+		/// <summary>Set bit 2 for call-on - main aspect will usually be at danger</summary>
 		Callon = 4,
-		/// <summary>Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code</summary>
+		/// <summary>Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code</summary>
 		Theatre = 8,
 	}
 
 	/// <summary>
-	/// 
+	/// Aspect codes for CDAT_CABSIG
 	/// </summary>
 	public enum CabSigAspect2
 	{
-		// 
+	
 		// Aspect codes for CDAT_CABSIG
-		// 
+	
 		// Second Aspect byte
-		// 
-		/// <summary>Set bit 0 to indicate lit</summary>
+	
+		/// <summary>Set bit 0 to indicate lit</summary>
 		Lit = 0,
-		/// <summary>Set bit 1 for lunar indication</summary>
+		/// <summary>Set bit 1 for lunar indication</summary>
 		Lunar = 1,
-		// 
+	
 		// Remaining bits in second aspect byte yet to be defined - can be used for other signalling systems
 	}
 
 	/// <summary>
-	/// 
+	/// Error codes for OPC_CMDERR
 	/// </summary>
 	public enum CmdErrs
 	{
-		// 
+	
 		// Error codes for OPC_CMDERR
-		// 
-		/// <summary></summary>
+	
 		InvCmd = 1,
-		/// <summary></summary>
 		NotLrn = 2,
-		/// <summary></summary>
 		NotSetup = 3,
-		/// <summary></summary>
 		TooManyEvents = 4,
-		/// <summary></summary>
 		NoEv = 5,
-		/// <summary></summary>
 		InvEvIdx = 6,
-		/// <summary></summary>
 		InvalidEvent = 7,
-		/// <summary>now reserved</summary>
+		/// <summary>now reserved</summary>
 		InvEnIdx = 8,
-		/// <summary></summary>
 		InvParamIdx = 9,
-		/// <summary></summary>
 		InvNvIdx = 10,
-		/// <summary></summary>
 		InvEvValue = 11,
-		/// <summary></summary>
 		InvNvValue = 12,
 	}
 
 	/// <summary>
-	/// 
+	/// Error codes for OPC_ERR
 	/// </summary>
 	public enum Errs
 	{
-		// 
+	
 		// Error codes for OPC_ERR
-		// 
-		/// <summary></summary>
+	
 		LocoStackFull = 1,
-		/// <summary></summary>
 		LocoAddrTaken = 2,
-		/// <summary></summary>
 		SessionNotPresent = 3,
-		/// <summary></summary>
 		ConsistEmpty = 4,
-		/// <summary></summary>
 		LocoNotFound = 5,
-		/// <summary></summary>
 		CmdRxBufOflow = 6,
-		/// <summary></summary>
 		InvalidRequest = 7,
-		/// <summary></summary>
 		SessionCancelled = 8,
 	}
 
@@ -236,723 +210,682 @@ namespace Merg.Cbus
 	{
 		// CBUS Manufacturer definitions
 		// Where the manufacturer already has an NMRA code, this is used
-		// 
-		/// <summary>http://www.merg.co.uk</summary>
+	
+		/// <summary>http://www.merg.co.uk</summary>
 		Merg = 165,
-		/// <summary>http://www.rocrail.net</summary>
+		/// <summary>http://www.rocrail.net</summary>
 		Rocrail = 70,
-		/// <summary>http://animatedmodeler.com  (Spectrum Engineering)</summary>
+		/// <summary>http://animatedmodeler.com  (Spectrum Engineering)</summary>
 		Spectrum = 80,
 	}
 
 	/// <summary>
-	/// 
+	/// MODULE TYPES
 	/// </summary>
 	public enum MergModuleTypes
 	{
-		// 
+	
 		// MODULE TYPES
-		// 
+	
 		// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
-		// 
+	
 		// MERG Module types
-		// 
-		/// <summary>default for SLiM nodes</summary>
+	
+		/// <summary>default for SLiM nodes</summary>
 		Slim = 0,
-		/// <summary>Solenoid point driver</summary>
+		/// <summary>Solenoid point driver</summary>
 		Canacc4 = 1,
-		/// <summary>Motorised point driver</summary>
+		/// <summary>Motorised point driver</summary>
 		Canacc5 = 2,
-		/// <summary>8 digital outputs</summary>
+		/// <summary>8 digital outputs</summary>
 		Canacc8 = 3,
-		/// <summary>Control panel switch/button encoder</summary>
+		/// <summary>Control panel switch/button encoder</summary>
 		Canace3 = 4,
-		/// <summary>8 digital inputs</summary>
+		/// <summary>8 digital inputs</summary>
 		Canace8c = 5,
-		/// <summary>64 led driver</summary>
+		/// <summary>64 led driver</summary>
 		Canled = 6,
-		/// <summary>64 led driver (multi leds per event)</summary>
+		/// <summary>64 led driver (multi leds per event)</summary>
 		Canled64 = 7,
-		/// <summary>12v version of CANACC4</summary>
+		/// <summary>12v version of CANACC4</summary>
 		Canacc42 = 8,
-		/// <summary>CANCAB hand throttle</summary>
+		/// <summary>CANCAB hand throttle</summary>
 		Cancab = 9,
-		/// <summary>CANCMD command station</summary>
+		/// <summary>CANCMD command station</summary>
 		Cancmd = 10,
-		/// <summary>8 servo driver (on canacc8 or similar hardware)</summary>
+		/// <summary>8 servo driver (on canacc8 or similar hardware)</summary>
 		Canservo = 11,
-		/// <summary>BC1a command station</summary>
+		/// <summary>BC1a command station</summary>
 		Canbc = 12,
-		/// <summary>RPI and RFID interface</summary>
+		/// <summary>RPI and RFID interface</summary>
 		Canrpi = 13,
-		/// <summary>Turntable controller (turntable end)</summary>
+		/// <summary>Turntable controller (turntable end)</summary>
 		Canttca = 14,
-		/// <summary>Turntable controller (control panel end)</summary>
+		/// <summary>Turntable controller (control panel end)</summary>
 		Canttcb = 15,
-		/// <summary>Handset controller for old BC1a type handsets</summary>
+		/// <summary>Handset controller for old BC1a type handsets</summary>
 		Canhs = 16,
-		/// <summary>Track occupancy detector</summary>
+		/// <summary>Track occupancy detector</summary>
 		Cantoti = 17,
-		/// <summary>8 inputs 8 outputs</summary>
+		/// <summary>8 inputs 8 outputs</summary>
 		Can8i8o = 18,
-		/// <summary>Canservo with servo position feedback</summary>
+		/// <summary>Canservo with servo position feedback</summary>
 		Canservo8c = 19,
-		/// <summary>RFID input</summary>
+		/// <summary>RFID input</summary>
 		Canrfid = 20,
-		/// <summary></summary>
 		Cantc4 = 21,
-		/// <summary>16 inputs</summary>
+		/// <summary>16 inputs</summary>
 		Canace16c = 22,
-		/// <summary>8 way I/O</summary>
+		/// <summary>8 way I/O</summary>
 		Canio8 = 23,
-		/// <summary>??</summary>
+		/// <summary>??</summary>
 		Cansndx = 24,
-		/// <summary>Ethernet interface</summary>
+		/// <summary>Ethernet interface</summary>
 		Canether = 25,
-		/// <summary>Multiple aspect signalling for CANLED module</summary>
+		/// <summary>Multiple aspect signalling for CANLED module</summary>
 		Cansig64 = 26,
-		/// <summary>Multiple aspect signalling for CANACC8 module</summary>
+		/// <summary>Multiple aspect signalling for CANACC8 module</summary>
 		Cansig8 = 27,
-		/// <summary>Conditional event generation</summary>
+		/// <summary>Conditional event generation</summary>
 		Cancond8c = 28,
-		/// <summary>Control panel 32/32</summary>
+		/// <summary>Control panel 32/32</summary>
 		Canpan = 29,
-		/// <summary>Newer version of CANACE3 firmware</summary>
+		/// <summary>Newer version of CANACE3 firmware</summary>
 		Canace3c = 30,
-		/// <summary>Control panel 64/64</summary>
+		/// <summary>Control panel 64/64</summary>
 		Canpanel = 31,
-		/// <summary>Multiple I/O – Universal CANMIO firmware</summary>
+		/// <summary>Multiple I/O – Universal CANMIO firmware</summary>
 		Canmio = 32,
-		/// <summary>Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware</summary>
+		/// <summary>Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware</summary>
 		Canace8mio = 33,
-		/// <summary>Solenoid driver module</summary>
+		/// <summary>Solenoid driver module</summary>
 		Cansol = 34,
-		/// <summary>Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins (CANMIO family)</summary>
+		/// <summary>Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins (CANMIO family)</summary>
 		Canbip = 35,
-		/// <summary>Solenoid driver module with additional 6 I/O pins (CANMIO family)</summary>
+		/// <summary>Solenoid driver module with additional 6 I/O pins (CANMIO family)</summary>
 		Cancdu = 36,
-		/// <summary>CANACC4 firmware ported to CANCDU</summary>
+		/// <summary>CANACC4 firmware ported to CANCDU</summary>
 		Canacc4cdu = 37,
-		/// <summary>CAN to MiWi base station</summary>
+		/// <summary>CAN to MiWi base station</summary>
 		Canwibase = 38,
-		/// <summary>Wireless cab using MiWi protocol</summary>
+		/// <summary>Wireless cab using MiWi protocol</summary>
 		Wicab = 39,
-		/// <summary>CAN to WiFi connection with Withrottle to CBUS protocol conversion</summary>
+		/// <summary>CAN to WiFi connection with Withrottle to CBUS protocol conversion</summary>
 		Canwifi = 40,
-		/// <summary>Turntable controller configured using FLiM</summary>
+		/// <summary>Turntable controller configured using FLiM</summary>
 		Canftt = 41,
-		/// <summary>Handset (alternative to CANCAB)</summary>
+		/// <summary>Handset (alternative to CANCAB)</summary>
 		Canhndst = 42,
-		/// <summary>Touchscreen handset</summary>
+		/// <summary>Touchscreen handset</summary>
 		Cantchndst = 43,
-		/// <summary>multi-channel RFID reader</summary>
+		/// <summary>multi-channel RFID reader</summary>
 		Canrfid8 = 44,
-		/// <summary>either a 2ch or 8ch RFID reader</summary>
+		/// <summary>either a 2ch or 8ch RFID reader</summary>
 		Canmchrfid = 45,
-		/// <summary>a Raspberry Pi based module for WiFi</summary>
+		/// <summary>a Raspberry Pi based module for WiFi</summary>
 		Canpiwi = 46,
-		/// <summary>DC train controller</summary>
+		/// <summary>DC train controller</summary>
 		Can4dc = 47,
-		/// <summary>Nelevator controller</summary>
+		/// <summary>Nelevator controller</summary>
 		Canelev = 48,
-		/// <summary>128 switch inputs</summary>
+		/// <summary>128 switch inputs</summary>
 		Canscan = 49,
-		/// <summary>16MHz 25k80 version of CANSERVO8c on CANMIO hardware</summary>
+		/// <summary>16MHz 25k80 version of CANSERVO8c on CANMIO hardware</summary>
 		CanmioSvo = 50,
-		/// <summary>16MHz 25k80 version of CANACE8MIO on CANMIO hardware</summary>
+		/// <summary>16MHz 25k80 version of CANACE8MIO on CANMIO hardware</summary>
 		CanmioInp = 51,
-		/// <summary>16MHz 25k80 version of CANACC8 on CANMIO hardware</summary>
+		/// <summary>16MHz 25k80 version of CANACC8 on CANMIO hardware</summary>
 		CanmioOut = 52,
-		/// <summary>16MHz 25k80 version of CANACC5 on CANBIP hardware</summary>
+		/// <summary>16MHz 25k80 version of CANACC5 on CANBIP hardware</summary>
 		CanbipOut = 53,
-		/// <summary>DCC stop generator</summary>
+		/// <summary>DCC stop generator</summary>
 		Canastop = 54,
-		/// <summary>CANCMD with on board 3A booster</summary>
+		/// <summary>CANCMD with on board 3A booster</summary>
 		Cancsb = 55,
-		/// <summary>Magnet on Track detector</summary>
+		/// <summary>Magnet on Track detector</summary>
 		Canmag = 56,
-		/// <summary>16 input equivaent to CANACE8C</summary>
+		/// <summary>16 input equivaent to CANACE8C</summary>
 		Canace16cmio = 57,
-		/// <summary>CBUS module based on Raspberry Pi</summary>
+		/// <summary>CBUS module based on Raspberry Pi</summary>
 		Canpinode = 58,
-		/// <summary>25K80 version of CANLED64 (IHart and MB)</summary>
+		/// <summary>25K80 version of CANLED64 (IHart and MB)</summary>
 		Candisp = 59,
-		/// <summary>Compute Event processing engine</summary>
+		/// <summary>Compute Event processing engine</summary>
 		Cancompute = 60,
-		/// <summary>Read/Write from/to RC522 RFID tags</summary>
+		/// <summary>Read/Write from/to RC522 RFID tags</summary>
 		Canrc522 = 61,
-		/// <summary>8 inputs module (2g version of CANACE8c)</summary>
+		/// <summary>8 inputs module (2g version of CANACE8c)</summary>
 		Caninp = 62,
-		/// <summary>8 outputs module (2g version of CANACC8)</summary>
+		/// <summary>8 outputs module (2g version of CANACC8)</summary>
 		Canout = 63,
-		/// <summary>Extended CANMIO (24 I/O ports)</summary>
+		/// <summary>Extended CANMIO (24 I/O ports)</summary>
 		Canemio = 64,
-		/// <summary>DC cab</summary>
+		/// <summary>DC cab</summary>
 		Cancabdc = 65,
-		/// <summary>DC Railcom detector/reader</summary>
+		/// <summary>DC Railcom detector/reader</summary>
 		Canrcom = 66,
-		// 
+	
 		// At the time of writing the list of defined MERG module types is maintained by Roger Healey
 		// Please liaise with Roger before adding new module types
-		// 
-		/// <summary>Software nodes</summary>
+	
+		/// <summary>Software nodes</summary>
 		CanSw = 0xFF,
-		/// <summary>Empty module, bootloader only</summary>
+		/// <summary>Empty module, bootloader only</summary>
 		Empty = 0xFE,
-		/// <summary>USB interface</summary>
+		/// <summary>USB interface</summary>
 		Canusb = 0xFD,
 	}
 
 	/// <summary>
-	/// 
+	/// Microchip Processor type codes (identifies to FCU for bootload compatiblity)
 	/// </summary>
 	public enum MicrochipProcessors
 	{
-		// 
+	
 		// Microchip Processor type codes (identifies to FCU for bootload compatiblity)
-		// 
-		/// <summary></summary>
+	
 		P18F2480 = 1,
-		/// <summary></summary>
 		P18F4480 = 2,
-		/// <summary></summary>
 		P18F2580 = 3,
-		/// <summary></summary>
 		P18F4580 = 4,
-		/// <summary></summary>
 		P18F2585 = 5,
-		/// <summary></summary>
 		P18F4585 = 6,
-		/// <summary></summary>
 		P18F2680 = 7,
-		/// <summary></summary>
 		P18F4680 = 8,
-		/// <summary></summary>
 		P18F2682 = 9,
-		/// <summary></summary>
 		P18F4682 = 10,
-		/// <summary></summary>
 		P18F2685 = 11,
-		/// <summary></summary>
 		P18F4685 = 12,
-		// 
-		/// <summary></summary>
+	
 		P18F25K80 = 13,
-		/// <summary></summary>
 		P18F45K80 = 14,
-		/// <summary></summary>
 		P18F26K80 = 15,
-		/// <summary></summary>
 		P18F46K80 = 16,
-		/// <summary></summary>
 		P18F65K80 = 17,
-		/// <summary></summary>
 		P18F66K80 = 18,
-		// 
-		/// <summary></summary>
+	
 		P32MX534F064 = 30,
-		/// <summary></summary>
 		P32MX564F064 = 31,
-		/// <summary></summary>
 		P32MX564F128 = 32,
-		/// <summary></summary>
 		P32MX575F256 = 33,
-		/// <summary></summary>
 		P32MX575F512 = 34,
-		/// <summary></summary>
 		P32MX764F128 = 35,
-		/// <summary></summary>
 		P32MX775F256 = 36,
-		/// <summary></summary>
 		P32MX775F512 = 37,
-		/// <summary></summary>
 		P32MX795F512 = 38,
 	}
 
 	/// <summary>
-	/// 
+	/// CBUS opcodes list
 	/// </summary>
 	public enum OpCodes
 	{
-		// 
-		// 
+	
+	
 		// CBUS opcodes list
-		// 
+	
 		// Packets with no data bytes
-		// 
-		/// <summary>General ack</summary>
+	
+		/// <summary>General ack</summary>
 		Ack = 0x00,
-		/// <summary>General nak</summary>
+		/// <summary>General nak</summary>
 		Nak = 0x01,
-		/// <summary>Bus Halt</summary>
+		/// <summary>Bus Halt</summary>
 		Hlt = 0x02,
-		/// <summary>Bus on</summary>
+		/// <summary>Bus on</summary>
 		Bon = 0x03,
-		/// <summary>Track off</summary>
+		/// <summary>Track off</summary>
 		Tof = 0x04,
-		/// <summary>Track on</summary>
+		/// <summary>Track on</summary>
 		Ton = 0x05,
-		/// <summary>Track stopped</summary>
+		/// <summary>Track stopped</summary>
 		Estop = 0x06,
-		/// <summary>System reset</summary>
+		/// <summary>System reset</summary>
 		Arst = 0x07,
-		/// <summary>Request track off</summary>
+		/// <summary>Request track off</summary>
 		Rtof = 0x08,
-		/// <summary>Request track on</summary>
+		/// <summary>Request track on</summary>
 		Rton = 0x09,
-		/// <summary>Request emergency stop all</summary>
+		/// <summary>Request emergency stop all</summary>
 		Restp = 0x0a,
-		/// <summary>Request node status</summary>
+		/// <summary>Request node status</summary>
 		Rstat = 0x0c,
-		/// <summary>Query nodes</summary>
+		/// <summary>Query nodes</summary>
 		Qnn = 0x0d,
-		// 
-		/// <summary>Read node parameters</summary>
+	
+		/// <summary>Read node parameters</summary>
 		Rqnp = 0x10,
-		/// <summary>Request name of module type</summary>
+		/// <summary>Request name of module type</summary>
 		Rqmn = 0x11,
-		// 
+	
 		// Packets with 1 data byte
-		// 
-		/// <summary>Release engine by handle</summary>
+	
+		/// <summary>Release engine by handle</summary>
 		Kloc = 0x21,
-		/// <summary>Query engine by handle</summary>
+		/// <summary>Query engine by handle</summary>
 		Qloc = 0x22,
-		/// <summary>Keep alive for cab</summary>
+		/// <summary>Keep alive for cab</summary>
 		Dkeep = 0x23,
-		// 
-		/// <summary>Debug message with 1 status byte</summary>
+	
+		/// <summary>Debug message with 1 status byte</summary>
 		Dbg1 = 0x30,
-		/// <summary>Extended opcode</summary>
+		/// <summary>Extended opcode</summary>
 		Extc = 0x3F,
-		// 
+	
 		// Packets with 2 data bytes
-		// 
-		/// <summary>Request session for loco</summary>
+	
+		/// <summary>Request session for loco</summary>
 		Rloc = 0x40,
-		/// <summary>Query consist</summary>
+		/// <summary>Query consist</summary>
 		Qcon = 0x41,
-		/// <summary>Set node number</summary>
+		/// <summary>Set node number</summary>
 		Snn = 0x42,
-		/// <summary>Allocate loco (used to allocate to a shuttle in cancmd)</summary>
+		/// <summary>Allocate loco (used to allocate to a shuttle in cancmd)</summary>
 		Aloc = 0X43,
-		// 
-		/// <summary>Set Throttle mode</summary>
+	
+		/// <summary>Set Throttle mode</summary>
 		Stmod = 0x44,
-		/// <summary>Consist loco</summary>
+		/// <summary>Consist loco</summary>
 		Pcon = 0x45,
-		/// <summary>De-consist loco</summary>
+		/// <summary>De-consist loco</summary>
 		Kcon = 0x46,
-		/// <summary>Loco speed/dir</summary>
+		/// <summary>Loco speed/dir</summary>
 		Dspd = 0x47,
-		/// <summary>Set engine flags</summary>
+		/// <summary>Set engine flags</summary>
 		Dflg = 0x48,
-		/// <summary>Loco function on</summary>
+		/// <summary>Loco function on</summary>
 		Dfnon = 0x49,
-		/// <summary>Loco function off</summary>
+		/// <summary>Loco function off</summary>
 		Dfnof = 0x4A,
-		/// <summary>Service mode status</summary>
+		/// <summary>Service mode status</summary>
 		Sstat = 0x4C,
-		/// <summary>Reset to manufacturer's defaults</summary>
+		/// <summary>Reset to manufacturer's defaults</summary>
 		Nnrsm = 0x4F,
-		// 
-		/// <summary>Request Node number in setup mode</summary>
+	
+		/// <summary>Request Node number in setup mode</summary>
 		Rqnn = 0x50,
-		/// <summary>Node number release</summary>
+		/// <summary>Node number release</summary>
 		Nnrel = 0x51,
-		/// <summary>Node number acknowledge</summary>
+		/// <summary>Node number acknowledge</summary>
 		Nnack = 0x52,
-		/// <summary>Set learn mode</summary>
+		/// <summary>Set learn mode</summary>
 		Nnlrn = 0x53,
-		/// <summary>Release learn mode</summary>
+		/// <summary>Release learn mode</summary>
 		Nnuln = 0x54,
-		/// <summary>Clear all events</summary>
+		/// <summary>Clear all events</summary>
 		Nnclr = 0x55,
-		/// <summary>Read available event slots</summary>
+		/// <summary>Read available event slots</summary>
 		Nnevn = 0x56,
-		/// <summary>Read all stored events</summary>
+		/// <summary>Read all stored events</summary>
 		Nerd = 0x57,
-		/// <summary>Read number of stored events</summary>
+		/// <summary>Read number of stored events</summary>
 		Rqevn = 0x58,
-		/// <summary>Write acknowledge</summary>
+		/// <summary>Write acknowledge</summary>
 		Wrack = 0x59,
-		/// <summary>Request node data event</summary>
+		/// <summary>Request node data event</summary>
 		Rqdat = 0x5A,
-		/// <summary>Request short data frame</summary>
+		/// <summary>Request short data frame</summary>
 		Rqdds = 0x5B,
-		/// <summary>Put node into boot mode</summary>
+		/// <summary>Put node into boot mode</summary>
 		Boot = 0x5C,
-		/// <summary>Force can_id self enumeration</summary>
+		/// <summary>Force can_id self enumeration</summary>
 		Enum = 0x5D,
-		/// <summary>Reset node (as in restart)</summary>
+		/// <summary>Reset node (as in restart)</summary>
 		Nnrst = 0x5E,
-		/// <summary>Extended opcode with 1 data byte</summary>
+		/// <summary>Extended opcode with 1 data byte</summary>
 		Extc1 = 0x5F,
-		// 
+	
 		// Packets with 3 data bytes
-		// 
-		/// <summary>Set engine functions</summary>
+	
+		/// <summary>Set engine functions</summary>
 		Dfun = 0x60,
-		/// <summary>Get loco (with support for steal/share)</summary>
+		/// <summary>Get loco (with support for steal/share)</summary>
 		Gloc = 0x61,
-		/// <summary>Command station error</summary>
+		/// <summary>Command station error</summary>
 		Err = 0x63,
-		/// <summary>Errors from nodes during config</summary>
+		/// <summary>Errors from nodes during config</summary>
 		Cmderr = 0x6F,
-		// 
-		/// <summary>Event slots left response</summary>
+	
+		/// <summary>Event slots left response</summary>
 		Evnlf = 0x70,
-		/// <summary>Request read of node variable</summary>
+		/// <summary>Request read of node variable</summary>
 		Nvrd = 0x71,
-		/// <summary>Request read stored event by index</summary>
+		/// <summary>Request read stored event by index</summary>
 		Nenrd = 0x72,
-		/// <summary>Request read module parameters</summary>
+		/// <summary>Request read module parameters</summary>
 		Rqnpn = 0x73,
-		/// <summary>Number of events stored response</summary>
+		/// <summary>Number of events stored response</summary>
 		Numev = 0x74,
-		/// <summary>Set canid</summary>
+		/// <summary>Set canid</summary>
 		Canid = 0x75,
-		/// <summary>Extended opcode with 2 data bytes</summary>
+		/// <summary>Extended opcode with 2 data bytes</summary>
 		Extc2 = 0x7F,
-		// 
+	
 		// Packets with 4 data bytes
-		// 
-		/// <summary>3 byte DCC packet</summary>
+	
+		/// <summary>3 byte DCC packet</summary>
 		Rdcc3 = 0x80,
-		/// <summary>Write CV byte Ops mode by handle</summary>
+		/// <summary>Write CV byte Ops mode by handle</summary>
 		Wcvo = 0x82,
-		/// <summary>Write CV bit Ops mode by handle</summary>
+		/// <summary>Write CV bit Ops mode by handle</summary>
 		Wcvb = 0x83,
-		/// <summary>Read CV</summary>
+		/// <summary>Read CV</summary>
 		Qcvs = 0x84,
-		/// <summary>Report CV</summary>
+		/// <summary>Report CV</summary>
 		Pcvs = 0x85,
-		// 
-		/// <summary>on event</summary>
+	
+		/// <summary>on event</summary>
 		Acon = 0x90,
-		/// <summary>off event</summary>
+		/// <summary>off event</summary>
 		Acof = 0x91,
-		/// <summary>Accessory Request event</summary>
+		/// <summary>Accessory Request event</summary>
 		Areq = 0x92,
-		/// <summary>Accessory response event on</summary>
+		/// <summary>Accessory response event on</summary>
 		Aron = 0x93,
-		/// <summary>Accessory response event off</summary>
+		/// <summary>Accessory response event off</summary>
 		Arof = 0x94,
-		/// <summary>Unlearn event</summary>
+		/// <summary>Unlearn event</summary>
 		Evuln = 0x95,
-		/// <summary>Set a node variable</summary>
+		/// <summary>Set a node variable</summary>
 		Nvset = 0x96,
-		/// <summary>Node variable value response</summary>
+		/// <summary>Node variable value response</summary>
 		Nvans = 0x97,
-		/// <summary>Short event on</summary>
+		/// <summary>Short event on</summary>
 		Ason = 0x98,
-		/// <summary>Short event off</summary>
+		/// <summary>Short event off</summary>
 		Asof = 0x99,
-		/// <summary>Short Request event</summary>
+		/// <summary>Short Request event</summary>
 		Asrq = 0x9A,
-		/// <summary>Single node parameter response</summary>
+		/// <summary>Single node parameter response</summary>
 		Paran = 0x9B,
-		/// <summary>Request read of event variable</summary>
+		/// <summary>Request read of event variable</summary>
 		Reval = 0x9C,
-		/// <summary>Accessory short response on event</summary>
+		/// <summary>Accessory short response on event</summary>
 		Arson = 0x9D,
-		/// <summary>Accessory short response off event</summary>
+		/// <summary>Accessory short response off event</summary>
 		Arsof = 0x9E,
-		/// <summary>Extended opcode with 3 data bytes</summary>
+		/// <summary>Extended opcode with 3 data bytes</summary>
 		Extc3 = 0x9F,
-		// 
+	
 		// Packets with 5 data bytes
-		// 
-		/// <summary>4 byte DCC packet</summary>
+	
+		/// <summary>4 byte DCC packet</summary>
 		Rdcc4 = 0xA0,
-		/// <summary>Write CV service mode</summary>
+		/// <summary>Write CV service mode</summary>
 		Wcvs = 0xA2,
-		// 
-		/// <summary>On event with one data byte</summary>
+	
+		/// <summary>On event with one data byte</summary>
 		Acon1 = 0xB0,
-		/// <summary>Off event with one data byte</summary>
+		/// <summary>Off event with one data byte</summary>
 		Acof1 = 0xB1,
-		/// <summary>Read event variable in learn mode</summary>
+		/// <summary>Read event variable in learn mode</summary>
 		Reqev = 0xB2,
-		/// <summary>Accessory on response (1 data byte)</summary>
+		/// <summary>Accessory on response (1 data byte)</summary>
 		Aron1 = 0xB3,
-		/// <summary>Accessory off response (1 data byte)</summary>
+		/// <summary>Accessory off response (1 data byte)</summary>
 		Arof1 = 0xB4,
-		/// <summary>Event variable by index read response</summary>
+		/// <summary>Event variable by index read response</summary>
 		Neval = 0xB5,
-		/// <summary>Response to QNN</summary>
+		/// <summary>Response to QNN</summary>
 		Pnn = 0xB6,
-		/// <summary>Accessory short on with 1 data byte</summary>
+		/// <summary>Accessory short on with 1 data byte</summary>
 		Ason1 = 0xB8,
-		/// <summary>Accessory short off with 1 data byte</summary>
+		/// <summary>Accessory short off with 1 data byte</summary>
 		Asof1 = 0xB9,
-		/// <summary>Short response event on with one data byte</summary>
+		/// <summary>Short response event on with one data byte</summary>
 		Arson1 = 0xBD,
-		/// <summary>Short response event off with one data byte</summary>
+		/// <summary>Short response event off with one data byte</summary>
 		Arsof1 = 0xBE,
-		/// <summary>Extended opcode with 4 data bytes</summary>
+		/// <summary>Extended opcode with 4 data bytes</summary>
 		Extc4 = 0xBF,
-		// 
+	
 		// Packets with 6 data bytes
-		// 
-		/// <summary>5 byte DCC packet</summary>
+	
+		/// <summary>5 byte DCC packet</summary>
 		Rdcc5 = 0xC0,
-		/// <summary>Write CV ops mode by address</summary>
+		/// <summary>Write CV ops mode by address</summary>
 		Wcvoa = 0xC1,
-		/// <summary>Cab data (cab signalling)</summary>
+		/// <summary>Cab data (cab signalling)</summary>
 		Cabdat = 0xC2,
-		/// <summary>Fast clock</summary>
+		/// <summary>Fast clock</summary>
 		Fclk = 0xCF,
-		// 
-		/// <summary>On event with two data bytes</summary>
+	
+		/// <summary>On event with two data bytes</summary>
 		Acon2 = 0xD0,
-		/// <summary>Off event with two data bytes</summary>
+		/// <summary>Off event with two data bytes</summary>
 		Acof2 = 0xD1,
-		/// <summary>Teach event</summary>
+		/// <summary>Teach event</summary>
 		Evlrn = 0xd2,
-		/// <summary>Event variable read response in learn mode</summary>
+		/// <summary>Event variable read response in learn mode</summary>
 		Evans = 0xd3,
-		/// <summary>Accessory on response</summary>
+		/// <summary>Accessory on response</summary>
 		Aron2 = 0xD4,
-		/// <summary>Accessory off response</summary>
+		/// <summary>Accessory off response</summary>
 		Arof2 = 0xD5,
-		/// <summary>Accessory short on with 2 data bytes</summary>
+		/// <summary>Accessory short on with 2 data bytes</summary>
 		Ason2 = 0xD8,
-		/// <summary>Accessory short off with 2 data bytes</summary>
+		/// <summary>Accessory short off with 2 data bytes</summary>
 		Asof2 = 0xD9,
-		/// <summary>Short response event on with two data bytes</summary>
+		/// <summary>Short response event on with two data bytes</summary>
 		Arson2 = 0xDD,
-		/// <summary>Short response event off with two data bytes</summary>
+		/// <summary>Short response event off with two data bytes</summary>
 		Arsof2 = 0xDE,
-		/// <summary>Extended opcode with 5 data bytes</summary>
+		/// <summary>Extended opcode with 5 data bytes</summary>
 		Extc5 = 0xDF,
-		// 
+	
 		// Packets with 7 data bytes
-		// 
-		/// <summary>6 byte DCC packets</summary>
+	
+		/// <summary>6 byte DCC packets</summary>
 		Rdcc6 = 0xE0,
-		/// <summary>Loco session report</summary>
+		/// <summary>Loco session report</summary>
 		Ploc = 0xE1,
-		/// <summary>Module name response</summary>
+		/// <summary>Module name response</summary>
 		Name = 0xE2,
-		/// <summary>Command station status report</summary>
+		/// <summary>Command station status report</summary>
 		Stat = 0xE3,
-		/// <summary>Node parameters response</summary>
+		/// <summary>Node parameters response</summary>
 		Params = 0xEF,
-		// 
-		/// <summary>On event with 3 data bytes</summary>
+	
+		/// <summary>On event with 3 data bytes</summary>
 		Acon3 = 0xF0,
-		/// <summary>Off event with 3 data bytes</summary>
+		/// <summary>Off event with 3 data bytes</summary>
 		Acof3 = 0xF1,
-		/// <summary>Read node events response</summary>
+		/// <summary>Read node events response</summary>
 		Enrsp = 0xF2,
-		/// <summary>Accessory on response</summary>
+		/// <summary>Accessory on response</summary>
 		Aron3 = 0xF3,
-		/// <summary>Accessory off response</summary>
+		/// <summary>Accessory off response</summary>
 		Arof3 = 0xF4,
-		/// <summary>Teach event using event indexing</summary>
+		/// <summary>Teach event using event indexing</summary>
 		Evlrni = 0xF5,
-		/// <summary>Accessory data event: 5 bytes of node data (eg: RFID)</summary>
+		/// <summary>Accessory data event: 5 bytes of node data (eg: RFID)</summary>
 		Acdat = 0xF6,
-		/// <summary>Accessory data response</summary>
+		/// <summary>Accessory data response</summary>
 		Ardat = 0xF7,
-		/// <summary>Accessory short on with 3 data bytes</summary>
+		/// <summary>Accessory short on with 3 data bytes</summary>
 		Ason3 = 0xF8,
-		/// <summary>Accessory short off with 3 data bytes</summary>
+		/// <summary>Accessory short off with 3 data bytes</summary>
 		Asof3 = 0xF9,
-		/// <summary>Short data frame aka device data event (device id plus 5 data bytes)</summary>
+		/// <summary>Short data frame aka device data event (device id plus 5 data bytes)</summary>
 		Ddes = 0xFA,
-		/// <summary>Short data frame response aka device data response</summary>
+		/// <summary>Short data frame response aka device data response</summary>
 		Ddrs = 0xFB,
-		/// <summary>Device Data Write Short</summary>
+		/// <summary>Device Data Write Short</summary>
 		Ddws = 0xFC,
-		/// <summary>Short response event on with 3 data bytes</summary>
+		/// <summary>Short response event on with 3 data bytes</summary>
 		Arson3 = 0xFD,
-		/// <summary>Short response event off with 3 data bytes</summary>
+		/// <summary>Short response event off with 3 data bytes</summary>
 		Arsof3 = 0xFE,
-		/// <summary>Extended opcode with 6 data byes</summary>
+		/// <summary>Extended opcode with 6 data byes</summary>
 		Extc6 = 0xFF,
 	}
 
 	/// <summary>
-	/// 
+	/// Flags in PAR_FLAGS
 	/// </summary>
 	public enum ParamFlags
 	{
-		// 
+	
 		// Flags in PAR_FLAGS
-		// 
-		/// <summary>Modules doesn't support events</summary>
+	
+		/// <summary>Modules doesn't support events</summary>
 		Noevents = 0,
-		/// <summary>Module is a consumer of events</summary>
+		/// <summary>Module is a consumer of events</summary>
 		Consumer = 1,
-		/// <summary>Module is a producer of events</summary>
+		/// <summary>Module is a producer of events</summary>
 		Producer = 2,
-		/// <summary>Module is both a consumer and producer of events</summary>
+		/// <summary>Module is both a consumer and producer of events</summary>
 		Combi = 3,
-		/// <summary>Module is in FLiM mode</summary>
+		/// <summary>Module is in FLiM mode</summary>
 		Flim = 4,
-		/// <summary>Module supports the FCU bootloader protocol</summary>
+		/// <summary>Module supports the FCU bootloader protocol</summary>
 		Boot = 8,
-		/// <summary>Module can consume its own events</summary>
+		/// <summary>Module can consume its own events</summary>
 		Coe = 16,
-		/// <summary>Module is in learn mode</summary>
+		/// <summary>Module is in learn mode</summary>
 		Lrn = 32,
 	}
 
 	/// <summary>
-	/// 
+	/// Offsets to other values stored at the top of the parameter block.
 	/// </summary>
 	public enum ParamOffsetsPic
 	{
-		// 
+	
 		// Offsets to other values stored at the top of the parameter block.
 		// These are not returned by opcode PARAN, but are present in the hex
 		// file for FCU.
-		// 
-		/// <summary>Number of parameters implemented</summary>
+	
+		/// <summary>Number of parameters implemented</summary>
 		Count = 0x18,
-		/// <summary>4 byte Address of Module type name, up to 8 characters null terminated</summary>
+		/// <summary>4 byte Address of Module type name, up to 8 characters null terminated</summary>
 		Name = 0x1A,
-		/// <summary>Checksum word at end of parameters</summary>
+		/// <summary>Checksum word at end of parameters</summary>
 		Cksum = 0x1E,
 	}
 
 	/// <summary>
-	/// 
+	/// Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
 	/// </summary>
 	public enum Params
 	{
-		// 
-		// 
+	
+	
 		// Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
 		// Index numbers count from 1, subtract 1 for offset into parameter block
 		// Note that RQNPN with index 0 returns the parameter count
-		// 
-		/// <summary>Manufacturer id</summary>
+	
+		/// <summary>Manufacturer id</summary>
 		Manu = 1,
-		/// <summary>Minor version letter</summary>
+		/// <summary>Minor version letter</summary>
 		Minver = 2,
-		/// <summary>Module type code</summary>
+		/// <summary>Module type code</summary>
 		Mtyp = 3,
-		/// <summary>Number of events supported</summary>
+		/// <summary>Number of events supported</summary>
 		Evtnum = 4,
-		/// <summary>Event variables per event</summary>
+		/// <summary>Event variables per event</summary>
 		Evnum = 5,
-		/// <summary>Number of Node variables</summary>
+		/// <summary>Number of Node variables</summary>
 		Nvnum = 6,
-		/// <summary>Major version number</summary>
+		/// <summary>Major version number</summary>
 		Majver = 7,
-		/// <summary>Node flags</summary>
+		/// <summary>Node flags</summary>
 		Flags = 8,
-		/// <summary>Processor type</summary>
+		/// <summary>Processor type</summary>
 		Cpuid = 9,
-		/// <summary>Bus type</summary>
+		/// <summary>Bus type</summary>
 		Bustype = 10,
-		/// <summary>load address, 4 bytes</summary>
+		/// <summary>load address, 4 bytes</summary>
 		Load = 11,
-		/// <summary>CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)</summary>
+		/// <summary>CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)</summary>
 		Cpumid = 15,
-		/// <summary> CPU manufacturer code</summary>
+		/// <summary> CPU manufacturer code</summary>
 		Cpuman = 19,
-		/// <summary>Beta revision (numeric), or 0 if release</summary>
+		/// <summary>Beta revision (numeric), or 0 if release</summary>
 		Beta = 20,
 	}
 
 	/// <summary>
-	/// 
+	/// Processor manufacturer codes
 	/// </summary>
 	public enum ProcessorManufacturers
 	{
-		// 
+	
 		// Processor manufacturer codes
-		// 
-		/// <summary></summary>
+	
 		Microchip = 1,
-		/// <summary></summary>
 		Atmel = 2,
-		/// <summary></summary>
 		Arm = 3,
 	}
 
 	/// <summary>
-	/// 
+	/// Rocrail Module types
 	/// </summary>
 	public enum RocRailModuleTypes
 	{
-		// 
+	
 		// Rocrail Module types
-		// 
-		/// <summary>RS232 PC interface</summary>
+	
+		/// <summary>RS232 PC interface</summary>
 		Cangc1 = 1,
-		/// <summary>16 I/O</summary>
+		/// <summary>16 I/O</summary>
 		Cangc2 = 2,
-		/// <summary>Command station (derived from cancmd)</summary>
+		/// <summary>Command station (derived from cancmd)</summary>
 		Cangc3 = 3,
-		/// <summary>8 channel RFID reader</summary>
+		/// <summary>8 channel RFID reader</summary>
 		Cangc4 = 4,
-		/// <summary>Cab for fixed panels (derived from cancab)</summary>
+		/// <summary>Cab for fixed panels (derived from cancab)</summary>
 		Cangc5 = 5,
-		/// <summary>4 channel servo controller</summary>
+		/// <summary>4 channel servo controller</summary>
 		Cangc6 = 6,
-		/// <summary>Fast clock module</summary>
+		/// <summary>Fast clock module</summary>
 		Cangc7 = 7,
-		/// <summary>CAN<->Ethernet interface</summary>
+		/// <summary>CAN<->Ethernet interface</summary>
 		Cangc1e = 11,
 	}
 
 	/// <summary>
-	/// 
+	/// Spectrum Engineering Animated Modeller module types
 	/// </summary>
 	public enum SpectrumModuleTypes
 	{
-		// 
+	
 		// Spectrum Engineering Animated Modeller module types
-		// 
-		/// <summary>Animation controller (firmware derived from cancmd)</summary>
+	
+		/// <summary>Animation controller (firmware derived from cancmd)</summary>
 		Amctrlr = 1,
-		/// <summary>Dual cab based on cancab</summary>
+		/// <summary>Dual cab based on cancab</summary>
 		Dualcab = 2,
 	}
 
 	/// <summary>
-	/// 
+	/// Status codes for OPC_SSTAT
 	/// </summary>
 	public enum SStats
 	{
-		// 
+	
 		// Status codes for OPC_SSTAT
-		// 
-		/// <summary></summary>
+	
 		NoAck = 1,
-		/// <summary></summary>
 		Ovld = 2,
-		/// <summary></summary>
 		WrAck = 3,
-		/// <summary></summary>
 		Busy = 4,
-		/// <summary></summary>
 		CvError = 5,
 	}
 
 	/// <summary>
-	/// 
+	/// Modes for STMOD
 	/// </summary>
 	public enum StmodModes
 	{
-		// 
-		// 
+	
+	
 		// Modes for STMOD
-		// 
-		/// <summary></summary>
+	
 		SpdMask = 3,
-		/// <summary></summary>
 		Spd128 = 0,
-		/// <summary></summary>
 		Spd14 = 1,
-		/// <summary></summary>
 		Spd28i = 2,
-		/// <summary></summary>
 		Spd28 = 3,
 	}
 
