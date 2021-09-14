@@ -402,7 +402,8 @@ extern "C" {
 // 
 // Sub opcodes for OPC_CABDAT
 // 
-#define CDAT_CABSIG	1	// 
+#define CDAT_CABSIG	1
+	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
@@ -496,6 +497,12 @@ extern "C" {
 #define P18F46K80	16	// 
 #define P18F65K80	17	// 
 #define P18F66K80	18	// 
+#define P18F14K22	19  // 
+    
+#define P18F26K83	20  //
+#define P18F27Q84	21  //
+#define P18F47Q84	22  //
+
 // 
 #define P32MX534F064	30	// 
 #define P32MX564F064	31	// 
