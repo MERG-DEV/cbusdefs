@@ -845,20 +845,6 @@ namespace Merg.Cbus
 	}
 
 	/// <summary>
-	/// Spectrum Engineering Animated Modeller module types
-	/// </summary>
-	public enum SpectrumModuleTypes
-	{
-	
-		// Spectrum Engineering Animated Modeller module types
-	
-		/// <summary>Animation controller (firmware derived from cancmd)</summary>
-		Amctrlr = 1,
-		/// <summary>Dual cab based on cancab</summary>
-		Dualcab = 2,
-	}
-
-	/// <summary>
 	/// Status codes for OPC_SSTAT
 	/// </summary>
 	public enum SStats
@@ -871,6 +857,20 @@ namespace Merg.Cbus
 		WrAck = 3,
 		Busy = 4,
 		CvError = 5,
+	}
+
+	/// <summary>
+	/// Spectrum Engineering Animated Modeller module types
+	/// </summary>
+	public enum SpectrumModuleTypes
+	{
+	
+		// Spectrum Engineering Animated Modeller module types
+	
+		/// <summary>Animation controller (firmware derived from cancmd)</summary>
+		Amctrlr = 1,
+		/// <summary>Dual cab based on cancab</summary>
+		Dualcab = 2,
 	}
 
 	/// <summary>

@@ -111,7 +111,7 @@ namespace merg.cbus
 			// 
 			// Sub opcodes for OPC_CABDAT
 			// 
-			public const int CDAT_CABSIG	=  1;	// 
+			public const int CDAT_CABSIG	=  1;	// 
 		}
 
 		public static class CbusCabSigAspect1
@@ -554,15 +554,6 @@ namespace merg.cbus
 			public const int MTYP_CANGC1e	=  11;	// CAN<->Ethernet interface
 		}
 
-		public static class CbusSpectrumModuleTypes
-		{
-			// 
-			// Spectrum Engineering Animated Modeller module types
-			// 
-			public const int MTYP_AMCTRLR	=  1;	// Animation controller (firmware derived from cancmd)
-			public const int MTYP_DUALCAB	=  2;	// Dual cab based on cancab
-		}
-
 		public static class CbusSStats
 		{
 			// 
@@ -573,6 +564,15 @@ namespace merg.cbus
 			public const int SSTAT_WR_ACK	=  3;	// 
 			public const int SSTAT_BUSY	=  4;	// 
 			public const int SSTAT_CV_ERROR	=  5;	// 
+		}
+
+		public static class CbusSpectrumModuleTypes
+		{
+			// 
+			// Spectrum Engineering Animated Modeller module types
+			// 
+			public const int MTYP_AMCTRLR	=  1;	// Animation controller (firmware derived from cancmd)
+			public const int MTYP_DUALCAB	=  2;	// Dual cab based on cancab
 		}
 
 		public static class CbusStmodModes

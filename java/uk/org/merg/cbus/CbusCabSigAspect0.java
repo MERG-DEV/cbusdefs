@@ -87,7 +87,7 @@ public enum CbusCabSigAspect0 {
 // 
 // Sub opcodes for OPC_CABDAT
 // 
-	CDAT_CABSIG(1);	//
+	CDAT_CABSIG(1);	//
 
 	private final int v;
 

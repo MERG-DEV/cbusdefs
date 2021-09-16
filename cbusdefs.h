@@ -29,7 +29,7 @@ extern "C" {
 // 		    The licensor cannot revoke these freedoms as long as you follow the license terms.
 // 		
 // 		    Attribution : You must give appropriate credit, provide a link to the license,
-// 		                   and indicate if changes were made. You may do so in any reasonable manner,
+// 		                   and indicate if changes were made. You may do so in any reasonable manner
 // 		                   but not in any way that suggests the licensor endorses you or your use.
 // 		
 // 		    NonCommercial : You may not use the material for commercial purposes. **(see note below)
@@ -402,7 +402,7 @@ extern "C" {
 // 
 // Sub opcodes for OPC_CABDAT
 // 
-#define CDAT_CABSIG	1	// 
+#define CDAT_CABSIG	1	// 
 // 
 // Aspect codes for CDAT_CABSIG
 // 
