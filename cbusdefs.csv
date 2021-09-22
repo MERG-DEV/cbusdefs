@@ -75,6 +75,7 @@ comment,,,Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the
 comment,,,                       Updated descriptive comments for some module types
 comment,,,                       Updated CABDAT opcode to match RFC0004
 comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+comment,,,Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -486,6 +487,11 @@ CbusMicrochipProcessors,P18F26K80,15,
 CbusMicrochipProcessors,P18F46K80,16,
 CbusMicrochipProcessors,P18F65K80,17,
 CbusMicrochipProcessors,P18F66K80,18,
+CbusMicrochipProcessors,P18F14K22,19,
+CbusMicrochipProcessors,P18F26K83,20,
+CbusMicrochipProcessors,P18F27Q84,21,
+CbusMicrochipProcessors,P18F47Q84,22,
+CbusMicrochipProcessors,P18F27Q83,23,
 CbusMicrochipProcessors,,,
 CbusMicrochipProcessors,P32MX534F064,30,
 CbusMicrochipProcessors,P32MX564F064,31,
