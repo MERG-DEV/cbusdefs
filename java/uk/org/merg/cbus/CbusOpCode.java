@@ -82,51 +82,14 @@ package uk.org.merg.cbus;
 //                        Updated CABDAT opcode to match RFC0004
 // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
 // Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-// Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
 // 
 
-public enum CbusMicrochipProcessors {
-// 
-// Microchip Processor type codes (identifies to FCU for bootload compatiblity)
-// 
-	P18F2480(1),	//
-	P18F4480(2),	//
-	P18F2580(3),	//
-	P18F4580(4),	//
-	P18F2585(5),	//
-	P18F4585(6),	//
-	P18F2680(7),	//
-	P18F4680(8),	//
-	P18F2682(9),	//
-	P18F4682(10),	//
-	P18F2685(11),	//
-	P18F4685(12),	//
-// 
-	P18F25K80(13),	//
-	P18F45K80(14),	//
-	P18F26K80(15),	//
-	P18F46K80(16),	//
-	P18F65K80(17),	//
-	P18F66K80(18),	//
-	P18F14K22(19),	//
-	P18F26K83(20),	//
-	P18F27Q84(21),	//
-	P18F47Q84(22),	//
-	P18F27Q83(23),	//
-// 
-	P32MX534F064(30),	//
-	P32MX564F064(31),	//
-	P32MX564F128(32),	//
-	P32MX575F256(33),	//
-	P32MX575F512(34),	//
-	P32MX764F128(35),	//
-	P32MX775F256(36),	//
-	P32MX775F512(37),	//
-	P32MX795F512(38);	//
+public enum CbusOpCode {
+	OPC_DTXC(0xE9);	//CBUS long message packet
 
 	private final int v;
 
-	private CbusMicrochipProcessors(int v) {
+	private CbusOpCode(int v) {
 		this.v = v;
 	}
 
