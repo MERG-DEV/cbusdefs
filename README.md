@@ -7,11 +7,12 @@ The current _generate.sh_ script produces the following output files from the cb
 1.	cbusdefs.h   - C
 2.	cbusdefs.inc - Assembler
 3.	cbusdefs.pas - Object Pascal
-4.  cbusdefs.cs  - c#
-4.	java/\*      - Java
+4.  CbusDefs	 - C#.NET 5.0 (Core) solution that contains T4 templates to generate files for C#.
+					The generated files should be suitable for .NET Framework projects.
+5.	java/\*      - Java
 
 # New versions of cbusdefs
-MERG will occasionally update cbusdefs. This has historically be done as a zip file of named-versioned files such as cbusdefs8r.h, cbusdefs8r.inc, cbusdefs8r.pas. The ZIP has historically been put onto the MERG wiki (https://www.merg.org.uk/merg_wiki/doku.php?id=cbus:cbus-headers). Note: You must be a MERG member to access this age.
+MERG will occasionally update cbusdefs. This has historically be done as a zip file of named-versioned files such as cbusdefs8r.h, cbusdefs8r.inc, cbusdefs8r.pas. The ZIP has historically been put onto the MERG wiki (https://www.merg.org.uk/merg_wiki/doku.php?id=cbus:cbus-headers). Note: You must be a MERG member to access this page.
 
 # Process to update cbusdefs
 Whenever a new version of cbusdefs is released then the respective changes in cbusdefs.csv can be made and the _generate.sh_ script used to regenerate the language specific files. Once the language specific files have been generated then all the changes can be pushed back to github with a commit comment referencing the MERG wiki's version number.

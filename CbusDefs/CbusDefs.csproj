@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>merg.cbus.CbusDefs</AssemblyName>
+    <RootNamespace>merg.cbus</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="CbusDefs.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CbusDefs.tt</DependentUpon>
+    </None>
+    <None Include="CbusDefsEnums.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CbusDefsEnums.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cbusdefs.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CbusDefs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CbusDefs.cs</LastGenOutput>
+    </None>
+    <None Update="CbusDefsEnums.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CbusDefsEnums.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CbusDefs.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CbusDefs.tt</DependentUpon>
+    </Compile>
+    <Compile Update="CbusDefsEnums.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CbusDefsEnums.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
