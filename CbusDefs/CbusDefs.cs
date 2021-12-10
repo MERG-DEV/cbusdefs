@@ -82,7 +82,9 @@ namespace merg.cbus
     //                        Updated CABDAT opcode to match RFC0004
     // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
     // Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-    // Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+    // Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+    // Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+    // Richard Crawshaw,11/12/2021,Ver 8t Corrected BOOTM OpCode (was incorrectly BOOT) see https://www.merg.org.uk/forum/viewtopic.php?p=161100#p161067
     // 
 
     public static class CbusDefs
@@ -917,7 +919,7 @@ namespace merg.cbus
             /// <summary>
             /// Put node into boot mode
             /// </summary>
-			public const int OPC_BOOT = 0x5C;
+			public const int OPC_BOOTM = 0x5C;
 
             /// <summary>
             /// Force can_id self enumeration

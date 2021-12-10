@@ -78,6 +78,7 @@ comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Op
 comment,,,Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
 comment,,,Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
 comment,,,Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+comment,,,Richard Crawshaw,11/12/2021,Ver 8t Corrected BOOTM OpCode (was incorrectly BOOT) see https://www.merg.org.uk/forum/viewtopic.php?p=161100#p161067
 comment,,,
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -243,7 +244,7 @@ CbusOpCodes,OPC_RQEVN,0x58,Read number of stored events
 CbusOpCodes,OPC_WRACK,0x59,Write acknowledge
 CbusOpCodes,OPC_RQDAT,0x5A,Request node data event
 CbusOpCodes,OPC_RQDDS,0x5B,Request short data frame
-CbusOpCodes,OPC_BOOT,0x5C,Put node into boot mode
+CbusOpCodes,OPC_BOOTM,0x5C,Put node into boot mode
 CbusOpCodes,OPC_ENUM,0x5D,Force can_id self enumeration
 CbusOpCodes,OPC_NNRST,0x5E,Reset node (as in restart)
 CbusOpCodes,OPC_EXTC1,0x5F,Extended opcode with 1 data byte
