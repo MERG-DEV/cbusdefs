@@ -87,17 +87,23 @@ package uk.org.merg.cbus;
 // Andrew Crosland,19/01/22,Ver 8v Added SPROG manufactuer code 44 and new SPROG CBUS module types
 //                          Added OPC_VCVS, Verify CV service mode - used for CV read hints
 
-public enum CbusArmProcessors {
+public enum CbusSprogModuleTypes {
 // 
-// ARM Processor type codes (identifies to FCU for bootload compatiblity)
+// SPROG Module types
 // 
-	ARM1176JZF_S(1),	//As used in Raspberry Pi
-	ARMCortex_A7(2),	//As Used in Raspberry Pi 2
-	ARMCortex_A53(3);	//As used in Raspberry Pi 3
+	MTYP_CANPiSPRG3(1),	//Pi-SPROG 3 programmer/command station
+	MTYP_CANSPROG3P(2),	//SPROG 3 Plus programmer/command station
+	MTYP_CANSPROG(3),	//CAN SPROG programmer/command station
+	MTYP_CANSBOOST(4),	//System Booster
+	MTYP_CANPiSPRGP(5),	//Pi-SPROG 3 Plus programmer/command station
+	MTYP_CANISB(6),	//CAN ISB Isolated CAN USB Interface
+	MTYP_CANIO(7),	//8-channel I/O module
+	MTYP_CANSERVOIO(8),	//8-channel Servo I/O module
+	MTYP_CANSOLIO(9);	//8-channel (4-pairs) Solenoid I/O module
 
 	private final int v;
 
-	private CbusArmProcessors(int v) {
+	private CbusSprogModuleTypes(int v) {
 		this.v = v;
 	}
 
