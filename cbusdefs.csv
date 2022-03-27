@@ -435,7 +435,7 @@ CbusParams,PAR_CPUID,9,Processor type
 CbusParams,PAR_BUSTYPE,10,Bus type
 CbusParams,PAR_LOAD,11,load address, 4 bytes
 CbusParams,PAR_CPUMID,15,CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
-CbusParams,PAR_CPUMAN,19, CPU manufacturer code
+CbusParams,PAR_CPUMAN,19,CPU manufacturer code
 CbusParams,PAR_BETA,20,Beta revision (numeric), or 0 if release
 CbusParamOffsetsPic,,,
 CbusParamOffsetsPic,,,Offsets to other values stored at the top of the parameter block.
@@ -469,7 +469,7 @@ CbusProcessorManufacturers,CPUM_MICROCHIP,1,
 CbusProcessorManufacturers,CPUM_ATMEL,2,
 CbusProcessorManufacturers,CPUM_ARM,3,
 CbusMicrochipProcessors,,,
-CbusMicrochipProcessors,,,Microchip Processor type codes (identifies to FCU for bootload compatiblity)
+CbusMicrochipProcessors,,,Microchip Processor type codes (identifies to FCU for bootload compatibility)
 CbusMicrochipProcessors,,,
 CbusMicrochipProcessors,P18F2480,1,
 CbusMicrochipProcessors,P18F4480,2,
@@ -506,7 +506,7 @@ CbusMicrochipProcessors,P32MX775F256,36,
 CbusMicrochipProcessors,P32MX775F512,37,
 CbusMicrochipProcessors,P32MX795F512,38,
 CbusArmProcessors,,,
-CbusArmProcessors,,,ARM Processor type codes (identifies to FCU for bootload compatiblity)
+CbusArmProcessors,,,ARM Processor type codes (identifies to FCU for bootload compatibility)
 CbusArmProcessors,,,
 CbusArmProcessors,ARM1176JZF_S,1,As used in Raspberry Pi
 CbusArmProcessors,ARMCortex_A7,2,As Used in Raspberry Pi 2
