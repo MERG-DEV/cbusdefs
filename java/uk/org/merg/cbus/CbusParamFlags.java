@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8t
+// Ver 8v (WIP: not yet released)
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -81,19 +81,29 @@ package uk.org.merg.cbus;
 //                        Updated descriptive comments for some module types
 //                        Updated CABDAT opcode to match RFC0004
 // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
-// Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-// Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+// Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
+//                               Added SPROG manufacturer code 44 and new SPROG CBUS module types
+//                               Additional error code for overload - now removed as not required after all
+//                               New bus type USB for modules with only USB and no CAN
+// Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+//                               Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
 // 
+// Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+// Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+// Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+// Pete Brownlow,26/07/22,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+//   							Add requested module type ids 75 to 78
+//                               
 
 public enum CbusParamFlags {
 // 
 // Flags in PAR_FLAGS
 // 
-	PF_NOEVENTS(0),	//Modules doesn't support events
+	PF_NOEVENTS(0),	//Module doesn't support events
 	PF_CONSUMER(1),	//Module is a consumer of events
 	PF_PRODUCER(2),	//Module is a producer of events
 	PF_COMBI(3),	//Module is both a consumer and producer of events
-	PF_FLiM(4),	//Module is in FLiM mode
+	PF_FLiM(4),	//Module is in FLiM
 	PF_BOOT(8),	//Module supports the FCU bootloader protocol
 	PF_COE(16),	//Module can consume its own events
 	PF_LRN(32);	//Module is in learn mode

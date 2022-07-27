@@ -95,19 +95,20 @@ package uk.org.merg.cbus;
 //   							Add requested module type ids 75 to 78
 //                               
 
-public enum CbusParamOffsetsPic {
+public enum CbusSprogModuleTypes {
 // 
-// Offsets to other values stored at the top of the parameter block.
-// These are not returned by opcode PARAN, but are present in the hex
-// file for FCU.
+// Sprog Module types
 // 
-	PAR_COUNT(0x18),	//Number of parameters implemented
-	PAR_NAME(0x1A),	//4 byte Address of Module type name, up to 8 characters null terminated
-	PAR_CKSUM(0x1E);	//Checksum word at end of parameters
+	MTYP_PiSPRG3(1),	//Pi-SPROG 3 programmer/command station
+	MTYP_SPROG3P(2),	//SPROG 3 Plus programmer/command station
+	MTYP_CANSPROG(3),	//CAN SPROG programmer/command station
+	MTYP_SBOOST(4),	//System Booster
+	MTYP_PiSPRGP(5),	//Pi-SPROG 3 Plus programmer/command station
+	MTYP_ISB(6);	//CAN ISB Isolated CAN USB Interface
 
 	private final int v;
 
-	private CbusParamOffsetsPic(int v) {
+	private CbusSprogModuleTypes(int v) {
 		this.v = v;
 	}
 

@@ -6,7 +6,7 @@
 ; 		Originally derived from opcodes.h (c) Andrew Crosland.
 ; 		CSV version by Ian Hogg inspired by David W Radcliffe
 ; 		
-; 		Ver 8t
+; 		Ver 8v (WIP: not yet released)
 ; 		
 ; 		  This work is licensed under the:
 ; 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -22,7 +22,7 @@
 ; 		    The licensor cannot revoke these freedoms as long as you follow the license terms.
 ; 		
 ; 		    Attribution : You must give appropriate credit, provide a link to the license,
-; 		                   and indicate if changes were made. You may do so in any reasonable manner
+; 		                   and indicate if changes were made. You may do so in any reasonable manner,
 ; 		                   but not in any way that suggests the licensor endorses you or your use.
 ; 		
 ; 		    NonCommercial : You may not use the material for commercial purposes. **(see note below)
@@ -78,19 +78,32 @@
 ; 		                       Updated descriptive comments for some module types
 ; 		                       Updated CABDAT opcode to match RFC0004
 ; 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
-; 		Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-; 		Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+; 		Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
+; 		                              Added SPROG manufacturer code 44 and new SPROG CBUS module types
+; 		                              Additional error code for overload - now removed as not required after all
+; 		                              New bus type USB for modules with only USB and no CAN
+; 		Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+; 		                              Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
 ; 		
+; 		Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+; 		Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+; 		Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+; 		Pete Brownlow,26/07/22,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+; 		  							Add requested module type ids 75 to 78
+; 		                              
+; 
 ; CBUS Manufacturer definitions
 ; Where the manufacturer already has an NMRA code, this is used
 ; 
-MANU_MERG	equ .165	; http://www.merg.co.uk
+MANU_DEV	equ .13	; For new manufacturer development - who don't have a manufacturer id yet
+MANU_MERG	equ .165	; https://www.merg.co.uk
+MANU_SPROG	equ .44	; https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL	equ .70	; http://www.rocrail.net
 MANU_SPECTRUM	equ .80	; http://animatedmodeler.com  (Spectrum Engineering)
 ; 
 ; MODULE TYPES
 ; 
-; Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+; Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 ; 
 ; MERG Module types
 ; 
@@ -156,18 +169,41 @@ MTYP_CANPiNODE	equ .58	; CBUS module based on Raspberry Pi
 MTYP_CANDISP	equ .59	; 25K80 version of CANLED64 (IHart and MB)
 MTYP_CANCOMPUTE	equ .60	; Compute Event processing engine
 MTYP_CANRC522	equ .61	; Read/Write from/to RC522 RFID tags
-MTYP_CANINP	equ .62	; 8 inputs module (2g version of CANACE8c)
-MTYP_CANOUT	equ .63	; 8 outputs module (2g version of CANACC8)
-MTYP_CANEMIO	equ .64	; Extended CANMIO (24 I/O ports)
+MTYP_CANINP	equ .62	; 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
+MTYP_CANOUT	equ .63	; 8 outputs module (2g version of CANACC8) (Pete Brownlow)
+MTYP_CANEMIO	equ .64	; Extended CANMIO (24 I/O ports) (Pete Brownlow)
 MTYP_CANCABDC	equ .65	; DC cab
 MTYP_CANRCOM	equ .66	; DC Railcom detector/reader
+MTYP_CANMP3	equ .67	; MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
+MTYP_CANXMAS	equ .68	; Addressed RGB LED driver (Duncan Greenwood)
+MTYP_CANSVOSET	equ .69	; Servo setting box (Duncan Greenwood)
+MTYP_CANCMDDC	equ .70	; DC Command station
+MTYP_CANTEXT	equ .71	; Text message display
+MTYP_CANASIGNAL	equ .72	; Signal controller
+MTYP_CANSLIDER	equ .73	; DCC cab with slider control (Dave Radcliffe)
+MTYP_CANDCATC	equ .74	; DC ATC module (Dave Harris)
+MTYP_CANGATE	equ .75	; Logic module using and/or gates (Phil Silver)
+MTYP_CANSINP	equ .76	; Q series PIC input module (Ian Hart)
+MTYP_CANSOUT	equ .77	; Q series PIC input module (Ian Hart)
+MTYP_CANSBIP	equ .78	; Q series PIC input module (Ian Hart)
 ; 
-; At the time of writing the list of defined MERG module types is maintained by Roger Healey
-; Please liaise with Roger before adding new module types
+; 
+; At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+; Please liaise with Pete before adding new module types, 
+; and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 ; 
 MTYP_CAN_SW	equ 0xFF	; Software nodes
 MTYP_EMPTY	equ 0xFE	; Empty module, bootloader only
 MTYP_CANUSB	equ 0xFD	; USB interface
+; 
+; Sprog Module types
+; 
+MTYP_PiSPRG3	equ .1	; Pi-SPROG 3 programmer/command station
+MTYP_SPROG3P	equ .2	; SPROG 3 Plus programmer/command station
+MTYP_CANSPROG	equ .3	; CAN SPROG programmer/command station
+MTYP_SBOOST	equ .4	; System Booster
+MTYP_PiSPRGP	equ .5	; Pi-SPROG 3 Plus programmer/command station
+MTYP_ISB	equ .6	; CAN ISB Isolated CAN USB Interface
 ; 
 ; Rocrail Module types
 ; 
@@ -437,7 +473,7 @@ PAR_CPUID	equ .9	; Processor type
 PAR_BUSTYPE	equ .10	; Bus type
 PAR_LOAD	equ .11	; load address, 4 bytes
 PAR_CPUMID	equ .15	; CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
-PAR_CPUMAN	equ .19	;  CPU manufacturer code
+PAR_CPUMAN	equ .19	; CPU manufacturer code
 PAR_BETA	equ .20	; Beta revision (numeric), or 0 if release
 ; 
 ; Offsets to other values stored at the top of the parameter block.
@@ -450,11 +486,11 @@ PAR_CKSUM	equ 0x1E	; Checksum word at end of parameters
 ; 
 ; Flags in PAR_FLAGS
 ; 
-PF_NOEVENTS	equ .0	; Modules doesn't support events
+PF_NOEVENTS	equ .0	; Module doesn't support events
 PF_CONSUMER	equ .1	; Module is a consumer of events
 PF_PRODUCER	equ .2	; Module is a producer of events
 PF_COMBI	equ .3	; Module is both a consumer and producer of events
-PF_FLiM	equ .4	; Module is in FLiM mode
+PF_FLiM	equ .4	; Module is in FLiM
 PF_BOOT	equ .8	; Module supports the FCU bootloader protocol
 PF_COE	equ .16	; Module can consume its own events
 PF_LRN	equ .32	; Module is in learn mode
@@ -464,6 +500,7 @@ PF_LRN	equ .32	; Module is in learn mode
 PB_CAN	equ .1	; 
 PB_ETH	equ .2	; 
 PB_MIWI	equ .3	; 
+PB_USB	equ .4	; 
 ; 
 ; Processor manufacturer codes
 ; 
@@ -471,7 +508,7 @@ CPUM_MICROCHIP	equ .1	;
 CPUM_ATMEL	equ .2	; 
 CPUM_ARM	equ .3	; 
 ; 
-; Microchip Processor type codes (identifies to FCU for bootload compatiblity)
+; Microchip Processor type codes (identifies to FCU for bootload compatibility)
 ; 
 P18F2480	equ .1	; 
 P18F4480	equ .2	; 
@@ -492,11 +529,12 @@ P18F26K80	equ .15	;
 P18F46K80	equ .16	; 
 P18F65K80	equ .17	; 
 P18F66K80	equ .18	; 
-P18F14K22	equ .19	; 
+P18F25K83	equ .19	; 
 P18F26K83	equ .20	; 
 P18F27Q84	equ .21	; 
 P18F47Q84	equ .22	; 
 P18F27Q83	equ .23	; 
+P18F14K22	equ .25	; 
 ; 
 P32MX534F064	equ .30	; 
 P32MX564F064	equ .31	; 
@@ -508,7 +546,7 @@ P32MX775F256	equ .36	;
 P32MX775F512	equ .37	; 
 P32MX795F512	equ .38	; 
 ; 
-; ARM Processor type codes (identifies to FCU for bootload compatiblity)
+; ARM Processor type codes (identifies to FCU for bootload compatibility)
 ; 
 ARM1176JZF_S	equ .1	; As used in Raspberry Pi
 ARMCortex_A7	equ .2	; As Used in Raspberry Pi 2

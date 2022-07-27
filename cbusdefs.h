@@ -13,7 +13,7 @@ extern "C" {
 // 		Originally derived from opcodes.h (c) Andrew Crosland.
 // 		CSV version by Ian Hogg inspired by David W Radcliffe
 // 		
-// 		Ver 8t
+// 		Ver 8v (WIP: not yet released)
 // 		
 // 		  This work is licensed under the:
 // 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -29,7 +29,7 @@ extern "C" {
 // 		    The licensor cannot revoke these freedoms as long as you follow the license terms.
 // 		
 // 		    Attribution : You must give appropriate credit, provide a link to the license,
-// 		                   and indicate if changes were made. You may do so in any reasonable manner
+// 		                   and indicate if changes were made. You may do so in any reasonable manner,
 // 		                   but not in any way that suggests the licensor endorses you or your use.
 // 		
 // 		    NonCommercial : You may not use the material for commercial purposes. **(see note below)
@@ -85,19 +85,32 @@ extern "C" {
 // 		                       Updated descriptive comments for some module types
 // 		                       Updated CABDAT opcode to match RFC0004
 // 		Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
-// 		Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-// 		Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+// 		Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
+// 		                              Added SPROG manufacturer code 44 and new SPROG CBUS module types
+// 		                              Additional error code for overload - now removed as not required after all
+// 		                              New bus type USB for modules with only USB and no CAN
+// 		Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+// 		                              Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
 // 		
+// 		Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+// 		Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+// 		Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+// 		Pete Brownlow,26/07/22,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+// 		  							Add requested module type ids 75 to 78
+// 		                              
+// 
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
 // 
-#define MANU_MERG	165	// http://www.merg.co.uk
+#define MANU_DEV	13	// For new manufacturer development - who don't have a manufacturer id yet
+#define MANU_MERG	165	// https://www.merg.co.uk
+#define MANU_SPROG	44	// https://www.sprog-dcc.co.uk/
 #define MANU_ROCRAIL	70	// http://www.rocrail.net
 #define MANU_SPECTRUM	80	// http://animatedmodeler.com  (Spectrum Engineering)
 // 
 // MODULE TYPES
 // 
-// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
 // 
 // MERG Module types
 // 
@@ -163,18 +176,41 @@ extern "C" {
 #define MTYP_CANDISP	59	// 25K80 version of CANLED64 (IHart and MB)
 #define MTYP_CANCOMPUTE	60	// Compute Event processing engine
 #define MTYP_CANRC522	61	// Read/Write from/to RC522 RFID tags
-#define MTYP_CANINP	62	// 8 inputs module (2g version of CANACE8c)
-#define MTYP_CANOUT	63	// 8 outputs module (2g version of CANACC8)
-#define MTYP_CANEMIO	64	// Extended CANMIO (24 I/O ports)
+#define MTYP_CANINP	62	// 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
+#define MTYP_CANOUT	63	// 8 outputs module (2g version of CANACC8) (Pete Brownlow)
+#define MTYP_CANEMIO	64	// Extended CANMIO (24 I/O ports) (Pete Brownlow)
 #define MTYP_CANCABDC	65	// DC cab
 #define MTYP_CANRCOM	66	// DC Railcom detector/reader
+#define MTYP_CANMP3	67	// MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
+#define MTYP_CANXMAS	68	// Addressed RGB LED driver (Duncan Greenwood)
+#define MTYP_CANSVOSET	69	// Servo setting box (Duncan Greenwood)
+#define MTYP_CANCMDDC	70	// DC Command station
+#define MTYP_CANTEXT	71	// Text message display
+#define MTYP_CANASIGNAL	72	// Signal controller
+#define MTYP_CANSLIDER	73	// DCC cab with slider control (Dave Radcliffe)
+#define MTYP_CANDCATC	74	// DC ATC module (Dave Harris)
+#define MTYP_CANGATE	75	// Logic module using and/or gates (Phil Silver)
+#define MTYP_CANSINP	76	// Q series PIC input module (Ian Hart)
+#define MTYP_CANSOUT	77	// Q series PIC input module (Ian Hart)
+#define MTYP_CANSBIP	78	// Q series PIC input module (Ian Hart)
 // 
-// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-// Please liaise with Roger before adding new module types
+// 
+// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+// Please liaise with Pete before adding new module types, 
+// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
 // 
 #define MTYP_CAN_SW	0xFF	// Software nodes
 #define MTYP_EMPTY	0xFE	// Empty module, bootloader only
 #define MTYP_CANUSB	0xFD	// USB interface
+// 
+// Sprog Module types
+// 
+#define MTYP_PiSPRG3	1	// Pi-SPROG 3 programmer/command station
+#define MTYP_SPROG3P	2	// SPROG 3 Plus programmer/command station
+#define MTYP_CANSPROG	3	// CAN SPROG programmer/command station
+#define MTYP_SBOOST	4	// System Booster
+#define MTYP_PiSPRGP	5	// Pi-SPROG 3 Plus programmer/command station
+#define MTYP_ISB	6	// CAN ISB Isolated CAN USB Interface
 // 
 // Rocrail Module types
 // 
@@ -444,7 +480,7 @@ extern "C" {
 #define PAR_BUSTYPE	10	// Bus type
 #define PAR_LOAD	11	// load address, 4 bytes
 #define PAR_CPUMID	15	// CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
-#define PAR_CPUMAN	19	//  CPU manufacturer code
+#define PAR_CPUMAN	19	// CPU manufacturer code
 #define PAR_BETA	20	// Beta revision (numeric), or 0 if release
 // 
 // Offsets to other values stored at the top of the parameter block.
@@ -457,11 +493,11 @@ extern "C" {
 // 
 // Flags in PAR_FLAGS
 // 
-#define PF_NOEVENTS	0	// Modules doesn't support events
+#define PF_NOEVENTS	0	// Module doesn't support events
 #define PF_CONSUMER	1	// Module is a consumer of events
 #define PF_PRODUCER	2	// Module is a producer of events
 #define PF_COMBI	3	// Module is both a consumer and producer of events
-#define PF_FLiM	4	// Module is in FLiM mode
+#define PF_FLiM	4	// Module is in FLiM
 #define PF_BOOT	8	// Module supports the FCU bootloader protocol
 #define PF_COE	16	// Module can consume its own events
 #define PF_LRN	32	// Module is in learn mode
@@ -471,6 +507,7 @@ extern "C" {
 #define PB_CAN	1	// 
 #define PB_ETH	2	// 
 #define PB_MIWI	3	// 
+#define PB_USB	4	// 
 // 
 // Processor manufacturer codes
 // 
@@ -478,7 +515,7 @@ extern "C" {
 #define CPUM_ATMEL	2	// 
 #define CPUM_ARM	3	// 
 // 
-// Microchip Processor type codes (identifies to FCU for bootload compatiblity)
+// Microchip Processor type codes (identifies to FCU for bootload compatibility)
 // 
 #define P18F2480	1	// 
 #define P18F4480	2	// 
@@ -499,11 +536,12 @@ extern "C" {
 #define P18F46K80	16	// 
 #define P18F65K80	17	// 
 #define P18F66K80	18	// 
-#define P18F14K22	19	// 
+#define P18F25K83	19	// 
 #define P18F26K83	20	// 
 #define P18F27Q84	21	// 
 #define P18F47Q84	22	// 
 #define P18F27Q83	23	// 
+#define P18F14K22	25	// 
 // 
 #define P32MX534F064	30	// 
 #define P32MX564F064	31	// 
@@ -515,7 +553,7 @@ extern "C" {
 #define P32MX775F512	37	// 
 #define P32MX795F512	38	// 
 // 
-// ARM Processor type codes (identifies to FCU for bootload compatiblity)
+// ARM Processor type codes (identifies to FCU for bootload compatibility)
 // 
 #define ARM1176JZF_S	1	// As used in Raspberry Pi
 #define ARMCortex_A7	2	// As Used in Raspberry Pi 2
