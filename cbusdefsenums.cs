@@ -88,12 +88,13 @@ namespace Merg.Cbus
     //                               New bus type USB for modules with only USB and no CAN
     // Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
     //                               Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
-    // 
-    // Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-    // Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+    // Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+    // Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPORG modules types (PR#13)
+    // Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
     // Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
-    // Pete Brownlow,26/07/22,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+    // Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
     //   							Add requested module type ids 75 to 78
+    //                               Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
     //                               
 
 	/// <summary>
@@ -1252,10 +1253,6 @@ namespace Merg.Cbus
 		/// </summary>
 		Stat = 0xE3,
 		/// <summary>
-		/// CBUS long message packet
-		/// </summary>
-		Dtxc = 0xE9,
-		/// <summary>
 		/// Node parameters response
 		/// </summary>
 		Params = 0xEF,
@@ -1323,6 +1320,14 @@ namespace Merg.Cbus
 		/// Extended opcode with 6 data byes
 		/// </summary>
 		Extc6 = 0xFF,
+		/// <summary>
+		/// Verify CV service mode - used for CV read hints
+		/// </summary>
+		Vcvs = 0xA4,
+		/// <summary>
+		/// CBUS long message packet
+		/// </summary>
+		Dtxc = 0xE9,
 	}
 
 	/// <summary>
@@ -1554,11 +1559,11 @@ namespace Merg.Cbus
 		/// <summary>
 		/// Pi-SPROG 3 programmer/command station
 		/// </summary>
-		Pisprg3 = 1,
+		Canpisprg3 = 1,
 		/// <summary>
 		/// SPROG 3 Plus programmer/command station
 		/// </summary>
-		Sprog3p = 2,
+		Cansprog3p = 2,
 		/// <summary>
 		/// CAN SPROG programmer/command station
 		/// </summary>
@@ -1566,15 +1571,27 @@ namespace Merg.Cbus
 		/// <summary>
 		/// System Booster
 		/// </summary>
-		Sboost = 4,
+		Cansboost = 4,
 		/// <summary>
 		/// Pi-SPROG 3 Plus programmer/command station
 		/// </summary>
-		Pisprgp = 5,
+		Canpisprgp = 5,
 		/// <summary>
 		/// CAN ISB Isolated CAN USB Interface
 		/// </summary>
-		Isb = 6,
+		Canisb = 6,
+		/// <summary>
+		/// 8-channel I/O module
+		/// </summary>
+		Canio = 7,
+		/// <summary>
+		/// 8-channel Servo I/O module
+		/// </summary>
+		Canservoio = 8,
+		/// <summary>
+		/// 8-channel (4-pairs) Solenoid I/O module
+		/// </summary>
+		Cansolio = 9,
 	}
 
 	/// <summary>

@@ -87,24 +87,28 @@ package uk.org.merg.cbus;
 //                               New bus type USB for modules with only USB and no CAN
 // Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
 //                               Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
-// 
-// Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-// Duncan Greenwood,07/10/21,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+// Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+// Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPORG modules types (PR#13)
+// Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
 // Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
-// Pete Brownlow,26/07/22,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+// Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
 //   							Add requested module type ids 75 to 78
+//                               Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
 //                               
 
 public enum CbusSprogModuleTypes {
 // 
 // Sprog Module types
 // 
-	MTYP_PiSPRG3(1),	//Pi-SPROG 3 programmer/command station
-	MTYP_SPROG3P(2),	//SPROG 3 Plus programmer/command station
+	MTYP_CANPiSPRG3(1),	//Pi-SPROG 3 programmer/command station
+	MTYP_CANSPROG3P(2),	//SPROG 3 Plus programmer/command station
 	MTYP_CANSPROG(3),	//CAN SPROG programmer/command station
-	MTYP_SBOOST(4),	//System Booster
-	MTYP_PiSPRGP(5),	//Pi-SPROG 3 Plus programmer/command station
-	MTYP_ISB(6);	//CAN ISB Isolated CAN USB Interface
+	MTYP_CANSBOOST(4),	//System Booster
+	MTYP_CANPiSPRGP(5),	//Pi-SPROG 3 Plus programmer/command station
+	MTYP_CANISB(6),	//CAN ISB Isolated CAN USB Interface
+	MTYP_CANIO(7),	//8-channel I/O module
+	MTYP_CANSERVOIO(8),	//8-channel Servo I/O module
+	MTYP_CANSOLIO(9);	//8-channel (4-pairs) Solenoid I/O module
 
 	private final int v;
 
