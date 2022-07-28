@@ -448,6 +448,11 @@ extern "C" {
 #define CMDERR_INV_EV_VALUE	11	// 
 #define CMDERR_INV_NV_VALUE	12	// 
 // 
+// Additional error codes proposed and/or agreed but not yet in the current published specification
+// 
+#define CMDERR_LRN_OTHER	13	// Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+// 
+// 
 // Sub opcodes for OPC_CABDAT
 // 
 #define CDAT_CABSIG	1	// 

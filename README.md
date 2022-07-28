@@ -21,3 +21,5 @@ Users of the repo can pull a new copy and access the language specific files dir
 
 A zip of the new generated files can also be uploaded onto the MERG Knowledgebase/Wiki for those who do not use GitHub.
 
+For WIP working towards a new version, a branch can be created for that development and changes applied there.  This means that master will always reflect the latest released version.
+

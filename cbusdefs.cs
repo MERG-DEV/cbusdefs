@@ -173,6 +173,11 @@ namespace merg.cbus
 			public const int CMDERR_INV_NV_IDX	=  10;	// 
 			public const int CMDERR_INV_EV_VALUE	=  11;	// 
 			public const int CMDERR_INV_NV_VALUE	=  12;	// 
+			// 
+			// Additional error codes proposed and/or agreed but not yet in the current published specification
+			// 
+			public const int CMDERR_LRN_OTHER	=  13;	// Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+			// 
 		}
 
 		public static class CbusErrs

@@ -249,6 +249,10 @@ namespace Merg.Cbus
 		/// 
 		/// </summary>
 		InvNvValue = 12,
+		/// <summary>
+		/// Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+		/// </summary>
+		LrnOther = 13,
 	}
 
 	/// <summary>

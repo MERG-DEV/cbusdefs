@@ -111,7 +111,12 @@ public enum CbusCmdErrs {
 	CMDERR_INV_PARAM_IDX(9),	//
 	CMDERR_INV_NV_IDX(10),	//
 	CMDERR_INV_EV_VALUE(11),	//
-	CMDERR_INV_NV_VALUE(12);	//
+	CMDERR_INV_NV_VALUE(12),	//
+// 
+// Additional error codes proposed and/or agreed but not yet in the current published specification
+// 
+	CMDERR_LRN_OTHER(13);	//Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+// 
 
 	private final int v;
 

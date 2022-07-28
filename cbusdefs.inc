@@ -441,6 +441,11 @@ CMDERR_INV_NV_IDX	equ .10	;
 CMDERR_INV_EV_VALUE	equ .11	; 
 CMDERR_INV_NV_VALUE	equ .12	; 
 ; 
+; Additional error codes proposed and/or agreed but not yet in the current published specification
+; 
+CMDERR_LRN_OTHER	equ .13	; Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+; 
+; 
 ; Sub opcodes for OPC_CABDAT
 ; 
 CDAT_CABSIG	equ .1	; 

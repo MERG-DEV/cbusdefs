@@ -444,6 +444,11 @@ CMDERR_INV_NV_IDX = const(10)    #
 CMDERR_INV_EV_VALUE = const(11)    # 
 CMDERR_INV_NV_VALUE = const(12)    # 
 # 
+# Additional error codes proposed and/or agreed but not yet in the current published specification
+# 
+CMDERR_LRN_OTHER = const(13)    # Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+# 
+# 
 # Sub opcodes for OPC_CABDAT
 # 
 CDAT_CABSIG = const(1)    # 
