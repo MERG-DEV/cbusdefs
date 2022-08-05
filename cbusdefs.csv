@@ -88,6 +88,7 @@ comment,,,Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigA
 comment,,,Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
 comment,,,  							Add requested module type ids 75 to 78
 comment,,,                              Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
+comment,,,Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
 comment,,,                              
 
 CbusManufacturer,,,CBUS Manufacturer definitions
@@ -184,6 +185,8 @@ CbusMergModuleTypes,MTYP_CANGATE,75,Logic module using and/or gates (Phil Silver
 CbusMergModuleTypes,MTYP_CANSINP,76,Q series PIC input module (Ian Hart)
 CbusMergModuleTypes,MTYP_CANSOUT,77,Q series PIC input module (Ian Hart)
 CbusMergModuleTypes,MTYP_CANSBIP,78,Q series PIC input module (Ian Hart)
+CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver)
+
 
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
