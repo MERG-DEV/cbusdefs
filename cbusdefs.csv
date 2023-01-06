@@ -1,9 +1,9 @@
 comment,,,
-comment,,,Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
+comment,,,Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
 comment,,,Originally derived from opcodes.h (c) Andrew Crosland.
 comment,,,CSV version by Ian Hogg inspired by David W Radcliffe
 comment,,,
-comment,,,Ver 8w (WIP: not yet released)
+comment,,,Ver 8w 
 comment,,,
 comment,,,  This work is licensed under the:
 comment,,,      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -89,7 +89,7 @@ comment,,,Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch
 comment,,,  							Add requested module type ids 75 to 78
 comment,,,                              Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
 comment,,,Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
-comment,,,                              
+comment,,,Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -99,6 +99,9 @@ CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
 CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
 CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
 CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering)
+CbusManufacturer,MANU_SYSPIXIE,249,Konrad Orlowski
+CbusManufacturer,MANU_RME,248,http://rmeuk.com  (Railway Modelling Experts Limited)
+
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,MODULE TYPES
 CbusMergModuleTypes,,,
@@ -225,6 +228,12 @@ CbusSpectrumModuleTypes,,,Spectrum Engineering Animated Modeller module types
 CbusSpectrumModuleTypes,,,
 CbusSpectrumModuleTypes,MTYP_AMCTRLR,1,Animation controller (firmware derived from cancmd)
 CbusSpectrumModuleTypes,MTYP_DUALCAB,2,Dual cab based on cancab
+
+CbusSysPixieModuleTypes,,,
+CbusSysPixieModuleTypes,,,SysPixie Module types (Konrad Orlowski)
+CbusSysPixieModuleTypes,,,
+CbusSysPixieModuleTypes,MTYP_CANPMSense,1,Motorised point motor driver with current sense
+
 CbusOpCodes,,,
 CbusOpCodes,,,
 CbusOpCodes,,,CBUS opcodes list

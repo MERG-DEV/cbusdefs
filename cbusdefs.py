@@ -5,11 +5,11 @@
 from micropython import const
 
 #         
-#         Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
+#         Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
 #         Originally derived from opcodes.h (c) Andrew Crosland.
 #         CSV version by Ian Hogg inspired by David W Radcliffe
 #         
-#         Ver 8v (WIP: not yet released)
+#         Ver 8w 
 #         
 #           This work is licensed under the:
 #               Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -88,13 +88,14 @@ from micropython import const
 #         Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
 #                                       Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
 #         Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-#         Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPORG modules types (PR#13)
-#         Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
+#         Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPROG modules types (PR#13)
+#         Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages - RFC 0005
 #         Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
 #         Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
 #           							Add requested module type ids 75 to 78
 #                                       Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
-#                                       
+#         Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
+#         Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 # 
 # CBUS Manufacturer definitions
 # Where the manufacturer already has an NMRA code, this is used
@@ -104,6 +105,9 @@ MANU_MERG = const(165)    # https://www.merg.co.uk
 MANU_SPROG = const(44)    # https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL = const(70)    # http://www.rocrail.net
 MANU_SPECTRUM = const(80)    # http://animatedmodeler.com  (Spectrum Engineering)
+MANU_SYSPIXIE = const(249)    # Konrad Orlowski
+MANU_RME = const(248)    # http://rmeuk.com  (Railway Modelling Experts Limited)
+# 
 # 
 # MODULE TYPES
 # 
@@ -190,6 +194,8 @@ MTYP_CANGATE = const(75)    # Logic module using and/or gates (Phil Silver)
 MTYP_CANSINP = const(76)    # Q series PIC input module (Ian Hart)
 MTYP_CANSOUT = const(77)    # Q series PIC input module (Ian Hart)
 MTYP_CANSBIP = const(78)    # Q series PIC input module (Ian Hart)
+MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
+# 
 # 
 # 
 # At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
@@ -228,6 +234,12 @@ MTYP_CANGC1e = const(11)    # CAN<->Ethernet interface
 # 
 MTYP_AMCTRLR = const(1)    # Animation controller (firmware derived from cancmd)
 MTYP_DUALCAB = const(2)    # Dual cab based on cancab
+# 
+# 
+# SysPixie Module types (Konrad Orlowski)
+# 
+MTYP_CANPMSense = const(1)    # Motorised point motor driver with current sense
+# 
 # 
 # 
 # CBUS opcodes list
