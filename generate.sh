@@ -231,5 +231,18 @@ done < cbusdefs.csv >>$OUTPUT
 # finally output the trailer stuff
 # there is none for Python
 
+############################
+# cbusdefs.m4
+############################
+OUTPUT=cbusdefs.m4
+echo "Generating $OUTPUT"
+
+while IFS="," read type	name value comment
+do
+	if [ "$type" != "comment" -a -n "$name" ]; then
+		echo -e "define($name, $value)dnl"
+	fi
+done < cbusdefs.csv >>$OUTPUT
+
 echo "Finished"
 exit 0
