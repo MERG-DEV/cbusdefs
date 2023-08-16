@@ -96,6 +96,7 @@ from micropython import const
 #                                       Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
 #         Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
 #         Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
+#         Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 # 
 # CBUS Manufacturer definitions
 # Where the manufacturer already has an NMRA code, this is used
@@ -105,6 +106,7 @@ MANU_MERG = const(165)    # https://www.merg.co.uk
 MANU_SPROG = const(44)    # https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL = const(70)    # http://www.rocrail.net
 MANU_SPECTRUM = const(80)    # http://animatedmodeler.com  (Spectrum Engineering)
+MANU_VLCB = const(250)    # VLCB range of modules
 MANU_SYSPIXIE = const(249)    # Konrad Orlowski
 MANU_RME = const(248)    # http://rmeuk.com  (Railway Modelling Experts Limited)
 # 

@@ -97,6 +97,7 @@ namespace Merg.Cbus
     //                               Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
     // Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
     // Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
+    // Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 
 	/// <summary>
 	/// 
@@ -320,6 +321,10 @@ namespace Merg.Cbus
 		/// http://animatedmodeler.com  (Spectrum Engineering)
 		/// </summary>
 		Spectrum = 80,
+		/// <summary>
+		/// VLCB range of modules
+		/// </summary>
+		Vlcb = 250,
 		/// <summary>
 		/// Konrad Orlowski
 		/// </summary>
@@ -1529,33 +1534,6 @@ namespace Merg.Cbus
 	/// <summary>
 	/// 
 	/// </summary>
-	public enum SStats
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		NoAck = 1,
-		/// <summary>
-		/// 
-		/// </summary>
-		Ovld = 2,
-		/// <summary>
-		/// 
-		/// </summary>
-		WrAck = 3,
-		/// <summary>
-		/// 
-		/// </summary>
-		Busy = 4,
-		/// <summary>
-		/// 
-		/// </summary>
-		CvError = 5,
-	}
-
-	/// <summary>
-	/// 
-	/// </summary>
 	public enum SpectrumModuleTypes
 	{
 		/// <summary>
@@ -1609,6 +1587,33 @@ namespace Merg.Cbus
 		/// 8-channel (4-pairs) Solenoid I/O module
 		/// </summary>
 		Cansolio = 9,
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum SStats
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		NoAck = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		Ovld = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		WrAck = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		Busy = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		CvError = 5,
 	}
 
 	/// <summary>

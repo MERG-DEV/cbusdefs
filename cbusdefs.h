@@ -100,6 +100,7 @@ extern "C" {
 // 		                              Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
 // 		Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
 // 		Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
+// 		Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 // 
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
@@ -109,6 +110,7 @@ extern "C" {
 #define MANU_SPROG	44	// https://www.sprog-dcc.co.uk/
 #define MANU_ROCRAIL	70	// http://www.rocrail.net
 #define MANU_SPECTRUM	80	// http://animatedmodeler.com  (Spectrum Engineering)
+#define MANU_VLCB	250	// VLCB range of modules
 #define MANU_SYSPIXIE	249	// Konrad Orlowski
 #define MANU_RME	248	// http://rmeuk.com  (Railway Modelling Experts Limited)
 // 
