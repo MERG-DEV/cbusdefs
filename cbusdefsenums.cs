@@ -98,6 +98,8 @@ namespace Merg.Cbus
     // Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
     // Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
     // Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
+    // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
+    // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 
 	/// <summary>
 	/// 
@@ -660,6 +662,10 @@ namespace Merg.Cbus
 		/// Message buffer (Phil Silver)
 		/// </summary>
 		Canbuffer = 79,
+		/// <summary>
+		/// Lever frame module (Tim Coombs)
+		/// </summary>
+		Canlever = 80,
 		/// <summary>
 		/// Software nodes
 		/// </summary>
@@ -1534,6 +1540,33 @@ namespace Merg.Cbus
 	/// <summary>
 	/// 
 	/// </summary>
+	public enum SStats
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		NoAck = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		Ovld = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		WrAck = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		Busy = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		CvError = 5,
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum SpectrumModuleTypes
 	{
 		/// <summary>
@@ -1572,48 +1605,21 @@ namespace Merg.Cbus
 		/// </summary>
 		Canpisprgp = 5,
 		/// <summary>
-		/// CAN ISB Isolated CAN USB Interface
+		/// 8-channel (4-pairs) Solenoid I/O module
 		/// </summary>
-		Canisb = 6,
-		/// <summary>
-		/// 8-channel I/O module
-		/// </summary>
-		Canio = 7,
+		Cansolnoid  = 8,
 		/// <summary>
 		/// 8-channel Servo I/O module
 		/// </summary>
-		Canservoio = 8,
+		Canservoio = 50,
+		/// <summary>
+		/// CAN ISB Isolated CAN USB Interface
+		/// </summary>
+		Canisb = 100,
 		/// <summary>
 		/// 8-channel (4-pairs) Solenoid I/O module
 		/// </summary>
-		Cansolio = 9,
-	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	public enum SStats
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		NoAck = 1,
-		/// <summary>
-		/// 
-		/// </summary>
-		Ovld = 2,
-		/// <summary>
-		/// 
-		/// </summary>
-		WrAck = 3,
-		/// <summary>
-		/// 
-		/// </summary>
-		Busy = 4,
-		/// <summary>
-		/// 
-		/// </summary>
-		CvError = 5,
+		Cansolio  = 101,
 	}
 
 	/// <summary>

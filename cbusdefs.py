@@ -97,6 +97,8 @@ from micropython import const
 #         Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
 #         Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 #         Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
+#         Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
+#         Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 # 
 # CBUS Manufacturer definitions
 # Where the manufacturer already has an NMRA code, this is used
@@ -197,6 +199,7 @@ MTYP_CANSINP = const(76)    # Q series PIC input module (Ian Hart)
 MTYP_CANSOUT = const(77)    # Q series PIC input module (Ian Hart)
 MTYP_CANSBIP = const(78)    # Q series PIC input module (Ian Hart)
 MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
+MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
 # 
 # 
 # 
@@ -215,10 +218,10 @@ MTYP_CANSPROG3P = const(2)    # SPROG 3 Plus programmer/command station
 MTYP_CANSPROG = const(3)    # CAN SPROG programmer/command station
 MTYP_CANSBOOST = const(4)    # System Booster
 MTYP_CANPiSPRGP = const(5)    # Pi-SPROG 3 Plus programmer/command station
-MTYP_CANISB = const(6)    # CAN ISB Isolated CAN USB Interface
-MTYP_CANIO = const(7)    # 8-channel I/O module
-MTYP_CANSERVOIO = const(8)    # 8-channel Servo I/O module
-MTYP_CANSOLIO = const(9)    # 8-channel (4-pairs) Solenoid I/O module
+MTYP_CANSOLNOID  = const(8)    # 8-channel (4-pairs) Solenoid I/O module
+MTYP_CANSERVOIO = const(50)    # 8-channel Servo I/O module
+MTYP_CANISB = const(100)    # CAN ISB Isolated CAN USB Interface
+MTYP_CANSOLIO  = const(101)    # 8-channel (4-pairs) Solenoid I/O module
 # 
 # 
 # Rocrail Module types

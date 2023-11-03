@@ -97,6 +97,8 @@ package uk.org.merg.cbus;
 // Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
 // Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 // Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
+// Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
+// Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 
 public enum CbusParams {
 // 
