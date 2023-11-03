@@ -1,580 +1,578 @@
-comment,,,,,,,,,,
-comment,,,Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk,,,,,,,
-comment,,,Originally derived from opcodes.h (c) Andrew Crosland.,,,,,,,
-comment,,,CSV version by Ian Hogg inspired by David W Radcliffe,,,,,,,
-comment,,,,,,,,,,
-comment,,,Ver 8w ,,,,,,,
-comment,,,,,,,,,,
-comment,,,  This work is licensed under the:,,,,,,,
-comment,,,      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.,,,,,,,
-comment,,,  To view a copy of this license, visit:,,,,,,
-comment,,,      http://creativecommons.org/licenses/by-nc-sa/4.0/,,,,,,,
-comment,,,  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.,,,
-comment,,,,,,,,,,
-comment,,,  License summary:,,,,,,,
-comment,,,    You are free to:,,,,,,,
-comment,,,      Share, copy and redistribute the material in any medium or format,,,,,,
-comment,,,      Adapt, remix, transform, and build upon the material,,,,
-comment,,,,,,,,,,
-comment,,,    The licensor cannot revoke these freedoms as long as you follow the license terms.,,,,,,,
-comment,,,,,,,,,,
-comment,,,    Attribution : You must give appropriate credit, provide a link to the license,,,,,,
-comment,,,                   and indicate if changes were made. You may do so in any reasonable manner,,,,,,,
-comment,,,                   but not in any way that suggests the licensor endorses you or your use.,,,,,,,
-comment,,,,,,,,,,
-comment,,,    NonCommercial : You may not use the material for commercial purposes. **(see note below),,,,,,,
-comment,,,,,,,,,,
-comment,,,    ShareAlike : If you remix, transform, or build upon the material, you must distribute,,,,
-comment,,,                  your contributions under the same license as the original.,,,,,,,
-comment,,,,,,,,,,
-comment,,,    No additional restrictions : You may not apply legal terms or technological measures that,,,,,,,
-comment,,,                                  legally restrict others from doing anything the license permits.,,,,,,,
-comment,,,,,,,,,,
-comment,,,   ** For commercial use, please contact the original copyright holder(s) to agree licensing terms,,,,,,
-comment,,,,,,,,,,
-comment,,,    This software is distributed in the hope that it will be useful, but WITHOUT ANY,,,,,,
-comment,,,    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE,,,,,,,
-comment,,,,,,,,,,
-comment,,,Version history:,,,,,,,
-comment,,,Pete Brownlow,6/4/11,Original from spec version 7e,,,,,
-comment,,,Roger Healey,6/4/11,Add OPC_CMDERR response codes,,,,,
-comment,,,Pete Brownlow,7/6/11,Updated to spec ver 7f and add new module ids,,,,,
-comment,,,Pete Brownlow,4/7/11,Updated to spec ver 7g,,,,,
-comment,,,Pete Brownlow,14/8/11,Updated to spec ver 7h,,,,,
-comment,,,Pete Brownlow,18/2/12,Updated to spec ver 8a, Rocrail and animated modeller module types added,,,,
-comment,,,Pete Brownlow,10/4/12,Updated to spec ver 8b, extended parameter bytes,,,,
-comment,,,Pete Brownlow,17/4/12,Updated parameter block definitions, added processor type definitions.,,,,
-comment,,,Roger Healey,13/7/12,Add CANTOTI,,,,,
-comment,,,Pete Brownlow,15/9/12,Updated to spec ver 8c, added 0x5D ENUM and 0x75 CANID,,,,
-comment,,,Pete Brownlow,4/1/13,Ver 8d New module types, added 0x5E  NNRST,,,,
-comment,,,Roger Healey,15/2/13,Now at version d. Added new Module Ids (as per ModuleIds Issue 9) and,,,,,
-comment,,,         Align Processor Ids with constants.inc,,,,,,,
-comment,,,         Added .(fullstop) before each processor Id > 9,,,,,,,
-comment,,,         Added OPC_NNRST,,,,,,,
-comment,,,Roger Healey,27/4/13,Added CANSIG8 and CANSIG64,,,,,
-comment,,,Roger Healey,6/8/13,Added CANCOND8C,,,,,
-comment,,,Roger Healey,22/1/14,Added CANPAN, CANACE3C, CANPanel and CANMIO,,,
-comment,,,Pete Brownlow,22/1/14,Ver 8g New module types, OPC_NNRST & OPC_NNRSM, catch up with .inc file,,,
-comment,,,         Added parameter definitions for manufacturer's CPU id,,,,,,,
-comment,,,         Added extern C so can be included by c++ code,,,,,,,
-comment,,,         Fixed CANGC1e type definition,,,,,,,
-comment,,,Phil Wheeler,1/2/14,Corrected some typos. Added PRM_BETA, dotted some more decimal numbers,,,,
-comment,,,Phil Wheeler,9/3/14,Corrected CANSIG MTYP definitions,,,,,
-comment,,,Pete Brownlow,19/4/14,Ver 8h Added module type defs for CANTOTIMIO, CANACE8MIO, CANBIP, CANSOL,,
+comment,,,
+comment,,,Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+comment,,,Originally derived from opcodes.h (c) Andrew Crosland.
+comment,,,CSV version by Ian Hogg inspired by David W Radcliffe
+comment,,,
+comment,,,Ver 8w 
+comment,,,
+comment,,,  This work is licensed under the:
+comment,,,      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+comment,,,  To view a copy of this license, visit:
+comment,,,      http://creativecommons.org/licenses/by-nc-sa/4.0/
+comment,,,  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+comment,,,
+comment,,,  License summary:
+comment,,,    You are free to:
+comment,,,      Share, copy and redistribute the material in any medium or format
+comment,,,      Adapt, remix, transform, and build upon the material
+comment,,,
+comment,,,    The licensor cannot revoke these freedoms as long as you follow the license terms.
+comment,,,
+comment,,,    Attribution : You must give appropriate credit, provide a link to the license,
+comment,,,                   and indicate if changes were made. You may do so in any reasonable manner,
+comment,,,                   but not in any way that suggests the licensor endorses you or your use.
+comment,,,
+comment,,,    NonCommercial : You may not use the material for commercial purposes. **(see note below)
+comment,,,
+comment,,,    ShareAlike : If you remix, transform, or build upon the material, you must distribute
+comment,,,                  your contributions under the same license as the original.
+comment,,,
+comment,,,    No additional restrictions : You may not apply legal terms or technological measures that
+comment,,,                                  legally restrict others from doing anything the license permits.
+comment,,,
+comment,,,   ** For commercial use, please contact the original copyright holder(s) to agree licensing terms
+comment,,,
+comment,,,    This software is distributed in the hope that it will be useful, but WITHOUT ANY
+comment,,,    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
+comment,,,
+comment,,,Version history:
+comment,,,Pete Brownlow,6/4/11,Original from spec version 7e
+comment,,,Roger Healey,6/4/11,Add OPC_CMDERR response codes
+comment,,,Pete Brownlow,7/6/11,Updated to spec ver 7f and add new module ids
+comment,,,Pete Brownlow,4/7/11,Updated to spec ver 7g
+comment,,,Pete Brownlow,14/8/11,Updated to spec ver 7h
+comment,,,Pete Brownlow,18/2/12,Updated to spec ver 8a, Rocrail and animated modeller module types added
+comment,,,Pete Brownlow,10/4/12,Updated to spec ver 8b, extended parameter bytes
+comment,,,Pete Brownlow,17/4/12,Updated parameter block definitions, added processor type definitions.
+comment,,,Roger Healey,13/7/12,Add CANTOTI
+comment,,,Pete Brownlow,15/9/12,Updated to spec ver 8c, added 0x5D ENUM and 0x75 CANID
+comment,,,Pete Brownlow,4/1/13,Ver 8d New module types, added 0x5E  NNRST
+comment,,,Roger Healey,15/2/13,Now at version d. Added new Module Ids (as per ModuleIds Issue 9) and
+comment,,,         Align Processor Ids with constants.inc
+comment,,,         Added .(fullstop) before each processor Id > 9
+comment,,,         Added OPC_NNRST
+comment,,,Roger Healey,27/4/13,Added CANSIG8 and CANSIG64
+comment,,,Roger Healey,6/8/13,Added CANCOND8C
+comment,,,Roger Healey,22/1/14,Added CANPAN, CANACE3C, CANPanel and CANMIO
+comment,,,Pete Brownlow,22/1/14,Ver 8g New module types, OPC_NNRST & OPC_NNRSM, catch up with .inc file
+comment,,,         Added parameter definitions for manufacturer's CPU id
+comment,,,         Added extern C so can be included by c++ code
+comment,,,         Fixed CANGC1e type definition
+comment,,,Phil Wheeler,1/2/14,Corrected some typos. Added PRM_BETA, dotted some more decimal numbers
+comment,,,Phil Wheeler,9/3/14,Corrected CANSIG MTYP definitions
+comment,,,Pete Brownlow,19/4/14,Ver 8h Added module type defs for CANTOTIMIO, CANACE8MIO, CANBIP, CANSOL
 comment,,,Pete Brownlow,06/7/15,Ver 8j Add new module types as per modules definitions v17 : CANCDU, CANACC4CDU, CANWiBase, WiCAB, CANWiFi, CANFTT
-comment,,,         Add new opcode ALOC, added CPU manufacturer code CPUM_ATMEL,,,,,,
-comment,,,Mike Bolton,2/3/16,Ver 8k    Add module type CANRFID8,,,,,
-comment,,,Pete Brownlow,2/7/16,Ver 8m Add new module types CANHNDST, CANTCHNDST, CANmchRFID and CANPiWi,,,
-comment,,,         Add processor codes for ARM chips used in Raspberry Pi's,,,,,,,
-comment,,,Pete Brownlow,16/2/17,Ver 8n Add module ids to bring it up to module ids document ver 25,,,,,
-comment,,,Pete Brownlow,29/7/17,Ver 8p Add new module ids and new cab signalling opcode,,,,,
-comment,,,Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events,,,,,
-comment,,,Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE,,
-comment,,,Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.,,,,,
-comment,,,Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.,,,,,
-comment,,,                       Updated descriptive comments for some module types,,,,,,,
-comment,,,                       Updated CABDAT opcode to match RFC0004,,,,,,,
-comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG,,,,
-comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects,,,,,
-comment,,,                              Added SPROG manufacturer code 44 and new SPROG CBUS module types,,,,,,,
-comment,,,                              Additional error code for overload - now removed as not required after all,,,,,,,
-comment,,,                              New bus type USB for modules with only USB and no CAN,,,,,,,
-comment,,,Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet,,,,,
-comment,,,                              Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.,,,,,,
-comment,,,Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83,,,,,
-comment,,,Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPROG modules types (PR#13),,
-comment,,,Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages - RFC 0005,,,,,
-comment,,,Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0,,,,,
-comment,,,Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,,,,
-comment,,,  Add requested module type ids 75 to 78,,,,,,,
-comment,,,                              Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others,,,,,,
-comment,,,Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER,,,,,
-comment,,,Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense,,,,,
-comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo,,,,,
-comment,,,Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs),,,,,
-,,,,,,,,,,
-CbusManufacturer,,,CBUS Manufacturer definitions,,,,,,,
-CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used,,,,,,
-CbusManufacturer,,,,,,,,,,
-CbusManufacturer,MANU_DEV,13,For new manufacturer development - who don't have a manufacturer id yet,,,,,,,
-CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk,,,,,,,
-CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/,,,,,,,
-CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net,,,,,,,
-CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering),,,,,,,
-CbusManufacturer,MANU_VLCB,250,VLCB range of modules,,,,,,,
-CbusManufacturer,MANU_SYSPIXIE,249,Konrad Orlowski,,,,,,,
-CbusManufacturer,MANU_RME,248,http://rmeuk.com  (Railway Modelling Experts Limited),,,,,,,
-,,,,,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,,,MODULE TYPES,,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,,,Please note that the existence of a module type id does not necessarily mean that firmware has been implemented,,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,,,MERG Module types,,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,MTYP_SLIM,0,default for SLiM nodes,,,,,,,
-CbusMergModuleTypes,MTYP_CANACC4,1,Solenoid point driver,,,,,,,
-CbusMergModuleTypes,MTYP_CANACC5,2,Motorised point driver,,,,,,,
-CbusMergModuleTypes,MTYP_CANACC8,3,8 digital outputs,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE3,4,Control panel switch/button encoder,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE8C,5,8 digital inputs,,,,,,,
-CbusMergModuleTypes,MTYP_CANLED,6,64 led driver,,,,,,,
-CbusMergModuleTypes,MTYP_CANLED64,7,64 led driver (multi leds per event),,,,,,,
-CbusMergModuleTypes,MTYP_CANACC4_2,8,12v version of CANACC4,,,,,,,
-CbusMergModuleTypes,MTYP_CANCAB,9,CANCAB hand throttle,,,,,,,
-CbusMergModuleTypes,MTYP_CANCMD,10,CANCMD command station,,,,,,,
-CbusMergModuleTypes,MTYP_CANSERVO,11,8 servo driver (on canacc8 or similar hardware),,,,,,,
-CbusMergModuleTypes,MTYP_CANBC,12,BC1a command station,,,,,,,
-CbusMergModuleTypes,MTYP_CANRPI,13,RPI and RFID interface,,,,,,,
-CbusMergModuleTypes,MTYP_CANTTCA,14,Turntable controller (turntable end),,,,,,,
-CbusMergModuleTypes,MTYP_CANTTCB,15,Turntable controller (control panel end),,,,,,,
-CbusMergModuleTypes,MTYP_CANHS,16,Handset controller for old BC1a type handsets,,,,,,,
-CbusMergModuleTypes,MTYP_CANTOTI,17,Track occupancy detector,,,,,,,
-CbusMergModuleTypes,MTYP_CAN8I8O,18,8 inputs 8 outputs,,,,,,,
-CbusMergModuleTypes,MTYP_CANSERVO8C,19,Canservo with servo position feedback,,,,,,,
-CbusMergModuleTypes,MTYP_CANRFID,20,RFID input,,,,,,,
-CbusMergModuleTypes,MTYP_CANTC4,21,,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE16C,22,16 inputs,,,,,,,
-CbusMergModuleTypes,MTYP_CANIO8,23,8 way I/O,,,,,,,
-CbusMergModuleTypes,MTYP_CANSNDX,24,??,,,,,,,
-CbusMergModuleTypes,MTYP_CANEther,25,Ethernet interface,,,,,,,
-CbusMergModuleTypes,MTYP_CANSIG64,26,Multiple aspect signalling for CANLED module,,,,,,,
-CbusMergModuleTypes,MTYP_CANSIG8,27,Multiple aspect signalling for CANACC8 module,,,,,,,
-CbusMergModuleTypes,MTYP_CANCOND8C,28,Conditional event generation,,,,,,,
-CbusMergModuleTypes,MTYP_CANPAN,29,Control panel 32/32,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE3C,30,Newer version of CANACE3 firmware,,,,,,,
-CbusMergModuleTypes,MTYP_CANPanel,31,Control panel 64/64,,,,,,,
-CbusMergModuleTypes,MTYP_CANMIO,32,Multiple I/O – Universal CANMIO firmware,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE8MIO,33,Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware,,,,,,,
-CbusMergModuleTypes,MTYP_CANSOL,34,Solenoid driver module,,,,,,,
-CbusMergModuleTypes,MTYP_CANBIP,35,Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins (CANMIO family),,,,,,,
-CbusMergModuleTypes,MTYP_CANCDU,36,Solenoid driver module with additional 6 I/O pins (CANMIO family),,,,,,,
-CbusMergModuleTypes,MTYP_CANACC4CDU,37,CANACC4 firmware ported to CANCDU,,,,,,,
-CbusMergModuleTypes,MTYP_CANWiBase,38,CAN to MiWi base station,,,,,,,
-CbusMergModuleTypes,MTYP_WiCAB,39,Wireless cab using MiWi protocol,,,,,,,
-CbusMergModuleTypes,MTYP_CANWiFi,40,CAN to WiFi connection with Withrottle to CBUS protocol conversion,,,,,,,
-CbusMergModuleTypes,MTYP_CANFTT,41,Turntable controller configured using FLiM,,,,,,,
-CbusMergModuleTypes,MTYP_CANHNDST,42,Handset (alternative to CANCAB),,,,,,,
-CbusMergModuleTypes,MTYP_CANTCHNDST,43,Touchscreen handset,,,,,,,
-CbusMergModuleTypes,MTYP_CANRFID8,44,multi-channel RFID reader,,,,,,,
-CbusMergModuleTypes,MTYP_CANmchRFID,45,either a 2ch or 8ch RFID reader,,,,,,,
-CbusMergModuleTypes,MTYP_CANPiWi,46,a Raspberry Pi based module for WiFi,,,,,,,
-CbusMergModuleTypes,MTYP_CAN4DC,47,DC train controller,,,,,,,
-CbusMergModuleTypes,MTYP_CANELEV,48,Nelevator controller,,,,,,,
-CbusMergModuleTypes,MTYP_CANSCAN,49,128 switch inputs,,,,,,,
-CbusMergModuleTypes,MTYP_CANMIO_SVO,50,16MHz 25k80 version of CANSERVO8c on CANMIO hardware,,,,,,,
-CbusMergModuleTypes,MTYP_CANMIO_INP,51,16MHz 25k80 version of CANACE8MIO on CANMIO hardware,,,,,,,
-CbusMergModuleTypes,MTYP_CANMIO_OUT,52,16MHz 25k80 version of CANACC8 on CANMIO hardware,,,,,,,
-CbusMergModuleTypes,MTYP_CANBIP_OUT,53,16MHz 25k80 version of CANACC5 on CANBIP hardware,,,,,,,
-CbusMergModuleTypes,MTYP_CANASTOP,54,DCC stop generator,,,,,,,
-CbusMergModuleTypes,MTYP_CANCSB,55,CANCMD with on board 3A booster,,,,,,,
-CbusMergModuleTypes,MTYP_CANMAG,56,Magnet on Track detector,,,,,,,
-CbusMergModuleTypes,MTYP_CANACE16CMIO,57,16 input equivaent to CANACE8C,,,,,,,
-CbusMergModuleTypes,MTYP_CANPiNODE,58,CBUS module based on Raspberry Pi,,,,,,,
-CbusMergModuleTypes,MTYP_CANDISP,59,25K80 version of CANLED64 (IHart and MB),,,,,,,
-CbusMergModuleTypes,MTYP_CANCOMPUTE,60,Compute Event processing engine,,,,,,,
-CbusMergModuleTypes,MTYP_CANRC522,61,Read/Write from/to RC522 RFID tags,,,,,,,
-CbusMergModuleTypes,MTYP_CANINP,62,8 inputs module (2g version of CANACE8c) (Pete Brownlow),,,,,,,
-CbusMergModuleTypes,MTYP_CANOUT,63,8 outputs module (2g version of CANACC8) (Pete Brownlow),,,,,,,
-CbusMergModuleTypes,MTYP_CANEMIO,64,Extended CANMIO (24 I/O ports) (Pete Brownlow),,,,,,,
-CbusMergModuleTypes,MTYP_CANCABDC,65,DC cab,,,,,,,
-CbusMergModuleTypes,MTYP_CANRCOM,66,DC Railcom detector/reader,,,,,,,
-CbusMergModuleTypes,MTYP_CANMP3,67,MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood),,,,,,,
-CbusMergModuleTypes,MTYP_CANXMAS,68,Addressed RGB LED driver (Duncan Greenwood),,,,,,,
-CbusMergModuleTypes,MTYP_CANSVOSET,69,Servo setting box (Duncan Greenwood),,,,,,,
-CbusMergModuleTypes,MTYP_CANCMDDC,70,DC Command station,,,,,,,
-CbusMergModuleTypes,MTYP_CANTEXT,71,Text message display,,,,,,,
-CbusMergModuleTypes,MTYP_CANASIGNAL,72,Signal controller,,,,,,,
-CbusMergModuleTypes,MTYP_CANSLIDER,73,DCC cab with slider control (Dave Radcliffe),,,,,,,
-CbusMergModuleTypes,MTYP_CANDCATC,74,DC ATC module (Dave Harris),,,,,,,
-CbusMergModuleTypes,MTYP_CANGATE,75,Logic module using and/or gates (Phil Silver),,,,,,,
-CbusMergModuleTypes,MTYP_CANSINP,76,Q series PIC input module (Ian Hart),,,,,,,
-CbusMergModuleTypes,MTYP_CANSOUT,77,Q series PIC input module (Ian Hart),,,,,,,
-CbusMergModuleTypes,MTYP_CANSBIP,78,Q series PIC input module (Ian Hart),,,,,,,
-CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver),,,,,,,
-CbusMergModuleTypes,MTYP_CANLEVER,80,Lever frame module (Tim Coombs) ,,,,,,,
-,,,,,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk,,,,,,,
-CbusMergModuleTypes,,,Please liaise with Pete before adding new module types, ,,,,,,
-CbusMergModuleTypes,,,and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request,,,,,,
-CbusMergModuleTypes,,,,,,,,,,
-CbusMergModuleTypes,MTYP_CAN_SW,0xFF,Software nodes,,,,,,,
-CbusMergModuleTypes,MTYP_EMPTY,0xFE,Empty module, bootloader only,,,,,,
-CbusMergModuleTypes,MTYP_CANUSB,0xFD,USB interface,,,,,,,
-,,,,,,,,,,
-CbusSprogModuleTypes,,,,,,,,,,
-CbusSprogModuleTypes,,,Sprog Module types,,,,,,,
-CbusSprogModuleTypes,,,,,,,,,,
-CbusSprogModuleTypes,MTYP_CANPiSPRG3,1,Pi-SPROG 3 programmer/command station,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSPROG3P,2,SPROG 3 Plus programmer/command station,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSPROG,3,CAN SPROG programmer/command station,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSBOOST,4,System Booster,,,,,,,
-CbusSprogModuleTypes,MTYP_CANPiSPRGP,5,Pi-SPROG 3 Plus programmer/command station,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSOLNOID ,8,8-channel (4-pairs) Solenoid I/O module,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSERVOIO,50,8-channel Servo I/O module,,,,,,,
-CbusSprogModuleTypes,MTYP_CANISB,100,CAN ISB Isolated CAN USB Interface,,,,,,,
-CbusSprogModuleTypes,MTYP_CANSOLIO ,101,8-channel (4-pairs) Solenoid I/O module ,,,,,,,
-,,,,,,,,,,
-CbusRocRailModuleTypes,,,,,,,,,,
-CbusRocRailModuleTypes,,,Rocrail Module types,,,,,,,
-CbusRocRailModuleTypes,,,,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC1,1,RS232 PC interface,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC2,2,16 I/O,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC3,3,Command station (derived from cancmd),,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC4,4,8 channel RFID reader,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC5,5,Cab for fixed panels (derived from cancab),,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC6,6,4 channel servo controller,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC7,7,Fast clock module,,,,,,,
-CbusRocRailModuleTypes,MTYP_CANGC1e,11,CAN<->Ethernet interface,,,,,,,
-CbusSpectrumModuleTypes,,,,,,,,,,
-CbusSpectrumModuleTypes,,,Spectrum Engineering Animated Modeller module types,,,,,,,
-CbusSpectrumModuleTypes,,,,,,,,,,
-CbusSpectrumModuleTypes,MTYP_AMCTRLR,1,Animation controller (firmware derived from cancmd),,,,,,,
-CbusSpectrumModuleTypes,MTYP_DUALCAB,2,Dual cab based on cancab,,,,,,,
-,,,,,,,,,,
-CbusSysPixieModuleTypes,,,,,,,,,,
-CbusSysPixieModuleTypes,,,SysPixie Module types (Konrad Orlowski),,,,,,,
-CbusSysPixieModuleTypes,,,,,,,,,,
-CbusSysPixieModuleTypes,MTYP_CANPMSense,1,Motorised point motor driver with current sense,,,,,,,
-,,,,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,CBUS opcodes list,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with no data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_ACK,0x00,General ack,,,,,,,
-CbusOpCodes,OPC_NAK,0x01,General nak,,,,,,,
-CbusOpCodes,OPC_HLT,0x02,Bus Halt,,,,,,,
-CbusOpCodes,OPC_BON,0x03,Bus on,,,,,,,
-CbusOpCodes,OPC_TOF,0x04,Track off,,,,,,,
-CbusOpCodes,OPC_TON,0x05,Track on,,,,,,,
-CbusOpCodes,OPC_ESTOP,0x06,Track stopped,,,,,,,
-CbusOpCodes,OPC_ARST,0x07,System reset,,,,,,,
-CbusOpCodes,OPC_RTOF,0x08,Request track off,,,,,,,
-CbusOpCodes,OPC_RTON,0x09,Request track on,,,,,,,
-CbusOpCodes,OPC_RESTP,0x0a,Request emergency stop all,,,,,,,
-CbusOpCodes,OPC_RSTAT,0x0c,Request node status,,,,,,,
-CbusOpCodes,OPC_QNN,0x0d,Query nodes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RQNP,0x10,Read node parameters,,,,,,,
-CbusOpCodes,OPC_RQMN,0x11,Request name of module type,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 1 data byte,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_KLOC,0x21,Release engine by handle,,,,,,,
-CbusOpCodes,OPC_QLOC,0x22,Query engine by handle,,,,,,,
-CbusOpCodes,OPC_DKEEP,0x23,Keep alive for cab,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_DBG1,0x30,Debug message with 1 status byte,,,,,,,
-CbusOpCodes,OPC_EXTC,0x3F,Extended opcode,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 2 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RLOC,0x40,Request session for loco,,,,,,,
-CbusOpCodes,OPC_QCON,0x41,Query consist,,,,,,,
-CbusOpCodes,OPC_SNN,0x42,Set node number,,,,,,,
-CbusOpCodes,OPC_ALOC,0X43,Allocate loco (used to allocate to a shuttle in cancmd),,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_STMOD,0x44,Set Throttle mode,,,,,,,
-CbusOpCodes,OPC_PCON,0x45,Consist loco,,,,,,,
-CbusOpCodes,OPC_KCON,0x46,De-consist loco,,,,,,,
-CbusOpCodes,OPC_DSPD,0x47,Loco speed/dir,,,,,,,
-CbusOpCodes,OPC_DFLG,0x48,Set engine flags,,,,,,,
-CbusOpCodes,OPC_DFNON,0x49,Loco function on,,,,,,,
-CbusOpCodes,OPC_DFNOF,0x4A,Loco function off,,,,,,,
-CbusOpCodes,OPC_SSTAT,0x4C,Service mode status,,,,,,,
-CbusOpCodes,OPC_NNRSM,0x4F,Reset to manufacturer's defaults,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RQNN,0x50,Request Node number in setup mode,,,,,,,
-CbusOpCodes,OPC_NNREL,0x51,Node number release,,,,,,,
-CbusOpCodes,OPC_NNACK,0x52,Node number acknowledge,,,,,,,
-CbusOpCodes,OPC_NNLRN,0x53,Set learn mode,,,,,,,
-CbusOpCodes,OPC_NNULN,0x54,Release learn mode,,,,,,,
-CbusOpCodes,OPC_NNCLR,0x55,Clear all events,,,,,,,
-CbusOpCodes,OPC_NNEVN,0x56,Read available event slots,,,,,,,
-CbusOpCodes,OPC_NERD,0x57,Read all stored events,,,,,,,
-CbusOpCodes,OPC_RQEVN,0x58,Read number of stored events,,,,,,,
-CbusOpCodes,OPC_WRACK,0x59,Write acknowledge,,,,,,,
-CbusOpCodes,OPC_RQDAT,0x5A,Request node data event,,,,,,,
-CbusOpCodes,OPC_RQDDS,0x5B,Request short data frame,,,,,,,
-CbusOpCodes,OPC_BOOT,0x5C,Put node into boot mode,,,,,,,
-CbusOpCodes,OPC_ENUM,0x5D,Force can_id self enumeration,,,,,,,
-CbusOpCodes,OPC_NNRST,0x5E,Reset node (as in restart),,,,,,,
-CbusOpCodes,OPC_EXTC1,0x5F,Extended opcode with 1 data byte,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 3 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_DFUN,0x60,Set engine functions,,,,,,,
-CbusOpCodes,OPC_GLOC,0x61,Get loco (with support for steal/share),,,,,,,
-CbusOpCodes,OPC_ERR,0x63,Command station error,,,,,,,
-CbusOpCodes,OPC_CMDERR,0x6F,Errors from nodes during config,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_EVNLF,0x70,Event slots left response,,,,,,,
-CbusOpCodes,OPC_NVRD,0x71,Request read of node variable,,,,,,,
-CbusOpCodes,OPC_NENRD,0x72,Request read stored event by index,,,,,,,
-CbusOpCodes,OPC_RQNPN,0x73,Request read module parameters,,,,,,,
-CbusOpCodes,OPC_NUMEV,0x74,Number of events stored response,,,,,,,
-CbusOpCodes,OPC_CANID,0x75,Set canid,,,,,,,
-CbusOpCodes,OPC_EXTC2,0x7F,Extended opcode with 2 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 4 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RDCC3,0x80,3 byte DCC packet,,,,,,,
-CbusOpCodes,OPC_WCVO,0x82,Write CV byte Ops mode by handle,,,,,,,
-CbusOpCodes,OPC_WCVB,0x83,Write CV bit Ops mode by handle,,,,,,,
-CbusOpCodes,OPC_QCVS,0x84,Read CV,,,,,,,
-CbusOpCodes,OPC_PCVS,0x85,Report CV,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_ACON,0x90,on event,,,,,,,
-CbusOpCodes,OPC_ACOF,0x91,off event,,,,,,,
-CbusOpCodes,OPC_AREQ,0x92,Accessory Request event,,,,,,,
-CbusOpCodes,OPC_ARON,0x93,Accessory response event on,,,,,,,
-CbusOpCodes,OPC_AROF,0x94,Accessory response event off,,,,,,,
-CbusOpCodes,OPC_EVULN,0x95,Unlearn event,,,,,,,
-CbusOpCodes,OPC_NVSET,0x96,Set a node variable,,,,,,,
-CbusOpCodes,OPC_NVANS,0x97,Node variable value response,,,,,,,
-CbusOpCodes,OPC_ASON,0x98,Short event on,,,,,,,
-CbusOpCodes,OPC_ASOF,0x99,Short event off,,,,,,,
-CbusOpCodes,OPC_ASRQ,0x9A,Short Request event,,,,,,,
-CbusOpCodes,OPC_PARAN,0x9B,Single node parameter response,,,,,,,
-CbusOpCodes,OPC_REVAL,0x9C,Request read of event variable,,,,,,,
-CbusOpCodes,OPC_ARSON,0x9D,Accessory short response on event,,,,,,,
-CbusOpCodes,OPC_ARSOF,0x9E,Accessory short response off event,,,,,,,
-CbusOpCodes,OPC_EXTC3,0x9F,Extended opcode with 3 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 5 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RDCC4,0xA0,4 byte DCC packet,,,,,,,
-CbusOpCodes,OPC_WCVS,0xA2,Write CV service mode,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_ACON1,0xB0,On event with one data byte,,,,,,,
-CbusOpCodes,OPC_ACOF1,0xB1,Off event with one data byte,,,,,,,
-CbusOpCodes,OPC_REQEV,0xB2,Read event variable in learn mode,,,,,,,
-CbusOpCodes,OPC_ARON1,0xB3,Accessory on response (1 data byte),,,,,,,
-CbusOpCodes,OPC_AROF1,0xB4,Accessory off response (1 data byte),,,,,,,
-CbusOpCodes,OPC_NEVAL,0xB5,Event variable by index read response,,,,,,,
-CbusOpCodes,OPC_PNN,0xB6,Response to QNN,,,,,,,
-CbusOpCodes,OPC_ASON1,0xB8,Accessory short on with 1 data byte,,,,,,,
-CbusOpCodes,OPC_ASOF1,0xB9,Accessory short off with 1 data byte,,,,,,,
-CbusOpCodes,OPC_ARSON1,0xBD,Short response event on with one data byte,,,,,,,
-CbusOpCodes,OPC_ARSOF1,0xBE,Short response event off with one data byte,,,,,,,
-CbusOpCodes,OPC_EXTC4,0xBF,Extended opcode with 4 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 6 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RDCC5,0xC0,5 byte DCC packet,,,,,,,
-CbusOpCodes,OPC_WCVOA,0xC1,Write CV ops mode by address,,,,,,,
-CbusOpCodes,OPC_CABDAT,0xC2,Cab data (cab signalling),,,,,,,
-CbusOpCodes,OPC_FCLK,0xCF,Fast clock,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_ACON2,0xD0,On event with two data bytes,,,,,,,
-CbusOpCodes,OPC_ACOF2,0xD1,Off event with two data bytes,,,,,,,
-CbusOpCodes,OPC_EVLRN,0xd2,Teach event,,,,,,,
-CbusOpCodes,OPC_EVANS,0xd3,Event variable read response in learn mode,,,,,,,
-CbusOpCodes,OPC_ARON2,0xD4,Accessory on response,,,,,,,
-CbusOpCodes,OPC_AROF2,0xD5,Accessory off response,,,,,,,
-CbusOpCodes,OPC_ASON2,0xD8,Accessory short on with 2 data bytes,,,,,,,
-CbusOpCodes,OPC_ASOF2,0xD9,Accessory short off with 2 data bytes,,,,,,,
-CbusOpCodes,OPC_ARSON2,0xDD,Short response event on with two data bytes,,,,,,,
-CbusOpCodes,OPC_ARSOF2,0xDE,Short response event off with two data bytes,,,,,,,
-CbusOpCodes,OPC_EXTC5,0xDF,Extended opcode with 5 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Packets with 7 data bytes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_RDCC6,0xE0,6 byte DCC packets,,,,,,,
-CbusOpCodes,OPC_PLOC,0xE1,Loco session report,,,,,,,
-CbusOpCodes,OPC_NAME,0xE2,Module name response,,,,,,,
-CbusOpCodes,OPC_STAT,0xE3,Command station status report,,,,,,,
-CbusOpCodes,OPC_PARAMS,0xEF,Node parameters response,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_ACON3,0xF0,On event with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_ACOF3,0xF1,Off event with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_ENRSP,0xF2,Read node events response,,,,,,,
-CbusOpCodes,OPC_ARON3,0xF3,Accessory on response,,,,,,,
-CbusOpCodes,OPC_AROF3,0xF4,Accessory off response,,,,,,,
-CbusOpCodes,OPC_EVLRNI,0xF5,Teach event using event indexing,,,,,,,
-CbusOpCodes,OPC_ACDAT,0xF6,Accessory data event: 5 bytes of node data (eg: RFID),,,,,,,
-CbusOpCodes,OPC_ARDAT,0xF7,Accessory data response,,,,,,,
-CbusOpCodes,OPC_ASON3,0xF8,Accessory short on with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_ASOF3,0xF9,Accessory short off with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_DDES,0xFA,Short data frame aka device data event (device id plus 5 data bytes),,,,,,,
-CbusOpCodes,OPC_DDRS,0xFB,Short data frame response aka device data response,,,,,,,
-CbusOpCodes,OPC_DDWS,0xFC,Device Data Write Short,,,,,,,
-CbusOpCodes,OPC_ARSON3,0xFD,Short response event on with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_ARSOF3,0xFE,Short response event off with 3 data bytes,,,,,,,
-CbusOpCodes,OPC_EXTC6,0xFF,Extended opcode with 6 data byes,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,,,Opcodes that are proposed and/or agreed but not yet in the current published specification,,,,,,,
-CbusOpCodes,,,,,,,,,,
-CbusOpCodes,OPC_VCVS,0xA4,Verify CV service mode - used for CV read hints,,,,,,,
-CbusOpCodes,OPC_DTXC,0xE9,CBUS long message packet,,,,,,,
-CbusStmodModes,,,,,,,,,,
-CbusStmodModes,,,,,,,,,,
-CbusStmodModes,,,Modes for STMOD,,,,,,,
-CbusStmodModes,,,,,,,,,,
-CbusStmodModes,TMOD_SPD_MASK,3,,,,,,,,
-CbusStmodModes,TMOD_SPD_128,0,,,,,,,,
-CbusStmodModes,TMOD_SPD_14,1,,,,,,,,
-CbusStmodModes,TMOD_SPD_28I,2,,,,,,,,
-CbusStmodModes,TMOD_SPD_28,3,,,,,,,,
-CbusErrs,,,,,,,,,,
-CbusErrs,,,Error codes for OPC_ERR,,,,,,,
-CbusErrs,,,,,,,,,,
-CbusErrs,ERR_LOCO_STACK_FULL,1,,,,,,,,
-CbusErrs,ERR_LOCO_ADDR_TAKEN,2,,,,,,,,
-CbusErrs,ERR_SESSION_NOT_PRESENT,3,,,,,,,,
-CbusErrs,ERR_CONSIST_EMPTY,4,,,,,,,,
-CbusErrs,ERR_LOCO_NOT_FOUND,5,,,,,,,,
-CbusErrs,ERR_CMD_RX_BUF_OFLOW,6,,,,,,,,
-CbusErrs,ERR_INVALID_REQUEST,7,,,,,,,,
-CbusErrs,ERR_SESSION_CANCELLED,8,,,,,,,,
-CbusSStats,,,,,,,,,,
-CbusSStats,,,Status codes for OPC_SSTAT,,,,,,,
-CbusSStats,,,,,,,,,,
-CbusSStats,SSTAT_NO_ACK,1,,,,,,,,
-CbusSStats,SSTAT_OVLD,2,,,,,,,,
-CbusSStats,SSTAT_WR_ACK,3,,,,,,,,
-CbusSStats,SSTAT_BUSY,4,,,,,,,,
-CbusSStats,SSTAT_CV_ERROR,5,,,,,,,,
-CbusCmdErrs,,,,,,,,,,
-CbusCmdErrs,,,Error codes for OPC_CMDERR,,,,,,,
-CbusCmdErrs,,,,,,,,,,
-CbusCmdErrs,CMDERR_INV_CMD,1,,,,,,,,
-CbusCmdErrs,CMDERR_NOT_LRN,2,,,,,,,,
-CbusCmdErrs,CMDERR_NOT_SETUP,3,,,,,,,,
-CbusCmdErrs,CMDERR_TOO_MANY_EVENTS,4,,,,,,,,
-CbusCmdErrs,CMDERR_NO_EV,5,,,,,,,,
-CbusCmdErrs,CMDERR_INV_EV_IDX,6,,,,,,,,
-CbusCmdErrs,CMDERR_INVALID_EVENT,7,,,,,,,,
-CbusCmdErrs,CMDERR_INV_EN_IDX,8,now reserved,,,,,,,
-CbusCmdErrs,CMDERR_INV_PARAM_IDX,9,,,,,,,,
-CbusCmdErrs,CMDERR_INV_NV_IDX,10,,,,,,,,
-CbusCmdErrs,CMDERR_INV_EV_VALUE,11,,,,,,,,
-CbusCmdErrs,CMDERR_INV_NV_VALUE,12,,,,,,,,
-CbusCmdErrs,,,,,,,,,,
-CbusCmdErrs,,,Additional error codes proposed and/or agreed but not yet in the current published specification,,,,,,,
-CbusCmdErrs,,,,,,,,,,
-CbusCmdErrs,CMDERR_LRN_OTHER,13,Sent when module in learn mode sees NNLRN for different module (also exits learn mode) ,,,,,,,
-CbusCmdErrs,,,,,,,,,,
-CbusCabSigAspect0,,,,,,,,,,
-CbusCabSigAspect0,,,Sub opcodes for OPC_CABDAT,,,,,,,
-CbusCabSigAspect0,,,,,,,,,,
-CbusCabSigAspect0,CDAT_CABSIG,1,,,,,,,,
-CbusCabSigAspect1,,,,,,,,,,
-CbusCabSigAspect1,,,Aspect codes for CDAT_CABSIG,,,,,,,
-CbusCabSigAspect1,,,,,,,,,,
-CbusCabSigAspect1,,,First aspect byte,,,,,,,
-CbusCabSigAspect1,,,,,,,,,,
-CbusCabSigAspect1,SASP_DANGER,0,,,,,,,,
-CbusCabSigAspect1,SASP_CAUTION,1,,,,,,,,
-CbusCabSigAspect1,SASP_PRELIM_CAUTION,2,,,,,,,,
-CbusCabSigAspect1,SASP_PROCEED,3,,,,,,,,
-CbusCabSigAspect1,SASP_CALLON,4,Set bit 2 for call-on - main aspect will usually be at danger,,,,,,,
-CbusCabSigAspect1,SASP_THEATRE,8,Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code,,,,,,
-CbusCabSigAspect2,,,,,,,,,,
-CbusCabSigAspect2,,,Aspect codes for CDAT_CABSIG,,,,,,,
-CbusCabSigAspect2,,,,,,,,,,
-CbusCabSigAspect2,,,Second Aspect byte,,,,,,,
-CbusCabSigAspect2,,,,,,,,,,
-CbusCabSigAspect2,SASP_LIT,0,Set bit 0 to indicate lit,,,,,,,
-CbusCabSigAspect2,SASP_LUNAR,1,Set bit 1 for lunar indication,,,,,,,
-CbusCabSigAspect2,,,,,,,,,,
-CbusCabSigAspect2,,,Remaining bits in second aspect byte yet to be defined - can be used for other signalling systems,,,,,,,
-CbusParams,,,,,,,,,,
-CbusParams,,,,,,,,,,
-CbusParams,,,Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN),,,,,,
-CbusParams,,,Index numbers count from 1, subtract 1 for offset into parameter block,,,,,,
-CbusParams,,,Note that RQNPN with index 0 returns the parameter count,,,,,,,
-CbusParams,,,,,,,,,,
-CbusParams,PAR_MANU,1,Manufacturer id,,,,,,,
-CbusParams,PAR_MINVER,2,Minor version letter,,,,,,,
-CbusParams,PAR_MTYP,3,Module type code,,,,,,,
-CbusParams,PAR_EVTNUM,4,Number of events supported,,,,,,,
-CbusParams,PAR_EVNUM,5,Event variables per event,,,,,,,
-CbusParams,PAR_NVNUM,6,Number of Node variables,,,,,,,
-CbusParams,PAR_MAJVER,7,Major version number,,,,,,,
-CbusParams,PAR_FLAGS,8,Node flags,,,,,,,
-CbusParams,PAR_CPUID,9,Processor type,,,,,,,
-CbusParams,PAR_BUSTYPE,10,Bus type,,,,,,,
-CbusParams,PAR_LOAD,11,load address, 4 bytes,,,,,,
-CbusParams,PAR_CPUMID,15,CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum),,,,,
-CbusParams,PAR_CPUMAN,19,CPU manufacturer code,,,,,,,
-CbusParams,PAR_BETA,20,Beta revision (numeric), or 0 if release,,,,,,
-CbusParamOffsetsPic,,,,,,,,,,
-CbusParamOffsetsPic,,,Offsets to other values stored at the top of the parameter block.,,,,,,,
-CbusParamOffsetsPic,,,These are not returned by opcode PARAN, but are present in the hex,,,,,,
-CbusParamOffsetsPic,,,file for FCU.,,,,,,,
-CbusParamOffsetsPic,,,,,,,,,,
-CbusParamOffsetsPic,PAR_COUNT,0x18,Number of parameters implemented,,,,,,,
-CbusParamOffsetsPic,PAR_NAME,0x1A,4 byte Address of Module type name, up to 8 characters null terminated,,,,,,
-CbusParamOffsetsPic,PAR_CKSUM,0x1E,Checksum word at end of parameters,,,,,,,
-CbusParamFlags,,,,,,,,,,
-CbusParamFlags,,,Flags in PAR_FLAGS,,,,,,,
-CbusParamFlags,,,,,,,,,,
-CbusParamFlags,PF_NOEVENTS,0,Module doesn't support events,,,,,,,
-CbusParamFlags,PF_CONSUMER,1,Module is a consumer of events,,,,,,,
-CbusParamFlags,PF_PRODUCER,2,Module is a producer of events,,,,,,,
-CbusParamFlags,PF_COMBI,3,Module is both a consumer and producer of events,,,,,,,
-CbusParamFlags,PF_FLiM,4,Module is in FLiM,,,,,,,
-CbusParamFlags,PF_BOOT,8,Module supports the FCU bootloader protocol,,,,,,,
-CbusParamFlags,PF_COE,16,Module can consume its own events,,,,,,,
-CbusParamFlags,PF_LRN,32,Module is in learn mode,,,,,,,
-CbusBusTypes,,,,,,,,,,
-CbusBusTypes,,,BUS type that module is connected to,,,,,,,
-CbusBusTypes,,,,,,,,,,
-CbusBusTypes,PB_CAN,1,,,,,,,,
-CbusBusTypes,PB_ETH,2,,,,,,,,
-CbusBusTypes,PB_MIWI,3,,,,,,,,
-CbusBusTypes,PB_USB,4,,,,,,,,
-CbusProcessorManufacturers,,,,,,,,,,
-CbusProcessorManufacturers,,,Processor manufacturer codes,,,,,,,
-CbusProcessorManufacturers,,,,,,,,,,
-CbusProcessorManufacturers,CPUM_MICROCHIP,1,,,,,,,,
-CbusProcessorManufacturers,CPUM_ATMEL,2,,,,,,,,
-CbusProcessorManufacturers,CPUM_ARM,3,,,,,,,,
-CbusMicrochipProcessors,,,,,,,,,,
-CbusMicrochipProcessors,,,Microchip Processor type codes (identifies to FCU for bootload compatibility),,,,,,,
-CbusMicrochipProcessors,,,,,,,,,,
-CbusMicrochipProcessors,P18F2480,1,,,,,,,,
-CbusMicrochipProcessors,P18F4480,2,,,,,,,,
-CbusMicrochipProcessors,P18F2580,3,,,,,,,,
-CbusMicrochipProcessors,P18F4580,4,,,,,,,,
-CbusMicrochipProcessors,P18F2585,5,,,,,,,,
-CbusMicrochipProcessors,P18F4585,6,,,,,,,,
-CbusMicrochipProcessors,P18F2680,7,,,,,,,,
-CbusMicrochipProcessors,P18F4680,8,,,,,,,,
-CbusMicrochipProcessors,P18F2682,9,,,,,,,,
-CbusMicrochipProcessors,P18F4682,10,,,,,,,,
-CbusMicrochipProcessors,P18F2685,11,,,,,,,,
-CbusMicrochipProcessors,P18F4685,12,,,,,,,,
-CbusMicrochipProcessors,,,,,,,,,,
-CbusMicrochipProcessors,P18F25K80,13,,,,,,,,
-CbusMicrochipProcessors,P18F45K80,14,,,,,,,,
-CbusMicrochipProcessors,P18F26K80,15,,,,,,,,
-CbusMicrochipProcessors,P18F46K80,16,,,,,,,,
-CbusMicrochipProcessors,P18F65K80,17,,,,,,,,
-CbusMicrochipProcessors,P18F66K80,18,,,,,,,,
-CbusMicrochipProcessors,P18F25K83,19,,,,,,,,
-CbusMicrochipProcessors,P18F26K83,20,,,,,,,,
-CbusMicrochipProcessors,P18F27Q84,21,,,,,,,,
-CbusMicrochipProcessors,P18F47Q84,22,,,,,,,,
-CbusMicrochipProcessors,P18F27Q83,23,,,,,,,,
-CbusMicrochipProcessors,P18F14K22,25,,,,,,,,
-CbusMicrochipProcessors,,,,,,,,,,
-CbusMicrochipProcessors,P32MX534F064,30,,,,,,,,
-CbusMicrochipProcessors,P32MX564F064,31,,,,,,,,
-CbusMicrochipProcessors,P32MX564F128,32,,,,,,,,
-CbusMicrochipProcessors,P32MX575F256,33,,,,,,,,
-CbusMicrochipProcessors,P32MX575F512,34,,,,,,,,
-CbusMicrochipProcessors,P32MX764F128,35,,,,,,,,
-CbusMicrochipProcessors,P32MX775F256,36,,,,,,,,
-CbusMicrochipProcessors,P32MX775F512,37,,,,,,,,
-CbusMicrochipProcessors,P32MX795F512,38,,,,,,,,
-CbusArmProcessors,,,,,,,,,,
-CbusArmProcessors,,,ARM Processor type codes (identifies to FCU for bootload compatibility),,,,,,,
-CbusArmProcessors,,,,,,,,,,
-CbusArmProcessors,ARM1176JZF_S,1,As used in Raspberry Pi,,,,,,,
-CbusArmProcessors,ARMCortex_A7,2,As Used in Raspberry Pi 2,,,,,,,
-CbusArmProcessors,ARMCortex_A53,3,As used in Raspberry Pi 3,,,,,,,
+comment,,,         Add new opcode ALOC, added CPU manufacturer code CPUM_ATMEL
+comment,,,Mike Bolton,2/3/16,Ver 8k    Add module type CANRFID8
+comment,,,Pete Brownlow,2/7/16,Ver 8m Add new module types CANHNDST, CANTCHNDST, CANmchRFID and CANPiWi
+comment,,,         Add processor codes for ARM chips used in Raspberry Pi's
+comment,,,Pete Brownlow,16/2/17,Ver 8n Add module ids to bring it up to module ids document ver 25
+comment,,,Pete Brownlow,29/7/17,Ver 8p Add new module ids and new cab signalling opcode
+comment,,,Pete Brownlow,09/1/18,Ver 8q Add new parameter flag for module can consume its own events
+comment,,,Ian Hogg,11/9/18,Ver 8r Added CANACE16CMIO, CANPiNODE, CANDISP, CANCOMPUTE
+comment,,,Richard Crawshaw,29/02/2020,Fixed order of columns in CbusCabSigAspect2.
+comment,,,Pete Brownlow,01/09/20,Ver 8s for additional module ids defined in the ModuleIds file ver 33.
+comment,,,                       Updated descriptive comments for some module types
+comment,,,                       Updated CABDAT opcode to match RFC0004
+comment,,,Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
+comment,,,Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
+comment,,,                              Added SPROG manufacturer code 44 and new SPROG CBUS module types
+comment,,,                              Additional error code for overload - now removed as not required after all
+comment,,,                              New bus type USB for modules with only USB and no CAN
+comment,,,Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+comment,,,                              Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
+comment,,,Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+comment,,,Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPROG modules types (PR#13)
+comment,,,Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages - RFC 0005
+comment,,,Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+comment,,,Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+comment,,,  							Add requested module type ids 75 to 78
+comment,,,                              Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
+comment,,,Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
+comment,,,Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
+comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
+
+CbusManufacturer,,,CBUS Manufacturer definitions
+CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
+CbusManufacturer,,,
+CbusManufacturer,MANU_DEV,13,For new manufacturer development - who don't have a manufacturer id yet
+CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
+CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
+CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
+CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering)
+CbusManufacturer,MANU_VLCB,250,VLCB range of modules
+CbusManufacturer,MANU_SYSPIXIE,249,Konrad Orlowski
+CbusManufacturer,MANU_RME,248,http://rmeuk.com  (Railway Modelling Experts Limited)
+
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,,,MODULE TYPES
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,,,Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,,,MERG Module types
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,MTYP_SLIM,0,default for SLiM nodes
+CbusMergModuleTypes,MTYP_CANACC4,1,Solenoid point driver
+CbusMergModuleTypes,MTYP_CANACC5,2,Motorised point driver
+CbusMergModuleTypes,MTYP_CANACC8,3,8 digital outputs
+CbusMergModuleTypes,MTYP_CANACE3,4,Control panel switch/button encoder
+CbusMergModuleTypes,MTYP_CANACE8C,5,8 digital inputs
+CbusMergModuleTypes,MTYP_CANLED,6,64 led driver
+CbusMergModuleTypes,MTYP_CANLED64,7,64 led driver (multi leds per event)
+CbusMergModuleTypes,MTYP_CANACC4_2,8,12v version of CANACC4
+CbusMergModuleTypes,MTYP_CANCAB,9,CANCAB hand throttle
+CbusMergModuleTypes,MTYP_CANCMD,10,CANCMD command station
+CbusMergModuleTypes,MTYP_CANSERVO,11,8 servo driver (on canacc8 or similar hardware)
+CbusMergModuleTypes,MTYP_CANBC,12,BC1a command station
+CbusMergModuleTypes,MTYP_CANRPI,13,RPI and RFID interface
+CbusMergModuleTypes,MTYP_CANTTCA,14,Turntable controller (turntable end)
+CbusMergModuleTypes,MTYP_CANTTCB,15,Turntable controller (control panel end)
+CbusMergModuleTypes,MTYP_CANHS,16,Handset controller for old BC1a type handsets
+CbusMergModuleTypes,MTYP_CANTOTI,17,Track occupancy detector
+CbusMergModuleTypes,MTYP_CAN8I8O,18,8 inputs 8 outputs
+CbusMergModuleTypes,MTYP_CANSERVO8C,19,Canservo with servo position feedback
+CbusMergModuleTypes,MTYP_CANRFID,20,RFID input
+CbusMergModuleTypes,MTYP_CANTC4,21,
+CbusMergModuleTypes,MTYP_CANACE16C,22,16 inputs
+CbusMergModuleTypes,MTYP_CANIO8,23,8 way I/O
+CbusMergModuleTypes,MTYP_CANSNDX,24,??
+CbusMergModuleTypes,MTYP_CANEther,25,Ethernet interface
+CbusMergModuleTypes,MTYP_CANSIG64,26,Multiple aspect signalling for CANLED module
+CbusMergModuleTypes,MTYP_CANSIG8,27,Multiple aspect signalling for CANACC8 module
+CbusMergModuleTypes,MTYP_CANCOND8C,28,Conditional event generation
+CbusMergModuleTypes,MTYP_CANPAN,29,Control panel 32/32
+CbusMergModuleTypes,MTYP_CANACE3C,30,Newer version of CANACE3 firmware
+CbusMergModuleTypes,MTYP_CANPanel,31,Control panel 64/64
+CbusMergModuleTypes,MTYP_CANMIO,32,Multiple I/O â€“ Universal CANMIO firmware
+CbusMergModuleTypes,MTYP_CANACE8MIO,33,Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware
+CbusMergModuleTypes,MTYP_CANSOL,34,Solenoid driver module
+CbusMergModuleTypes,MTYP_CANBIP,35,Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins (CANMIO family)
+CbusMergModuleTypes,MTYP_CANCDU,36,Solenoid driver module with additional 6 I/O pins (CANMIO family)
+CbusMergModuleTypes,MTYP_CANACC4CDU,37,CANACC4 firmware ported to CANCDU
+CbusMergModuleTypes,MTYP_CANWiBase,38,CAN to MiWi base station
+CbusMergModuleTypes,MTYP_WiCAB,39,Wireless cab using MiWi protocol
+CbusMergModuleTypes,MTYP_CANWiFi,40,CAN to WiFi connection with Withrottle to CBUS protocol conversion
+CbusMergModuleTypes,MTYP_CANFTT,41,Turntable controller configured using FLiM
+CbusMergModuleTypes,MTYP_CANHNDST,42,Handset (alternative to CANCAB)
+CbusMergModuleTypes,MTYP_CANTCHNDST,43,Touchscreen handset
+CbusMergModuleTypes,MTYP_CANRFID8,44,multi-channel RFID reader
+CbusMergModuleTypes,MTYP_CANmchRFID,45,either a 2ch or 8ch RFID reader
+CbusMergModuleTypes,MTYP_CANPiWi,46,a Raspberry Pi based module for WiFi
+CbusMergModuleTypes,MTYP_CAN4DC,47,DC train controller
+CbusMergModuleTypes,MTYP_CANELEV,48,Nelevator controller
+CbusMergModuleTypes,MTYP_CANSCAN,49,128 switch inputs
+CbusMergModuleTypes,MTYP_CANMIO_SVO,50,16MHz 25k80 version of CANSERVO8c on CANMIO hardware
+CbusMergModuleTypes,MTYP_CANMIO_INP,51,16MHz 25k80 version of CANACE8MIO on CANMIO hardware
+CbusMergModuleTypes,MTYP_CANMIO_OUT,52,16MHz 25k80 version of CANACC8 on CANMIO hardware
+CbusMergModuleTypes,MTYP_CANBIP_OUT,53,16MHz 25k80 version of CANACC5 on CANBIP hardware
+CbusMergModuleTypes,MTYP_CANASTOP,54,DCC stop generator
+CbusMergModuleTypes,MTYP_CANCSB,55,CANCMD with on board 3A booster
+CbusMergModuleTypes,MTYP_CANMAG,56,Magnet on Track detector
+CbusMergModuleTypes,MTYP_CANACE16CMIO,57,16 input equivaent to CANACE8C
+CbusMergModuleTypes,MTYP_CANPiNODE,58,CBUS module based on Raspberry Pi
+CbusMergModuleTypes,MTYP_CANDISP,59,25K80 version of CANLED64 (IHart and MB)
+CbusMergModuleTypes,MTYP_CANCOMPUTE,60,Compute Event processing engine
+CbusMergModuleTypes,MTYP_CANRC522,61,Read/Write from/to RC522 RFID tags
+CbusMergModuleTypes,MTYP_CANINP,62,8 inputs module (2g version of CANACE8c) (Pete Brownlow)
+CbusMergModuleTypes,MTYP_CANOUT,63,8 outputs module (2g version of CANACC8) (Pete Brownlow)
+CbusMergModuleTypes,MTYP_CANEMIO,64,Extended CANMIO (24 I/O ports) (Pete Brownlow)
+CbusMergModuleTypes,MTYP_CANCABDC,65,DC cab
+CbusMergModuleTypes,MTYP_CANRCOM,66,DC Railcom detector/reader
+CbusMergModuleTypes,MTYP_CANMP3,67,MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
+CbusMergModuleTypes,MTYP_CANXMAS,68,Addressed RGB LED driver (Duncan Greenwood)
+CbusMergModuleTypes,MTYP_CANSVOSET,69,Servo setting box (Duncan Greenwood)
+CbusMergModuleTypes,MTYP_CANCMDDC,70,DC Command station
+CbusMergModuleTypes,MTYP_CANTEXT,71,Text message display
+CbusMergModuleTypes,MTYP_CANASIGNAL,72,Signal controller
+CbusMergModuleTypes,MTYP_CANSLIDER,73,DCC cab with slider control (Dave Radcliffe)
+CbusMergModuleTypes,MTYP_CANDCATC,74,DC ATC module (Dave Harris)
+CbusMergModuleTypes,MTYP_CANGATE,75,Logic module using and/or gates (Phil Silver)
+CbusMergModuleTypes,MTYP_CANSINP,76,Q series PIC input module (Ian Hart)
+CbusMergModuleTypes,MTYP_CANSOUT,77,Q series PIC input module (Ian Hart)
+CbusMergModuleTypes,MTYP_CANSBIP,78,Q series PIC input module (Ian Hart)
+CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver)
+
+
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+CbusMergModuleTypes,,,Please liaise with Pete before adding new module types, 
+CbusMergModuleTypes,,,and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
+CbusMergModuleTypes,,,
+CbusMergModuleTypes,MTYP_CAN_SW,0xFF,Software nodes
+CbusMergModuleTypes,MTYP_EMPTY,0xFE,Empty module, bootloader only
+CbusMergModuleTypes,MTYP_CANUSB,0xFD,USB interface
+CbusSprogModuleTypes,,,
+CbusSprogModuleTypes,,,Sprog Module types
+CbusSprogModuleTypes,,,
+CbusSprogModuleTypes,MTYP_CANPiSPRG3,1,Pi-SPROG 3 programmer/command station
+CbusSprogModuleTypes,MTYP_CANSPROG3P,2,SPROG 3 Plus programmer/command station
+CbusSprogModuleTypes,MTYP_CANSPROG,3,CAN SPROG programmer/command station
+CbusSprogModuleTypes,MTYP_CANSBOOST,4,System Booster
+CbusSprogModuleTypes,MTYP_CANPiSPRGP,5,Pi-SPROG 3 Plus programmer/command station
+CbusSprogModuleTypes,MTYP_CANISB,6,CAN ISB Isolated CAN USB Interface
+CbusSprogModuleTypes,MTYP_CANIO,7,8-channel I/O module
+CbusSprogModuleTypes,MTYP_CANSERVOIO,8,8-channel Servo I/O module
+CbusSprogModuleTypes,MTYP_CANSOLIO,9,8-channel (4-pairs) Solenoid I/O module
+
+CbusRocRailModuleTypes,,,
+CbusRocRailModuleTypes,,,Rocrail Module types
+CbusRocRailModuleTypes,,,
+CbusRocRailModuleTypes,MTYP_CANGC1,1,RS232 PC interface
+CbusRocRailModuleTypes,MTYP_CANGC2,2,16 I/O
+CbusRocRailModuleTypes,MTYP_CANGC3,3,Command station (derived from cancmd)
+CbusRocRailModuleTypes,MTYP_CANGC4,4,8 channel RFID reader
+CbusRocRailModuleTypes,MTYP_CANGC5,5,Cab for fixed panels (derived from cancab)
+CbusRocRailModuleTypes,MTYP_CANGC6,6,4 channel servo controller
+CbusRocRailModuleTypes,MTYP_CANGC7,7,Fast clock module
+CbusRocRailModuleTypes,MTYP_CANGC1e,11,CAN<->Ethernet interface
+CbusSpectrumModuleTypes,,,
+CbusSpectrumModuleTypes,,,Spectrum Engineering Animated Modeller module types
+CbusSpectrumModuleTypes,,,
+CbusSpectrumModuleTypes,MTYP_AMCTRLR,1,Animation controller (firmware derived from cancmd)
+CbusSpectrumModuleTypes,MTYP_DUALCAB,2,Dual cab based on cancab
+
+CbusSysPixieModuleTypes,,,
+CbusSysPixieModuleTypes,,,SysPixie Module types (Konrad Orlowski)
+CbusSysPixieModuleTypes,,,
+CbusSysPixieModuleTypes,MTYP_CANPMSense,1,Motorised point motor driver with current sense
+
+CbusOpCodes,,,
+CbusOpCodes,,,
+CbusOpCodes,,,CBUS opcodes list
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with no data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_ACK,0x00,General ack
+CbusOpCodes,OPC_NAK,0x01,General nak
+CbusOpCodes,OPC_HLT,0x02,Bus Halt
+CbusOpCodes,OPC_BON,0x03,Bus on
+CbusOpCodes,OPC_TOF,0x04,Track off
+CbusOpCodes,OPC_TON,0x05,Track on
+CbusOpCodes,OPC_ESTOP,0x06,Track stopped
+CbusOpCodes,OPC_ARST,0x07,System reset
+CbusOpCodes,OPC_RTOF,0x08,Request track off
+CbusOpCodes,OPC_RTON,0x09,Request track on
+CbusOpCodes,OPC_RESTP,0x0a,Request emergency stop all
+CbusOpCodes,OPC_RSTAT,0x0c,Request node status
+CbusOpCodes,OPC_QNN,0x0d,Query nodes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RQNP,0x10,Read node parameters
+CbusOpCodes,OPC_RQMN,0x11,Request name of module type
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 1 data byte
+CbusOpCodes,,,
+CbusOpCodes,OPC_KLOC,0x21,Release engine by handle
+CbusOpCodes,OPC_QLOC,0x22,Query engine by handle
+CbusOpCodes,OPC_DKEEP,0x23,Keep alive for cab
+CbusOpCodes,,,
+CbusOpCodes,OPC_DBG1,0x30,Debug message with 1 status byte
+CbusOpCodes,OPC_EXTC,0x3F,Extended opcode
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 2 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RLOC,0x40,Request session for loco
+CbusOpCodes,OPC_QCON,0x41,Query consist
+CbusOpCodes,OPC_SNN,0x42,Set node number
+CbusOpCodes,OPC_ALOC,0X43,Allocate loco (used to allocate to a shuttle in cancmd)
+CbusOpCodes,,,
+CbusOpCodes,OPC_STMOD,0x44,Set Throttle mode
+CbusOpCodes,OPC_PCON,0x45,Consist loco
+CbusOpCodes,OPC_KCON,0x46,De-consist loco
+CbusOpCodes,OPC_DSPD,0x47,Loco speed/dir
+CbusOpCodes,OPC_DFLG,0x48,Set engine flags
+CbusOpCodes,OPC_DFNON,0x49,Loco function on
+CbusOpCodes,OPC_DFNOF,0x4A,Loco function off
+CbusOpCodes,OPC_SSTAT,0x4C,Service mode status
+CbusOpCodes,OPC_NNRSM,0x4F,Reset to manufacturer's defaults
+CbusOpCodes,,,
+CbusOpCodes,OPC_RQNN,0x50,Request Node number in setup mode
+CbusOpCodes,OPC_NNREL,0x51,Node number release
+CbusOpCodes,OPC_NNACK,0x52,Node number acknowledge
+CbusOpCodes,OPC_NNLRN,0x53,Set learn mode
+CbusOpCodes,OPC_NNULN,0x54,Release learn mode
+CbusOpCodes,OPC_NNCLR,0x55,Clear all events
+CbusOpCodes,OPC_NNEVN,0x56,Read available event slots
+CbusOpCodes,OPC_NERD,0x57,Read all stored events
+CbusOpCodes,OPC_RQEVN,0x58,Read number of stored events
+CbusOpCodes,OPC_WRACK,0x59,Write acknowledge
+CbusOpCodes,OPC_RQDAT,0x5A,Request node data event
+CbusOpCodes,OPC_RQDDS,0x5B,Request short data frame
+CbusOpCodes,OPC_BOOT,0x5C,Put node into boot mode
+CbusOpCodes,OPC_ENUM,0x5D,Force can_id self enumeration
+CbusOpCodes,OPC_NNRST,0x5E,Reset node (as in restart)
+CbusOpCodes,OPC_EXTC1,0x5F,Extended opcode with 1 data byte
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 3 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_DFUN,0x60,Set engine functions
+CbusOpCodes,OPC_GLOC,0x61,Get loco (with support for steal/share)
+CbusOpCodes,OPC_ERR,0x63,Command station error
+CbusOpCodes,OPC_CMDERR,0x6F,Errors from nodes during config
+CbusOpCodes,,,
+CbusOpCodes,OPC_EVNLF,0x70,Event slots left response
+CbusOpCodes,OPC_NVRD,0x71,Request read of node variable
+CbusOpCodes,OPC_NENRD,0x72,Request read stored event by index
+CbusOpCodes,OPC_RQNPN,0x73,Request read module parameters
+CbusOpCodes,OPC_NUMEV,0x74,Number of events stored response
+CbusOpCodes,OPC_CANID,0x75,Set canid
+CbusOpCodes,OPC_EXTC2,0x7F,Extended opcode with 2 data bytes
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 4 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RDCC3,0x80,3 byte DCC packet
+CbusOpCodes,OPC_WCVO,0x82,Write CV byte Ops mode by handle
+CbusOpCodes,OPC_WCVB,0x83,Write CV bit Ops mode by handle
+CbusOpCodes,OPC_QCVS,0x84,Read CV
+CbusOpCodes,OPC_PCVS,0x85,Report CV
+CbusOpCodes,,,
+CbusOpCodes,OPC_ACON,0x90,on event
+CbusOpCodes,OPC_ACOF,0x91,off event
+CbusOpCodes,OPC_AREQ,0x92,Accessory Request event
+CbusOpCodes,OPC_ARON,0x93,Accessory response event on
+CbusOpCodes,OPC_AROF,0x94,Accessory response event off
+CbusOpCodes,OPC_EVULN,0x95,Unlearn event
+CbusOpCodes,OPC_NVSET,0x96,Set a node variable
+CbusOpCodes,OPC_NVANS,0x97,Node variable value response
+CbusOpCodes,OPC_ASON,0x98,Short event on
+CbusOpCodes,OPC_ASOF,0x99,Short event off
+CbusOpCodes,OPC_ASRQ,0x9A,Short Request event
+CbusOpCodes,OPC_PARAN,0x9B,Single node parameter response
+CbusOpCodes,OPC_REVAL,0x9C,Request read of event variable
+CbusOpCodes,OPC_ARSON,0x9D,Accessory short response on event
+CbusOpCodes,OPC_ARSOF,0x9E,Accessory short response off event
+CbusOpCodes,OPC_EXTC3,0x9F,Extended opcode with 3 data bytes
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 5 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RDCC4,0xA0,4 byte DCC packet
+CbusOpCodes,OPC_WCVS,0xA2,Write CV service mode
+CbusOpCodes,,,
+CbusOpCodes,OPC_ACON1,0xB0,On event with one data byte
+CbusOpCodes,OPC_ACOF1,0xB1,Off event with one data byte
+CbusOpCodes,OPC_REQEV,0xB2,Read event variable in learn mode
+CbusOpCodes,OPC_ARON1,0xB3,Accessory on response (1 data byte)
+CbusOpCodes,OPC_AROF1,0xB4,Accessory off response (1 data byte)
+CbusOpCodes,OPC_NEVAL,0xB5,Event variable by index read response
+CbusOpCodes,OPC_PNN,0xB6,Response to QNN
+CbusOpCodes,OPC_ASON1,0xB8,Accessory short on with 1 data byte
+CbusOpCodes,OPC_ASOF1,0xB9,Accessory short off with 1 data byte
+CbusOpCodes,OPC_ARSON1,0xBD,Short response event on with one data byte
+CbusOpCodes,OPC_ARSOF1,0xBE,Short response event off with one data byte
+CbusOpCodes,OPC_EXTC4,0xBF,Extended opcode with 4 data bytes
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 6 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RDCC5,0xC0,5 byte DCC packet
+CbusOpCodes,OPC_WCVOA,0xC1,Write CV ops mode by address
+CbusOpCodes,OPC_CABDAT,0xC2,Cab data (cab signalling)
+CbusOpCodes,OPC_FCLK,0xCF,Fast clock
+CbusOpCodes,,,
+CbusOpCodes,OPC_ACON2,0xD0,On event with two data bytes
+CbusOpCodes,OPC_ACOF2,0xD1,Off event with two data bytes
+CbusOpCodes,OPC_EVLRN,0xd2,Teach event
+CbusOpCodes,OPC_EVANS,0xd3,Event variable read response in learn mode
+CbusOpCodes,OPC_ARON2,0xD4,Accessory on response
+CbusOpCodes,OPC_AROF2,0xD5,Accessory off response
+CbusOpCodes,OPC_ASON2,0xD8,Accessory short on with 2 data bytes
+CbusOpCodes,OPC_ASOF2,0xD9,Accessory short off with 2 data bytes
+CbusOpCodes,OPC_ARSON2,0xDD,Short response event on with two data bytes
+CbusOpCodes,OPC_ARSOF2,0xDE,Short response event off with two data bytes
+CbusOpCodes,OPC_EXTC5,0xDF,Extended opcode with 5 data bytes
+CbusOpCodes,,,
+CbusOpCodes,,,Packets with 7 data bytes
+CbusOpCodes,,,
+CbusOpCodes,OPC_RDCC6,0xE0,6 byte DCC packets
+CbusOpCodes,OPC_PLOC,0xE1,Loco session report
+CbusOpCodes,OPC_NAME,0xE2,Module name response
+CbusOpCodes,OPC_STAT,0xE3,Command station status report
+CbusOpCodes,OPC_PARAMS,0xEF,Node parameters response
+CbusOpCodes,,,
+CbusOpCodes,OPC_ACON3,0xF0,On event with 3 data bytes
+CbusOpCodes,OPC_ACOF3,0xF1,Off event with 3 data bytes
+CbusOpCodes,OPC_ENRSP,0xF2,Read node events response
+CbusOpCodes,OPC_ARON3,0xF3,Accessory on response
+CbusOpCodes,OPC_AROF3,0xF4,Accessory off response
+CbusOpCodes,OPC_EVLRNI,0xF5,Teach event using event indexing
+CbusOpCodes,OPC_ACDAT,0xF6,Accessory data event: 5 bytes of node data (eg: RFID)
+CbusOpCodes,OPC_ARDAT,0xF7,Accessory data response
+CbusOpCodes,OPC_ASON3,0xF8,Accessory short on with 3 data bytes
+CbusOpCodes,OPC_ASOF3,0xF9,Accessory short off with 3 data bytes
+CbusOpCodes,OPC_DDES,0xFA,Short data frame aka device data event (device id plus 5 data bytes)
+CbusOpCodes,OPC_DDRS,0xFB,Short data frame response aka device data response
+CbusOpCodes,OPC_DDWS,0xFC,Device Data Write Short
+CbusOpCodes,OPC_ARSON3,0xFD,Short response event on with 3 data bytes
+CbusOpCodes,OPC_ARSOF3,0xFE,Short response event off with 3 data bytes
+CbusOpCodes,OPC_EXTC6,0xFF,Extended opcode with 6 data byes
+CbusOpCodes,,,
+CbusOpCodes,,,Opcodes that are proposed and/or agreed but not yet in the current published specification
+CbusOpCodes,,,
+CbusOpCodes,OPC_VCVS,0xA4,Verify CV service mode - used for CV read hints
+CbusOpCodes,OPC_DTXC,0xE9,CBUS long message packet
+CbusStmodModes,,,
+CbusStmodModes,,,
+CbusStmodModes,,,Modes for STMOD
+CbusStmodModes,,,
+CbusStmodModes,TMOD_SPD_MASK,3,
+CbusStmodModes,TMOD_SPD_128,0,
+CbusStmodModes,TMOD_SPD_14,1,
+CbusStmodModes,TMOD_SPD_28I,2,
+CbusStmodModes,TMOD_SPD_28,3,
+CbusErrs,,,
+CbusErrs,,,Error codes for OPC_ERR
+CbusErrs,,,
+CbusErrs,ERR_LOCO_STACK_FULL,1,
+CbusErrs,ERR_LOCO_ADDR_TAKEN,2,
+CbusErrs,ERR_SESSION_NOT_PRESENT,3,
+CbusErrs,ERR_CONSIST_EMPTY,4,
+CbusErrs,ERR_LOCO_NOT_FOUND,5,
+CbusErrs,ERR_CMD_RX_BUF_OFLOW,6,
+CbusErrs,ERR_INVALID_REQUEST,7,
+CbusErrs,ERR_SESSION_CANCELLED,8,
+CbusSStats,,,
+CbusSStats,,,Status codes for OPC_SSTAT
+CbusSStats,,,
+CbusSStats,SSTAT_NO_ACK,1,
+CbusSStats,SSTAT_OVLD,2,
+CbusSStats,SSTAT_WR_ACK,3,
+CbusSStats,SSTAT_BUSY,4,
+CbusSStats,SSTAT_CV_ERROR,5,
+CbusCmdErrs,,,
+CbusCmdErrs,,,Error codes for OPC_CMDERR
+CbusCmdErrs,,,
+CbusCmdErrs,CMDERR_INV_CMD,1,
+CbusCmdErrs,CMDERR_NOT_LRN,2,
+CbusCmdErrs,CMDERR_NOT_SETUP,3,
+CbusCmdErrs,CMDERR_TOO_MANY_EVENTS,4,
+CbusCmdErrs,CMDERR_NO_EV,5,
+CbusCmdErrs,CMDERR_INV_EV_IDX,6,
+CbusCmdErrs,CMDERR_INVALID_EVENT,7,
+CbusCmdErrs,CMDERR_INV_EN_IDX,8,now reserved
+CbusCmdErrs,CMDERR_INV_PARAM_IDX,9,
+CbusCmdErrs,CMDERR_INV_NV_IDX,10,
+CbusCmdErrs,CMDERR_INV_EV_VALUE,11,
+CbusCmdErrs,CMDERR_INV_NV_VALUE,12,
+CbusCmdErrs,,,
+CbusCmdErrs,,,Additional error codes proposed and/or agreed but not yet in the current published specification
+CbusCmdErrs,,,
+CbusCmdErrs,CMDERR_LRN_OTHER,13,Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+CbusCmdErrs,,,
+CbusCabSigAspect0,,,
+CbusCabSigAspect0,,,Sub opcodes for OPC_CABDAT
+CbusCabSigAspect0,,,
+CbusCabSigAspect0,CDAT_CABSIG,1,
+CbusCabSigAspect1,,,
+CbusCabSigAspect1,,,Aspect codes for CDAT_CABSIG
+CbusCabSigAspect1,,,
+CbusCabSigAspect1,,,First aspect byte
+CbusCabSigAspect1,,,
+CbusCabSigAspect1,SASP_DANGER,0,
+CbusCabSigAspect1,SASP_CAUTION,1,
+CbusCabSigAspect1,SASP_PRELIM_CAUTION,2,
+CbusCabSigAspect1,SASP_PROCEED,3,
+CbusCabSigAspect1,SASP_CALLON,4,Set bit 2 for call-on - main aspect will usually be at danger
+CbusCabSigAspect1,SASP_THEATRE,8,Set bit 3 to 0 for upper nibble is feather lcoation, set 1 for upper nibble is theatre code
+CbusCabSigAspect2,,,
+CbusCabSigAspect2,,,Aspect codes for CDAT_CABSIG
+CbusCabSigAspect2,,,
+CbusCabSigAspect2,,,Second Aspect byte
+CbusCabSigAspect2,,,
+CbusCabSigAspect2,SASP_LIT,0,Set bit 0 to indicate lit
+CbusCabSigAspect2,SASP_LUNAR,1,Set bit 1 for lunar indication
+CbusCabSigAspect2,,,
+CbusCabSigAspect2,,,Remaining bits in second aspect byte yet to be defined - can be used for other signalling systems
+CbusParams,,,
+CbusParams,,,
+CbusParams,,,Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
+CbusParams,,,Index numbers count from 1, subtract 1 for offset into parameter block
+CbusParams,,,Note that RQNPN with index 0 returns the parameter count
+CbusParams,,,
+CbusParams,PAR_MANU,1,Manufacturer id
+CbusParams,PAR_MINVER,2,Minor version letter
+CbusParams,PAR_MTYP,3,Module type code
+CbusParams,PAR_EVTNUM,4,Number of events supported
+CbusParams,PAR_EVNUM,5,Event variables per event
+CbusParams,PAR_NVNUM,6,Number of Node variables
+CbusParams,PAR_MAJVER,7,Major version number
+CbusParams,PAR_FLAGS,8,Node flags
+CbusParams,PAR_CPUID,9,Processor type
+CbusParams,PAR_BUSTYPE,10,Bus type
+CbusParams,PAR_LOAD,11,load address, 4 bytes
+CbusParams,PAR_CPUMID,15,CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
+CbusParams,PAR_CPUMAN,19,CPU manufacturer code
+CbusParams,PAR_BETA,20,Beta revision (numeric), or 0 if release
+CbusParamOffsetsPic,,,
+CbusParamOffsetsPic,,,Offsets to other values stored at the top of the parameter block.
+CbusParamOffsetsPic,,,These are not returned by opcode PARAN, but are present in the hex
+CbusParamOffsetsPic,,,file for FCU.
+CbusParamOffsetsPic,,,
+CbusParamOffsetsPic,PAR_COUNT,0x18,Number of parameters implemented
+CbusParamOffsetsPic,PAR_NAME,0x1A,4 byte Address of Module type name, up to 8 characters null terminated
+CbusParamOffsetsPic,PAR_CKSUM,0x1E,Checksum word at end of parameters
+CbusParamFlags,,,
+CbusParamFlags,,,Flags in PAR_FLAGS
+CbusParamFlags,,,
+CbusParamFlags,PF_NOEVENTS,0,Module doesn't support events
+CbusParamFlags,PF_CONSUMER,1,Module is a consumer of events
+CbusParamFlags,PF_PRODUCER,2,Module is a producer of events
+CbusParamFlags,PF_COMBI,3,Module is both a consumer and producer of events
+CbusParamFlags,PF_FLiM,4,Module is in FLiM
+CbusParamFlags,PF_BOOT,8,Module supports the FCU bootloader protocol
+CbusParamFlags,PF_COE,16,Module can consume its own events
+CbusParamFlags,PF_LRN,32,Module is in learn mode
+CbusBusTypes,,,
+CbusBusTypes,,,BUS type that module is connected to
+CbusBusTypes,,,
+CbusBusTypes,PB_CAN,1,
+CbusBusTypes,PB_ETH,2,
+CbusBusTypes,PB_MIWI,3,
+CbusBusTypes,PB_USB,4,
+CbusProcessorManufacturers,,,
+CbusProcessorManufacturers,,,Processor manufacturer codes
+CbusProcessorManufacturers,,,
+CbusProcessorManufacturers,CPUM_MICROCHIP,1,
+CbusProcessorManufacturers,CPUM_ATMEL,2,
+CbusProcessorManufacturers,CPUM_ARM,3,
+CbusMicrochipProcessors,,,
+CbusMicrochipProcessors,,,Microchip Processor type codes (identifies to FCU for bootload compatibility)
+CbusMicrochipProcessors,,,
+CbusMicrochipProcessors,P18F2480,1,
+CbusMicrochipProcessors,P18F4480,2,
+CbusMicrochipProcessors,P18F2580,3,
+CbusMicrochipProcessors,P18F4580,4,
+CbusMicrochipProcessors,P18F2585,5,
+CbusMicrochipProcessors,P18F4585,6,
+CbusMicrochipProcessors,P18F2680,7,
+CbusMicrochipProcessors,P18F4680,8,
+CbusMicrochipProcessors,P18F2682,9,
+CbusMicrochipProcessors,P18F4682,10,
+CbusMicrochipProcessors,P18F2685,11,
+CbusMicrochipProcessors,P18F4685,12,
+CbusMicrochipProcessors,,,
+CbusMicrochipProcessors,P18F25K80,13,
+CbusMicrochipProcessors,P18F45K80,14,
+CbusMicrochipProcessors,P18F26K80,15,
+CbusMicrochipProcessors,P18F46K80,16,
+CbusMicrochipProcessors,P18F65K80,17,
+CbusMicrochipProcessors,P18F66K80,18,
+CbusMicrochipProcessors,P18F25K83,19,
+CbusMicrochipProcessors,P18F26K83,20,
+CbusMicrochipProcessors,P18F27Q84,21,
+CbusMicrochipProcessors,P18F47Q84,22,
+CbusMicrochipProcessors,P18F27Q83,23,
+CbusMicrochipProcessors,P18F14K22,25,
+CbusMicrochipProcessors,,,
+CbusMicrochipProcessors,P32MX534F064,30,
+CbusMicrochipProcessors,P32MX564F064,31,
+CbusMicrochipProcessors,P32MX564F128,32,
+CbusMicrochipProcessors,P32MX575F256,33,
+CbusMicrochipProcessors,P32MX575F512,34,
+CbusMicrochipProcessors,P32MX764F128,35,
+CbusMicrochipProcessors,P32MX775F256,36,
+CbusMicrochipProcessors,P32MX775F512,37,
+CbusMicrochipProcessors,P32MX795F512,38,
+CbusArmProcessors,,,
+CbusArmProcessors,,,ARM Processor type codes (identifies to FCU for bootload compatibility)
+CbusArmProcessors,,,
+CbusArmProcessors,ARM1176JZF_S,1,As used in Raspberry Pi
+CbusArmProcessors,ARMCortex_A7,2,As Used in Raspberry Pi 2
+CbusArmProcessors,ARMCortex_A53,3,As used in Raspberry Pi 3
