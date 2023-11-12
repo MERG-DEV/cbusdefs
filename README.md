@@ -43,3 +43,5 @@ For WIP working towards a new version, a branch can be created for that developm
 
 Co-ordination of changes to CBUSDEFS is currently being managed by Pete Brownlow, merg@upsys.co.uk
 
+Version 8x released 12/11/23  Added some module type ids and manufacturer id
+
