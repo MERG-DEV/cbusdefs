@@ -194,6 +194,8 @@ CbusMergModuleTypes,MTYP_CANSOUT,77,Q series PIC input module (Ian Hart)
 CbusMergModuleTypes,MTYP_CANSBIP,78,Q series PIC input module (Ian Hart)
 CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver)
 CbusMergModuleTypes,MTYP_CANLEVER,80,Lever frame module (Tim Coombs)
+CbusMergModuleTypes,MTYP_CANSHIELD,81,Kit 110 Arduino shield test firmware
+CbusMergModuleTypes,MTYP_CAN4IN4OUT,82,4 inputs 4 outputs (Arduino module)
 
 
 CbusMergModuleTypes,,,
@@ -204,6 +206,7 @@ CbusMergModuleTypes,,,
 CbusMergModuleTypes,MTYP_CAN_SW,0xFF,Software nodes
 CbusMergModuleTypes,MTYP_EMPTY,0xFE,Empty module, bootloader only
 CbusMergModuleTypes,MTYP_CANUSB,0xFD,USB interface
+CbusMergModuleTypes,MTYP_CANDEV,0xFC,Module type for use by developers when developing something new
 CbusSprogModuleTypes,,,
 CbusSprogModuleTypes,,,Sprog Module types
 CbusSprogModuleTypes,,,
