@@ -3,7 +3,7 @@ comment,,,Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
 comment,,,Originally derived from opcodes.h (c) Andrew Crosland.
 comment,,,CSV version by Ian Hogg inspired by David W Radcliffe
 comment,,,
-comment,,,Ver 8w 
+comment,,,Ver 8y 
 comment,,,
 comment,,,  This work is licensed under the:
 comment,,,      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -93,6 +93,7 @@ comment,,,Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 comment,,,Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 comment,,,Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
+comment,,,Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used

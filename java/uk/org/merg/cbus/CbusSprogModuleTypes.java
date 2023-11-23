@@ -9,7 +9,7 @@ package uk.org.merg.cbus;
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8w 
+// Ver 8y 
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -99,6 +99,7 @@ package uk.org.merg.cbus;
 // Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
+// Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
 
 public enum CbusSprogModuleTypes {
 // 
