@@ -304,6 +304,8 @@ namespace merg.cbus
 			public const int MTYP_CANSBIP	=  78;	// Q series PIC input module (Ian Hart)
 			public const int MTYP_CANBUFFER	=  79;	// Message buffer (Phil Silver)
 			public const int MTYP_CANLEVER	=  80;	// Lever frame module (Tim Coombs)
+			public const int MTYP_CANSHIELD	=  81;	// Kit 110 Arduino shield test firmware
+			public const int MTYP_CAN4IN4OUT	=  82;	// 4 inputs 4 outputs (Arduino module)
 			// 
 			// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 			// Please liaise with Pete before adding new module types, 
@@ -312,6 +314,7 @@ namespace merg.cbus
 			public const int MTYP_CAN_SW	=  0xFF;	// Software nodes
 			public const int MTYP_EMPTY	=  0xFE;	// Empty module, bootloader only
 			public const int MTYP_CANUSB	=  0xFD;	// USB interface
+			public const int MTYP_CANDEV	=  0xFC;	// Module type for use by developers when developing something new
 		}
 
 		public static class CbusMicrochipProcessors

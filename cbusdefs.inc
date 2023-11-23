@@ -197,6 +197,8 @@ MTYP_CANSOUT	equ .77	; Q series PIC input module (Ian Hart)
 MTYP_CANSBIP	equ .78	; Q series PIC input module (Ian Hart)
 MTYP_CANBUFFER	equ .79	; Message buffer (Phil Silver)
 MTYP_CANLEVER	equ .80	; Lever frame module (Tim Coombs)
+MTYP_CANSHIELD	equ .81	; Kit 110 Arduino shield test firmware
+MTYP_CAN4IN4OUT	equ .82	; 4 inputs 4 outputs (Arduino module)
 ; 
 ; 
 ; 
@@ -207,6 +209,7 @@ MTYP_CANLEVER	equ .80	; Lever frame module (Tim Coombs)
 MTYP_CAN_SW	equ 0xFF	; Software nodes
 MTYP_EMPTY	equ 0xFE	; Empty module, bootloader only
 MTYP_CANUSB	equ 0xFD	; USB interface
+MTYP_CANDEV	equ 0xFC	; Module type for use by developers when developing something new
 ; 
 ; Sprog Module types
 ; 

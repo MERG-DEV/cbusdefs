@@ -667,6 +667,14 @@ namespace Merg.Cbus
 		/// </summary>
 		Canlever = 80,
 		/// <summary>
+		/// Kit 110 Arduino shield test firmware
+		/// </summary>
+		Canshield = 81,
+		/// <summary>
+		/// 4 inputs 4 outputs (Arduino module)
+		/// </summary>
+		Can4in4out = 82,
+		/// <summary>
 		/// Software nodes
 		/// </summary>
 		CanSw = 0xFF,
@@ -678,6 +686,10 @@ namespace Merg.Cbus
 		/// USB interface
 		/// </summary>
 		Canusb = 0xFD,
+		/// <summary>
+		/// Module type for use by developers when developing something new
+		/// </summary>
+		Candev = 0xFC,
 	}
 
 	/// <summary>

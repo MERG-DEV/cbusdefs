@@ -189,6 +189,8 @@ public enum CbusMergModuleTypes {
 	MTYP_CANSBIP(78),	//Q series PIC input module (Ian Hart)
 	MTYP_CANBUFFER(79),	//Message buffer (Phil Silver)
 	MTYP_CANLEVER(80),	//Lever frame module (Tim Coombs)
+	MTYP_CANSHIELD(81),	//Kit 110 Arduino shield test firmware
+	MTYP_CAN4IN4OUT(82),	//4 inputs 4 outputs (Arduino module)
 // 
 // At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 // Please liaise with Pete before adding new module types, 
@@ -196,7 +198,8 @@ public enum CbusMergModuleTypes {
 // 
 	MTYP_CAN_SW(0xFF),	//Software nodes
 	MTYP_EMPTY(0xFE),	//Empty module, bootloader only
-	MTYP_CANUSB(0xFD);	//USB interface
+	MTYP_CANUSB(0xFD),	//USB interface
+	MTYP_CANDEV(0xFC);	//Module type for use by developers when developing something new
 
 	private final int v;
 

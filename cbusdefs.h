@@ -204,6 +204,8 @@ extern "C" {
 #define MTYP_CANSBIP	78	// Q series PIC input module (Ian Hart)
 #define MTYP_CANBUFFER	79	// Message buffer (Phil Silver)
 #define MTYP_CANLEVER	80	// Lever frame module (Tim Coombs)
+#define MTYP_CANSHIELD	81	// Kit 110 Arduino shield test firmware
+#define MTYP_CAN4IN4OUT	82	// 4 inputs 4 outputs (Arduino module)
 // 
 // 
 // 
@@ -214,6 +216,7 @@ extern "C" {
 #define MTYP_CAN_SW	0xFF	// Software nodes
 #define MTYP_EMPTY	0xFE	// Empty module, bootloader only
 #define MTYP_CANUSB	0xFD	// USB interface
+#define MTYP_CANDEV	0xFC	// Module type for use by developers when developing something new
 // 
 // Sprog Module types
 // 

@@ -200,6 +200,8 @@ MTYP_CANSOUT = const(77)    # Q series PIC input module (Ian Hart)
 MTYP_CANSBIP = const(78)    # Q series PIC input module (Ian Hart)
 MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
 MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
+MTYP_CANSHIELD = const(81)    # Kit 110 Arduino shield test firmware
+MTYP_CAN4IN4OUT = const(82)    # 4 inputs 4 outputs (Arduino module)
 # 
 # 
 # 
@@ -210,6 +212,7 @@ MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
 MTYP_CAN_SW = const(0xFF)    # Software nodes
 MTYP_EMPTY = const(0xFE)    # Empty module, bootloader only
 MTYP_CANUSB = const(0xFD)    # USB interface
+MTYP_CANDEV = const(0xFC)    # Module type for use by developers when developing something new
 # 
 # Sprog Module types
 # 
