@@ -6,11 +6,11 @@ namespace Merg.Cbus
 {
 
     // 
-    // Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+    // Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
     // Originally derived from opcodes.h (c) Andrew Crosland.
     // CSV version by Ian Hogg inspired by David W Radcliffe
     // 
-    // Ver 8y 
+    // Ver 8y WIP NOT YET RELEASED
     // 
     //   This work is licensed under the:
     //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -101,6 +101,7 @@ namespace Merg.Cbus
     // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+    // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
 
 	/// <summary>
 	/// 
@@ -602,7 +603,7 @@ namespace Merg.Cbus
 		/// <summary>
 		/// Extended CANMIO (24 I/O ports) (Pete Brownlow)
 		/// </summary>
-		Canemio = 64,
+		Canxio = 64,
 		/// <summary>
 		/// DC cab
 		/// </summary>
@@ -675,6 +676,18 @@ namespace Merg.Cbus
 		/// 4 inputs 4 outputs (Arduino module)
 		/// </summary>
 		Can4in4out = 82,
+		/// <summary>
+		/// CANCMD with built in booster (Simon West)
+		/// </summary>
+		Cancmdb = 83,
+		/// <summary>
+		/// neopixel driver (Jon Denham)
+		/// </summary>
+		Canpixel = 84,
+		/// <summary>
+		/// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+		/// </summary>
+		Cancabpe = 85,
 		/// <summary>
 		/// Software nodes
 		/// </summary>

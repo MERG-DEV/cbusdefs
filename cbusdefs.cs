@@ -6,11 +6,11 @@ namespace merg.cbus
 {
 
     // 
-    // Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+    // Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
     // Originally derived from opcodes.h (c) Andrew Crosland.
     // CSV version by Ian Hogg inspired by David W Radcliffe
     // 
-    // Ver 8y 
+    // Ver 8y WIP NOT YET RELEASED
     // 
     //   This work is licensed under the:
     //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -101,6 +101,7 @@ namespace merg.cbus
     // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+    // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
 
 	public static class CbusDefs
 	{
@@ -288,7 +289,7 @@ namespace merg.cbus
 			public const int MTYP_CANRC522	=  61;	// Read/Write from/to RC522 RFID tags
 			public const int MTYP_CANINP	=  62;	// 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
 			public const int MTYP_CANOUT	=  63;	// 8 outputs module (2g version of CANACC8) (Pete Brownlow)
-			public const int MTYP_CANEMIO	=  64;	// Extended CANMIO (24 I/O ports) (Pete Brownlow)
+			public const int MTYP_CANXIO	=  64;	// Extended CANMIO (24 I/O ports) (Pete Brownlow)
 			public const int MTYP_CANCABDC	=  65;	// DC cab
 			public const int MTYP_CANRCOM	=  66;	// DC Railcom detector/reader
 			public const int MTYP_CANMP3	=  67;	// MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
@@ -307,6 +308,9 @@ namespace merg.cbus
 			public const int MTYP_CANLEVER	=  80;	// Lever frame module (Tim Coombs)
 			public const int MTYP_CANSHIELD	=  81;	// Kit 110 Arduino shield test firmware
 			public const int MTYP_CAN4IN4OUT	=  82;	// 4 inputs 4 outputs (Arduino module)
+			public const int MTYP_CANCMDB	=  83;	// CANCMD with built in booster (Simon West)
+			public const int MTYP_CANPIXEL	=  84;	// neopixel driver (Jon Denham)
+			public const int MTYP_CANCABPE	=  85;	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 			// 
 			// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 			// Please liaise with Pete before adding new module types, 

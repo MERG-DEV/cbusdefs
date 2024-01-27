@@ -9,11 +9,11 @@ extern "C" {
 #endif
 
 // 		
-// 		Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+// 		Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
 // 		Originally derived from opcodes.h (c) Andrew Crosland.
 // 		CSV version by Ian Hogg inspired by David W Radcliffe
 // 		
-// 		Ver 8y 
+// 		Ver 8y WIP NOT YET RELEASED
 // 		
 // 		  This work is licensed under the:
 // 		      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -104,6 +104,7 @@ extern "C" {
 // 		Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // 		Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 // 		Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+// 		Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
 // 
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
@@ -188,7 +189,7 @@ extern "C" {
 #define MTYP_CANRC522	61	// Read/Write from/to RC522 RFID tags
 #define MTYP_CANINP	62	// 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
 #define MTYP_CANOUT	63	// 8 outputs module (2g version of CANACC8) (Pete Brownlow)
-#define MTYP_CANEMIO	64	// Extended CANMIO (24 I/O ports) (Pete Brownlow)
+#define MTYP_CANXIO	64	// Extended CANMIO (24 I/O ports) (Pete Brownlow)
 #define MTYP_CANCABDC	65	// DC cab
 #define MTYP_CANRCOM	66	// DC Railcom detector/reader
 #define MTYP_CANMP3	67	// MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
@@ -207,7 +208,9 @@ extern "C" {
 #define MTYP_CANLEVER	80	// Lever frame module (Tim Coombs)
 #define MTYP_CANSHIELD	81	// Kit 110 Arduino shield test firmware
 #define MTYP_CAN4IN4OUT	82	// 4 inputs 4 outputs (Arduino module)
-// 
+#define MTYP_CANCMDB	83	// CANCMD with built in booster (Simon West)
+#define MTYP_CANPIXEL	84	// neopixel driver (Jon Denham)
+#define MTYP_CANCABPE	85	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 // 
 // 
 // At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk

@@ -5,11 +5,11 @@
 from micropython import const
 
 #         
-#         Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+#         Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
 #         Originally derived from opcodes.h (c) Andrew Crosland.
 #         CSV version by Ian Hogg inspired by David W Radcliffe
 #         
-#         Ver 8y 
+#         Ver 8y WIP NOT YET RELEASED
 #         
 #           This work is licensed under the:
 #               Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -100,6 +100,7 @@ from micropython import const
 #         Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 #         Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 #         Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+#         Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
 # 
 # CBUS Manufacturer definitions
 # Where the manufacturer already has an NMRA code, this is used
@@ -184,7 +185,7 @@ MTYP_CANCOMPUTE = const(60)    # Compute Event processing engine
 MTYP_CANRC522 = const(61)    # Read/Write from/to RC522 RFID tags
 MTYP_CANINP = const(62)    # 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
 MTYP_CANOUT = const(63)    # 8 outputs module (2g version of CANACC8) (Pete Brownlow)
-MTYP_CANEMIO = const(64)    # Extended CANMIO (24 I/O ports) (Pete Brownlow)
+MTYP_CANXIO = const(64)    # Extended CANMIO (24 I/O ports) (Pete Brownlow)
 MTYP_CANCABDC = const(65)    # DC cab
 MTYP_CANRCOM = const(66)    # DC Railcom detector/reader
 MTYP_CANMP3 = const(67)    # MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
@@ -203,7 +204,9 @@ MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
 MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
 MTYP_CANSHIELD = const(81)    # Kit 110 Arduino shield test firmware
 MTYP_CAN4IN4OUT = const(82)    # 4 inputs 4 outputs (Arduino module)
-# 
+MTYP_CANCMDB = const(83)    # CANCMD with built in booster (Simon West)
+MTYP_CANPIXEL = const(84)    # neopixel driver (Jon Denham)
+MTYP_CANCABPE = const(85)    # Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 # 
 # 
 # At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk

@@ -5,11 +5,11 @@
 package uk.org.merg.cbus;
 
 // 
-// Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
+// Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
 // Originally derived from opcodes.h (c) Andrew Crosland.
 // CSV version by Ian Hogg inspired by David W Radcliffe
 // 
-// Ver 8y 
+// Ver 8y WIP NOT YET RELEASED
 // 
 //   This work is licensed under the:
 //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -100,6 +100,7 @@ package uk.org.merg.cbus;
 // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+// Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
 
 public enum CbusParamFlags {
 // 
