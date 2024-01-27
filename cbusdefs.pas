@@ -113,7 +113,7 @@ const
  MANU_SPROG	=  44;	// https://www.sprog-dcc.co.uk/
  MANU_ROCRAIL	=  70;	// http://www.rocrail.net
  MANU_SPECTRUM	=  80;	// http://animatedmodeler.com  (Spectrum Engineering)
- MANU_VLCB	=  250;	// VLCB range of modules
+ MANU_MERG_VLCB	=  250;	// range of MERG VLCB modules
  MANU_SYSPIXIE	=  249;	// Konrad Orlowski
  MANU_RME	=  248;	// http://rmeuk.com  (Railway Modelling Experts Limited)
 // 
@@ -538,6 +538,7 @@ const
  PF_BOOT	=  8;	// Module supports the FCU bootloader protocol
  PF_COE	=  16;	// Module can consume its own events
  PF_LRN	=  32;	// Module is in learn mode
+ PF_VLCB	=  64;	// Module is VLCB compatible
 // 
 // BUS type that module is connected to
 // 

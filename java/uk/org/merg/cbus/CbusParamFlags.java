@@ -113,7 +113,8 @@ public enum CbusParamFlags {
 	PF_FLiM(4),	//Module is in FLiM
 	PF_BOOT(8),	//Module supports the FCU bootloader protocol
 	PF_COE(16),	//Module can consume its own events
-	PF_LRN(32);	//Module is in learn mode
+	PF_LRN(32),	//Module is in learn mode
+	PF_VLCB(64);	//Module is VLCB compatible
 
 	private final int v;
 

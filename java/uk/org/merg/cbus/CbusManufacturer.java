@@ -111,7 +111,7 @@ public enum CbusManufacturer {
 	MANU_SPROG(44),	//https://www.sprog-dcc.co.uk/
 	MANU_ROCRAIL(70),	//http://www.rocrail.net
 	MANU_SPECTRUM(80),	//http://animatedmodeler.com  (Spectrum Engineering)
-	MANU_VLCB(250),	//VLCB range of modules
+	MANU_MERG_VLCB(250),	//range of MERG VLCB modules
 	MANU_SYSPIXIE(249),	//Konrad Orlowski
 	MANU_RME(248);	//http://rmeuk.com  (Railway Modelling Experts Limited)
 

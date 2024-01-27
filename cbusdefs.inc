@@ -107,7 +107,7 @@ MANU_MERG	equ .165	; https://www.merg.co.uk
 MANU_SPROG	equ .44	; https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL	equ .70	; http://www.rocrail.net
 MANU_SPECTRUM	equ .80	; http://animatedmodeler.com  (Spectrum Engineering)
-MANU_VLCB	equ .250	; VLCB range of modules
+MANU_MERG_VLCB	equ .250	; range of MERG VLCB modules
 MANU_SYSPIXIE	equ .249	; Konrad Orlowski
 MANU_RME	equ .248	; http://rmeuk.com  (Railway Modelling Experts Limited)
 ; 
@@ -532,6 +532,7 @@ PF_FLiM	equ .4	; Module is in FLiM
 PF_BOOT	equ .8	; Module supports the FCU bootloader protocol
 PF_COE	equ .16	; Module can consume its own events
 PF_LRN	equ .32	; Module is in learn mode
+PF_VLCB	equ .64	; Module is VLCB compatible
 ; 
 ; BUS type that module is connected to
 ; 

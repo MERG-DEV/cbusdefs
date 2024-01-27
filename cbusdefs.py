@@ -110,7 +110,7 @@ MANU_MERG = const(165)    # https://www.merg.co.uk
 MANU_SPROG = const(44)    # https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL = const(70)    # http://www.rocrail.net
 MANU_SPECTRUM = const(80)    # http://animatedmodeler.com  (Spectrum Engineering)
-MANU_VLCB = const(250)    # VLCB range of modules
+MANU_MERG_VLCB = const(250)    # range of MERG VLCB modules
 MANU_SYSPIXIE = const(249)    # Konrad Orlowski
 MANU_RME = const(248)    # http://rmeuk.com  (Railway Modelling Experts Limited)
 # 
@@ -535,6 +535,7 @@ PF_FLiM = const(4)    # Module is in FLiM
 PF_BOOT = const(8)    # Module supports the FCU bootloader protocol
 PF_COE = const(16)    # Module can consume its own events
 PF_LRN = const(32)    # Module is in learn mode
+PF_VLCB = const(64)    # Module is VLCB compatible
 # 
 # BUS type that module is connected to
 # 

@@ -114,7 +114,7 @@ extern "C" {
 #define MANU_SPROG	44	// https://www.sprog-dcc.co.uk/
 #define MANU_ROCRAIL	70	// http://www.rocrail.net
 #define MANU_SPECTRUM	80	// http://animatedmodeler.com  (Spectrum Engineering)
-#define MANU_VLCB	250	// VLCB range of modules
+#define MANU_MERG_VLCB	250	// range of MERG VLCB modules
 #define MANU_SYSPIXIE	249	// Konrad Orlowski
 #define MANU_RME	248	// http://rmeuk.com  (Railway Modelling Experts Limited)
 // 
@@ -539,6 +539,7 @@ extern "C" {
 #define PF_BOOT	8	// Module supports the FCU bootloader protocol
 #define PF_COE	16	// Module can consume its own events
 #define PF_LRN	32	// Module is in learn mode
+#define PF_VLCB	64	// Module is VLCB compatible
 // 
 // BUS type that module is connected to
 // 

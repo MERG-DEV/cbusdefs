@@ -326,9 +326,9 @@ namespace Merg.Cbus
 		/// </summary>
 		Spectrum = 80,
 		/// <summary>
-		/// VLCB range of modules
+		/// range of MERG VLCB modules
 		/// </summary>
-		Vlcb = 250,
+		MergVlcb = 250,
 		/// <summary>
 		/// Konrad Orlowski
 		/// </summary>
@@ -1421,6 +1421,10 @@ namespace Merg.Cbus
 		/// Module is in learn mode
 		/// </summary>
 		Lrn = 32,
+		/// <summary>
+		/// Module is VLCB compatible
+		/// </summary>
+		Vlcb = 64,
 	}
 
 	/// <summary>
