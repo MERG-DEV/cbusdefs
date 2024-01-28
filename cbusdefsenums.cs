@@ -101,7 +101,7 @@ namespace Merg.Cbus
     // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
-    // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO
+    // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, SMARTTD, change CANEMIO to CANXIO
 
 	/// <summary>
 	/// 
@@ -688,6 +688,10 @@ namespace Merg.Cbus
 		/// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 		/// </summary>
 		Cancabpe = 85,
+		/// <summary>
+		/// Smart train detector (Michael Smith)
+		/// </summary>
+		Cansmarttd = 86,
 		/// <summary>
 		/// Software nodes
 		/// </summary>

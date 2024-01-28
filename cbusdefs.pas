@@ -103,7 +103,7 @@ const
 { 		Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs) }
 { 		Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland) }
 { 		Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV }
-{ 		Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, change CANEMIO to CANXIO }
+{ 		Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, SMARTTD, change CANEMIO to CANXIO }
 // 
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
@@ -210,6 +210,8 @@ const
  MTYP_CANCMDB	=  83;	// CANCMD with built in booster (Simon West)
  MTYP_CANPIXEL	=  84;	// neopixel driver (Jon Denham)
  MTYP_CANCABPE	=  85;	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+ MTYP_CANSMARTTD	=  86;	// Smart train detector (Michael Smith)
+// 
 // 
 // 
 // At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
