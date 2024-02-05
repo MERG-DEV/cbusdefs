@@ -1174,6 +1174,14 @@ CbusOpCodeParams,0xFB,24:31,Data2
 CbusOpCodeParams,0xFB,32:39,Data3
 CbusOpCodeParams,0xFB,40:47,Data4
 CbusOpCodeParams,0xFB,48:55,Data5
+CbusOpCodeParams,0xFC,00:07,DNHigh
+CbusOpCodeParams,0xFC,08:15,DNLow
+CbusOpCodeParams,0xFC,00:15,DeviceNumber
+CbusOpCodeParams,0xFC,16:23,Data1
+CbusOpCodeParams,0xFC,24:31,Data2
+CbusOpCodeParams,0xFC,32:39,Data3
+CbusOpCodeParams,0xFC,40:47,Data4
+CbusOpCodeParams,0xFC,48:55,Data5
 CbusOpCodeParams,0xFD,00:07,NNHigh
 CbusOpCodeParams,0xFD,08:15,NNLow
 CbusOpCodeParams,0xFD,00:15,NodeNumber
