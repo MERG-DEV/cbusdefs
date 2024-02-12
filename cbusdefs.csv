@@ -713,11 +713,6 @@ CbusOpCodeParams,0x80,00:07,Rep
 CbusOpCodeParams,0x80,08:15,Byte0
 CbusOpCodeParams,0x80,16:23,Byte1
 CbusOpCodeParams,0x80,24:31,Byte2
-CbusOpCodeParams,0x81,00:07,Session
-CbusOpCodeParams,0x81,08:15,CVHigh
-CbusOpCodeParams,0x81,16:23,CVLow
-CbusOpCodeParams,0x81,08:23,CVNumber
-CbusOpCodeParams,0x81,24:31,CVValue
 CbusOpCodeParams,0x82,00:07,CVHigh
 CbusOpCodeParams,0x82,08:15,CVLow
 CbusOpCodeParams,0x82,00:15,CVNumber
