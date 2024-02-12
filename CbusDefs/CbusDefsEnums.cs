@@ -5,11 +5,11 @@
 namespace merg.cbus
 {
     // 
-    // Copyright (C) Pete Brownlow 2011-2020   software@upsys.co.uk
+    // Copyright (C) Pete Brownlow 2011-2022   software@upsys.co.uk
     // Originally derived from opcodes.h (c) Andrew Crosland.
     // CSV version by Ian Hogg inspired by David W Radcliffe
     // 
-    // Ver 8t
+    // Ver 8w 
     // 
     //   This work is licensed under the:
     //       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -81,12 +81,27 @@ namespace merg.cbus
     //                        Updated descriptive comments for some module types
     //                        Updated CABDAT opcode to match RFC0004
     // Pete Brownlow,06/09/20,Ver 8t Added module type for CANRCOM. Fixed: Opcode for CABDAT, names for CANRC522 and CANMAG
-    // Andrew Crosland,21/09/21,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
-    // Duncan Greenwood,21/10/07,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages
-    // 
+    // Pete Brownlow,13/10/20,Ver 8u Added module types 67 to 74 including some Arduino projects
+    //                               Added SPROG manufacturer code 44 and new SPROG CBUS module types
+    //                               Additional error code for overload - now removed as not required after all
+    //                               New bus type USB for modules with only USB and no CAN
+    // Pete Brownlow,19/02/21,Ver 8u Added manufacturer code 13 for new development - who don't have a manufacturer id yet
+    //                               Added proccessor identification codes for 18F25k83, 18F26k83 and 18F14K22.
+    // Andrew Crosland,21/09/2021,Ver 8t Added PICs P18F14K22 P18F26K83 P18F27Q84 P18F47Q84 and P18F27Q83
+    // Andrew Crosland,19/01/2022,Ver 8t, Added OPC_VCVS, Verify CV service mode - used for CV read hints, update SPROG modules types (PR#13)
+    // Duncan Greenwood,07/10/2021,Ver 8t Added OPC_DTXC opcode (0xE9) for CBUS long messages - RFC 0005
+    // Richard Crawshaw,11/10/2021,Ver 8t Fixed trailing comma in CbusCabSigAspect0
+    // Pete Brownlow,28/07/2022,Ver 8v Resolve and merge changes in 8u branch with changes subsequently applied to master, now ver 8v in new branch,
+    //   							Add requested module type ids 75 to 78
+    //                               Resolve changes from PR #13,  move proposed and/or agreed opcodes not yet in the published spec to below the others
+    // Pete Brownlow,5/08/2022, Ver 8w  Add module type 79 for CANBUFFER
+    // Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
+    // Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
+    // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
+    // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 
     /// <summary>
-    /// ARM Processor type codes (identifies to FCU for bootload compatiblity)
+    /// ARM Processor type codes (identifies to FCU for bootload compatibility)
     /// </summary>
     public enum ArmProcessors
     {
@@ -118,6 +133,8 @@ namespace merg.cbus
         PbEth = 2, // PB_ETH
 
         PbMiwi = 3, // PB_MIWI
+
+        PbUsb = 4, // PB_USB
     }
 
     /// <summary>
@@ -176,6 +193,7 @@ namespace merg.cbus
 
     /// <summary>
     /// Error codes for OPC_CMDERR
+    /// Additional error codes proposed and/or agreed but not yet in the current published specification
     /// </summary>
     public enum CmdErrs
     {
@@ -206,6 +224,11 @@ namespace merg.cbus
         InvEvValue = 11, // CMDERR_INV_EV_VALUE
 
         InvNvValue = 12, // CMDERR_INV_NV_VALUE
+
+        /// <summary>
+        /// Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
+        /// </summary>
+        LrnOther = 13, // CMDERR_LRN_OTHER
     }
 
     /// <summary>
@@ -239,9 +262,19 @@ namespace merg.cbus
     {
 
         /// <summary>
-        /// http://www.merg.co.uk
+        /// For new manufacturer development - who don't have a manufacturer id yet
+        /// </summary>
+        Dev = 13, // MANU_DEV
+
+        /// <summary>
+        /// https://www.merg.co.uk
         /// </summary>
         Merg = 165, // MANU_MERG
+
+        /// <summary>
+        /// https://www.sprog-dcc.co.uk/
+        /// </summary>
+        Sprog = 44, // MANU_SPROG
 
         /// <summary>
         /// http://www.rocrail.net
@@ -252,14 +285,30 @@ namespace merg.cbus
         /// http://animatedmodeler.com  (Spectrum Engineering)
         /// </summary>
         Spectrum = 80, // MANU_SPECTRUM
+
+        /// <summary>
+        /// VLCB range of modules
+        /// </summary>
+        Vlcb = 250, // MANU_VLCB
+
+        /// <summary>
+        /// Konrad Orlowski
+        /// </summary>
+        Syspixie = 249, // MANU_SYSPIXIE
+
+        /// <summary>
+        /// http://rmeuk.com  (Railway Modelling Experts Limited)
+        /// </summary>
+        Rme = 248, // MANU_RME
     }
 
     /// <summary>
     /// MODULE TYPES
-    /// Please note that the existance of a module type id does not necessarily mean that firmware has been implemented
+    /// Please note that the existence of a module type id does not necessarily mean that firmware has been implemented
     /// MERG Module types
-    /// At the time of writing the list of defined MERG module types is maintained by Roger Healey
-    /// Please liaise with Roger before adding new module types
+    /// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
+    /// Please liaise with Pete before adding new module types, 
+    /// and/or create your own GitHub branch, add your proposed new module type(s) and then create a Pull Request
     /// </summary>
     public enum MergModuleTypes
     {
@@ -572,17 +621,17 @@ namespace merg.cbus
         Canrc522 = 61, // MTYP_CANRC522
 
         /// <summary>
-        /// 8 inputs module (2g version of CANACE8c)
+        /// 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
         /// </summary>
         Caninp = 62, // MTYP_CANINP
 
         /// <summary>
-        /// 8 outputs module (2g version of CANACC8)
+        /// 8 outputs module (2g version of CANACC8) (Pete Brownlow)
         /// </summary>
         Canout = 63, // MTYP_CANOUT
 
         /// <summary>
-        /// Extended CANMIO (24 I/O ports)
+        /// Extended CANMIO (24 I/O ports) (Pete Brownlow)
         /// </summary>
         Canemio = 64, // MTYP_CANEMIO
 
@@ -595,6 +644,76 @@ namespace merg.cbus
         /// DC Railcom detector/reader
         /// </summary>
         Canrcom = 66, // MTYP_CANRCOM
+
+        /// <summary>
+        /// MP3 sound player in response to events (eg: station announcements) (Duncan Greenwood)
+        /// </summary>
+        Canmp3 = 67, // MTYP_CANMP3
+
+        /// <summary>
+        /// Addressed RGB LED driver (Duncan Greenwood)
+        /// </summary>
+        Canxmas = 68, // MTYP_CANXMAS
+
+        /// <summary>
+        /// Servo setting box (Duncan Greenwood)
+        /// </summary>
+        Cansvoset = 69, // MTYP_CANSVOSET
+
+        /// <summary>
+        /// DC Command station
+        /// </summary>
+        Cancmddc = 70, // MTYP_CANCMDDC
+
+        /// <summary>
+        /// Text message display
+        /// </summary>
+        Cantext = 71, // MTYP_CANTEXT
+
+        /// <summary>
+        /// Signal controller
+        /// </summary>
+        Canasignal = 72, // MTYP_CANASIGNAL
+
+        /// <summary>
+        /// DCC cab with slider control (Dave Radcliffe)
+        /// </summary>
+        Canslider = 73, // MTYP_CANSLIDER
+
+        /// <summary>
+        /// DC ATC module (Dave Harris)
+        /// </summary>
+        Candcatc = 74, // MTYP_CANDCATC
+
+        /// <summary>
+        /// Logic module using and/or gates (Phil Silver)
+        /// </summary>
+        Cangate = 75, // MTYP_CANGATE
+
+        /// <summary>
+        /// Q series PIC input module (Ian Hart)
+        /// </summary>
+        Cansinp = 76, // MTYP_CANSINP
+
+        /// <summary>
+        /// Q series PIC input module (Ian Hart)
+        /// </summary>
+        Cansout = 77, // MTYP_CANSOUT
+
+        /// <summary>
+        /// Q series PIC input module (Ian Hart)
+        /// </summary>
+        Cansbip = 78, // MTYP_CANSBIP
+
+        /// <summary>
+        /// Message buffer (Phil Silver)
+        /// </summary>
+        Canbuffer = 79, // MTYP_CANBUFFER
+
+        /// <summary>
+        /// Lever frame module (Tim Coombs)
+        /// </summary>
+        Canlever = 80, // MTYP_CANLEVER
 
         /// <summary>
         /// Software nodes
@@ -613,7 +732,7 @@ namespace merg.cbus
     }
 
     /// <summary>
-    /// Microchip Processor type codes (identifies to FCU for bootload compatiblity)
+    /// Microchip Processor type codes (identifies to FCU for bootload compatibility)
     /// </summary>
     public enum MicrochipProcessors
     {
@@ -654,7 +773,7 @@ namespace merg.cbus
 
         P18f66k80 = 18, // P18F66K80
 
-        P18f14k22 = 19, // P18F14K22
+        P18f25k83 = 19, // P18F25K83
 
         P18f26k83 = 20, // P18F26K83
 
@@ -663,6 +782,8 @@ namespace merg.cbus
         P18f47q84 = 22, // P18F47Q84
 
         P18f27q83 = 23, // P18F27Q83
+
+        P18f14k22 = 25, // P18F14K22
 
         P32mx534f064 = 30, // P32MX534F064
 
@@ -693,6 +814,7 @@ namespace merg.cbus
     /// Packets with 5 data bytes
     /// Packets with 6 data bytes
     /// Packets with 7 data bytes
+    /// Opcodes that are proposed and/or agreed but not yet in the current published specification
     /// </summary>
     public enum OpCodes
     {
@@ -1268,11 +1390,6 @@ namespace merg.cbus
         Stat = 0xE3, // OPC_STAT
 
         /// <summary>
-        /// CBUS long message packet
-        /// </summary>
-        Dtxc = 0xE9, // OPC_DTXC
-
-        /// <summary>
         /// Node parameters response
         /// </summary>
         Params = 0xEF, // OPC_PARAMS
@@ -1356,6 +1473,16 @@ namespace merg.cbus
         /// Extended opcode with 6 data byes
         /// </summary>
         Extc6 = 0xFF, // OPC_EXTC6
+
+        /// <summary>
+        /// Verify CV service mode - used for CV read hints
+        /// </summary>
+        Vcvs = 0xA4, // OPC_VCVS
+
+        /// <summary>
+        /// CBUS long message packet
+        /// </summary>
+        Dtxc = 0xE9, // OPC_DTXC
     }
 
     /// <summary>
@@ -1365,7 +1492,7 @@ namespace merg.cbus
     {
 
         /// <summary>
-        /// Modules doesn't support events
+        /// Module doesn't support events
         /// </summary>
         Noevents = 0, // PF_NOEVENTS
 
@@ -1385,7 +1512,7 @@ namespace merg.cbus
         Combi = 3, // PF_COMBI
 
         /// <summary>
-        /// Module is in FLiM mode
+        /// Module is in FLiM
         /// </summary>
         Flim = 4, // PF_FLiM
 
@@ -1498,7 +1625,7 @@ namespace merg.cbus
         Cpumid = 15, // PAR_CPUMID
 
         /// <summary>
-        ///  CPU manufacturer code
+        /// CPU manufacturer code
         /// </summary>
         Cpuman = 19, // PAR_CPUMAN
 
@@ -1586,6 +1713,48 @@ namespace merg.cbus
     }
 
     /// <summary>
+    /// Sprog Module types
+    /// </summary>
+    public enum SprogModuleTypes
+    {
+
+        /// <summary>
+        /// Pi-SPROG 3 programmer/command station
+        /// </summary>
+        Canpisprg3 = 1, // MTYP_CANPiSPRG3
+
+        /// <summary>
+        /// SPROG 3 Plus programmer/command station
+        /// </summary>
+        Cansprog3p = 2, // MTYP_CANSPROG3P
+
+        /// <summary>
+        /// CAN SPROG programmer/command station
+        /// </summary>
+        Cansprog = 3, // MTYP_CANSPROG
+
+        /// <summary>
+        /// System Booster
+        /// </summary>
+        Cansboost = 4, // MTYP_CANSBOOST
+
+        /// <summary>
+        /// Pi-SPROG 3 Plus programmer/command station
+        /// </summary>
+        Canpisprgp = 5, // MTYP_CANPiSPRGP
+
+        /// <summary>
+        /// 8-channel Servo I/O module
+        /// </summary>
+        Canservoio = 50, // MTYP_CANSERVOIO
+
+        /// <summary>
+        /// CAN ISB Isolated CAN USB Interface
+        /// </summary>
+        Canisb = 100, // MTYP_CANISB
+    }
+
+    /// <summary>
     /// Status codes for OPC_SSTAT
     /// </summary>
     public enum SStats
@@ -1617,5 +1786,17 @@ namespace merg.cbus
         Spd28I = 2, // TMOD_SPD_28I
 
         Spd28 = 3, // TMOD_SPD_28
+    }
+
+    /// <summary>
+    /// SysPixie Module types (Konrad Orlowski)
+    /// </summary>
+    public enum SysPixieModuleTypes
+    {
+
+        /// <summary>
+        /// Motorised point motor driver with current sense
+        /// </summary>
+        Canpmsense = 1, // MTYP_CANPMSense
     }
 }
