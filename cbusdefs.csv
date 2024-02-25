@@ -93,6 +93,10 @@ comment,,,Pete Brownlow,5/01/2023, Ver 8w  Add module type 80 for CANPMSense
 comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a way to allocate a block of module Id to VLCB even though VLCB group is not a manufacturer per se. The VLCB module IDs will be defined in the VLCB repo
 comment,,,Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 comment,,,Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
+comment,,,Richard Crawshaw,25/02/2024, Added OpCode parameters and definitions, priority and type, request / response / error relationships.
+comment,,,								Added accessory types.
+comment,,,								Added Engine flags, Cab flags and Command station flags.
+comment,,,								Added Fast clock days and months.
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -411,6 +415,7 @@ CbusOpCodes,,,Opcodes that are proposed and/or agreed but not yet in the current
 CbusOpCodes,,,
 CbusOpCodes,OPC_VCVS,0xA4,Verify CV service mode - used for CV read hints
 CbusOpCodes,OPC_DTXC,0xE9,CBUS long message packet
+
 CbusStmodModes,,,
 CbusStmodModes,,,
 CbusStmodModes,,,Modes for STMOD
@@ -420,6 +425,7 @@ CbusStmodModes,TMOD_SPD_128,0,
 CbusStmodModes,TMOD_SPD_14,1,
 CbusStmodModes,TMOD_SPD_28I,2,
 CbusStmodModes,TMOD_SPD_28,3,
+
 CbusErrs,,,
 CbusErrs,,,Error codes for OPC_ERR
 CbusErrs,,,
@@ -431,6 +437,7 @@ CbusErrs,ERR_LOCO_NOT_FOUND,5,
 CbusErrs,ERR_CMD_RX_BUF_OFLOW,6,
 CbusErrs,ERR_INVALID_REQUEST,7,
 CbusErrs,ERR_SESSION_CANCELLED,8,
+
 CbusSStats,,,
 CbusSStats,,,Status codes for OPC_SSTAT
 CbusSStats,,,
@@ -439,6 +446,7 @@ CbusSStats,SSTAT_OVLD,2,
 CbusSStats,SSTAT_WR_ACK,3,
 CbusSStats,SSTAT_BUSY,4,
 CbusSStats,SSTAT_CV_ERROR,5,
+
 CbusCmdErrs,,,
 CbusCmdErrs,,,Error codes for OPC_CMDERR
 CbusCmdErrs,,,
@@ -459,6 +467,7 @@ CbusCmdErrs,,,Additional error codes proposed and/or agreed but not yet in the c
 CbusCmdErrs,,,
 CbusCmdErrs,CMDERR_LRN_OTHER,13,Sent when module in learn mode sees NNLRN for different module (also exits learn mode) 
 CbusCmdErrs,,,
+
 CbusCabSigAspect0,,,
 CbusCabSigAspect0,,,Sub opcodes for OPC_CABDAT
 CbusCabSigAspect0,,,
@@ -483,6 +492,7 @@ CbusCabSigAspect2,SASP_LIT,0,Set bit 0 to indicate lit
 CbusCabSigAspect2,SASP_LUNAR,1,Set bit 1 for lunar indication
 CbusCabSigAspect2,,,
 CbusCabSigAspect2,,,Remaining bits in second aspect byte yet to be defined - can be used for other signalling systems
+
 CbusParams,,,
 CbusParams,,,
 CbusParams,,,Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
@@ -503,6 +513,7 @@ CbusParams,PAR_LOAD,11,load address, 4 bytes
 CbusParams,PAR_CPUMID,15,CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum)
 CbusParams,PAR_CPUMAN,19,CPU manufacturer code
 CbusParams,PAR_BETA,20,Beta revision (numeric), or 0 if release
+
 CbusParamOffsetsPic,,,
 CbusParamOffsetsPic,,,Offsets to other values stored at the top of the parameter block.
 CbusParamOffsetsPic,,,These are not returned by opcode PARAN, but are present in the hex
@@ -511,6 +522,7 @@ CbusParamOffsetsPic,,,
 CbusParamOffsetsPic,PAR_COUNT,0x18,Number of parameters implemented
 CbusParamOffsetsPic,PAR_NAME,0x1A,4 byte Address of Module type name, up to 8 characters null terminated
 CbusParamOffsetsPic,PAR_CKSUM,0x1E,Checksum word at end of parameters
+
 CbusParamFlags,,,
 CbusParamFlags,,,Flags in PAR_FLAGS
 CbusParamFlags,,,
@@ -522,6 +534,7 @@ CbusParamFlags,PF_FLiM,4,Module is in FLiM
 CbusParamFlags,PF_BOOT,8,Module supports the FCU bootloader protocol
 CbusParamFlags,PF_COE,16,Module can consume its own events
 CbusParamFlags,PF_LRN,32,Module is in learn mode
+
 CbusBusTypes,,,
 CbusBusTypes,,,BUS type that module is connected to
 CbusBusTypes,,,
@@ -529,12 +542,14 @@ CbusBusTypes,PB_CAN,1,
 CbusBusTypes,PB_ETH,2,
 CbusBusTypes,PB_MIWI,3,
 CbusBusTypes,PB_USB,4,
+
 CbusProcessorManufacturers,,,
 CbusProcessorManufacturers,,,Processor manufacturer codes
 CbusProcessorManufacturers,,,
 CbusProcessorManufacturers,CPUM_MICROCHIP,1,
 CbusProcessorManufacturers,CPUM_ATMEL,2,
 CbusProcessorManufacturers,CPUM_ARM,3,
+
 CbusMicrochipProcessors,,,
 CbusMicrochipProcessors,,,Microchip Processor type codes (identifies to FCU for bootload compatibility)
 CbusMicrochipProcessors,,,
@@ -573,19 +588,81 @@ CbusMicrochipProcessors,P32MX764F128,35,
 CbusMicrochipProcessors,P32MX775F256,36,
 CbusMicrochipProcessors,P32MX775F512,37,
 CbusMicrochipProcessors,P32MX795F512,38,
+
 CbusArmProcessors,,,
 CbusArmProcessors,,,ARM Processor type codes (identifies to FCU for bootload compatibility)
 CbusArmProcessors,,,
 CbusArmProcessors,ARM1176JZF_S,1,As used in Raspberry Pi
 CbusArmProcessors,ARMCortex_A7,2,As Used in Raspberry Pi 2
 CbusArmProcessors,ARMCortex_A53,3,As used in Raspberry Pi 3
+
+CbusEngineFlags,,,
+CbusEngineFlags,,,The engine flags used by DFLG 0x48; see also CbusStmodModes for bits 0 & 1.
+CbusEngineFlags,,,
+CbusEngineFlags,ENG_FLG_LIGHTS,4,Lights
+CbusEngineFlags,EBG_FLG_RELDIR,8,Relative direction
+CbusEngineFlags,ENG_FLG_STATE_ACTIVE,0,Active
+CbusEngineFlags,ENG_FLG_STATE_CONSISTED,16,Active
+CbusEngineFlags,ENG_FLG_STATE_CONSIST_MASTER,32,Consist master
+CbusEngineFlags,ENG_FLG_STATE_INACTIVE,48,Inactive
+
+CbusCabFlags,,,
+CbusCabFlags,,,The Cab flags used by GLOC 0x61.
+CbusCabFlags,,,
+CbusCabFlags,CAB_FLG_STANDARD,0,Standard operation: no stealing or sharing.
+CbusCabFlags,CAB_FLG_STEAL,1,Steal mode.
+CbusCabFlags,CAB_FLG_SHARE,2,Share mode.
+
+CbusCmdStnFlags,,,
+CbusCmdStnFlags,,,The Command Station flags used by STAT 0xE3.
+CbusCmdStnFlags,,,Bit 7 is reserved.
+CbusCmdStnFlags,,,
+CbusCmdStnFlags,CS_FLG_HW_ERR,1,Hardware error.
+CbusCmdStnFlags,CS_FLG_TRK_ERR,2,Track error.
+CbusCmdStnFlags,CS_FLG_TRK_ON,4,Track on.
+CbusCmdStnFlags,CS_FLG_BUS_ON,8,Bus on.
+CbusCmdStnFlags,CS_FLG_ES_PFMD,16,Emergency Stop All performed.
+CbusCmdStnFlags,CS_FLG_RST,32,Reset done.
+CbusCmdStnFlags,CS_FLG_SM,64,Service mode on.
+
+CbusFstClkWkDays,,,
+CbusFstClkWkDays,,,The days of the week as used by FCLK 0xCF.
+CbusFstClkWkDays,,,Uses the lower four bits.
+CbusFstClkWkDays,,,
+CbusFstClkWkDays,FC_WD_UNDEF,0,Undefined
+CbusFstClkWkDays,FC_WD_SUN,1,Sunday
+CbusFstClkWkDays,FC_WD_MON,2,Monday
+CbusFstClkWkDays,FC_WD_TUE,3,Tuesday
+CbusFstClkWkDays,FC_WD_WED,4,Wednesday
+CbusFstClkWkDays,FC_WD_THU,5,Thursday
+CbusFstClkWkDays,FC_WD_FRI,6,Friday
+CbusFstClkWkDays,FC_WD_SAT,7,Saturday
+
+CbusFstClkMonths,,,
+CbusFstClkMonths,,,The months of the year as used by FCLK 0xCF.
+CbusFstClkMonths,,,Uses the upper four bits.
+CbusFstClkMonths,,,
+CbusFstClkMonths,FC_MN_UNDEF,0,Undefined
+CbusFstClkMonths,FC_MN_JAN,16,January
+CbusFstClkMonths,FC_MN_FEB,32,February
+CbusFstClkMonths,FC_MN_MAR,48,March
+CbusFstClkMonths,FC_MN_APR,64,April
+CbusFstClkMonths,FC_MN_MAY,80,May
+CbusFstClkMonths,FC_MN_JUN,96,June
+CbusFstClkMonths,FC_MN_JUL,112,July
+CbusFstClkMonths,FC_MN_AUG,128,August
+CbusFstClkMonths,FC_MN_SEP,144,September
+CbusFstClkMonths,FC_MN_OCT,160,October
+CbusFstClkMonths,FC_MN_NOV,176,November
+CbusFstClkMonths,FC_MN_DEC,192,December
+
 CbusOpCodeParams,,,
 CbusOpCodeParams,,,Parameters definitions for the OpCodes
 CbusOpCodeParams,,,
 CbusOpCodeParams,,,Format
 CbusOpCodeParams,,,1:OpCode number in hex with 0x prefix;
 CbusOpCodeParams,,,2:bit-numbers start:end (two digit dec numbers => 00:07 for first byte); 
-CbusOpCodeParams,,,3:parameter name (prefix with $ to indicate string)
+CbusOpCodeParams,,,3:parameter name
 CbusOpCodeParams,0x21,00:07,Session
 CbusOpCodeParams,0x22,00:07,Session
 CbusOpCodeParams,0x23,00:07,Session
@@ -673,7 +750,7 @@ CbusOpCodeParams,0x60,16:23,Fn2
 CbusOpCodeParams,0x61,00:07,AddrHigh
 CbusOpCodeParams,0x61,08:15,AddrLow
 CbusOpCodeParams,0x61,00:15,DccAddress
-CbusOpCodeParams,0x61,16:23,EngineFlags
+CbusOpCodeParams,0x61,16:23,CabFlags
 CbusOpCodeParams,0x63,16:23,Err
 CbusOpCodeParams,0x63,00:15,DccAddress
 CbusOpCodeParams,0x63,00:07,Session
@@ -936,7 +1013,8 @@ CbusOpCodeParams,0xC2,32:39,Aspect2
 CbusOpCodeParams,0xC2,40:47,SignalledSpeed
 CbusOpCodeParams,0xCF,00:07,Mins
 CbusOpCodeParams,0xCF,08:15,Hrs
-CbusOpCodeParams,0xCF,16:23,WdMon
+CbusOpCodeParams,0xCF,16:19,WkDay
+CbusOpCodeParams,0xCF,20:23,Month
 CbusOpCodeParams,0xCF,24:31,Div
 CbusOpCodeParams,0xCF,32:39,MDay
 CbusOpCodeParams,0xCF,40:47,Temp
@@ -1202,11 +1280,18 @@ CbusOpCodeParams,0xFF,24:31,Data3
 CbusOpCodeParams,0xFF,32:39,Data4
 CbusOpCodeParams,0xFF,40:47,Data5
 CbusOpCodeParams,0xFF,48:55,Data6
+
+CbusOpCodeParamDef,,,
+CbusOpCodeParamDef,,,The definition of a parameter name (from CbusOpCodeParams).
+CbusOpCodeParamDef,,,Typically will be a standard data-type: byte/sbyte (unsigned / signed byte), char (7bit ASCII character), string, uint16/32 (unsigned 16/32 bit integer).
+CbusOpCodeParamDef,,,Can also be one of the enumerations defined elsewhere in this file:
+CbusOpCodeParamDef,,,CbusStmodModes, CbusParamFlags, CbusCabSigAspect0, CbusCabSigAspect1, CbusCabSigAspect2, 
+CbusOpCodeParamDef,,,
 CbusOpCodeParamDef,AddrHigh,byte,The high byte of a loco DCC address.
 CbusOpCodeParamDef,AddrLow,byte,The low byte of a loco DCC address.
-CbusOpCodeParamDef,AllocationCode,uint16,An application specific allocation code.
-CbusOpCodeParamDef,Aspect1,byte,Aspect codes, see CbusCabSigAspect1.
-CbusOpCodeParamDef,Aspect2,byte,Aspect codes, see CbusCabSigAspect2.
+CbusOpCodeParamDef,AllocationCode,byte,An application specific allocation code.
+CbusOpCodeParamDef,Aspect1,CbusCabSigAspect1,Aspect codes.
+CbusOpCodeParamDef,Aspect2,CbusCabSigAspect2,Aspect codes.
 CbusOpCodeParamDef,Build,byte,Build number, always 0 for a released version.
 CbusOpCodeParamDef,Byte0,byte,The first byte of a DCC packet.
 CbusOpCodeParamDef,Byte1,byte,The second byte of a DCC packet.
@@ -1214,6 +1299,7 @@ CbusOpCodeParamDef,Byte2,byte,The third byte of a DCC packet.
 CbusOpCodeParamDef,Byte3,byte,The fourth byte of a DCC packet.
 CbusOpCodeParamDef,Byte4,byte,The fifth byte of a DCC packet.
 CbusOpCodeParamDef,Byte5,byte,The sixth byte of a DCC packat.
+CbusOpCodeParamDef,CabFlags,CbusCabFlags,The Cab flags for steal / share.
 CbusOpCodeParamDef,CSNumber,byte,Command station number.
 CbusOpCodeParamDef,CVHigh,byte,The high byte of a DCC CV number.
 CbusOpCodeParamDef,CVLow,byte,The low byte of a DCC CV number.
@@ -1231,7 +1317,7 @@ CbusOpCodeParamDef,ErrorNumber,byte,The CmdErr value.
 CbusOpCodeParamDef,Consist,byte,The number of a DCC consist.
 CbusOpCodeParamDef,DNHigh,byte,The high byte of a Device Number.
 CbusOpCodeParamDef,DNLow,byte,The low byte of a Device Number.
-CbusOpCodeParamDef,DatCode,byte,The value of the signalling type, see CbusCanSigAspect0.
+CbusOpCodeParamDef,DatCode,CbusCabSigAspect0,The value of the signalling type, see CbusCabSigAspect0.
 CbusOpCodeParamDef,Data1,byte,The first data byte.
 CbusOpCodeParamDef,Data2,byte,The second data byte.
 CbusOpCodeParamDef,Data3,byte,The third data byte.
@@ -1256,7 +1342,7 @@ CbusOpCodeParamDef,EventCount,byte,The number of Events stored in the Node.
 CbusOpCodeParamDef,EventNumber,uint16,The full Event Number.
 CbusOpCodeParamDef,Ext_OPC,byte,The Extension Op-Code number.
 CbusOpCodeParamDef,EngineFlags,byte,The engine session flags.
-CbusOpCodeParamDef,NodeFlags,byte,The Node flags.
+CbusOpCodeParamDef,NodeFlags,CbusParamFlags,The Node flags.
 CbusOpCodeParamDef,CSFlags,byte,The command station flags.
 CbusOpCodeParamDef,Fn1,byte,DCC function number one.
 CbusOpCodeParamDef,Fn2,byte,DCC function number two.
@@ -1272,6 +1358,7 @@ CbusOpCodeParamDef,Minor,byte,The minor version number.
 CbusOpCodeParamDef,Mins,byte,The number of minutes.
 CbusOpCodeParamDef,Mode,byte,The CV programming mode to use.
 CbusOpCodeParamDef,ModuleId,byte,The module ID.
+CbusOpCodeParamDef,Month,CbusFstClkMonths,The month of the year.
 CbusOpCodeParamDef,NNHigh,byte,The high byte of the Node Number.
 CbusOpCodeParamDef,NNLow,byte,The low byte of the Node Number.
 CbusOpCodeParamDef,NVIndex,byte,The index number of the Node Variable.
@@ -1290,9 +1377,390 @@ CbusOpCodeParamDef,ParamValue,byte,The value of the Node parameter.
 CbusOpCodeParamDef,Rep,byte,The number of times the DCC packet is to be broadcast.
 CbusOpCodeParamDef,Session,byte,The Command Station session number.
 CbusOpCodeParamDef,Speed,byte,The speed of an engine, the MSB is the direction.
-CbusOpCodeParamDef,SignalledSpeed,byte,The signalled speed limit.
+CbusOpCodeParamDef,SignalledSpeed,byte,The signalled speed limit; 0xFF is disabled / not available.
 CbusOpCodeParamDef,DebugStatus,byte,Freeform status byte for debugging during CBUS module development.
 CbusOpCodeParamDef,ServiceModeStatus,byte,Status returned by command station/programmer at end of programming operation that does not return data.
-CbusOpCodeParamDef,StmodMode,byte,The CAB session mode.
-CbusOpCodeParamDef,Temp,byte,The temperature.
-CbusOpCodeParamDef,WdMon,byte,The weekday and the month.
+CbusOpCodeParamDef,StmodMode,CbusStmodModes,The CAB session mode.
+CbusOpCodeParamDef,Temp,sbyte,The temperature.
+CbusOpCodeParamDef,WkDay,CbusFstClkWkDays,The day of the week.
+
+CbusOpCodePriority,,,
+CbusOpCodePriority,,,The MinPriority and op-code type for each individual op-code.
+CbusOpCodePriority,,,
+CbusOpCodePriority,,,OpCodeNumber,MinPriority,type
+CbusOpCodePriority,,,MinPriority is 0: High access; 1: Above normal access; 2: Normal access; 3: low access.
+CbusOpCodePriority,,,Type is: Accessory, DCC, Config, General, Signalling (note: Signalling is added speculatively).
+CbusOpCodePriority,,,
+CbusOpCodePriority,0x00,2,General
+CbusOpCodePriority,0x01,2,General
+CbusOpCodePriority,0x02,0,General
+CbusOpCodePriority,0x03,1,General
+CbusOpCodePriority,0x04,1,DCC
+CbusOpCodePriority,0x05,1,DCC
+CbusOpCodePriority,0x06,1,DCC
+CbusOpCodePriority,0x07,0,General
+CbusOpCodePriority,0x08,1,DCC
+CbusOpCodePriority,0x09,1,DCC
+CbusOpCodePriority,0x0A,0,DCC
+CbusOpCodePriority,0x0C,2,Config
+CbusOpCodePriority,0x0D,3,Config
+CbusOpCodePriority,0x10,3,Config
+CbusOpCodePriority,0x11,2,Config
+CbusOpCodePriority,0x21,2,DCC
+CbusOpCodePriority,0x22,2,DCC
+CbusOpCodePriority,0x23,2,DCC
+CbusOpCodePriority,0x30,2,General
+CbusOpCodePriority,0x3F,3,General
+CbusOpCodePriority,0x40,2,DCC
+CbusOpCodePriority,0x41,2,DCC
+CbusOpCodePriority,0x42,3,Config
+CbusOpCodePriority,0x43,2,DCC
+CbusOpCodePriority,0x44,2,DCC
+CbusOpCodePriority,0x45,2,DCC
+CbusOpCodePriority,0x46,2,DCC
+CbusOpCodePriority,0x47,2,DCC
+CbusOpCodePriority,0x48,2,DCC
+CbusOpCodePriority,0x49,2,DCC
+CbusOpCodePriority,0x4A,2,DCC
+CbusOpCodePriority,0x4C,3,DCC
+CbusOpCodePriority,0x4F,3,Config
+CbusOpCodePriority,0x50,3,Config
+CbusOpCodePriority,0x51,3,Config
+CbusOpCodePriority,0x52,3,Config
+CbusOpCodePriority,0x53,3,Config
+CbusOpCodePriority,0x54,3,Config
+CbusOpCodePriority,0x55,3,Config
+CbusOpCodePriority,0x56,3,Config
+CbusOpCodePriority,0x57,3,Config
+CbusOpCodePriority,0x58,3,Config
+CbusOpCodePriority,0x59,3,Config
+CbusOpCodePriority,0x5A,3,Accessory
+CbusOpCodePriority,0x5B,3,Accessory
+CbusOpCodePriority,0x5C,3,Config
+CbusOpCodePriority,0x5D,3,Config
+CbusOpCodePriority,0x5E,3,Config
+CbusOpCodePriority,0x5F,3,General
+CbusOpCodePriority,0x60,2,DCC
+CbusOpCodePriority,0x61,2,DCC
+CbusOpCodePriority,0x63,2,DCC
+CbusOpCodePriority,0x6F,3,Config
+CbusOpCodePriority,0x70,3,Config
+CbusOpCodePriority,0x71,3,Config
+CbusOpCodePriority,0x72,3,Config
+CbusOpCodePriority,0x73,3,Config
+CbusOpCodePriority,0x74,3,Config
+CbusOpCodePriority,0x75,3,Config
+CbusOpCodePriority,0x7F,3,General
+CbusOpCodePriority,0x80,2,DCC
+CbusOpCodePriority,0x82,2,DCC
+CbusOpCodePriority,0x83,2,DCC
+CbusOpCodePriority,0x84,2,DCC
+CbusOpCodePriority,0x85,2,DCC
+CbusOpCodePriority,0x90,3,Accessory
+CbusOpCodePriority,0x91,3,Accessory
+CbusOpCodePriority,0x92,3,Accessory
+CbusOpCodePriority,0x93,3,Accessory
+CbusOpCodePriority,0x94,3,Accessory
+CbusOpCodePriority,0x95,3,Config
+CbusOpCodePriority,0x96,3,Config
+CbusOpCodePriority,0x97,3,Config
+CbusOpCodePriority,0x98,3,Accessory
+CbusOpCodePriority,0x99,3,Accessory
+CbusOpCodePriority,0x9A,3,Accessory
+CbusOpCodePriority,0x9B,3,Config
+CbusOpCodePriority,0x9C,3,Config
+CbusOpCodePriority,0x9D,3,Accessory
+CbusOpCodePriority,0x9E,3,Accessory
+CbusOpCodePriority,0x9F,3,General
+CbusOpCodePriority,0xA0,2,DCC
+CbusOpCodePriority,0xA2,2,DCC
+CbusOpCodePriority,0xB0,3,Accessory
+CbusOpCodePriority,0xB1,3,Accessory
+CbusOpCodePriority,0xB2,3,Config
+CbusOpCodePriority,0xB3,3,Accessory
+CbusOpCodePriority,0xB4,3,Accessory
+CbusOpCodePriority,0xB5,3,Config
+CbusOpCodePriority,0xB6,3,General
+CbusOpCodePriority,0xB8,3,Accessory
+CbusOpCodePriority,0xB9,3,Accessory
+CbusOpCodePriority,0xBD,3,Accessory
+CbusOpCodePriority,0xBE,3,Accessory
+CbusOpCodePriority,0xBF,3,General
+CbusOpCodePriority,0xC0,2,DCC
+CbusOpCodePriority,0xC1,2,DCC
+CbusOpCodePriority,0xC2,2,Signalling
+CbusOpCodePriority,0xCF,3,Accessory
+CbusOpCodePriority,0xD0,3,Accessory
+CbusOpCodePriority,0xD1,3,Accessory
+CbusOpCodePriority,0xD2,3,Config
+CbusOpCodePriority,0xD3,3,Config
+CbusOpCodePriority,0xD4,3,Accessory
+CbusOpCodePriority,0xD5,3,Accessory
+CbusOpCodePriority,0xD8,3,Accessory
+CbusOpCodePriority,0xD9,3,Accessory
+CbusOpCodePriority,0xDD,3,Accessory
+CbusOpCodePriority,0xDE,3,Accessory
+CbusOpCodePriority,0xDF,3,General
+CbusOpCodePriority,0xE0,2,DCC
+CbusOpCodePriority,0xE1,2,DCC
+CbusOpCodePriority,0xE2,3,Config
+CbusOpCodePriority,0xE3,2,DCC
+CbusOpCodePriority,0xEF,3,Config
+CbusOpCodePriority,0xF0,3,Accessory
+CbusOpCodePriority,0xF1,3,Accessory
+CbusOpCodePriority,0xF2,3,Config
+CbusOpCodePriority,0xF3,3,Accessory
+CbusOpCodePriority,0xF4,3,Accessory
+CbusOpCodePriority,0xF5,3,Config
+CbusOpCodePriority,0xF6,3,Accessory
+CbusOpCodePriority,0xF7,3,Accessory
+CbusOpCodePriority,0xF8,3,Accessory
+CbusOpCodePriority,0xF9,3,Accessory
+CbusOpCodePriority,0xFA,3,Accessory
+CbusOpCodePriority,0xFB,3,Accessory
+CbusOpCodePriority,0xFC,3,Accessory
+CbusOpCodePriority,0xFD,3,Accessory
+CbusOpCodePriority,0xFE,3,Accessory
+CbusOpCodePriority,0xFF,3,General
+
+CbusOpCodeRequestResponse,,,
+CbusOpCodeRequestResponse,,,Defines the corresponding request and response op-codes for each op-code.
+CbusOpCodeRequestResponse,,,
+CbusOpCodeRequestResponse,,,OpCode (hex),Request / Response / Error, reference OpCode (hex)
+CbusOpCodeRequestResponse,,,If marked as Request then it expects a Response of reference OpCode or an Error.
+CbusOpCodeRequestResponse,,,If marked as Response or Error the reference OpCode is the request; note, there may be multiple request OpCodes
+CbusOpCodeRequestResponse,,,
+CbusOpCodeRequestResponse,0x0C,Request,0xE3
+CbusOpCodeRequestResponse,0x0D,Request,0xB6
+CbusOpCodeRequestResponse,0x10,Request,0xEF
+CbusOpCodeRequestResponse,0x11,Request,0xE2
+CbusOpCodeRequestResponse,0x22,Request,0xE1
+CbusOpCodeRequestResponse,0x40,Request,0xE1
+CbusOpCodeRequestResponse,0x41,Request,0xE1
+CbusOpCodeRequestResponse,0x42,Response,0x50
+CbusOpCodeRequestResponse,0x4C,Response,0x82
+CbusOpCodeRequestResponse,0x4C,Response,0x83
+CbusOpCodeRequestResponse,0x50,Request,0x42
+CbusOpCodeRequestResponse,0x52,Response,0x42
+CbusOpCodeRequestResponse,0x52,Response,0x5D
+CbusOpCodeRequestResponse,0x56,Request,0x70
+CbusOpCodeRequestResponse,0x57,Request,0xF2
+CbusOpCodeRequestResponse,0x58,Request,0x74
+CbusOpCodeRequestResponse,0x5A,Request,0xF7
+CbusOpCodeRequestResponse,0x5B,Request,0xFB
+CbusOpCodeRequestResponse,0x63,Error,0x22
+CbusOpCodeRequestResponse,0x63,Error,0x40
+CbusOpCodeRequestResponse,0x63,Error,0x41
+CbusOpCodeRequestResponse,0x70,Response,0x56
+CbusOpCodeRequestResponse,0x71,Request,0x97
+CbusOpCodeRequestResponse,0x72,Request,0xF2
+CbusOpCodeRequestResponse,0x73,Request,0x9B
+CbusOpCodeRequestResponse,0x74,Response,0x58
+CbusOpCodeRequestResponse,0x82,Request,0x4C
+CbusOpCodeRequestResponse,0x83,Request,0x4C
+CbusOpCodeRequestResponse,0x84,Request,0x85
+CbusOpCodeRequestResponse,0x85,Response,0x84
+CbusOpCodeRequestResponse,0x92,Request,0x93
+CbusOpCodeRequestResponse,0x92,Request,0x94
+CbusOpCodeRequestResponse,0x92,Request,0xB3
+CbusOpCodeRequestResponse,0x92,Request,0xB4
+CbusOpCodeRequestResponse,0x92,Request,0xD4
+CbusOpCodeRequestResponse,0x92,Request,0xD5
+CbusOpCodeRequestResponse,0x92,Request,0xF3
+CbusOpCodeRequestResponse,0x92,Request,0xF4
+CbusOpCodeRequestResponse,0x93,Response,0x92
+CbusOpCodeRequestResponse,0x94,Response,0x92
+CbusOpCodeRequestResponse,0x97,Response,0x71
+CbusOpCodeRequestResponse,0x9A,Request,0x9D
+CbusOpCodeRequestResponse,0x9A,Request,0x9E
+CbusOpCodeRequestResponse,0x9A,Request,0xBD
+CbusOpCodeRequestResponse,0x9A,Request,0xBE
+CbusOpCodeRequestResponse,0x9A,Request,0xDD
+CbusOpCodeRequestResponse,0x9A,Request,0xDE
+CbusOpCodeRequestResponse,0x9A,Request,0xFD
+CbusOpCodeRequestResponse,0x9A,Request,0xFE
+CbusOpCodeRequestResponse,0x9B,Response,0x73
+CbusOpCodeRequestResponse,0x9C,Request,0xB5
+CbusOpCodeRequestResponse,0x9D,Response,0x9A
+CbusOpCodeRequestResponse,0x9E,Response,0x9A
+CbusOpCodeRequestResponse,0xB2,Request,0xD3
+CbusOpCodeRequestResponse,0xB3,Response,0x92
+CbusOpCodeRequestResponse,0xB4,Response,0x92
+CbusOpCodeRequestResponse,0xB5,Request,0x9C
+CbusOpCodeRequestResponse,0xB6,Response,0x0D
+CbusOpCodeRequestResponse,0xBD,Response,0x9A
+CbusOpCodeRequestResponse,0xBE,Response,0x9A
+CbusOpCodeRequestResponse,0xD3,Response,0xB2
+CbusOpCodeRequestResponse,0xD4,Response,0x92
+CbusOpCodeRequestResponse,0xD5,Response,0x92
+CbusOpCodeRequestResponse,0xDD,Response,0x9A
+CbusOpCodeRequestResponse,0xDE,Response,0x9A
+CbusOpCodeRequestResponse,0xE1,Response,0x40
+CbusOpCodeRequestResponse,0xE2,Response,0x11
+CbusOpCodeRequestResponse,0xE3,Response,0x0C
+CbusOpCodeRequestResponse,0xEF,Response,0x10
+CbusOpCodeRequestResponse,0xF2,Response,0x57
+CbusOpCodeRequestResponse,0xF2,Response,0x72
+CbusOpCodeRequestResponse,0xF3,Response,0x92
+CbusOpCodeRequestResponse,0xF4,Response,0x92
+CbusOpCodeRequestResponse,0xF7,Response,0x5A
+CbusOpCodeRequestResponse,0xFB,Response,0x5B
+CbusOpCodeRequestResponse,0xFD,Response,0x9A
+CbusOpCodeRequestResponse,0xFE,Response,0x9A
+
+CbusOpCodeAccTypes,,,
+CbusOpCodeAccTypes,,,Describes the various Accessory Op-Codes according to their types: Long/Short, number of data bytes, Request/Response/Event/Data, On/Off.
+CbusOpCodeAccTypes,,,
+CbusOpCodeAccTypes,0x5A,EventData,
+CbusOpCodeAccTypes,0x5A,Long,
+CbusOpCodeAccTypes,0x5A,Request,
+CbusOpCodeAccTypes,0x5B,EventData,
+CbusOpCodeAccTypes,0x5B,Request,
+CbusOpCodeAccTypes,0x5B,Short,
+CbusOpCodeAccTypes,0x90,Data0,
+CbusOpCodeAccTypes,0x90,Event,
+CbusOpCodeAccTypes,0x90,EventOn,
+CbusOpCodeAccTypes,0x90,Long,
+CbusOpCodeAccTypes,0x91,Data0,
+CbusOpCodeAccTypes,0x91,Event,
+CbusOpCodeAccTypes,0x91,EventOff,
+CbusOpCodeAccTypes,0x91,Long,
+CbusOpCodeAccTypes,0x92,Long,
+CbusOpCodeAccTypes,0x92,Request,
+CbusOpCodeAccTypes,0x93,Data0,
+CbusOpCodeAccTypes,0x93,EventOn,
+CbusOpCodeAccTypes,0x93,Long,
+CbusOpCodeAccTypes,0x93,Response,
+CbusOpCodeAccTypes,0x94,Data0,
+CbusOpCodeAccTypes,0x94,EventOff,
+CbusOpCodeAccTypes,0x94,Long,
+CbusOpCodeAccTypes,0x94,Response,
+CbusOpCodeAccTypes,0x98,Data0,
+CbusOpCodeAccTypes,0x98,Event,
+CbusOpCodeAccTypes,0x98,EventOn,
+CbusOpCodeAccTypes,0x98,Short,
+CbusOpCodeAccTypes,0x99,Data0,
+CbusOpCodeAccTypes,0x99,Event,
+CbusOpCodeAccTypes,0x99,EventOff,
+CbusOpCodeAccTypes,0x99,Short,
+CbusOpCodeAccTypes,0x9A,Request,
+CbusOpCodeAccTypes,0x9A,Short,
+CbusOpCodeAccTypes,0x9D,Data0,
+CbusOpCodeAccTypes,0x9D,EventOn,
+CbusOpCodeAccTypes,0x9D,Response,
+CbusOpCodeAccTypes,0x9D,Short,
+CbusOpCodeAccTypes,0x9E,Data0,
+CbusOpCodeAccTypes,0x9E,EventOff,
+CbusOpCodeAccTypes,0x9E,Response,
+CbusOpCodeAccTypes,0x9E,Short,
+CbusOpCodeAccTypes,0xB0,Data1,
+CbusOpCodeAccTypes,0xB0,Event,
+CbusOpCodeAccTypes,0xB0,EventOn,
+CbusOpCodeAccTypes,0xB0,Long,
+CbusOpCodeAccTypes,0xB1,Data1,
+CbusOpCodeAccTypes,0xB1,Event,
+CbusOpCodeAccTypes,0xB1,EventOff,
+CbusOpCodeAccTypes,0xB1,Long,
+CbusOpCodeAccTypes,0xB3,Data1,
+CbusOpCodeAccTypes,0xB3,EventOn,
+CbusOpCodeAccTypes,0xB3,Long,
+CbusOpCodeAccTypes,0xB3,Response,
+CbusOpCodeAccTypes,0xB4,Data1,
+CbusOpCodeAccTypes,0xB4,EventOff,
+CbusOpCodeAccTypes,0xB4,Long,
+CbusOpCodeAccTypes,0xB4,Response,
+CbusOpCodeAccTypes,0xB8,Data1,
+CbusOpCodeAccTypes,0xB8,Event,
+CbusOpCodeAccTypes,0xB8,EventOn,
+CbusOpCodeAccTypes,0xB8,Short,
+CbusOpCodeAccTypes,0xB9,Data1,
+CbusOpCodeAccTypes,0xB9,Event,
+CbusOpCodeAccTypes,0xB9,EventOff,
+CbusOpCodeAccTypes,0xB9,Short,
+CbusOpCodeAccTypes,0xBD,Data1,
+CbusOpCodeAccTypes,0xBD,EventOn,
+CbusOpCodeAccTypes,0xBD,Response,
+CbusOpCodeAccTypes,0xBD,Short,
+CbusOpCodeAccTypes,0xBE,Data1,
+CbusOpCodeAccTypes,0xBE,EventOff,
+CbusOpCodeAccTypes,0xBE,Response,
+CbusOpCodeAccTypes,0xBE,Short,
+CbusOpCodeAccTypes,0xD0,Data2,
+CbusOpCodeAccTypes,0xD0,Event,
+CbusOpCodeAccTypes,0xD0,EventOn,
+CbusOpCodeAccTypes,0xD0,Long,
+CbusOpCodeAccTypes,0xD1,Data2,
+CbusOpCodeAccTypes,0xD1,Event,
+CbusOpCodeAccTypes,0xD1,EventOff,
+CbusOpCodeAccTypes,0xD1,Long,
+CbusOpCodeAccTypes,0xD4,Data2,
+CbusOpCodeAccTypes,0xD4,EventOn,
+CbusOpCodeAccTypes,0xD4,Long,
+CbusOpCodeAccTypes,0xD4,Response,
+CbusOpCodeAccTypes,0xD5,Data2,
+CbusOpCodeAccTypes,0xD5,EventOff,
+CbusOpCodeAccTypes,0xD5,Long,
+CbusOpCodeAccTypes,0xD5,Response,
+CbusOpCodeAccTypes,0xD8,Data2,
+CbusOpCodeAccTypes,0xD8,Event,
+CbusOpCodeAccTypes,0xD8,EventOn,
+CbusOpCodeAccTypes,0xD8,Short,
+CbusOpCodeAccTypes,0xD9,Data2,
+CbusOpCodeAccTypes,0xD9,Event,
+CbusOpCodeAccTypes,0xD9,EventOff,
+CbusOpCodeAccTypes,0xD9,Short,
+CbusOpCodeAccTypes,0xDD,Data2,
+CbusOpCodeAccTypes,0xDD,EventOn,
+CbusOpCodeAccTypes,0xDD,Response,
+CbusOpCodeAccTypes,0xDD,Short,
+CbusOpCodeAccTypes,0xDE,Data2,
+CbusOpCodeAccTypes,0xDE,EventOff,
+CbusOpCodeAccTypes,0xDE,Response,
+CbusOpCodeAccTypes,0xDE,Short,
+CbusOpCodeAccTypes,0xF0,Data3,
+CbusOpCodeAccTypes,0xF0,Event,
+CbusOpCodeAccTypes,0xF0,EventOn,
+CbusOpCodeAccTypes,0xF0,Long,
+CbusOpCodeAccTypes,0xF1,Data3,
+CbusOpCodeAccTypes,0xF1,Event,
+CbusOpCodeAccTypes,0xF1,EventOff,
+CbusOpCodeAccTypes,0xF1,Long,
+CbusOpCodeAccTypes,0xF3,Data3,
+CbusOpCodeAccTypes,0xF3,EventOn,
+CbusOpCodeAccTypes,0xF3,Long,
+CbusOpCodeAccTypes,0xF3,Response,
+CbusOpCodeAccTypes,0xF4,Data3,
+CbusOpCodeAccTypes,0xF4,EventOff,
+CbusOpCodeAccTypes,0xF4,Long,
+CbusOpCodeAccTypes,0xF4,Response,
+CbusOpCodeAccTypes,0xF6,EventData,
+CbusOpCodeAccTypes,0xF6,Event,
+CbusOpCodeAccTypes,0xF6,Long,
+CbusOpCodeAccTypes,0xF7,EventData,
+CbusOpCodeAccTypes,0xF7,Long,
+CbusOpCodeAccTypes,0xF7,Response,
+CbusOpCodeAccTypes,0xF8,Data3,
+CbusOpCodeAccTypes,0xF8,Event,
+CbusOpCodeAccTypes,0xF8,EventOn,
+CbusOpCodeAccTypes,0xF8,Short,
+CbusOpCodeAccTypes,0xF9,Data3,
+CbusOpCodeAccTypes,0xF9,Event,
+CbusOpCodeAccTypes,0xF9,EventOff,
+CbusOpCodeAccTypes,0xF9,Short,
+CbusOpCodeAccTypes,0xFA,EventData,
+CbusOpCodeAccTypes,0xFA,Event,
+CbusOpCodeAccTypes,0xFA,Short,
+CbusOpCodeAccTypes,0xFB,EventData,
+CbusOpCodeAccTypes,0xFB,Response,
+CbusOpCodeAccTypes,0xFB,Short,
+CbusOpCodeAccTypes,0xFC,EventData,
+CbusOpCodeAccTypes,0xFC,Short,
+CbusOpCodeAccTypes,0xFC,Write,
+CbusOpCodeAccTypes,0xFD,Data3,
+CbusOpCodeAccTypes,0xFD,EventOn,
+CbusOpCodeAccTypes,0xFD,Response,
+CbusOpCodeAccTypes,0xFD,Short,
+CbusOpCodeAccTypes,0xFE,Data3,
+CbusOpCodeAccTypes,0xFE,EventOff,
+CbusOpCodeAccTypes,0xFE,Response,
+CbusOpCodeAccTypes,0xFE,Short,
