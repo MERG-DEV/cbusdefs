@@ -1099,7 +1099,7 @@ CbusOpCodeParams,0xDE,24:31,DNLow
 CbusOpCodeParams,0xDE,16:31,DeviceNumber
 CbusOpCodeParams,0xDE,32:39,Data1
 CbusOpCodeParams,0xDE,40:47,Data2
-CbusOpCodeParams,0xDE,32:39,Data3
+CbusOpCodeParams,0xDE,48:55,Data3
 CbusOpCodeParams,0xDF,00:07,Ext_OPC
 CbusOpCodeParams,0xDF,08:15,Data1
 CbusOpCodeParams,0xDF,16:23,Data2
