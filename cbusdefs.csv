@@ -94,6 +94,7 @@ comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a
 comment,,,Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 comment,,,Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 comment,,,Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+comment,,,Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required.
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -103,7 +104,6 @@ CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
 CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
 CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
 CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering)
-CbusManufacturer,MANU_MERG_VLCB,250,range of MERG VLCB modules
 CbusManufacturer,MANU_SYSPIXIE,249,Konrad Orlowski
 CbusManufacturer,MANU_RME,248,http://rmeuk.com  (Railway Modelling Experts Limited)
 
