@@ -94,7 +94,7 @@ comment,,,Ian Hogg,14/08/2023, Ver 8x  Add manufacturer code for VLCB. This is a
 comment,,,Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 comment,,,Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 comment,,,Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
-comment,,,Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required.
+comment,,,Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -197,6 +197,7 @@ CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver)
 CbusMergModuleTypes,MTYP_CANLEVER,80,Lever frame module (Tim Coombs)
 CbusMergModuleTypes,MTYP_CANSHIELD,81,Kit 110 Arduino shield test firmware
 CbusMergModuleTypes,MTYP_CAN4IN4OUT,82,4 inputs 4 outputs (Arduino module)
+CbusMergModuleTypes,MTYP_CANARGB,83,Addressable LEDs
 
 
 CbusMergModuleTypes,,,

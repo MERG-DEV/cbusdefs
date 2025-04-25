@@ -101,6 +101,7 @@ namespace Merg.Cbus
     // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+    // Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 
 	/// <summary>
 	/// 
@@ -324,10 +325,6 @@ namespace Merg.Cbus
 		/// http://animatedmodeler.com  (Spectrum Engineering)
 		/// </summary>
 		Spectrum = 80,
-		/// <summary>
-		/// VLCB range of modules
-		/// </summary>
-		Vlcb = 250,
 		/// <summary>
 		/// Konrad Orlowski
 		/// </summary>
@@ -675,6 +672,10 @@ namespace Merg.Cbus
 		/// 4 inputs 4 outputs (Arduino module)
 		/// </summary>
 		Can4in4out = 82,
+		/// <summary>
+		/// Addressable LEDs
+		/// </summary>
+		Canargb = 83,
 		/// <summary>
 		/// Software nodes
 		/// </summary>
@@ -1408,6 +1409,10 @@ namespace Merg.Cbus
 		/// Module is in learn mode
 		/// </summary>
 		Lrn = 32,
+		/// <summary>
+		/// Module is VLCB compatible
+		/// </summary>
+		Vlcb = 64,
 	}
 
 	/// <summary>

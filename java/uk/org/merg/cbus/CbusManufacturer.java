@@ -100,6 +100,7 @@ package uk.org.merg.cbus;
 // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+// Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 
 public enum CbusManufacturer {
 // CBUS Manufacturer definitions
@@ -110,7 +111,6 @@ public enum CbusManufacturer {
 	MANU_SPROG(44),	//https://www.sprog-dcc.co.uk/
 	MANU_ROCRAIL(70),	//http://www.rocrail.net
 	MANU_SPECTRUM(80),	//http://animatedmodeler.com  (Spectrum Engineering)
-	MANU_VLCB(250),	//VLCB range of modules
 	MANU_SYSPIXIE(249),	//Konrad Orlowski
 	MANU_RME(248);	//http://rmeuk.com  (Railway Modelling Experts Limited)
 

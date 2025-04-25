@@ -100,6 +100,7 @@ from micropython import const
 #         Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 #         Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 #         Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+#         Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 # 
 # CBUS Manufacturer definitions
 # Where the manufacturer already has an NMRA code, this is used
@@ -109,7 +110,6 @@ MANU_MERG = const(165)    # https://www.merg.co.uk
 MANU_SPROG = const(44)    # https://www.sprog-dcc.co.uk/
 MANU_ROCRAIL = const(70)    # http://www.rocrail.net
 MANU_SPECTRUM = const(80)    # http://animatedmodeler.com  (Spectrum Engineering)
-MANU_VLCB = const(250)    # VLCB range of modules
 MANU_SYSPIXIE = const(249)    # Konrad Orlowski
 MANU_RME = const(248)    # http://rmeuk.com  (Railway Modelling Experts Limited)
 # 
@@ -203,6 +203,7 @@ MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
 MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
 MTYP_CANSHIELD = const(81)    # Kit 110 Arduino shield test firmware
 MTYP_CAN4IN4OUT = const(82)    # 4 inputs 4 outputs (Arduino module)
+MTYP_CANARGB = const(83)    # Addressable LEDs
 # 
 # 
 # 
@@ -532,6 +533,7 @@ PF_FLiM = const(4)    # Module is in FLiM
 PF_BOOT = const(8)    # Module supports the FCU bootloader protocol
 PF_COE = const(16)    # Module can consume its own events
 PF_LRN = const(32)    # Module is in learn mode
+PF_VLCB = const(64)    # Module is VLCB compatible
 # 
 # BUS type that module is connected to
 # 

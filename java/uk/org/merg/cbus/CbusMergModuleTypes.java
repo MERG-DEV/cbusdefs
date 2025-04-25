@@ -100,6 +100,7 @@ package uk.org.merg.cbus;
 // Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+// Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 
 public enum CbusMergModuleTypes {
 // 
@@ -192,6 +193,7 @@ public enum CbusMergModuleTypes {
 	MTYP_CANLEVER(80),	//Lever frame module (Tim Coombs)
 	MTYP_CANSHIELD(81),	//Kit 110 Arduino shield test firmware
 	MTYP_CAN4IN4OUT(82),	//4 inputs 4 outputs (Arduino module)
+	MTYP_CANARGB(83),	//Addressable LEDs
 // 
 // At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 // Please liaise with Pete before adding new module types, 

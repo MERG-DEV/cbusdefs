@@ -104,6 +104,7 @@ extern "C" {
 // 		Pete Brownlow,2/11/23, Ver 8x  Add module id for CANLEVER (Tim Coombs)
 // 		Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
 // 		Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
+// 		Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 // 
 // CBUS Manufacturer definitions
 // Where the manufacturer already has an NMRA code, this is used
@@ -113,7 +114,6 @@ extern "C" {
 #define MANU_SPROG	44	// https://www.sprog-dcc.co.uk/
 #define MANU_ROCRAIL	70	// http://www.rocrail.net
 #define MANU_SPECTRUM	80	// http://animatedmodeler.com  (Spectrum Engineering)
-#define MANU_VLCB	250	// VLCB range of modules
 #define MANU_SYSPIXIE	249	// Konrad Orlowski
 #define MANU_RME	248	// http://rmeuk.com  (Railway Modelling Experts Limited)
 // 
@@ -207,6 +207,7 @@ extern "C" {
 #define MTYP_CANLEVER	80	// Lever frame module (Tim Coombs)
 #define MTYP_CANSHIELD	81	// Kit 110 Arduino shield test firmware
 #define MTYP_CAN4IN4OUT	82	// 4 inputs 4 outputs (Arduino module)
+#define MTYP_CANARGB	83	// Addressable LEDs
 // 
 // 
 // 
@@ -536,6 +537,7 @@ extern "C" {
 #define PF_BOOT	8	// Module supports the FCU bootloader protocol
 #define PF_COE	16	// Module can consume its own events
 #define PF_LRN	32	// Module is in learn mode
+#define PF_VLCB	64	// Module is VLCB compatible
 // 
 // BUS type that module is connected to
 // 
