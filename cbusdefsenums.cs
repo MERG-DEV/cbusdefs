@@ -673,9 +673,29 @@ namespace Merg.Cbus
 		/// </summary>
 		Can4in4out = 82,
 		/// <summary>
-		/// Addressable LEDs
+		/// CANCMD with built in booster (Simon West)
 		/// </summary>
-		Canargb = 83,
+		Cancmdb = 83,
+		/// <summary>
+		/// neopixel driver (Jon Denham)
+		/// </summary>
+		Canpixel = 84,
+		/// <summary>
+		/// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+		/// </summary>
+		Cancabpe = 85,
+		/// <summary>
+		/// Smart train detector (Michael Smith)
+		/// </summary>
+		Cansmarttd = 86,
+		/// <summary>
+		/// Addressable LEDs (Ian Hogg)
+		/// </summary>
+		Canargb = 87,
+		/// <summary>
+		/// All VLCB modules have the same ID
+		/// </summary>
+		Vlcb = 0xFC,
 		/// <summary>
 		/// Software nodes
 		/// </summary>

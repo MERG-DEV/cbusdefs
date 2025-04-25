@@ -197,7 +197,13 @@ CbusMergModuleTypes,MTYP_CANBUFFER,79,Message buffer (Phil Silver)
 CbusMergModuleTypes,MTYP_CANLEVER,80,Lever frame module (Tim Coombs)
 CbusMergModuleTypes,MTYP_CANSHIELD,81,Kit 110 Arduino shield test firmware
 CbusMergModuleTypes,MTYP_CAN4IN4OUT,82,4 inputs 4 outputs (Arduino module)
-CbusMergModuleTypes,MTYP_CANARGB,83,Addressable LEDs
+CbusMergModuleTypes,MTYP_CANCMDB,83,CANCMD with built in booster (Simon West)
+CbusMergModuleTypes,MTYP_CANPIXEL,84,neopixel driver (Jon Denham)
+CbusMergModuleTypes,MTYP_CANCABPE,85,Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+CbusMergModuleTypes,MTYP_CANSMARTTD,86,Smart train detector (Michael Smith)
+CbusMergModuleTypes,MTYP_CANARGB,87,Addressable LEDs (Ian Hogg)
+CbusMergModuleTypes,MTYP_VLCB,0xFC,All VLCB modules have the same ID
+
 
 
 CbusMergModuleTypes,,,

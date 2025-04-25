@@ -307,7 +307,12 @@ namespace merg.cbus
 			public const int MTYP_CANLEVER	=  80;	// Lever frame module (Tim Coombs)
 			public const int MTYP_CANSHIELD	=  81;	// Kit 110 Arduino shield test firmware
 			public const int MTYP_CAN4IN4OUT	=  82;	// 4 inputs 4 outputs (Arduino module)
-			public const int MTYP_CANARGB	=  83;	// Addressable LEDs
+			public const int MTYP_CANCMDB	=  83;	// CANCMD with built in booster (Simon West)
+			public const int MTYP_CANPIXEL	=  84;	// neopixel driver (Jon Denham)
+			public const int MTYP_CANCABPE	=  85;	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+			public const int MTYP_CANSMARTTD	=  86;	// Smart train detector (Michael Smith)
+			public const int MTYP_CANARGB	=  87;	// Addressable LEDs (Ian Hogg)
+			public const int MTYP_VLCB	=  0xFC;	// All VLCB modules have the same ID
 			// 
 			// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 			// Please liaise with Pete before adding new module types, 

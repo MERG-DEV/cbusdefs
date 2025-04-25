@@ -200,7 +200,13 @@ MTYP_CANBUFFER	equ .79	; Message buffer (Phil Silver)
 MTYP_CANLEVER	equ .80	; Lever frame module (Tim Coombs)
 MTYP_CANSHIELD	equ .81	; Kit 110 Arduino shield test firmware
 MTYP_CAN4IN4OUT	equ .82	; 4 inputs 4 outputs (Arduino module)
-MTYP_CANARGB	equ .83	; Addressable LEDs
+MTYP_CANCMDB	equ .83	; CANCMD with built in booster (Simon West)
+MTYP_CANPIXEL	equ .84	; neopixel driver (Jon Denham)
+MTYP_CANCABPE	equ .85	; Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+MTYP_CANSMARTTD	equ .86	; Smart train detector (Michael Smith)
+MTYP_CANARGB	equ .87	; Addressable LEDs (Ian Hogg)
+MTYP_VLCB	equ 0xFC	; All VLCB modules have the same ID
+; 
 ; 
 ; 
 ; 

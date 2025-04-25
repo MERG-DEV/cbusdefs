@@ -207,7 +207,13 @@ extern "C" {
 #define MTYP_CANLEVER	80	// Lever frame module (Tim Coombs)
 #define MTYP_CANSHIELD	81	// Kit 110 Arduino shield test firmware
 #define MTYP_CAN4IN4OUT	82	// 4 inputs 4 outputs (Arduino module)
-#define MTYP_CANARGB	83	// Addressable LEDs
+#define MTYP_CANCMDB	83	// CANCMD with built in booster (Simon West)
+#define MTYP_CANPIXEL	84	// neopixel driver (Jon Denham)
+#define MTYP_CANCABPE	85	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+#define MTYP_CANSMARTTD	86	// Smart train detector (Michael Smith)
+#define MTYP_CANARGB	87	// Addressable LEDs (Ian Hogg)
+#define MTYP_VLCB	0xFC	// All VLCB modules have the same ID
+// 
 // 
 // 
 // 

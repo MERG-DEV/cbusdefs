@@ -203,7 +203,13 @@ MTYP_CANBUFFER = const(79)    # Message buffer (Phil Silver)
 MTYP_CANLEVER = const(80)    # Lever frame module (Tim Coombs)
 MTYP_CANSHIELD = const(81)    # Kit 110 Arduino shield test firmware
 MTYP_CAN4IN4OUT = const(82)    # 4 inputs 4 outputs (Arduino module)
-MTYP_CANARGB = const(83)    # Addressable LEDs
+MTYP_CANCMDB = const(83)    # CANCMD with built in booster (Simon West)
+MTYP_CANPIXEL = const(84)    # neopixel driver (Jon Denham)
+MTYP_CANCABPE = const(85)    # Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+MTYP_CANSMARTTD = const(86)    # Smart train detector (Michael Smith)
+MTYP_CANARGB = const(87)    # Addressable LEDs (Ian Hogg)
+MTYP_VLCB = const(0xFC)    # All VLCB modules have the same ID
+# 
 # 
 # 
 # 
