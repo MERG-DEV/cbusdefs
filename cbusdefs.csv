@@ -591,3 +591,725 @@ CbusArmProcessors,,,
 CbusArmProcessors,ARM1176JZF_S,1,As used in Raspberry Pi
 CbusArmProcessors,ARMCortex_A7,2,As Used in Raspberry Pi 2
 CbusArmProcessors,ARMCortex_A53,3,As used in Raspberry Pi 3
+CbusOpCodeParams,,,
+CbusOpCodeParams,,,Parameters definitions for the OpCodes
+CbusOpCodeParams,,,
+CbusOpCodeParams,,,Format
+CbusOpCodeParams,,,1:OpCode number in hex with 0x prefix;
+CbusOpCodeParams,,,2:bit-numbers start:end (two digit dec numbers => 00:07 for first byte); 
+CbusOpCodeParams,,,3:parameter name (prefix with $ to indicate string)
+CbusOpCodeParams,0x21,00:07,Session
+CbusOpCodeParams,0x22,00:07,Session
+CbusOpCodeParams,0x23,00:07,Session
+CbusOpCodeParams,0x30,00:07,DebugStatus
+CbusOpCodeParams,0x3F,00:07,Ext_OPC
+CbusOpCodeParams,0x40,00:07,AddrHigh
+CbusOpCodeParams,0x40,08:15,AddrLow
+CbusOpCodeParams,0x40,00:15,DccAddress
+CbusOpCodeParams,0x41,00:07,Consist
+CbusOpCodeParams,0x41,08:15,Index
+CbusOpCodeParams,0x42,00:07,NNHigh
+CbusOpCodeParams,0x42,08:15,NNLow
+CbusOpCodeParams,0x42,00:15,NodeNumber
+CbusOpCodeParams,0x43,00:07,Session
+CbusOpCodeParams,0x43,08:15,AllocationCode
+CbusOpCodeParams,0x44,00:07,Session
+CbusOpCodeParams,0x44,08:15,StmodMode
+CbusOpCodeParams,0x45,00:07,Session
+CbusOpCodeParams,0x45,08:15,Consist
+CbusOpCodeParams,0x46,00:07,Session
+CbusOpCodeParams,0x46,08:15,Consist
+CbusOpCodeParams,0x47,00:07,Session
+CbusOpCodeParams,0x47,08:15,Speed
+CbusOpCodeParams,0x48,00:07,Session
+CbusOpCodeParams,0x48,08:15,EngineFlags
+CbusOpCodeParams,0x49,00:07,Session
+CbusOpCodeParams,0x49,08:15,Fnum
+CbusOpCodeParams,0x4A,00:07,Session
+CbusOpCodeParams,0x4A,08:15,Fnum
+CbusOpCodeParams,0x4C,00:07,Session
+CbusOpCodeParams,0x4C,08:15,ServiceModeStatus
+CbusOpCodeParams,0x4F,00:07,NNHigh
+CbusOpCodeParams,0x4F,08:15,NNLow
+CbusOpCodeParams,0x4F,00:15,NodeNumber
+CbusOpCodeParams,0x50,00:07,NNHigh
+CbusOpCodeParams,0x50,08:15,NNLow
+CbusOpCodeParams,0x50,00:15,NodeNumber
+CbusOpCodeParams,0x51,00:07,NNHigh
+CbusOpCodeParams,0x51,08:15,NNLow
+CbusOpCodeParams,0x51,00:15,NodeNumber
+CbusOpCodeParams,0x52,00:07,NNHigh
+CbusOpCodeParams,0x52,08:15,NNLow
+CbusOpCodeParams,0x52,00:15,NodeNumber
+CbusOpCodeParams,0x53,00:07,NNHigh
+CbusOpCodeParams,0x53,08:15,NNLow
+CbusOpCodeParams,0x53,00:15,NodeNumber
+CbusOpCodeParams,0x54,00:07,NNHigh
+CbusOpCodeParams,0x54,08:15,NNLow
+CbusOpCodeParams,0x54,00:15,NodeNumber
+CbusOpCodeParams,0x55,00:07,NNHigh
+CbusOpCodeParams,0x55,08:15,NNLow
+CbusOpCodeParams,0x55,00:15,NodeNumber
+CbusOpCodeParams,0x56,00:07,NNHigh
+CbusOpCodeParams,0x56,08:15,NNLow
+CbusOpCodeParams,0x56,00:15,NodeNumber
+CbusOpCodeParams,0x57,00:07,NNHigh
+CbusOpCodeParams,0x57,08:15,NNLow
+CbusOpCodeParams,0x57,00:15,NodeNumber
+CbusOpCodeParams,0x58,00:07,NNHigh
+CbusOpCodeParams,0x58,08:15,NNLow
+CbusOpCodeParams,0x58,00:15,NodeNumber
+CbusOpCodeParams,0x59,00:07,NNHigh
+CbusOpCodeParams,0x59,08:15,NNLow
+CbusOpCodeParams,0x59,00:15,NodeNumber
+CbusOpCodeParams,0x5A,00:07,NNHigh
+CbusOpCodeParams,0x5A,08:15,NNLow
+CbusOpCodeParams,0x5A,00:15,NodeNumber
+CbusOpCodeParams,0x5B,00:07,DNHigh
+CbusOpCodeParams,0x5B,08:15,DNLow
+CbusOpCodeParams,0x5B,00:15,DeviceNumber
+CbusOpCodeParams,0x5C,00:07,NNHigh
+CbusOpCodeParams,0x5C,08:15,NNLow
+CbusOpCodeParams,0x5C,00:15,NodeNumber
+CbusOpCodeParams,0x5D,00:07,NNHigh
+CbusOpCodeParams,0x5D,08:15,NNLow
+CbusOpCodeParams,0x5D,00:15,NodeNumber
+CbusOpCodeParams,0x5E,00:07,NNHigh
+CbusOpCodeParams,0x5E,08:15,NNLow
+CbusOpCodeParams,0x5E,00:15,NodeNumber
+CbusOpCodeParams,0x5F,00:07,Ext_OPC
+CbusOpCodeParams,0x5F,08:15,Data1
+CbusOpCodeParams,0x60,00:07,Session
+CbusOpCodeParams,0x60,08:15,Fn1
+CbusOpCodeParams,0x60,16:23,Fn2
+CbusOpCodeParams,0x61,00:07,AddrHigh
+CbusOpCodeParams,0x61,08:15,AddrLow
+CbusOpCodeParams,0x61,00:15,DccAddress
+CbusOpCodeParams,0x61,16:23,EngineFlags
+CbusOpCodeParams,0x63,16:23,Err
+CbusOpCodeParams,0x63,00:15,DccAddress
+CbusOpCodeParams,0x63,00:07,Session
+CbusOpCodeParams,0x63,00:07,Consist
+CbusOpCodeParams,0x6F,00:07,NNHigh
+CbusOpCodeParams,0x6F,08:15,NNLow
+CbusOpCodeParams,0x6F,00:15,NodeNumber
+CbusOpCodeParams,0x6F,16:23,ErrorNumber
+CbusOpCodeParams,0x70,00:07,NNHigh
+CbusOpCodeParams,0x70,08:15,NNLow
+CbusOpCodeParams,0x70,00:15,NodeNumber
+CbusOpCodeParams,0x70,16:23,EvSpc
+CbusOpCodeParams,0x71,00:07,NNHigh
+CbusOpCodeParams,0x71,08:15,NNLow
+CbusOpCodeParams,0x71,00:15,NodeNumber
+CbusOpCodeParams,0x71,16:23,NVIndex
+CbusOpCodeParams,0x72,00:07,NNHigh
+CbusOpCodeParams,0x72,08:15,NNLow
+CbusOpCodeParams,0x72,00:15,NodeNumber
+CbusOpCodeParams,0x72,16:23,ENIndex
+CbusOpCodeParams,0x73,00:07,NNHigh
+CbusOpCodeParams,0x73,08:15,NNLow
+CbusOpCodeParams,0x73,00:15,NodeNumber
+CbusOpCodeParams,0x73,16:23,ParamIndex
+CbusOpCodeParams,0x74,00:07,NNHigh
+CbusOpCodeParams,0x74,08:15,NNLow
+CbusOpCodeParams,0x74,00:15,NodeNumber
+CbusOpCodeParams,0x74,16:23,EventCount
+CbusOpCodeParams,0x75,00:07,NNHigh
+CbusOpCodeParams,0x75,08:15,NNLow
+CbusOpCodeParams,0x75,00:15,NodeNumber
+CbusOpCodeParams,0x75,16:23,Can_ID
+CbusOpCodeParams,0x7F,00:07,Ext_OPC
+CbusOpCodeParams,0x7F,08:15,Data1
+CbusOpCodeParams,0x7F,16:23,Data2
+CbusOpCodeParams,0x80,00:07,Rep
+CbusOpCodeParams,0x80,08:15,Byte0
+CbusOpCodeParams,0x80,16:23,Byte1
+CbusOpCodeParams,0x80,24:31,Byte2
+CbusOpCodeParams,0x81,00:07,Session
+CbusOpCodeParams,0x81,08:15,CVHigh
+CbusOpCodeParams,0x81,16:23,CVLow
+CbusOpCodeParams,0x81,08:23,CVNumber
+CbusOpCodeParams,0x81,24:31,CVValue
+CbusOpCodeParams,0x82,00:07,CVHigh
+CbusOpCodeParams,0x82,08:15,CVLow
+CbusOpCodeParams,0x82,00:15,CVNumber
+CbusOpCodeParams,0x82,16:23,CVValue
+CbusOpCodeParams,0x83,00:07,Session
+CbusOpCodeParams,0x83,08:15,CVHigh
+CbusOpCodeParams,0x83,16:23,CVLow
+CbusOpCodeParams,0x83,08:23,CVNumber
+CbusOpCodeParams,0x83,24:31,CVValue
+CbusOpCodeParams,0x84,00:07,Session
+CbusOpCodeParams,0x84,08:15,CVHigh
+CbusOpCodeParams,0x84,16:23,CVLow
+CbusOpCodeParams,0x84,08:23,CVNumber
+CbusOpCodeParams,0x84,24:31,Mode
+CbusOpCodeParams,0x85,00:07,Session
+CbusOpCodeParams,0x85,08:15,CVHigh
+CbusOpCodeParams,0x85,16:23,CVLow
+CbusOpCodeParams,0x85,08:23,CVNumber
+CbusOpCodeParams,0x85,24:31,CVValue
+CbusOpCodeParams,0x90,00:07,NNHigh
+CbusOpCodeParams,0x90,08:15,NNLow
+CbusOpCodeParams,0x90,00:15,NodeNumber
+CbusOpCodeParams,0x90,16:23,ENHigh
+CbusOpCodeParams,0x90,24:31,ENLow
+CbusOpCodeParams,0x90,16:31,EventNumber
+CbusOpCodeParams,0x91,00:07,NNHigh
+CbusOpCodeParams,0x91,08:15,NNLow
+CbusOpCodeParams,0x91,00:15,NodeNumber
+CbusOpCodeParams,0x91,16:23,ENHigh
+CbusOpCodeParams,0x91,24:31,ENLow
+CbusOpCodeParams,0x91,16:31,EventNumber
+CbusOpCodeParams,0x92,00:07,NNHigh
+CbusOpCodeParams,0x92,08:15,NNLow
+CbusOpCodeParams,0x92,00:15,NodeNumber
+CbusOpCodeParams,0x92,16:23,ENHigh
+CbusOpCodeParams,0x92,24:31,ENLow
+CbusOpCodeParams,0x92,16:31,EventNumber
+CbusOpCodeParams,0x93,00:07,NNHigh
+CbusOpCodeParams,0x93,08:15,NNLow
+CbusOpCodeParams,0x93,00:15,NodeNumber
+CbusOpCodeParams,0x93,16:23,ENHigh
+CbusOpCodeParams,0x93,24:31,ENLow
+CbusOpCodeParams,0x93,16:31,EventNumber
+CbusOpCodeParams,0x94,00:07,NNHigh
+CbusOpCodeParams,0x94,08:15,NNLow
+CbusOpCodeParams,0x94,00:15,NodeNumber
+CbusOpCodeParams,0x94,16:23,ENHigh
+CbusOpCodeParams,0x94,24:31,ENLow
+CbusOpCodeParams,0x94,16:31,EventNumber
+CbusOpCodeParams,0x95,00:07,NNHigh
+CbusOpCodeParams,0x95,08:15,NNLow
+CbusOpCodeParams,0x95,00:15,NodeNumber
+CbusOpCodeParams,0x95,16:23,ENHigh
+CbusOpCodeParams,0x95,24:31,ENLow
+CbusOpCodeParams,0x95,16:31,EventNumber
+CbusOpCodeParams,0x96,00:07,NNHigh
+CbusOpCodeParams,0x96,08:15,NNLow
+CbusOpCodeParams,0x96,00:15,NodeNumber
+CbusOpCodeParams,0x96,16:23,NVIndex
+CbusOpCodeParams,0x96,24:31,NVValue
+CbusOpCodeParams,0x97,00:07,NNHigh
+CbusOpCodeParams,0x97,08:15,NNLow
+CbusOpCodeParams,0x97,00:15,NodeNumber
+CbusOpCodeParams,0x97,16:23,NVIndex
+CbusOpCodeParams,0x97,24:31,NVValue
+CbusOpCodeParams,0x98,00:07,NNHigh
+CbusOpCodeParams,0x98,08:15,NNLow
+CbusOpCodeParams,0x98,00:15,NodeNumber
+CbusOpCodeParams,0x98,16:23,DNHigh
+CbusOpCodeParams,0x98,24:31,DNLow
+CbusOpCodeParams,0x98,16:31,DeviceNumber
+CbusOpCodeParams,0x99,00:07,NNHigh
+CbusOpCodeParams,0x99,08:15,NNLow
+CbusOpCodeParams,0x99,00:15,NodeNumber
+CbusOpCodeParams,0x99,16:23,DNHigh
+CbusOpCodeParams,0x99,24:31,DNLow
+CbusOpCodeParams,0x99,16:31,DeviceNumber
+CbusOpCodeParams,0x9A,00:07,NNHigh
+CbusOpCodeParams,0x9A,08:15,NNLow
+CbusOpCodeParams,0x9A,00:15,NodeNumber
+CbusOpCodeParams,0x9A,16:23,DNHigh
+CbusOpCodeParams,0x9A,24:31,DNLow
+CbusOpCodeParams,0x9A,16:31,DeviceNumber
+CbusOpCodeParams,0x9B,00:07,NNHigh
+CbusOpCodeParams,0x9B,08:15,NNLow
+CbusOpCodeParams,0x9B,00:15,NodeNumber
+CbusOpCodeParams,0x9B,16:23,ParamIndex
+CbusOpCodeParams,0x9B,24:31,ParamValue
+CbusOpCodeParams,0x9C,00:07,NNHigh
+CbusOpCodeParams,0x9C,08:15,NNLow
+CbusOpCodeParams,0x9C,00:15,NodeNumber
+CbusOpCodeParams,0x9C,16:23,ENIndex
+CbusOpCodeParams,0x9C,24:31,EVIndex
+CbusOpCodeParams,0x9D,00:07,NNHigh
+CbusOpCodeParams,0x9D,08:15,NNLow
+CbusOpCodeParams,0x9D,00:15,NodeNumber
+CbusOpCodeParams,0x9D,16:23,DNHigh
+CbusOpCodeParams,0x9D,24:31,DNLow
+CbusOpCodeParams,0x9D,16:31,DeviceNumber
+CbusOpCodeParams,0x9E,00:07,NNHigh
+CbusOpCodeParams,0x9E,08:15,NNLow
+CbusOpCodeParams,0x9E,00:15,NodeNumber
+CbusOpCodeParams,0x9E,16:23,DNHigh
+CbusOpCodeParams,0x9E,24:31,DNLow
+CbusOpCodeParams,0x9E,16:31,DeviceNumber
+CbusOpCodeParams,0x9F,00:07,Ext_OPC
+CbusOpCodeParams,0x9F,08:15,Data1
+CbusOpCodeParams,0x9F,16:23,Data2
+CbusOpCodeParams,0x9F,24:31,Data3
+CbusOpCodeParams,0xA0,00:07,Rep
+CbusOpCodeParams,0xA0,08:15,Byte0
+CbusOpCodeParams,0xA0,16:23,Byte1
+CbusOpCodeParams,0xA0,24:31,Byte2
+CbusOpCodeParams,0xA0,32:39,Byte3
+CbusOpCodeParams,0xA2,00:07,Session
+CbusOpCodeParams,0xA2,08:15,CVHigh
+CbusOpCodeParams,0xA2,16:23,CVLow
+CbusOpCodeParams,0xA2,08:23,CVNumber
+CbusOpCodeParams,0xA2,24:31,Mode
+CbusOpCodeParams,0xA2,32:39,CVValue
+CbusOpCodeParams,0xB0,00:07,NNHigh
+CbusOpCodeParams,0xB0,08:15,NNLow
+CbusOpCodeParams,0xB0,00:15,NodeNumber
+CbusOpCodeParams,0xB0,16:23,ENHigh
+CbusOpCodeParams,0xB0,24:31,ENLow
+CbusOpCodeParams,0xB0,16:31,EventNumber
+CbusOpCodeParams,0xB0,32:39,Data1
+CbusOpCodeParams,0xB1,00:07,NNHigh
+CbusOpCodeParams,0xB1,08:15,NNLow
+CbusOpCodeParams,0xB1,00:15,NodeNumber
+CbusOpCodeParams,0xB1,16:23,ENHigh
+CbusOpCodeParams,0xB1,24:31,ENLow
+CbusOpCodeParams,0xB1,16:31,EventNumber
+CbusOpCodeParams,0xB1,32:39,Data1
+CbusOpCodeParams,0xB2,00:07,NNHigh
+CbusOpCodeParams,0xB2,08:15,NNLow
+CbusOpCodeParams,0xB2,00:15,NodeNumber
+CbusOpCodeParams,0xB2,16:23,ENHigh
+CbusOpCodeParams,0xB2,24:31,ENLow
+CbusOpCodeParams,0xB2,16:31,EventNumber
+CbusOpCodeParams,0xB2,32:39,EVIndex
+CbusOpCodeParams,0xB3,00:07,NNHigh
+CbusOpCodeParams,0xB3,08:15,NNLow
+CbusOpCodeParams,0xB3,00:15,NodeNumber
+CbusOpCodeParams,0xB3,16:23,ENHigh
+CbusOpCodeParams,0xB3,24:31,ENLow
+CbusOpCodeParams,0xB3,16:31,EventNumber
+CbusOpCodeParams,0xB3,32:39,Data1
+CbusOpCodeParams,0xB4,00:07,NNHigh
+CbusOpCodeParams,0xB4,08:15,NNLow
+CbusOpCodeParams,0xB4,00:15,NodeNumber
+CbusOpCodeParams,0xB4,16:23,ENHigh
+CbusOpCodeParams,0xB4,24:31,ENLow
+CbusOpCodeParams,0xB4,16:31,EventNumber
+CbusOpCodeParams,0xB4,32:39,Data1
+CbusOpCodeParams,0xB5,00:07,NNHigh
+CbusOpCodeParams,0xB5,08:15,NNLow
+CbusOpCodeParams,0xB5,00:15,NodeNumber
+CbusOpCodeParams,0xB5,16:23,ENIndex
+CbusOpCodeParams,0xB5,24:31,EVIndex
+CbusOpCodeParams,0xB5,32:39,EVValue
+CbusOpCodeParams,0xB6,00:07,NNHigh
+CbusOpCodeParams,0xB6,08:15,NNLow
+CbusOpCodeParams,0xB6,00:15,NodeNumber
+CbusOpCodeParams,0xB6,16:23,ManufId
+CbusOpCodeParams,0xB6,24:31,ModuleId
+CbusOpCodeParams,0xB6,32:39,NodeFlags
+CbusOpCodeParams,0xB8,00:07,NNHigh
+CbusOpCodeParams,0xB8,08:15,NNLow
+CbusOpCodeParams,0xB8,00:15,NodeNumber
+CbusOpCodeParams,0xB8,16:23,DNHigh
+CbusOpCodeParams,0xB8,24:31,DNLow
+CbusOpCodeParams,0xB8,16:31,DeviceNumber
+CbusOpCodeParams,0xB8,32:39,Data1
+CbusOpCodeParams,0xB9,00:07,NNHigh
+CbusOpCodeParams,0xB9,08:15,NNLow
+CbusOpCodeParams,0xB9,00:15,NodeNumber
+CbusOpCodeParams,0xB9,16:23,DNHigh
+CbusOpCodeParams,0xB9,24:31,DNLow
+CbusOpCodeParams,0xB9,16:31,DeviceNumber
+CbusOpCodeParams,0xB9,32:39,Data1
+CbusOpCodeParams,0xBD,00:07,NNHigh
+CbusOpCodeParams,0xBD,08:15,NNLow
+CbusOpCodeParams,0xBD,00:15,NodeNumber
+CbusOpCodeParams,0xBD,16:23,DNHigh
+CbusOpCodeParams,0xBD,24:31,DNLow
+CbusOpCodeParams,0xBD,16:31,DeviceNumber
+CbusOpCodeParams,0xBD,32:39,Data1
+CbusOpCodeParams,0xBE,00:07,NNHigh
+CbusOpCodeParams,0xBE,08:15,NNLow
+CbusOpCodeParams,0xBE,00:15,NodeNumber
+CbusOpCodeParams,0xBE,16:23,DNHigh
+CbusOpCodeParams,0xBE,24:31,DNLow
+CbusOpCodeParams,0xBE,16:31,DeviceNumber
+CbusOpCodeParams,0xBE,32:39,Data1
+CbusOpCodeParams,0xBF,00:07,Ext_OPC
+CbusOpCodeParams,0xBF,08:15,Data1
+CbusOpCodeParams,0xBF,16:23,Data2
+CbusOpCodeParams,0xBF,24:31,Data3
+CbusOpCodeParams,0xBF,32:39,Data4
+CbusOpCodeParams,0xC0,00:07,Rep
+CbusOpCodeParams,0xC0,08:15,Byte0
+CbusOpCodeParams,0xC0,16:23,Byte1
+CbusOpCodeParams,0xC0,24:31,Byte2
+CbusOpCodeParams,0xC0,32:39,Byte3
+CbusOpCodeParams,0xC0,40:47,Byte4
+CbusOpCodeParams,0xC1,00:07,AddrHigh
+CbusOpCodeParams,0xC1,08:15,AddrLow
+CbusOpCodeParams,0xC1,00:15,DccAddress
+CbusOpCodeParams,0xC1,16:23,CVHigh
+CbusOpCodeParams,0xC1,24:31,CVLow
+CbusOpCodeParams,0xC1,16:31,CVNumber
+CbusOpCodeParams,0xC1,32:39,Mode
+CbusOpCodeParams,0xC1,40:47,CVValue
+CbusOpCodeParams,0xC2,00:07,AddrHigh
+CbusOpCodeParams,0xC2,08:15,AddrLow
+CbusOpCodeParams,0xC2,00:15,DccAddress
+CbusOpCodeParams,0xC2,16:23,DatCode
+CbusOpCodeParams,0xC2,24:31,Aspect1
+CbusOpCodeParams,0xC2,32:39,Aspect2
+CbusOpCodeParams,0xC2,40:47,SignalledSpeed
+CbusOpCodeParams,0xCF,00:07,Mins
+CbusOpCodeParams,0xCF,08:15,Hrs
+CbusOpCodeParams,0xCF,16:23,WdMon
+CbusOpCodeParams,0xCF,24:31,Div
+CbusOpCodeParams,0xCF,32:39,MDay
+CbusOpCodeParams,0xCF,40:47,Temp
+CbusOpCodeParams,0xD0,00:07,NNHigh
+CbusOpCodeParams,0xD0,08:15,NNLow
+CbusOpCodeParams,0xD0,00:15,NodeNumber
+CbusOpCodeParams,0xD0,16:23,ENHigh
+CbusOpCodeParams,0xD0,24:31,ENLow
+CbusOpCodeParams,0xD0,16:31,EventNumber
+CbusOpCodeParams,0xD0,32:39,Data1
+CbusOpCodeParams,0xD0,40:47,Data2
+CbusOpCodeParams,0xD1,00:07,NNHigh
+CbusOpCodeParams,0xD1,08:15,NNLow
+CbusOpCodeParams,0xD1,00:15,NodeNumber
+CbusOpCodeParams,0xD1,16:23,ENHigh
+CbusOpCodeParams,0xD1,24:31,ENLow
+CbusOpCodeParams,0xD1,16:31,EventNumber
+CbusOpCodeParams,0xD1,32:39,Data1
+CbusOpCodeParams,0xD1,40:47,Data2
+CbusOpCodeParams,0xD2,00:07,NNHigh
+CbusOpCodeParams,0xD2,08:15,NNLow
+CbusOpCodeParams,0xD2,00:15,NodeNumber
+CbusOpCodeParams,0xD2,16:23,ENHigh
+CbusOpCodeParams,0xD2,24:31,ENLow
+CbusOpCodeParams,0xD2,16:31,EventNumber
+CbusOpCodeParams,0xD2,32:39,EVIndex
+CbusOpCodeParams,0xD2,40:47,EVValue
+CbusOpCodeParams,0xD3,00:07,NNHigh
+CbusOpCodeParams,0xD3,08:15,NNLow
+CbusOpCodeParams,0xD3,00:15,NodeNumber
+CbusOpCodeParams,0xD3,16:23,ENHigh
+CbusOpCodeParams,0xD3,24:31,ENLow
+CbusOpCodeParams,0xD3,16:31,EventNumber
+CbusOpCodeParams,0xD3,32:39,EVIndex
+CbusOpCodeParams,0xD3,40:47,EVValue
+CbusOpCodeParams,0xD4,00:07,NNHigh
+CbusOpCodeParams,0xD4,08:15,NNLow
+CbusOpCodeParams,0xD4,00:15,NodeNumber
+CbusOpCodeParams,0xD4,16:23,ENHigh
+CbusOpCodeParams,0xD4,24:31,ENLow
+CbusOpCodeParams,0xD4,16:31,EventNumber
+CbusOpCodeParams,0xD4,32:39,Data1
+CbusOpCodeParams,0xD4,40:47,Data2
+CbusOpCodeParams,0xD5,00:07,NNHigh
+CbusOpCodeParams,0xD5,08:15,NNLow
+CbusOpCodeParams,0xD5,00:15,NodeNumber
+CbusOpCodeParams,0xD5,16:23,ENHigh
+CbusOpCodeParams,0xD5,24:31,ENLow
+CbusOpCodeParams,0xD5,16:31,EventNumber
+CbusOpCodeParams,0xD5,32:39,Data1
+CbusOpCodeParams,0xD5,40:47,Data2
+CbusOpCodeParams,0xD8,00:07,NNHigh
+CbusOpCodeParams,0xD8,08:15,NNLow
+CbusOpCodeParams,0xD8,00:15,NodeNumber
+CbusOpCodeParams,0xD8,16:23,DNHigh
+CbusOpCodeParams,0xD8,24:31,DNLow
+CbusOpCodeParams,0xD8,16:31,DeviceNumber
+CbusOpCodeParams,0xD8,32:39,Data1
+CbusOpCodeParams,0xD8,40:47,Data2
+CbusOpCodeParams,0xD9,00:07,NNHigh
+CbusOpCodeParams,0xD9,08:15,NNLow
+CbusOpCodeParams,0xD9,00:15,NodeNumber
+CbusOpCodeParams,0xD9,16:23,DNHigh
+CbusOpCodeParams,0xD9,24:31,DNLow
+CbusOpCodeParams,0xD9,16:31,DeviceNumber
+CbusOpCodeParams,0xD9,32:39,Data1
+CbusOpCodeParams,0xD9,40:47,Data2
+CbusOpCodeParams,0xDD,00:07,NNHigh
+CbusOpCodeParams,0xDD,08:15,NNLow
+CbusOpCodeParams,0xDD,00:15,NodeNumber
+CbusOpCodeParams,0xDD,16:23,DNHigh
+CbusOpCodeParams,0xDD,24:31,DNLow
+CbusOpCodeParams,0xDD,16:31,DeviceNumber
+CbusOpCodeParams,0xDD,32:39,Data1
+CbusOpCodeParams,0xDD,40:47,Data2
+CbusOpCodeParams,0xDE,00:07,NNHigh
+CbusOpCodeParams,0xDE,08:15,NNLow
+CbusOpCodeParams,0xDE,00:15,NodeNumber
+CbusOpCodeParams,0xDE,16:23,DNHigh
+CbusOpCodeParams,0xDE,24:31,DNLow
+CbusOpCodeParams,0xDE,16:31,DeviceNumber
+CbusOpCodeParams,0xDE,32:39,Data1
+CbusOpCodeParams,0xDE,40:47,Data2
+CbusOpCodeParams,0xDE,32:39,Data3
+CbusOpCodeParams,0xDF,00:07,Ext_OPC
+CbusOpCodeParams,0xDF,08:15,Data1
+CbusOpCodeParams,0xDF,16:23,Data2
+CbusOpCodeParams,0xDF,24:31,Data3
+CbusOpCodeParams,0xDF,32:39,Data4
+CbusOpCodeParams,0xDF,40:47,Data5
+CbusOpCodeParams,0xE0,00:07,Rep
+CbusOpCodeParams,0xE0,08:15,Byte0
+CbusOpCodeParams,0xE0,16:23,Byte1
+CbusOpCodeParams,0xE0,24:31,Byte2
+CbusOpCodeParams,0xE0,32:39,Byte3
+CbusOpCodeParams,0xE0,40:47,Byte4
+CbusOpCodeParams,0xE0,48:55,Byte5
+CbusOpCodeParams,0xE1,00:07,Session
+CbusOpCodeParams,0xE1,08:15,AddrHigh
+CbusOpCodeParams,0xE1,16:23,AddrLow
+CbusOpCodeParams,0xE1,08:23,DccAddress
+CbusOpCodeParams,0xE1,24:31,Speed
+CbusOpCodeParams,0xE1,32:39,Fn1
+CbusOpCodeParams,0xE1,40:47,Fn2
+CbusOpCodeParams,0xE1,48:55,Fn3
+CbusOpCodeParams,0xE2,00:07,Char1
+CbusOpCodeParams,0xE2,08:15,Char2
+CbusOpCodeParams,0xE2,16:23,Char3
+CbusOpCodeParams,0xE2,24:31,Char4
+CbusOpCodeParams,0xE2,32:39,Char5
+CbusOpCodeParams,0xE2,40:47,Char6
+CbusOpCodeParams,0xE2,48:55,Char7
+CbusOpCodeParams,0xE2,00:55,Name
+CbusOpCodeParams,0xE3,00:07,NNHigh
+CbusOpCodeParams,0xE3,08:15,NNLow
+CbusOpCodeParams,0xE3,00:15,NodeNumber
+CbusOpCodeParams,0xE3,16:23,CSNumber
+CbusOpCodeParams,0xE3,24:31,CSFlags
+CbusOpCodeParams,0xE3,32:39,Major
+CbusOpCodeParams,0xE3,40:47,Minor
+CbusOpCodeParams,0xE3,48:55,Build
+CbusOpCodeParams,0xEF,00:07,Param1
+CbusOpCodeParams,0xEF,08:15,Param2
+CbusOpCodeParams,0xEF,16:23,Param3
+CbusOpCodeParams,0xEF,24:31,Param4
+CbusOpCodeParams,0xEF,32:39,Param5
+CbusOpCodeParams,0xEF,40:47,Param6
+CbusOpCodeParams,0xEF,48:55,Param7
+CbusOpCodeParams,0xF0,00:07,NNHigh
+CbusOpCodeParams,0xF0,08:15,NNLow
+CbusOpCodeParams,0xF0,00:15,NodeNumber
+CbusOpCodeParams,0xF0,16:23,ENHigh
+CbusOpCodeParams,0xF0,24:31,ENLow
+CbusOpCodeParams,0xF0,16:31,EventNumber
+CbusOpCodeParams,0xF0,32:39,Data1
+CbusOpCodeParams,0xF0,40:47,Data2
+CbusOpCodeParams,0xF0,48:55,Data3
+CbusOpCodeParams,0xF1,00:07,NNHigh
+CbusOpCodeParams,0xF1,08:15,NNLow
+CbusOpCodeParams,0xF1,00:15,NodeNumber
+CbusOpCodeParams,0xF1,16:23,ENHigh
+CbusOpCodeParams,0xF1,24:31,ENLow
+CbusOpCodeParams,0xF1,16:31,EventNumber
+CbusOpCodeParams,0xF1,32:39,Data1
+CbusOpCodeParams,0xF1,40:47,Data2
+CbusOpCodeParams,0xF1,48:55,Data3
+CbusOpCodeParams,0xF2,00:07,NNHigh
+CbusOpCodeParams,0xF2,08:15,NNLow
+CbusOpCodeParams,0xF2,00:15,NodeNumber
+CbusOpCodeParams,0xF2,16:23,EN3
+CbusOpCodeParams,0xF2,24:31,EN2
+CbusOpCodeParams,0xF2,32:39,EN1
+CbusOpCodeParams,0xF2,40:47,EN0
+CbusOpCodeParams,0xF2,16:47,FullEventNumber
+CbusOpCodeParams,0xF2,48:55,ENIndex
+CbusOpCodeParams,0xF3,00:07,NNHigh
+CbusOpCodeParams,0xF3,08:15,NNLow
+CbusOpCodeParams,0xF3,00:15,NodeNumber
+CbusOpCodeParams,0xF3,16:23,ENHigh
+CbusOpCodeParams,0xF3,24:31,ENLow
+CbusOpCodeParams,0xF3,16:31,EventNumber
+CbusOpCodeParams,0xF3,32:39,Data1
+CbusOpCodeParams,0xF3,40:47,Data2
+CbusOpCodeParams,0xF3,48:55,Data3
+CbusOpCodeParams,0xF4,00:07,NNHigh
+CbusOpCodeParams,0xF4,08:15,NNLow
+CbusOpCodeParams,0xF4,00:15,NodeNumber
+CbusOpCodeParams,0xF4,16:23,ENHigh
+CbusOpCodeParams,0xF4,24:31,ENLow
+CbusOpCodeParams,0xF4,16:31,EventNumber
+CbusOpCodeParams,0xF4,32:39,Data1
+CbusOpCodeParams,0xF4,40:47,Data2
+CbusOpCodeParams,0xF4,48:55,Data3
+CbusOpCodeParams,0xF5,00:07,NNHigh
+CbusOpCodeParams,0xF5,08:15,NNLow
+CbusOpCodeParams,0xF5,00:15,NodeNumber
+CbusOpCodeParams,0xF5,16:23,ENHigh
+CbusOpCodeParams,0xF5,24:31,ENLow
+CbusOpCodeParams,0xF5,16:31,EventNumber
+CbusOpCodeParams,0xF5,32:39,ENIndex
+CbusOpCodeParams,0xF5,40:47,EVIndex
+CbusOpCodeParams,0xF5,48:55,EVValue
+CbusOpCodeParams,0xF6,00:07,NNHigh
+CbusOpCodeParams,0xF6,08:15,NNLow
+CbusOpCodeParams,0xF6,00:15,NodeNumber
+CbusOpCodeParams,0xF6,16:23,Data1
+CbusOpCodeParams,0xF6,24:31,Data2
+CbusOpCodeParams,0xF6,32:39,Data3
+CbusOpCodeParams,0xF6,40:47,Data4
+CbusOpCodeParams,0xF6,48:55,Data5
+CbusOpCodeParams,0xF7,00:07,NNHigh
+CbusOpCodeParams,0xF7,08:15,NNLow
+CbusOpCodeParams,0xF7,00:15,NodeNumber
+CbusOpCodeParams,0xF7,16:23,Data1
+CbusOpCodeParams,0xF7,24:31,Data2
+CbusOpCodeParams,0xF7,32:39,Data3
+CbusOpCodeParams,0xF7,40:47,Data4
+CbusOpCodeParams,0xF7,48:55,Data5
+CbusOpCodeParams,0xF8,00:07,NNHigh
+CbusOpCodeParams,0xF8,08:15,NNLow
+CbusOpCodeParams,0xF8,00:15,NodeNumber
+CbusOpCodeParams,0xF8,16:23,DNHigh
+CbusOpCodeParams,0xF8,24:31,DNLow
+CbusOpCodeParams,0xF8,16:31,DeviceNumber
+CbusOpCodeParams,0xF8,32:39,Data1
+CbusOpCodeParams,0xF8,40:47,Data2
+CbusOpCodeParams,0xF8,48:55,Data3
+CbusOpCodeParams,0xF9,00:07,NNHigh
+CbusOpCodeParams,0xF9,08:15,NNLow
+CbusOpCodeParams,0xF9,00:15,NodeNumber
+CbusOpCodeParams,0xF9,16:23,DNHigh
+CbusOpCodeParams,0xF9,24:31,DNLow
+CbusOpCodeParams,0xF9,16:31,DeviceNumber
+CbusOpCodeParams,0xF9,32:39,Data1
+CbusOpCodeParams,0xF9,40:47,Data2
+CbusOpCodeParams,0xF9,48:55,Data3
+CbusOpCodeParams,0xFA,00:07,DNHigh
+CbusOpCodeParams,0xFA,08:15,DNLow
+CbusOpCodeParams,0xFA,00:15,DeviceNumber
+CbusOpCodeParams,0xFA,16:23,Data1
+CbusOpCodeParams,0xFA,24:31,Data2
+CbusOpCodeParams,0xFA,32:39,Data3
+CbusOpCodeParams,0xFA,40:47,Data4
+CbusOpCodeParams,0xFA,48:55,Data5
+CbusOpCodeParams,0xFB,00:07,DNHigh
+CbusOpCodeParams,0xFB,08:15,DNLow
+CbusOpCodeParams,0xFB,00:15,DeviceNumber
+CbusOpCodeParams,0xFB,16:23,Data1
+CbusOpCodeParams,0xFB,24:31,Data2
+CbusOpCodeParams,0xFB,32:39,Data3
+CbusOpCodeParams,0xFB,40:47,Data4
+CbusOpCodeParams,0xFB,48:55,Data5
+CbusOpCodeParams,0xFC,00:07,DNHigh
+CbusOpCodeParams,0xFC,08:15,DNLow
+CbusOpCodeParams,0xFC,00:15,DeviceNumber
+CbusOpCodeParams,0xFC,16:23,Data1
+CbusOpCodeParams,0xFC,24:31,Data2
+CbusOpCodeParams,0xFC,32:39,Data3
+CbusOpCodeParams,0xFC,40:47,Data4
+CbusOpCodeParams,0xFC,48:55,Data5
+CbusOpCodeParams,0xFD,00:07,NNHigh
+CbusOpCodeParams,0xFD,08:15,NNLow
+CbusOpCodeParams,0xFD,00:15,NodeNumber
+CbusOpCodeParams,0xFD,16:23,DNHigh
+CbusOpCodeParams,0xFD,24:31,DNLow
+CbusOpCodeParams,0xFD,16:31,DeviceNumber
+CbusOpCodeParams,0xFD,32:39,Data1
+CbusOpCodeParams,0xFD,40:47,Data2
+CbusOpCodeParams,0xFD,48:55,Data3
+CbusOpCodeParams,0xFE,00:07,NNHigh
+CbusOpCodeParams,0xFE,08:15,NNLow
+CbusOpCodeParams,0xFE,00:15,NodeNumber
+CbusOpCodeParams,0xFE,16:23,DNHigh
+CbusOpCodeParams,0xFE,24:31,DNLow
+CbusOpCodeParams,0xFE,16:31,DeviceNumber
+CbusOpCodeParams,0xFE,32:39,Data1
+CbusOpCodeParams,0xFE,40:47,Data2
+CbusOpCodeParams,0xFE,48:55,Data3
+CbusOpCodeParams,0xFF,00:07,Ext_OPC
+CbusOpCodeParams,0xFF,08:15,Data1
+CbusOpCodeParams,0xFF,16:23,Data2
+CbusOpCodeParams,0xFF,24:31,Data3
+CbusOpCodeParams,0xFF,32:39,Data4
+CbusOpCodeParams,0xFF,40:47,Data5
+CbusOpCodeParams,0xFF,48:55,Data6
+CbusOpCodeParamDef,AddrHigh,byte,The high byte of a loco DCC address.
+CbusOpCodeParamDef,AddrLow,byte,The low byte of a loco DCC address.
+CbusOpCodeParamDef,AllocationCode,uint16,An application specific allocation code.
+CbusOpCodeParamDef,Aspect1,byte,Aspect codes, see CbusCabSigAspect1.
+CbusOpCodeParamDef,Aspect2,byte,Aspect codes, see CbusCabSigAspect2.
+CbusOpCodeParamDef,Build,byte,Build number, always 0 for a released version.
+CbusOpCodeParamDef,Byte0,byte,The first byte of a DCC packet.
+CbusOpCodeParamDef,Byte1,byte,The second byte of a DCC packet.
+CbusOpCodeParamDef,Byte2,byte,The third byte of a DCC packet.
+CbusOpCodeParamDef,Byte3,byte,The fourth byte of a DCC packet.
+CbusOpCodeParamDef,Byte4,byte,The fifth byte of a DCC packet.
+CbusOpCodeParamDef,Byte5,byte,The sixth byte of a DCC packat.
+CbusOpCodeParamDef,CSNumber,byte,Command station number.
+CbusOpCodeParamDef,CVHigh,byte,The high byte of a DCC CV number.
+CbusOpCodeParamDef,CVLow,byte,The low byte of a DCC CV number.
+CbusOpCodeParamDef,CVNumber,uint16,A DCC CV number.
+CbusOpCodeParamDef,CVValue,byte,The value of a DCC CV.
+CbusOpCodeParamDef,Can_ID,byte,The value of a CAN ID.
+CbusOpCodeParamDef,Char1,char,The first character of a module name.
+CbusOpCodeParamDef,Char2,char,The second character of a module name.
+CbusOpCodeParamDef,Char3,char,The third character of a module name.
+CbusOpCodeParamDef,Char4,char,The fourth character of a module name.
+CbusOpCodeParamDef,Char5,char,The fifth character of a module name.
+CbusOpCodeParamDef,Char6,char,The sixth character of a module name.
+CbusOpCodeParamDef,Char7,char,The seventh character of a module name.
+CbusOpCodeParamDef,ErrorNumber,byte,The CmdErr value.
+CbusOpCodeParamDef,Consist,byte,The number of a DCC consist.
+CbusOpCodeParamDef,DNHigh,byte,The high byte of a Device Number.
+CbusOpCodeParamDef,DNLow,byte,The low byte of a Device Number.
+CbusOpCodeParamDef,DatCode,byte,The value of the signalling type, see CbusCanSigAspect0.
+CbusOpCodeParamDef,Data1,byte,The first data byte.
+CbusOpCodeParamDef,Data2,byte,The second data byte.
+CbusOpCodeParamDef,Data3,byte,The third data byte.
+CbusOpCodeParamDef,Data4,byte,The fourth data byte.
+CbusOpCodeParamDef,Data5,byte,The fifth data byte.
+CbusOpCodeParamDef,Data6,byte,The sixth data byte.
+CbusOpCodeParamDef,DccAddress,uint16,The full loco DCC address.
+CbusOpCodeParamDef,DeviceNumber,uint16,The full Device Number.
+CbusOpCodeParamDef,Div,byte,Enables and disables the Fast Clock.
+CbusOpCodeParamDef,EN0,byte,The first byte of the full Event Number (including the Node Number it belongs to).
+CbusOpCodeParamDef,EN1,byte,The second byte of the full Event Number (including the Node Number it belongs to).
+CbusOpCodeParamDef,EN2,byte,The third byte of the full Event Number (including the Node Number it belongs to).
+CbusOpCodeParamDef,EN3,byte,The fourth byte of the full Event Number (including the Node Number it belongs to).
+CbusOpCodeParamDef,ENHigh,byte,The high byte of an Event Number.
+CbusOpCodeParamDef,ENIndex,byte,The index of an Event Number in a modules Event table.
+CbusOpCodeParamDef,ENLow,byte,The low byte of an Event Number.
+CbusOpCodeParamDef,EVIndex,byte,The index into a block of Event Variables.
+CbusOpCodeParamDef,EVValue,byte,The value of an Event Variable.
+CbusOpCodeParamDef,Err,byte,DCC error codes.
+CbusOpCodeParamDef,EvSpc,byte,The number of available Events remaining in the Node.
+CbusOpCodeParamDef,EventCount,byte,The number of Events stored in the Node.
+CbusOpCodeParamDef,EventNumber,uint16,The full Event Number.
+CbusOpCodeParamDef,Ext_OPC,byte,The Extension Op-Code number.
+CbusOpCodeParamDef,EngineFlags,byte,The engine session flags.
+CbusOpCodeParamDef,NodeFlags,byte,The Node flags.
+CbusOpCodeParamDef,CSFlags,byte,The command station flags.
+CbusOpCodeParamDef,Fn1,byte,DCC function number one.
+CbusOpCodeParamDef,Fn2,byte,DCC function number two.
+CbusOpCodeParamDef,Fn3,byte,DCC function number three.
+CbusOpCodeParamDef,Fnum,byte,The DCC engine function number.
+CbusOpCodeParamDef,FullEventNumber,uint32,The full Event Number including the Node Number it belongs to.
+CbusOpCodeParamDef,Hrs,byte,The number of hours.
+CbusOpCodeParamDef,Index,byte,The engine index in the consist.
+CbusOpCodeParamDef,MDay,byte,The day of the month.
+CbusOpCodeParamDef,Major,byte,The major version number.
+CbusOpCodeParamDef,ManufId,byte,The manufacturer ID.
+CbusOpCodeParamDef,Minor,byte,The minor version number.
+CbusOpCodeParamDef,Mins,byte,The number of minutes.
+CbusOpCodeParamDef,Mode,byte,The CV programming mode to use.
+CbusOpCodeParamDef,ModuleId,byte,The module ID.
+CbusOpCodeParamDef,NNHigh,byte,The high byte of the Node Number.
+CbusOpCodeParamDef,NNLow,byte,The low byte of the Node Number.
+CbusOpCodeParamDef,NVIndex,byte,The index number of the Node Variable.
+CbusOpCodeParamDef,NVValue,byte,The value of the Node Variable.
+CbusOpCodeParamDef,Name,string,The name of a node.
+CbusOpCodeParamDef,NodeNumber,uint16,The full Node Number.
+CbusOpCodeParamDef,Param1,byte,The first Node parameter.
+CbusOpCodeParamDef,Param2,byte,The second Node parameter.
+CbusOpCodeParamDef,Param3,byte,The third Node parameter.
+CbusOpCodeParamDef,Param4,byte,The fourth Node parameter.
+CbusOpCodeParamDef,Param5,byte,The fifth Node parameter.
+CbusOpCodeParamDef,Param6,byte,The sixth Node parameter.
+CbusOpCodeParamDef,Param7,byte,The seventh Node parameter.
+CbusOpCodeParamDef,ParamIndex,byte,The index number of the Node parameter.
+CbusOpCodeParamDef,ParamValue,byte,The value of the Node parameter.
+CbusOpCodeParamDef,Rep,byte,The number of times the DCC packet is to be broadcast.
+CbusOpCodeParamDef,Session,byte,The Command Station session number.
+CbusOpCodeParamDef,Speed,byte,The speed of an engine, the MSB is the direction.
+CbusOpCodeParamDef,SignalledSpeed,byte,The signalled speed limit.
+CbusOpCodeParamDef,DebugStatus,byte,Freeform status byte for debugging during CBUS module development.
+CbusOpCodeParamDef,ServiceModeStatus,byte,Status returned by command station/programmer at end of programming operation that does not return data.
+CbusOpCodeParamDef,StmodMode,byte,The CAB session mode.
+CbusOpCodeParamDef,Temp,byte,The temperature.
+CbusOpCodeParamDef,WdMon,byte,The weekday and the month.
