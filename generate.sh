@@ -237,6 +237,9 @@ done < cbusdefs.csv >>$OUTPUT
 OUTPUT=cbusdefs.m4
 echo "Generating $OUTPUT"
 
+rm -f $OUTPUT
+touch $OUTPUT
+
 while IFS="," read type	name value comment
 do
 	if [ "$type" != "comment" -a -n "$name" ]; then
