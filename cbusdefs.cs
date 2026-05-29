@@ -6,7 +6,7 @@ namespace merg.cbus
 {
 
     // 
-    // Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
+    // Copyright (C) Pete Brownlow 2011-2025   software@upsys.co.uk
     // Originally derived from opcodes.h (c) Andrew Crosland.
     // CSV version by Ian Hogg inspired by David W Radcliffe
     // 
@@ -102,6 +102,8 @@ namespace merg.cbus
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
     // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, SMARTTD, change CANEMIO to CANXIO
+    // Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
+    // Pete Brownlow, 25/6/25, Ver 8y  Reconcile with changes in master, add CANCDU-U module type, add defintions of known fixed CANIDs. 
 
 	public static class CbusDefs
 	{
@@ -124,6 +126,20 @@ namespace merg.cbus
 			public const int PB_ETH	=  2;	// 
 			public const int PB_MIWI	=  3;	// 
 			public const int PB_USB	=  4;	// 
+		}
+
+		public static class CbusCANID
+		{
+			// 
+			// CANIDs allocated as fixed values
+			// Note that all new modules, or new firmware for existing modules, should obtain a CANID using self enumeration and implement
+			// automatic CANID conflict resolution, so that eventually we can remove the need for fixed CANIDs
+			// 
+			public const int CANID_CANCMD	=  0x72;	// (114) Fixed CANID for CANCMD or CANCSB
+			public const int CANID_CANUSB	=  0x7C;	// (124) Fixed CANID for CANUSB, although in current firmware it may just use the CANID from the sending software
+			public const int CANID_FCU	=  0x7D;	// (125) Default CANID used by FCU. Can be changed in settings. Note some interface modules may substitute their own CANID.
+			public const int CANID_JMRI	=  0x7E;	// (126) Default CANID used by JMRI. Can be changed in connection preferences. Note some interface modules may substitute their own CANID.
+			public const int CANID_CANEther	=  0x7F;	// (127) Default fixed CANID for CANEther (can be changed by modifying NV2). Note CANEther inserts its own CANID on all packets transmitted on CAN
 		}
 
 		public static class CbusCabSigAspect0
@@ -312,7 +328,9 @@ namespace merg.cbus
 			public const int MTYP_CANPIXEL	=  84;	// neopixel driver (Jon Denham)
 			public const int MTYP_CANCABPE	=  85;	// Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 			public const int MTYP_CANSMARTTD	=  86;	// Smart train detector (Michael Smith)
-			public const int MTYP_CANCDU_U	=  87;	// CANCDU (universal) 
+			public const int MTYP_CANARGB	=  87;	// Addressable LEDs (Ian Hogg)
+			public const int MTYP_CANCDU_U	=  88;	// CANCDU (universal) 
+			public const int MTYP_VLCB	=  0xFC;	// VLCB modules use the same manufacturer IDs as CBUS modules.
 			// 
 			// At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 			// Please liaise with Pete before adding new module types, 

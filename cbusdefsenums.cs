@@ -6,7 +6,7 @@ namespace Merg.Cbus
 {
 
     // 
-    // Copyright (C) Pete Brownlow 2011-2024   software@upsys.co.uk
+    // Copyright (C) Pete Brownlow 2011-2025   software@upsys.co.uk
     // Originally derived from opcodes.h (c) Andrew Crosland.
     // CSV version by Ian Hogg inspired by David W Radcliffe
     // 
@@ -102,6 +102,8 @@ namespace Merg.Cbus
     // Pete Brownlow,3/11/23, Ver 8x  Update SPROG module type ids (Andrew Crosland)
     // Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
     // Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, SMARTTD, change CANEMIO to CANXIO
+    // Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
+    // Pete Brownlow, 25/6/25, Ver 8y  Reconcile with changes in master, add CANCDU-U module type, add defintions of known fixed CANIDs. 
 
 	/// <summary>
 	/// 
@@ -143,6 +145,33 @@ namespace Merg.Cbus
 		/// 
 		/// </summary>
 		PbUsb = 4,
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum CANID
+	{
+		/// <summary>
+		/// (114) Fixed CANID for CANCMD or CANCSB
+		/// </summary>
+		CanidCancmd = 0x72,
+		/// <summary>
+		/// (124) Fixed CANID for CANUSB, although in current firmware it may just use the CANID from the sending software
+		/// </summary>
+		CanidCanusb = 0x7C,
+		/// <summary>
+		/// (125) Default CANID used by FCU. Can be changed in settings. Note some interface modules may substitute their own CANID.
+		/// </summary>
+		CanidFcu = 0x7D,
+		/// <summary>
+		/// (126) Default CANID used by JMRI. Can be changed in connection preferences. Note some interface modules may substitute their own CANID.
+		/// </summary>
+		CanidJmri = 0x7E,
+		/// <summary>
+		/// (127) Default fixed CANID for CANEther (can be changed by modifying NV2). Note CANEther inserts its own CANID on all packets transmitted on CAN
+		/// </summary>
+		CanidCanether = 0x7F,
 	}
 
 	/// <summary>
@@ -693,9 +722,17 @@ namespace Merg.Cbus
 		/// </summary>
 		Cansmarttd = 86,
 		/// <summary>
+		/// Addressable LEDs (Ian Hogg)
+		/// </summary>
+		Canargb = 87,
+		/// <summary>
 		/// CANCDU (universal) 
 		/// </summary>
-		CancduU = 87,
+		CancduU = 88,
+		/// <summary>
+		/// VLCB modules use the same manufacturer IDs as CBUS modules.
+		/// </summary>
+		Vlcb = 0xFC,
 		/// <summary>
 		/// Software nodes
 		/// </summary>
