@@ -1,5 +1,5 @@
 comment,,,
-comment,,,Copyright (C) Pete Brownlow 2011-2025   software@upsys.co.uk
+comment,,,Copyright (C) Pete Brownlow 2011-2026   software@upsys.co.uk
 comment,,,Originally derived from opcodes.h (c) Andrew Crosland.
 comment,,,CSV version by Ian Hogg inspired by David W Radcliffe
 comment,,,
@@ -97,6 +97,8 @@ comment,,,Pete Brownlow, 23/11/23, Ver 8y  Add CANSHIELD, CAN4IN4OUT, CANDEV
 comment,,,Pete Brownlow, 27/1/24, Ver 8y  Add CANCMDB, CANPIXEL, CANCABPE, SMARTTD, change CANEMIO to CANXIO
 comment,,,Ian Hogg, 10/3/25, Remove the VLCB manufacturer code as this is no longer required. Add CANARGB.
 comment,,,Pete Brownlow, 25/6/25, Ver 8y  Reconcile with changes in master, add CANCDU-U module type, add defintions of known fixed CANIDs. 
+comment,,,Pete Brownlow, 16/11/25, Ver 8y  Add CANARGB, CANCDU-U
+comment,,,Pete Brownlow, 14/4/26, Ver 8y  Add CANGATEX, CANGATEXL
 
 CbusManufacturer,,,CBUS Manufacturer definitions
 CbusManufacturer,,,Where the manufacturer already has an NMRA code, this is used
@@ -106,7 +108,6 @@ CbusManufacturer,MANU_MERG,165,https://www.merg.co.uk
 CbusManufacturer,MANU_SPROG,44,https://www.sprog-dcc.co.uk/
 CbusManufacturer,MANU_ROCRAIL,70,http://www.rocrail.net
 CbusManufacturer,MANU_SPECTRUM,80,http://animatedmodeler.com  (Spectrum Engineering)
-CbusManufacturer,MANU_MERG_VLCB,250,range of MERG VLCB modules
 CbusManufacturer,MANU_SYSPIXIE,249,Konrad Orlowski
 CbusManufacturer,MANU_RME,248,http://rmeuk.com  (Railway Modelling Experts Limited)
 
@@ -204,10 +205,10 @@ CbusMergModuleTypes,MTYP_CANCMDB,83,CANCMD with built in booster (Simon West)
 CbusMergModuleTypes,MTYP_CANPIXEL,84,neopixel driver (Jon Denham)
 CbusMergModuleTypes,MTYP_CANCABPE,85,Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
 CbusMergModuleTypes,MTYP_CANSMARTTD,86,Smart train detector (Michael Smith)
-CbusMergModuleTypes,MTYP_CANARGB,87,Addressable LEDs (Ian Hogg)
+CbusMergModuleTypes,MTYP_CANARGB,87	Addressable LEDs (Ian Hogg)
 CbusMergModuleTypes,MTYP_CANCDU_U,88,CANCDU (universal) 
-CbusMergModuleTypes,MTYP_VLCB,0xFC,VLCB modules use the same manufacturer IDs as CBUS modules.
-
+CbusMergModuleTypes,MTYP_CANGATEX,89,CANCDU Extended logic module using and/or gates (Duncan Greenwood)
+CbusMergModuleTypes,MTYP_CANGATEXL,90,CANCDU Extended logic module using and/or gates with more gates/memory (Duncan Greenwood)
 CbusMergModuleTypes,,,
 CbusMergModuleTypes,,,At the time of writing the list of defined MERG module types is maintained by Pete Brownlow software@upsys.co.uk
 CbusMergModuleTypes,,,Please liaise with Pete before adding new module types, 
@@ -600,7 +601,9 @@ CbusCANID,,,Note that all new modules, or new firmware for existing modules, sho
 CbusCANID,,,automatic CANID conflict resolution, so that eventually we can remove the need for fixed CANIDs
 CbusCANID,,,
 
-CbusCANID,CANID_CANCMD,0x72,(114) Fixed CANID for CANCMD or CANCSB
+CbusCANID,CANID_CANCMD,0x72,(114) Fixed CANIDs
+CbusCANID,CANID_TRAINTASTIC,0x7A,(122) Default CANID used by Traintastic. Can be changed in settings. Note some interface modules may substitute their own CANID.
+CbusCANID,CANID_MMC,0x7B,(123) Default CANID used by MMC. Can be changed in settings. Note some interface modules may substitute their own CANID.
 CbusCANID,CANID_CANUSB,0x7C,(124) Fixed CANID for CANUSB, although in current firmware it may just use the CANID from the sending software
 CbusCANID,CANID_FCU,0x7D,(125) Default CANID used by FCU. Can be changed in settings. Note some interface modules may substitute their own CANID.
 CbusCANID,CANID_JMRI,0x7E,(126) Default CANID used by JMRI. Can be changed in connection preferences. Note some interface modules may substitute their own CANID.
